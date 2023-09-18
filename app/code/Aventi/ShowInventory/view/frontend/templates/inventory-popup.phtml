@@ -1,0 +1,36 @@
+<?php
+
+$width = '530px';
+
+?>
+<div class="modal_inventory_popup" style="display:none">
+		<!-- <div class="inventory_popup" id="inventory-popup" style="width: <?php echo $width; ?>;">	 -->
+		<div class="inventory_popup" id="inventory-popup">	
+			<button class="action-close" data-role="closeBtn" type="button">
+				<em class="pe-7s-close"></em>
+            </button>		
+			<div class="block-popup-inventory">
+				<div class="block-popup-top">
+					<div class="pop-inventory-title-product">
+						<div class="content-img-product-pop">
+							<img id="img-product-title" title="" src="" alt="">
+						</div>
+						<p id="pop-inventory-title-product"></p>
+					</div>	
+					<div class="pop-inventory-title">
+						<!-- <svg width="20" height="24" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M19 10C19 17 10 23 10 23C10 23 1 17 1 10C1 7.61305 1.94821 5.32387 3.63604 3.63604C5.32387 1.94821 7.61305 1 10 1C12.3869 1 14.6761 1.94821 16.364 3.63604C18.0518 5.32387 19 7.61305 19 10Z" stroke="#142A75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+							<path d="M10 13C11.6569 13 13 11.6569 13 10C13 8.34315 11.6569 7 10 7C8.34315 7 7 8.34315 7 10C7 11.6569 8.34315 13 10 13Z" stroke="#142A75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+						</svg> -->
+						<p id="pop-inventory-title__name"><?php /* @escapeNotVerified */ echo __('Available by office') ?></p>
+					</div>					
+                    <div class="inventory-popup-content">
+						<div class="content-inventory-office">
+
+						</div>
+                    </div>										
+				</div>
+			</div>
+		</div>
+</div>
+	

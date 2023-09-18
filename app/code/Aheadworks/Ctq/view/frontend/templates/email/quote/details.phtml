@@ -1,0 +1,42 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+/** @var $block \Aheadworks\Ctq\Block\Email\Quote\Details */
+/** @var \Aheadworks\Ctq\ViewModel\Email\Quote\Details $viewModel */
+$viewModel = $block->getViewModel();
+$quote = $block->getQuote();
+$store = $block->getStore();
+// @codingStandardsIgnoreFile
+?>
+<?php if ($quote && $store): ?>
+    <?php $cart = $viewModel->getCart($quote); ?>
+    <?php if ($cart): ?>
+        <div class="aw-ctq__email-quote-details">
+            <div class="aw-ctq__quote-id">
+                <label><?= $block->escapeHtml(__('Quote #:')) ?></label>
+                <span><?= $block->escapeHtml($quote->getId()) ?></span>
+            </div>
+        </div>
+        <table class="aw-ctq__email-quote-items data table abs-table-striped">
+            <thead>
+            <tr>
+                <th class="col name"><?= $block->escapeHtml(__('Items')) ?></th>
+                <th class="col price"><?= $block->escapeHtml(__('Price')) ?></th>
+                <th class="col qty"><?= $block->escapeHtml(__('Qty')) ?></th>
+                <th class="col subtotal"><?= $block->escapeHtml(__('Subtotal')) ?></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($viewModel->getItemsToRender($cart) as $cartItem): ?>
+                <?= /* @noEscape */ $block->getItemHtml($cartItem, $viewModel->getItemType($cartItem)) ?>
+            <?php endforeach; ?>
+            </tbody>
+            <tfoot class="quote-totals">
+            <?= /* @noEscape */ $block->getTotalsHtml($cart) ?>
+            </tfoot>
+        </table>
+    <?php endif; ?>
+<?php endif; ?>

@@ -1,0 +1,222 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<tab id="aventi" sortOrder="999" translate="label">
+			<label>aventi</label>
+		</tab>
+
+		<section id="gshipping_config" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="1000" translate="label">
+			
+			<label>G-Shipping</label>
+			
+			<tab>aventi</tab>
+
+			<resource>Aventi_Gshipping::config_aventi_gshipping</resource>
+
+			<group id="shipping_settings" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="1" translate="label">
+
+				<field id="active" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="1" translate="label" type="select">
+					<label>Enabled</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+
+				<field id="sortorder" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="2" translate="label" type="text">
+					<label>Orden de clasificación</label>
+				</field>
+
+			</group>
+
+		</section>
+
+		<section id="carriers" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="1001" translate="label">
+
+			<group id="gshipping" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="1" translate="label">
+
+				<label>G-Shipping</label>
+				<comment>Valores por defecto y condiciones de Envíos: </comment>	
+
+
+				<field id="name" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="1" translate="label" type="text" >
+					<label>Nombre del método de envío</label>
+					<validate>required-entry no-whitespace validate-length minimum-length-3 maximum-length-50 </validate>
+					<frontend_model>Aventi\Gshipping\Block\System\Config\Form\Field\Banner</frontend_model>
+				</field>
+
+				<field id="title" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="2" translate="label" type="text">
+					<label>Título</label>
+				</field>
+
+                <field id="activepackage" showInDefault="0" showInStore="1" showInWebsite="1" sortOrder="3" translate="label" type="select" canRestore="1">
+					<label>Activar paquete</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<comment>Enviar pedido como un paquete: Active si quiere cobrar el mismo precio de envío para todas las órdenes de compra.</comment>
+ 					<tooltip>            
+ 					  - Si esta opción no está activa, se contará cada producto del carrito para hacer el cálculo del envío.
+					  - El valor puede variar de acuerdo con el número de ítems en el carrito. 
+					  - Si la opción "Activar paquete" si no está activa y el producto no tiene medidas, se tomarán los valores por defecto.
+					  - La opción "Unidades" solo funciona cuando se activa: activar paquete.
+					  - Al activar esta opción, debe tener en cuenta aumentar los valores por defecto: Alto, Ancho. Largo y Peso en Kg, para los valores A continuación:
+					</tooltip>
+				</field>
+
+				<field id="units" showInDefault="0" showInStore="1" showInWebsite="1" sortOrder="4" translate="label" type="text" canRestore="1">
+					<label>	Unidades </label>
+					<validate>required-entry no-whitespace validate-number validate-zero-or-greater validate-length minimum-length-1 maximum-length-10 </validate>
+					<comment>Unidades homogeneas, es decir unidades que tienes las mismas caracteristicas de alto,ancho,largo.</comment>
+					<depends>
+                        <field id="activepackage">1</field>
+                    </depends>
+
+				</field>
+
+				<field id="cubicactive" showInDefault="0" showInStore="1" showInWebsite="1" sortOrder="5" translate="label" type="select">
+					<label>Activar peso volumétrico</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<comment>Cálculo del peso volumétrico consiste en determinar el tamaño cúbico de un elemento</comment>	
+					<tooltip> 
+					 - El cálculo del peso volumétrico consiste en determinar el tamaño cúbico de un elemento y aplicar un factor volumétrico. Para conocer el peso volumétrico de un paquete hay que multiplicar el largo x ancho x alto (cm) x cubicaje (Kg/m³), dividiéndolo entre 5.000. Ref.FedEx.
+
+					 - En el momento de calcular el coste de un envío, se compara el peso volumétrico con el peso real de la carga y se tomará en consideración el más alto de los dos.
+
+					  Nota. El cubicaje (Kg/m³): 5.000 este valor puede variar segun la trasportadora (esto es un acercamiento).
+					</tooltip>
+				</field>
+
+				<field id="cubiccapacity" showInDefault="0" showInStore="1" showInWebsite="1" sortOrder="6" translate="label" type="text" canRestore="1">
+					<label>Cubicaje (Kg/m3)</label>
+					<validate>required-entry no-whitespace validate-number validate-zero-or-greater validate-length minimum-length-6 maximum-length-10 </validate>
+					<comment>%cubic% Cubicaje para determinar el peso volumétrico: largo x ancho x alto (cm) / cubicaje (Kg/m³). Dividiéndolo entre 5.000. Ref.FedEx.</comment>	
+					<frontend_model>Aventi\Gshipping\Block\System\Config\Form\Field\Cubic</frontend_model>
+					<depends>
+                        <field id="cubicactive">1</field>
+                    </depends>
+				</field>
+
+				<field id="high" showInDefault="0" showInStore="1" showInWebsite="1" sortOrder="7" translate="label" type="text" canRestore="1">
+					<label>Alto</label>
+					<validate>required-entry no-whitespace validate-number validate-zero-or-greater validate-length minimum-length-1 maximum-length-10 </validate>
+					<comment>%high% Alto en centimetros, (valor por defecto)</comment>	
+					<depends>
+                        <field id="cubicactive">1</field>
+                    </depends>	
+				</field>
+
+				<field id="width" showInDefault="0" showInStore="1" showInWebsite="1" sortOrder="8" translate="label" type="text" canRestore="1">
+					<label>Ancho</label>
+					<validate>required-entry no-whitespace validate-number validate-zero-or-greater validate-length minimum-length-1 maximum-length-10 </validate>
+					<comment>%width% Ancho en centimetros,  (valor por defecto).</comment>
+					<depends>
+                        <field id="cubicactive">1</field>
+                    </depends>		
+				</field>
+
+				<field id="length" showInDefault="0" showInStore="1" showInWebsite="1" sortOrder="9" translate="label" type="text" canRestore="1">
+					<label>Largo</label>
+					<validate>required-entry no-whitespace validate-number validate-zero-or-greater validate-length minimum-length-1 maximum-length-10 </validate>
+					<comment>%length% Largo en centimetros, (valor por defecto).</comment>		
+					<depends>
+                        <field id="cubicactive">1</field>
+                    </depends>
+				</field>
+
+				<field id="weight" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="text" canRestore="1">
+					<label>	Peso en Kg </label>
+					<validate>required-entry no-whitespace validate-number validate-zero-or-greater validate-length minimum-length-1 maximum-length-10 </validate>
+					<comment>%weight% Peso en kilos (Kg), (valor por defecto).</comment>		
+				</field>
+
+			<!-- Shipping free -->	
+
+			   <field id="freeshipping" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="11" translate="label" type="select" canRestore="1">
+					<label>Habilitar envíos gratuitos</label>
+					<comment>Permite el envío gratuito.</comment>		
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+
+				<field id="skufree" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="12" translate="label" type="text">
+					<label>Productos para envío gratis</label>
+					<depends>
+                        <field id="freeshipping">1</field>
+                    </depends>
+					<comment>Escriba códigos SKUS, para envío gratis</comment>	
+					<tooltip> 
+					 Escriba un código SKU separado por comas (,). Ejemplo: T38TXEE, UT38TXRE
+					</tooltip>
+				</field>
+
+				<field id="pricefree" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="12" translate="label" type="text">
+					<label>Mayor precio para el envío gratis</label>
+					<validate>required-entry no-whitespace validate-number validate-zero-or-greater validate-length minimum-length-1 </validate>
+					<depends>
+                        <field id="freeshipping">1</field>
+                    </depends>
+				</field>
+
+				<!-- Payment terms -->	
+			
+				<field id="lowerfreightprice" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="13" translate="label" type="text" canRestore="1">
+					<label>Menor precio para el cobro</label>
+					<comment>%LFP% Menor precio para el cobro del envío, por ejemplo 20.0 (el cobro se hace con el peso límite en Kg. %LWP%).</comment>
+				</field>
+
+				<field id="ratekg" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="14" translate="label" type="text" canRestore="1">
+					<label>	Tasa valor * Kg</label>
+					<comment>%RKG% para caluclar el envio si la orden es superior al cobro mínimo. Se multiplica los KG que sobrepasen el peso %LWP% del cobro mínimo del flete </comment>
+				</field>
+
+				<field id="lowweightprice" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="15" translate="label" type="text" canRestore="1">
+					<label>	Peso límite en Kg, cobro mínimo</label>
+					<comment>%LWP% Peso en kilos (Kg), Peso límite para el cobro mínimo del flete. </comment>		
+				</field>
+
+				<field id="formula" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="16" translate="label" type="text" canRestore="1">
+					<label>	Fórmula para el envío  </label>
+					<comment> Se define fórmula para el envío (define el valor del envío).</comment>	
+				</field>
+
+			    <!-- Shipping terms -->	
+
+
+				 <field id="nocustomergroup" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="18" translate="label" type="multiselect">
+					<label>Grupo de usuarios que no aplican para el envío </label>
+					 <source_model>Aventi\Gshipping\Model\Config\Source\CustomerGroup</source_model>
+					<comment>Seleccione los grupos que no aplica el envío (no se mostrara el metodo de envío).</comment>	
+				</field>
+
+		        <field id="nocategories" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="19" translate="label" type="multiselect">
+					<label>Categorias que no aplican para el envío</label>
+					 <source_model>Aventi\Gshipping\Model\Config\Source\Category</source_model>
+					<comment>Seleccione una categoria (no se mostrara el metodo de envío).</comment>	
+				</field>
+
+				<field id="sallowspecific" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label" type="select">
+					<label>Enviar a países aplicables</label>
+					<frontend_class>shipping-applicable-country</frontend_class>
+					<source_model>Magento\Shipping\Model\Config\Source\Allspecificcountries</source_model>
+				</field>
+
+				<field id="specificcountry" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="21" translate="label" type="multiselect">
+					<label>Enviar a países específicos</label>
+					<can_be_empty>1</can_be_empty>
+					<source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+				</field>
+
+				<field id="nocities" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="22" translate="label" type="text">
+					<label>No enviar a las ciudades</label>
+					<comment>Escriba un código postal(ZIP) de una ciudad. para no enviar a los destinos.</comment>	
+					<tooltip> 
+					 - Escriba un código ZIP separado por comas (,) de la ciudad para no enviar a los destinos. Ejemplo: 110111, 760001
+					 - Si no conoce el codigo postal (zip) de la ciudad lo puede encontrar en: www.mapanet.eu
+					</tooltip>
+				</field>
+
+				<field id="specificerrmsg" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="23" translate="label" type="textarea">
+					<label>Displayed Error Message</label>
+				</field>
+			
+			</group>
+
+		</section>
+
+	</system>
+</config>

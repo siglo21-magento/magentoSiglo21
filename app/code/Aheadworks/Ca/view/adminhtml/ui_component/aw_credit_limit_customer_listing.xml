@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <columns name="aw_credit_limit_customer_columns">
+        <column name="aw_ca_company" sortOrder="21">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Company Name</label>
+                <dataType>text</dataType>
+                <sortable>false</sortable>
+            </settings>
+        </column>
+        <column name="aw_ca_is_admin" sortOrder="22" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <visible>true</visible>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Company Admin</label>
+                <options class="Magento\Config\Model\Config\Source\Yesno"/>
+                <sortable>false</sortable>
+            </settings>
+        </column>
+    </columns>
+</listing>

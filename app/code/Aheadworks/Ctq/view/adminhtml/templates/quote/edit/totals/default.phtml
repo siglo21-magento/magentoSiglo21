@@ -1,0 +1,21 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Aheadworks\Ctq\Block\Adminhtml\Quote\Edit\Totals\DefaultTotals $block */
+?>
+<tr class="<?= $block->escapeHtmlAttr($block->getTotal()->getCode()) ?> row-totals">
+    <td style="<?= $block->escapeHtmlAttr($block->getTotal()->getStyle()) ?>"
+        class="admin__total-mark"
+        colspan="<?= $block->escapeHtmlAttr($block->getColspan()) ?>">
+            <?= $block->escapeHtml($block->getTotal()->getTitle()) ?>
+    </td>
+    <td style="<?= $block->escapeHtmlAttr($block->getTotal()->getStyle()) ?>"
+        class="admin__total-amount">
+            <?= /* @escapeNotVerified */ $block->formatPrice($block->getTotal()->getValue()) ?>
+    </td>
+</tr>

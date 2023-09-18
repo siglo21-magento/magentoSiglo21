@@ -1,0 +1,235 @@
+@import "lib/js-tree/themes/default/_style";
+@import "lib/js-tree/themes/default-dark/_style";
+@import "module/_variables";
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+  .login-container {
+    .aw-ca-creat-wrapper {
+      &.block {
+        .block {
+          float: none;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .aw-create-customer {
+    .aw-block-new-company {
+      margin-top: 50px;
+
+      .actions-toolbar {
+        margin-top: 25px;
+      }
+
+      .block-title {
+        border-bottom: 1px solid @aw-ca-block-title__border-color;
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        padding-bottom: 12px;
+
+        strong {
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  .aw-ca__form {
+    max-width: 680px;
+
+    .action-basic {
+      margin-top: 10px;
+    }
+
+    .tree {
+      .jstree-anchor {
+        > .jstree-themeicon {
+          display: none;
+        }
+      }
+
+      &.jstree-default {
+        .jstree-ocl {
+          position: relative;
+
+          &::before {
+            content: '';
+            display: block;
+            position: absolute;
+
+          }
+        }
+
+        .jstree-open {
+          > .jstree-ocl {
+              &::before {
+                border: 7px solid transparent;
+                border-top: 10px solid @aw-ca-tree-arrow__color;
+                left: 4px;
+                top: 8px;
+              }
+          }
+        }
+
+        .jstree-closed {
+          > .jstree-ocl {
+              &::before {
+                border: 7px solid transparent;
+                border-left: 10px solid @aw-ca-tree-arrow__color;
+                left: 8px;
+                top: 5px;
+              }
+          }
+        }
+
+        .jstree-checkbox {
+          position: relative;
+
+          &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            border: 1px solid @aw-ca-jstree-checkbox__default__border-color;
+            background: @aw-ca-jstree-checkbox__default__background-color;
+            left: 4px;
+            top: 4px;
+          }
+
+          &.jstree-undetermined {
+            &::before {
+              border: 1px solid @aw-ca-jstree-checkbox__active__color;
+            }
+
+            &::after {
+              content: '';
+              display: block;
+              width: 8px;
+              height: 8px;
+              position: absolute;
+              left: 8px;
+              top: 8px;
+              background: @aw-ca-jstree-checkbox__active__color;
+            }
+          }
+        }
+
+        .jstree-hovered {
+          background: none;
+          border-radius: 0;
+          box-shadow: none;
+        }
+
+        .jstree-clicked {
+          > .jstree-checkbox {
+              &::before {
+                background: @aw-ca-jstree-checkbox__active__color;
+                border: 1px solid @aw-ca-jstree-checkbox__active__color;
+              }
+
+              &::after {
+                content: '';
+                background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSIjZmZmZmZmIj48cGF0aCBkPSJNMjAuMjg1IDJsLTExLjI4NSAxMS41NjctNS4yODYtNS4wMTEtMy43MTQgMy43MTYgOSA4LjcyOCAxNS0xNS4yODV6Ii8+PC9zdmc+');
+                display: block;
+                width: 12px;
+                height: 12px;
+                position: absolute;
+                left: 6px;
+                top: 6px;
+                background-size: 100% 100%;
+              }
+          }
+        }
+      }
+    }
+  }
+
+  .aw-ca__role-is-default {
+    label {
+      font-weight: 600;
+    }
+    &.field {
+      > .label {
+        display: none;
+      }
+    }
+  }
+
+  .aw-ca-role-create {
+    .aw-ca__form {
+      .fieldset-wrapper-title {
+        border-bottom: 1px solid @aw-ca-role-create-wrapper-title__color;
+        margin-bottom: 25px;
+        padding-bottom: 10px;
+
+        strong {
+          font-size: 21px;
+          font-weight: normal;
+        }
+      }
+
+      .fieldset-wrapper {
+        margin-bottom: 35px;
+      }
+    }
+  }
+
+  .aw-ca-company-create {
+    .aw-ca__form {
+      .fieldset-wrapper-title {
+        font-weight: normal;
+        font-size: 22px;
+        line-height: 1.1;
+        margin-bottom: 25px;
+        letter-spacing: 0;
+        color: @aw-ca-company-create-wrapper-title__color;
+
+        strong {
+          font-weight: normal;
+        }
+      }
+
+      .fieldset-wrapper {
+        margin-bottom: 35px;
+      }
+    }
+  }
+
+  .box-legal-address {
+    .box-content {
+      line-height: 1.9;
+    }
+  }
+
+  .aw-ca__customer-btn-wrapper {
+    text-align: right;
+    margin-bottom: 20px;
+  }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  .aw-create-customer {
+    .aw-block-new-company {
+      min-width: 600px;
+      width: 50%;
+    }
+  }
+}

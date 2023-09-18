@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Aheadworks_Ca::all" title="All">
+                <resource id="Aheadworks_Ca::companies" title="Company Information">
+                    <resource id="Aheadworks_Ca::companies_view" title="View"/>
+                    <resource id="Aheadworks_Ca::companies_edit" title="Edit"/>
+                </resource>
+                <resource id="Aheadworks_Ca::company_users" title="Company Users">
+                    <resource id="Aheadworks_Ca::company_users_view" title="View All"/>
+                    <resource id="Aheadworks_Ca::company_users_add_new" title="Add New"/>
+                    <resource id="Aheadworks_Ca::company_users_edit" title="Edit"/>
+                    <resource id="Aheadworks_Ca::company_users_change_status" title="Change Status"/>
+                </resource>
+                <resource id="Aheadworks_Ca::company_roles" title="Company Roles">
+                    <resource id="Aheadworks_Ca::company_roles_view" title="View All"/>
+                    <resource id="Aheadworks_Ca::company_roles_add_new" title="Add New"/>
+                    <resource id="Aheadworks_Ca::company_roles_edit" title="Edit"/>
+                </resource>
+                <resource id="Aheadworks_Ca::company_sales" title="Orders">
+                    <resource id="Aheadworks_Ca::company_sales_sub_view" title="View All"/>
+                </resource>
+                <resource id="Aheadworks_StoreCredit::company_stc" title="Total Company Store Credit">
+                    <resource id="Aheadworks_StoreCredit::company_stc_view_and_use" title="View, and Use on Checkout">
+                        <resource id="Aheadworks_StoreCredit::company_stc_transactions" title="View All Transactions"/>
+                    </resource>
+                </resource>
+                <resource id="Aheadworks_RewardPoints::company_rp" title="Total Company Reward Points">
+                    <resource id="Aheadworks_RewardPoints::company_rp_view_and_use" title="View, and Use on Checkout">
+                        <resource id="Aheadworks_RewardPoints::company_rp_transactions" title="View All Transactions"/>
+                    </resource>
+                </resource>
+                <resource id="Aheadworks_Ctq::company_quotes" title="Company Quotes">
+                    <resource id="Aheadworks_Ctq::company_quotes_view" title="View All Quotes and Use them"/>
+                    <resource id="Aheadworks_Ctq::company_quotes_allow_using" title="Allow creating Quotes"/>
+                </resource>
+                <resource id="Aheadworks_CreditLimit::company_cl" title="Company Credit Limit">
+                    <resource id="Aheadworks_CreditLimit::company_cl_view_and_use" title="View, and Use on Checkout">
+                        <resource id="Aheadworks_CreditLimit::company_cl_transactions" title="View All Transactions"/>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

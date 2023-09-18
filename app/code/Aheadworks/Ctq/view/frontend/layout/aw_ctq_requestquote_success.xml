@@ -1,0 +1,24 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Success Page</title>
+    </head>
+    <body>
+        <referenceBlock name="page.main.title">
+            <action method="setPageTitle">
+                <argument translate="true" name="title" xsi:type="string">Thank you for your request!</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="content">
+            <block class="Aheadworks\Ctq\Block\RequestQuote\Success"
+                   name="aw.ctq.request-quote.success"
+                   template="Aheadworks_Ctq::request_quote/success.phtml"
+                   cacheable="false">
+                <arguments>
+                    <argument name="quote_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Customer\Quote</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Aheadworks_Ca::companies"
+             title="Companies"
+             module="Aheadworks_Ca"
+             sortOrder="5"
+             parent="Magento_Customer::customer"
+             action="aw_ca/company/index"
+             resource="Aheadworks_Ca::companies"/>
+    </menu>
+</config>

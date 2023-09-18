@@ -1,0 +1,17 @@
+<!--@subject {{trans 'Your Credit Balance has been Updated'}}@-->
+{{template config_path="design/email/header_template"}}
+
+<p>
+    {{trans 'Dear %customer_name,' customer_name=$customer_name}}<br />
+    {{trans 'Your Credit Balance has been updated.'}}
+</p>
+    {{layout handle="aw_credit_limit_email_transaction_details" transaction=$transaction area="frontend"}}
+<br />
+<p>
+    {{trans
+    'Click <a href="%balance_info_url">aquí</a> para ver más detalles'
+    balance_info_url=$balance_info_url
+    |raw}}
+</p>
+
+{{template config_path="design/email/footer_template"}}

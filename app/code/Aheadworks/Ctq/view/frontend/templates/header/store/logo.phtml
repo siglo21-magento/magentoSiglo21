@@ -1,0 +1,19 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+/** @var \Magento\Theme\Block\Html\Header\Logo $block $storeName */
+?>
+<div>
+    <a href="<?= $block->escapeUrl($block->getUrl('')) ?>"
+       title="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>">
+        <img src="<?= $block->escapeUrl($block->getLogoSrc()) ?>"
+             title="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>"
+             alt="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>"
+        />
+    </a>
+</div>
+<br />

@@ -1,0 +1,18 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Ui\Block\Wrapper*/
+?>
+<?php
+    /** @var \Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RequisitionLists\ViewModel\PermissionProvider $viewModel */
+    $viewModel = $block->getRequisitionListPermissionViewModel();
+?>
+<?php if ($viewModel && $viewModel->isEditable()): ?>
+    <?= /* @noEscape */ $block->getChildHtml('aw_rl_header_actions_block') ?>
+<?php endif; ?>
+<?= /* @noEscape */ $block->getChildHtml('aw_rl.customer.requisition.list.header') ?>

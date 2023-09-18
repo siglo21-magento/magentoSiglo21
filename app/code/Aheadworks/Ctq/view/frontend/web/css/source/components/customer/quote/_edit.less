@@ -1,0 +1,216 @@
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true){
+  .aw-ctq__products-tab {
+    .table {
+      thead {
+        .col {
+          font-weight: 600;
+        }
+      }
+
+      tbody {
+        .col {
+          &.qty {
+            .input-text {
+              max-width: 80px;
+              text-align: center;
+            }
+          }
+        }
+
+        .draggable-handle {
+          font-size: 0;
+          margin-top: -4px;
+          padding: 0;
+          vertical-align: middle;
+          display: inline-block;
+          text-decoration: none;
+
+          &:before {
+            width: 3px;
+            height: 20px;
+            line-height: 4px;
+            padding: 2px 4px;
+            cursor: move;
+            margin-top: -.7em;
+            font-size: 12px;
+            font-family: sans-serif;
+            letter-spacing: 1px;
+            content: '.. .. .. ..';
+            vertical-align: middle;
+            display: inline-block;
+            font-weight: normal;
+            overflow: hidden;
+            speak: none;
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    &.order-details-items {
+      .col {
+        &.price  {
+          .price-excluding-tax  {
+            .price {
+              font-weight: 600;
+            }
+          }
+        }
+
+        &.subtotal {
+          .price-excluding-tax {
+            .price {
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+
+    .aw-ctq__quote-totals-block {
+      overflow: hidden;
+    }
+
+    .quote-totals {
+      max-width: 335px;
+      width: 100%;
+      float: right;
+      margin-top: 10px;
+
+      .totals {
+        .mark {
+          vertical-align: middle;
+        }
+
+        .amount {
+          text-align: right;
+        }
+
+        .action, .action-delete {
+          display: none;
+        }
+      }
+
+      tbody {
+        td {
+          padding-bottom: 10px;
+          padding-top: 10px;
+        }
+      }
+    }
+
+    .aw-ctq__tooltip {
+      position: absolute;
+      line-height: 1;
+      width: 15px;
+      height: 25px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 5px;
+      margin-bottom: 1px;
+
+      .tooltip-toggle {
+        width: 15px;
+        height: 15px;
+        margin-top: 5px;
+        display: inline-block;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-image: url('data:image/svg+xml;base64,PHN2ZyByb2xlPSJpbWciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDUxMiA1MTIiPjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTI1NiAzNDBjLTE1LjQ2NCAwLTI4IDEyLjUzNi0yOCAyOHMxMi41MzYgMjggMjggMjggMjgtMTIuNTM2IDI4LTI4LTEyLjUzNi0yOC0yOC0yOHptNy42Ny0yNGgtMTZjLTYuNjI3IDAtMTItNS4zNzMtMTItMTJ2LS4zODFjMC03MC4zNDMgNzcuNDQtNjMuNjE5IDc3LjQ0LTEwNy40MDggMC0yMC4wMTYtMTcuNzYxLTQwLjIxMS01Ny40NC00MC4yMTEtMjkuMTQ0IDAtNDQuMjY1IDkuNjQ5LTU5LjIxMSAyOC42OTItMy45MDggNC45OC0xMS4wNTQgNS45OTUtMTYuMjQ4IDIuMzc2bC0xMy4xMzQtOS4xNWMtNS42MjUtMy45MTktNi44Ni0xMS43NzEtMi42NDUtMTcuMTc3QzE4NS42NTggMTMzLjUxNCAyMTAuODQyIDExNiAyNTUuNjcgMTE2YzUyLjMyIDAgOTcuNDQgMjkuNzUxIDk3LjQ0IDgwLjIxMSAwIDY3LjQxNC03Ny40NCA2My44NDktNzcuNDQgMTA3LjQwOFYzMDRjMCA2LjYyNy01LjM3MyAxMi0xMiAxMnpNMjU2IDQwYzExOC42MjEgMCAyMTYgOTYuMDc1IDIxNiAyMTYgMCAxMTkuMjkxLTk2LjYxIDIxNi0yMTYgMjE2LTExOS4yNDQgMC0yMTYtOTYuNTYyLTIxNi0yMTYgMC0xMTkuMjAzIDk2LjYwMi0yMTYgMjE2LTIxNm0wLTMyQzExOS4wNDMgOCA4IDExOS4wODMgOCAyNTZjMCAxMzYuOTk3IDExMS4wNDMgMjQ4IDI0OCAyNDhzMjQ4LTExMS4wMDMgMjQ4LTI0OEM1MDQgMTE5LjA4MyAzOTIuOTU3IDggMjU2IDh6IiBjbGFzcz0iIj48L3BhdGg+PC9zdmc+');
+      }
+    }
+  }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+  .aw-ctq__products-tab {
+    .aw-ctq__tooltip {
+      .lib-tooltip(top);
+
+      width: 30px;
+      height: 25px;
+      margin-top: 1px;
+      margin-bottom: 1px;
+      margin-left: -10px;
+      text-align: center;
+
+      .tooltip-toggle {
+        margin: 5px 0 5px 0;
+      }
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  .aw-ctq__products-tab {
+    .table {
+      tbody {
+        .col {
+          &.qty {
+            .control {
+              &.qty {
+                display: inline-block;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+  .aw-ctq__products-tab {
+    .table {
+      tbody {
+        .col {
+          &.name {
+            > div:not(.error) {
+              padding-top: 5px;
+            }
+          }
+
+          &.qty {
+            text-align: center;
+
+            .aw-ctq__tooltip {
+              display: none;
+            }
+
+            .input-text {
+              margin: 0 auto;
+              display: block;
+            }
+          }
+        }
+      }
+    }
+
+    .aw-ctq__tooltip {
+      width: 15px;
+      height: 25px;
+      margin-left: 5px;
+      margin-bottom: 1px;
+      .lib-tooltip(left);
+
+      .tooltip-toggle {
+        margin-top: 5px;
+      }
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+}

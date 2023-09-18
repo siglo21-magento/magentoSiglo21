@@ -1,0 +1,259 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <!-- Buyer Action Management -->
+    <route url="/V1/awCtqBuyerAction/getAvailable" method="POST">
+        <service class="Aheadworks\Ctq\Api\BuyerActionManagementInterface" method="getAvailableQuoteActions"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+
+    <!-- Seller Action Management -->
+    <route url="/V1/awCtqSellerAction/getAvailable" method="POST">
+        <service class="Aheadworks\Ctq\Api\SellerActionManagementInterface" method="getAvailableQuoteActions"/>
+        <resources>
+            <resource ref="Aheadworks_Ctq::quotes"/>
+        </resources>
+    </route>
+
+    <!-- Buyer Permission Management -->
+    <route url="/V1/awCtqBuyerPermission/canBuyQuote/:quoteId" method="GET">
+        <service class="Aheadworks\Ctq\Api\BuyerPermissionManagementInterface" method="canBuyQuote"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqBuyerPermission/canRequestQuote/:cartId" method="GET">
+        <service class="Aheadworks\Ctq\Api\BuyerPermissionManagementInterface" method="canRequestQuote"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqBuyerPermission/canRequestQuoteList/:cartId" method="GET">
+        <service class="Aheadworks\Ctq\Api\BuyerPermissionManagementInterface" method="canRequestQuoteList"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqBuyerPermission/isAllowQuotesForCustomer" method="GET">
+        <service class="Aheadworks\Ctq\Api\BuyerPermissionManagementInterface" method="isAllowQuotesForCustomer"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqBuyerPermission/isAllowQuoteList" method="GET">
+        <service class="Aheadworks\Ctq\Api\BuyerPermissionManagementInterface" method="isAllowQuoteList"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqBuyerPermission/isAllowQuoteUpdate" method="GET">
+        <service class="Aheadworks\Ctq\Api\BuyerPermissionManagementInterface" method="isAllowQuoteUpdate"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqBuyerPermission/isAllowItemsSorting" method="GET">
+        <service class="Aheadworks\Ctq\Api\BuyerPermissionManagementInterface" method="isAllowItemsSorting"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+
+    <!-- Seller Permission Management -->
+    <route url="/V1/awCtqSellerPermission/canBuyQuote/:quoteId" method="GET">
+        <service class="Aheadworks\Ctq\Api\SellerPermissionManagementInterface" method="canBuyQuote"/>
+        <resources>
+            <resource ref="Aheadworks_Ctq::quotes"/>
+        </resources>
+    </route>
+
+    <!-- Buyer Quote Management -->
+    <!-- @todo: add update quote route-->
+    <route url="/V1/awCtqBuyerQuote/requestQuote" method="POST">
+        <service class="Aheadworks\Ctq\Api\BuyerQuoteManagementInterface" method="requestQuote"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqBuyerQuote/requestQuoteList" method="POST">
+        <service class="Aheadworks\Ctq\Api\BuyerQuoteManagementInterface" method="requestQuoteList"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqBuyerQuote/changeQuoteItemsOrder" method="PUT">
+        <service class="Aheadworks\Ctq\Api\BuyerQuoteManagementInterface" method="changeQuoteItemsOrder"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqBuyerQuote/copyQuote" method="POST">
+        <service class="Aheadworks\Ctq\Api\ExternalQuoteManagementInterface" method="copyQuote"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqBuyerQuote/buyQuote" method="GET">
+        <service class="Aheadworks\Ctq\Api\BuyerQuoteManagementInterface" method="buy"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqBuyerQuote/getCartByQuote" method="POST">
+        <service class="Aheadworks\Ctq\Api\BuyerQuoteManagementInterface" method="getCartByQuote"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqBuyerQuote/clearCart" method="POST">
+        <service class="Aheadworks\Ctq\Api\BuyerQuoteManagementInterface" method="clearCart"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqBuyerQuote/changeStatus" method="PUT">
+        <service class="Aheadworks\Ctq\Api\BuyerQuoteManagementInterface" method="changeStatus"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqQuote/get/:quoteId" method="GET">
+        <service class="Aheadworks\Ctq\Api\ExternalQuoteManagementInterface" method="get"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqQuote/adminGet/:quoteId" method="GET">
+        <service class="Aheadworks\Ctq\Api\ExternalQuoteManagementInterface" method="get"/>
+        <resources>
+            <resource ref="Aheadworks_Ctq::quotes"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqQuote/getList" method="GET">
+        <service class="Aheadworks\Ctq\Api\ExternalQuoteManagementInterface" method="getList"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqQuote/adminGetList" method="GET">
+        <service class="Aheadworks\Ctq\Api\ExternalQuoteManagementInterface" method="getList"/>
+        <resources>
+            <resource ref="Aheadworks_Ctq::quotes"/>
+        </resources>
+    </route>
+
+    <!-- Comment Management -->
+    <route url="/V1/awCtqComment/addComment" method="POST">
+        <service class="Aheadworks\Ctq\Api\CommentManagementInterface" method="addComment"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqComment/adminAddComment" method="POST">
+        <service class="Aheadworks\Ctq\Api\CommentManagementInterface" method="addComment"/>
+        <resources>
+            <resource ref="Aheadworks_Ctq::quotes"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqComment/getAttachment" method="GET">
+        <service class="Aheadworks\Ctq\Api\CommentManagementInterface" method="getAttachment"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqComment/adminGetAttachment" method="GET">
+        <service class="Aheadworks\Ctq\Api\CommentManagementInterface" method="getAttachment"/>
+        <resources>
+            <resource ref="Aheadworks_Ctq::quotes"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqComment/get/:commentId" method="GET">
+        <service class="Aheadworks\Ctq\Api\CommentRepositoryInterface" method="get"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqComment/adminGet/:commentId" method="GET">
+        <service class="Aheadworks\Ctq\Api\CommentRepositoryInterface" method="get"/>
+        <resources>
+            <resource ref="Aheadworks_Ctq::quotes"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqComment/getList" method="GET">
+        <service class="Aheadworks\Ctq\Api\CommentRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqComment/adminGetList" method="GET">
+        <service class="Aheadworks\Ctq\Api\CommentRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Aheadworks_Ctq::quotes"/>
+        </resources>
+    </route>
+
+    <!-- History Management -->
+    <route url="/V1/awCtqHistory/get/:historyId" method="GET">
+        <service class="Aheadworks\Ctq\Api\HistoryRepositoryInterface" method="get"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqHistory/adminGet/:historyId" method="GET">
+        <service class="Aheadworks\Ctq\Api\HistoryRepositoryInterface" method="get"/>
+        <resources>
+            <resource ref="Aheadworks_Ctq::quotes"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqHistory/getList" method="GET">
+        <service class="Aheadworks\Ctq\Api\HistoryRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqHistory/adminGetList" method="GET">
+        <service class="Aheadworks\Ctq\Api\HistoryRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Aheadworks_Ctq::quotes"/>
+        </resources>
+    </route>
+
+    <!-- Quote Expiration Management -->
+    <route url="/V1/awCtqQuoteExpiration/processExpiredQuotes" method="GET">
+        <service class="Aheadworks\Ctq\Api\QuoteExpirationManagementInterface" method="processExpiredQuotes"/>
+        <resources>
+            <resource ref="Aheadworks_Ctq::quotes"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqQuoteExpiration/processExpirationReminder" method="GET">
+        <service class="Aheadworks\Ctq\Api\QuoteExpirationManagementInterface" method="processExpirationReminder"/>
+        <resources>
+            <resource ref="Aheadworks_Ctq::quotes"/>
+        </resources>
+    </route>
+
+    <!-- Quote List Management -->
+    <route url="/V1/awCtqQuoteList/createQuoteListForCustomer/:customerId" method="POST">
+        <service class="Aheadworks\Ctq\Api\QuoteListManagementInterface" method="createQuoteListForCustomer"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCtqQuoteList/getQuoteListForCustomer/:customerId" method="GET">
+        <service class="Aheadworks\Ctq\Api\QuoteListManagementInterface" method="getQuoteListForCustomer"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+
+    <!-- @todo: add seller quote management-->
+</routes>

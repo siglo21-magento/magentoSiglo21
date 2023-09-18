@@ -1,0 +1,27 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.\nSee LICENSE.txt for license details.
+ */
+?>
+<script>
+require([
+    "prototype",
+    "Aheadworks_Ctq/js/quote/edit/form",
+    "Magento_Catalog/catalog/product/composite/configure",
+    "domReady!"
+], function(){
+
+    if (window.productConfigure) {
+        productConfigure.addListType('product_to_add', {
+            urlFetch: '<?= $block->escapeJs(
+                $block->escapeUrl($block->getUrl('aw_ctq/quote_edit/configureProductToAdd'))
+            ) ?>'
+        });
+        productConfigure.addListType('quote_items', {
+            urlFetch: '<?= $block->escapeJs(
+                $block->escapeUrl($block->getUrl('aw_ctq/quote_edit/configureQuoteItems'))
+            ) ?>'
+        });
+    }
+});
+</script>

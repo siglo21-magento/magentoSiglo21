@@ -1,0 +1,70 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+use Aheadworks\CreditLimit\Api\Data\TransactionInterface;
+/* @var $block \Magento\Framework\View\Element\Template */
+/* @var $formatter \Aheadworks\CreditLimit\ViewModel\Transaction\Formatter */
+/* @var $transaction array */
+
+// @codingStandardsIgnoreFile
+$formatter = $block->getFormatterViewModel();
+$transaction = $block->getTransaction();
+?>
+<?php if ($transaction) : ?>
+    <table class="aw-cl__balance-history" width="100%">
+        <thead>
+            <tr>
+                <th style="text-align: center; vertical-align: middle;">
+                    <?= $block->escapeHtml(__('Amount')) ?>
+                </th>
+                <th style="text-align: center; vertical-align: middle;">
+                    <?= $block->escapeHtml(__('Credit Balance')) ?>
+                </th>
+                <th style="text-align: center; vertical-align: middle;">
+                    <?= $block->escapeHtml(__('Available Credit')) ?>
+                </th>
+                <th style="text-align: center; vertical-align: middle;">
+                    <?= $block->escapeHtml(__('Credit Limit')) ?>
+                </th>
+                <th style="text-align: center; vertical-align: middle;">
+                    <?= $block->escapeHtml(__('Purchase Order')) ?>
+                </th>
+                <th style="text-align: center; vertical-align: middle;">
+                    <?= $block->escapeHtml(__('Comment')) ?>
+                </th>
+            </tr>
+        </thead>
+        <tr>
+            <td style="text-align: center; vertical-align: top;">
+                <?= /* @noEscape */ $formatter->formatTransactionAmount($transaction) ?>
+            </td>
+            <td style="text-align: center; vertical-align: top;">
+                <?= /* @noEscape */ $formatter->formatPrice(
+                    $transaction[TransactionInterface::CREDIT_BALANCE],
+                    $transaction[TransactionInterface::ACTION_CURRENCY]
+                ) ?>
+            </td>
+            <td style="text-align: center; vertical-align: top;">
+                <?= /* @noEscape */ $formatter->formatPrice(
+                    $transaction[TransactionInterface::CREDIT_AVAILABLE],
+                    $transaction[TransactionInterface::ACTION_CURRENCY]
+                ) ?>
+            </td>
+            <td style="text-align: center; vertical-align: top;">
+                <?= /* @noEscape */ $formatter->formatPrice(
+                        $transaction[TransactionInterface::CREDIT_LIMIT],
+                        $transaction[TransactionInterface::ACTION_CURRENCY]
+                ) ?>
+            </td>
+            <td style="text-align: center; vertical-align: top;">
+                <?= $block->escapeHtml($transaction[TransactionInterface::PO_NUMBER] ?? '') ?>
+            </td>
+            <td style="text-align: center; vertical-align: top;">
+                <?= $block->escapeHtml($transaction[TransactionInterface::COMMENT_TO_CUSTOMER] ?? '') ?>
+            </td>
+        </tr>
+    </table>
+<?php endif; ?>

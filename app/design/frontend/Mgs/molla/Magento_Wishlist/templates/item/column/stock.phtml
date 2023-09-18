@@ -1,0 +1,36 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/* @var \Magento\Wishlist\Model\Item $item */
+$item = $block->getItem();
+$_product = $item->getProduct();
+$listMaterial = ($_product->getCustomAttribute('list_material')) ? $_product->getCustomAttribute('list_material')->getValue() : 0;
+$inventoryBlock = $this->getLayout()->createBlock("Aventi\ShowInventory\Block\Product\Inventory");
+$productType = $_product->getTypeId();
+?>
+<?php if ($_product->isAvailable()): ?>
+    <!-- <div class="stock available" title="<?php /* @escapeNotVerified */ echo __('Availability') ?>">
+        <span><?php /* @escapeNotVerified */ echo __('In stock') ?></span>
+    </div> -->
+  <?php if ($listMaterial): ?>
+    <div class="content-inventory">
+      <?php echo $inventoryBlock->displaySourceInventoryListMaterial($_product->getSku()) ?>
+    </div>
+  <?php else: ?>
+    <?php echo $this->getLayout()->createBlock("Magento\Framework\View\Element\Template")->setKey($_product->getSku())->setTemplate("Aventi_ShowInventory::inventory-button.phtml")->toHtml() ?>
+    <?php if ($productType == 'simple'): ?>
+      <div class="content-inventory">
+        <?php echo $inventoryBlock->displaySourceInventoryByCity($_product->getSku()) ?>
+      </div>
+    <?php endif; ?>
+  <?php endif; ?>
+<?php else: ?>
+    <!-- <div class="stock unavailable" title="<?php /* @escapeNotVerified */ echo __('Availability') ?>">
+        <span><?php /* @escapeNotVerified */ echo __('Out of stock') ?></span>
+    </div> -->
+<?php endif; ?>

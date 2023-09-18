@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="checkout_item_price_renderers"/>
+    <body>
+        <container name="header-wrapper" as="header-wrapper">
+            <block class="Magento\Theme\Block\Html\Header\Logo" name="logo" template="Aheadworks_Ctq::header/store/logo.phtml"/>
+        </container>
+        <container name="content" as="content">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="address"
+                   template="Aheadworks_Ctq::customer/export/address.phtml">
+                <arguments>
+                    <argument name="address_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Customer\Export\Address</argument>
+                </arguments>
+            </block>
+            <block class="Aheadworks\Ctq\Block\Customer\Quote\Header"
+                   name="aw_ctq.customer.quote.header"
+                   template="Aheadworks_Ctq::customer/quote/export/header.phtml">
+                <arguments>
+                    <argument name="quote_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Customer\Export\Quote</argument>
+                    <argument name="data_provider_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Customer\Quote\DataProvider</argument>
+                </arguments>
+            </block>
+            <block class="Aheadworks\Ctq\Block\Customer\Export\Quote"
+                   name="aw_ctq.customer.quote.export"
+                   template="Aheadworks_Ctq::customer/quote/export/details.phtml"
+                   cacheable="false">
+                <arguments>
+                    <argument name="quote_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Customer\Export\Quote</argument>
+                    <argument name="data_provider_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Customer\Quote\DataProvider</argument>
+                    <argument name="item_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Email\Quote\Item\DefaultRenderer</argument>
+                </arguments>
+                <block class="Magento\Checkout\Block\Cart\Totals" name="totals.renderer"/>
+            </block>
+        </container>
+
+        <block class="Aheadworks\Ctq\Block\Customer\Export\Quote\Total\Shipping" name="shipping_total_renderer" />
+        <move element="checkout.item.price.unit" destination="aw_ctq.customer.quote.export"/>
+        <move element="checkout.item.price.row" destination="aw_ctq.customer.quote.export"/>
+        <move element="checkout.onepage.review.item.price.unit.excl" destination="aw_ctq.customer.quote.export"/>
+        <move element="checkout.onepage.review.item.price.unit.incl" destination="aw_ctq.customer.quote.export"/>
+        <move element="checkout.onepage.review.item.price.rowtotal.excl" destination="aw_ctq.customer.quote.export"/>
+        <move element="checkout.onepage.review.item.price.rowtotal.incl" destination="aw_ctq.customer.quote.export"/>
+    </body>
+</page>

@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+      <type name="Aheadworks\Ctq\Controller\Adminhtml\Quote\Edit">
+        <plugin name="aventi_pricelist_aheadworks_ctq_controller_adminhtml_quote_edit" type="Aventi\PriceList\Plugin\Aheadworks\Ctq\Controller\Adminhtml\Quote\Edit" sortOrder="10" disabled="false"/>
+      </type>
+</config>

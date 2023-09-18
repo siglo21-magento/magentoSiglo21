@@ -1,0 +1,28 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+/**
+ * Shopping cart totals template
+ * @var $block \Magento\Checkout\Block\Cart\Totals
+ */
+$isLogged = $this->helper('Aventi\ManagerPrice\Helper\Data')->_getIsLogged();
+?>
+<div id="cart-totals" class="block cart-totals" data-bind="scope:'block-totals'">
+  <?php if ($isLogged) :?>
+    <div class="title">
+      <strong><?php echo __('Cart Total') ?></strong>
+    </div>
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+              {
+                  "#cart-totals": {
+                      "Magento_Ui/js/core/app": <?= /* @escapeNotVerified */ $block->getJsLayout() ?>
+                  }
+              }
+      </script>
+  <?php endif; ?>
+</div>

@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="checkout_cart_index"/>
+    <referenceBlock class="Aheadworks\Ctq\Block\QuoteList" name="checkout.cart" />
+    <referenceBlock class="Aheadworks\Ctq\Block\QuoteList\Grid" name="checkout.cart.form" />
+    <referenceBlock class="Aheadworks\Ctq\Block\QuoteList\Shipping" name="checkout.cart.shipping" />
+    <referenceBlock class="Aheadworks\Ctq\Block\QuoteList\Totals" name="checkout.cart.totals" />
+    <referenceBlock class="Magento\Framework\View\Element\Template" name="checkout.cart.summary.title">
+        <arguments>
+            <argument translate="true" name="text" xsi:type="string">Quote Summary</argument>
+        </arguments>
+    </referenceBlock>
+    <referenceBlock class="Magento\Checkout\Block\Cart" name="checkout.cart.empty" template="Aheadworks_Ctq::quote_list/noItems.phtml" />
+    <referenceBlock class="Aheadworks\Ctq\Block\QuoteList\Item\Renderer\Actions\Edit" name="checkout.cart.item.renderers.simple.actions.edit" />
+    <referenceBlock class="Aheadworks\Ctq\Block\QuoteList\Item\Renderer\Actions\Edit" name="checkout.cart.item.renderers.default.actions.edit" />
+    <referenceBlock class="Aheadworks\Ctq\Block\QuoteList\Item\Renderer\Actions\Remove" name="checkout.cart.item.renderers.default.actions.remove" />
+    <referenceBlock class="Aheadworks\Ctq\Block\QuoteList\Item\Renderer\Actions\Remove" name="checkout.cart.item.renderers.simple.actions.remove" />
+    <referenceBlock class="Aheadworks\Ctq\Block\QuoteList\Item\Renderer\Actions\Remove" name="checkout.cart.item.renderers.configurable.actions.remove" />
+    <referenceBlock class="Aheadworks\Ctq\Block\QuoteList\Item\Renderer\Actions\Remove" name="checkout.cart.item.renderers.virtual.actions.remove" />
+    <referenceBlock class="Aheadworks\Ctq\Block\QuoteList\Item\Renderer\Actions\Remove" name="checkout.cart.item.renderers.bundle.actions.remove" />
+    <referenceBlock class="Aheadworks\Ctq\Block\QuoteList\Item\Renderer\Actions\Remove" name="checkout.cart.item.renderers.downloadable.actions.remove" />
+    <referenceBlock class="Aheadworks\Ctq\Block\QuoteList\Item\Renderer\Actions\Remove" name="checkout.cart.item.renderers.grouped.actions.remove" />
+    <referenceBlock name="checkout.cart.form" template="Aheadworks_Ctq::quote_list/form.phtml">
+        <block name="aw_ctq.quote_list_actions" as="quote_list_actions" template="Aheadworks_Ctq::quote_list/form/actions.phtml" />
+        <arguments>
+            <argument name="quote_list_grid_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\QuoteList\Grid</argument>
+        </arguments>
+    </referenceBlock>
+    <referenceBlock name="checkout.cart.crosssell" remove="true"/>
+    <referenceBlock name="checkout.cart.coupon" remove="true"/>
+    <referenceBlock name="checkout.cart.methods.onepage.bottom" remove="true"/>
+    <referenceBlock name="bml.right.logo" remove="true"/>
+    <referenceBlock name="braintee.bml.right.logo" remove="true"/>
+    <referenceBlock name="checkout.cart.shortcut.buttons" remove="true"/>
+    <referenceBlock name="checkout.cart.methods.multishipping" remove="true"/>
+    <referenceBlock name="checkout.cart.order.actions.gift_options" remove="true"/>
+    <referenceBlock name="checkout.cart.item.renderers.default.actions.gift_options" remove="true"/>
+    <referenceBlock name="checkout.cart.item.renderers.simple.actions.gift_options" remove="true"/>
+    <referenceBlock name="checkout.cart.item.renderers.bundle.actions.gift_options" remove="true"/>
+    <referenceBlock name="checkout.cart.item.renderers.grouped.actions.gift_options" remove="true"/>
+    <referenceBlock name="checkout.cart.item.renderers.configurable.actions.gift_options" remove="true"/>
+    <referenceBlock name="checkout.cart.item.renderers.gift-card.actions.gift_options" remove="true"/>
+    <referenceBlock name="checkout.cart.item.renderers.default.actions.move_to_wishlist" remove="true" />
+    <referenceBlock name="checkout.cart.item.renderers.simple.actions.move_to_wishlist" remove="true" />
+    <referenceBlock name="checkout.cart.item.renderers.bundle.actions.move_to_wishlist" remove="true" />
+    <referenceBlock name="checkout.cart.item.renderers.downloadable.actions.move_to_wishlist" remove="true" />
+    <referenceBlock name="checkout.cart.item.renderers.grouped.actions.move_to_wishlist" remove="true" />
+    <referenceBlock name="checkout.cart.item.renderers.configurable.actions.move_to_wishlist" remove="true" />
+    <referenceBlock name="checkout.cart.item.renderers.virtual.actions.move_to_wishlist" remove="true" />
+    <referenceBlock name="checkout.cart.giftcardaccount" remove="true" />
+    <referenceBlock name="giftregistry.cart.link" remove="true" />
+    <referenceContainer name="checkout.cart.form.before" remove="true" />
+    <referenceContainer name="checkout.cart.widget" remove="true" />
+    <referenceBlock name="checkout.cart.methods.aw.ctq.create.request">
+        <arguments>
+            <argument name="view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\QuoteList\RequestQuoteLink</argument>
+            <argument name="jsLayout" xsi:type="array">
+                <item name="components" xsi:type="array">
+                    <item name="awCtqRequestQuoteProvider" xsi:type="array">
+                        <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+                        <item name="clientConfig" xsi:type="array">
+                            <item name="urls" xsi:type="array">
+                                <item name="save" xsi:type="url" path="aw_ctq/requestQuote/submit/aw_ctq_quote_list/1" />
+                            </item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </referenceBlock>
+</page>

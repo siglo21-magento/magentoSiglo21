@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <aw_ctq>
+            <general>
+                <is_quote_list_enabled>0</is_quote_list_enabled>
+                <is_auto_accept_enabled>0</is_auto_accept_enabled>
+                <auto_accept_comment>Thank you for your Quote. Unfortunately, we don't provide any discounts nowadays. You can buy this Quote at current catalog prices or decline it.</auto_accept_comment>
+            </general>
+            <file_attachments>
+                <max_upload_file_size>2</max_upload_file_size>
+                <allow_file_extensions>zip,rar,jpg,jpeg,png,gif,pdf,doc,docx,xls,xlsx</allow_file_extensions>
+            </file_attachments>
+            <email>
+                <sender>general</sender>
+                <seller_template_quote_changes>aw_ctq_email_seller_template_quote_changes</seller_template_quote_changes>
+                <buyer_template_quote_changes>aw_ctq_email_buyer_template_quote_changes</buyer_template_quote_changes>
+                <seller_template_new_quote>aw_ctq_email_seller_template_new_quote</seller_template_new_quote>
+                <buyer_template_new_quote>aw_ctq_email_buyer_template_new_quote</buyer_template_new_quote>
+                <expiration_reminder_template>aw_ctq_email_expiration_reminder_template</expiration_reminder_template>
+                <quote_admin_change_template>aw_ctq_email_quote_admin_change_template</quote_admin_change_template>
+            </email>
+        </aw_ctq>
+    </default>
+</config>

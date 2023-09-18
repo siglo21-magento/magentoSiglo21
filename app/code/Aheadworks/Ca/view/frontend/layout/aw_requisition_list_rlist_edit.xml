@@ -1,0 +1,51 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="page.main.title">
+            <block name="aw_ca.customer.requisition.list.header.action" template="Aheadworks_Ca::requisition_lists/header.phtml">
+                <arguments>
+                    <argument name="requisition_list_permission_view_model" xsi:type="object">Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RequisitionLists\ViewModel\PermissionProvider</argument>
+                </arguments>
+            </block>
+            <referenceBlock name="aw_rl.customer.requisition.list.header.action">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="awRequisitionListParent" xsi:type="array">
+                                <item name="children" xsi:type="array">
+                                    <item name="awRequisitionList" xsi:type="array">
+                                        <item name="children" xsi:type="array">
+                                            <item name="awRequisitionListForm" xsi:type="array">
+                                                <item name="children" xsi:type="array">
+                                                    <item name="fieldset" xsi:type="array">
+                                                        <item name="children" xsi:type="array">
+                                                            <item name="shared" xsi:type="array">
+                                                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/single-checkbox</item>
+                                                                <item name="valueMap" xsi:type="array">
+                                                                    <item name="false" xsi:type="number">0</item>
+                                                                    <item name="true" xsi:type="number">1</item>
+                                                                </item>
+                                                                <item name="dataScope" xsi:type="string">shared</item>
+                                                                <item name="description" xsi:type="string">Shared</item>
+                                                                <item name="provider" xsi:type="string">awRequisitionListProvider</item>
+                                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                                <item name="sortOrder" xsi:type="number">30</item>
+                                                                <item name="visible" xsi:type="boolean">false</item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </referenceBlock>
+        </referenceContainer>
+    </body>
+    <move element="aw_rl.customer.requisition.list.header.action" destination="aw_ca.customer.requisition.list.header.action" before="-"/>
+    <move element="aw_rl.customer.requisition.list.header" destination="aw_ca.customer.requisition.list.header.action" after="-"/>
+</page>

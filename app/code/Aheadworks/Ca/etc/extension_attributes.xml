@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
+    <extension_attributes for="Magento\Customer\Api\Data\CustomerInterface">
+        <attribute code="aw_ca_company_user" type="Aheadworks\Ca\Api\Data\CompanyUserInterface">
+            <join reference_table="aw_ca_company_user" reference_field="customer_id" join_on_field="entity_id">
+                <field>customer_id</field>
+                <field>company_id</field>
+                <field>is_root</field>
+                <field>is_activated</field>
+                <field>company_group_id</field>
+                <field>company_role_id</field>
+                <field>job_title</field>
+                <field>telephone</field>
+            </join>
+        </attribute>
+    </extension_attributes>
+</config>

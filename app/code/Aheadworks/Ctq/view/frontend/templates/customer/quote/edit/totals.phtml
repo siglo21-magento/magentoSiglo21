@@ -1,0 +1,25 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+/* @var $block \Aheadworks\Ctq\Block\Customer\Quote\Edit\Totals */
+
+// @codingStandardsIgnoreFile
+?>
+<div class="aw-ctq__quote-totals-block">
+    <div class="quote-totals" data-role="quote-totals" data-bind="scope:'block-totals'">
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <script type="text/x-magento-init">
+            {
+                "[data-role=quote-totals]": {
+                    "Magento_Ui/js/core/app": <?= /* @noEscape */ $block->getJsLayout() ?>
+                }
+            }
+    </script>
+        <script>
+            window.checkoutConfig = <?= /* @noEscape */ $block->getCheckoutConfig() ?>;
+        </script>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Framework\View\Element\Template $block */
+?>
+<div class="quote-list cart main actions">
+    <button type="submit"
+            name="update_cart_action"
+            data-cart-item-update=""
+            value="update_qty"
+            title="<?= $block->escapeHtml(__('Update Quote List')) ?>"
+            class="quote-list action update">
+        <span><?= $block->escapeHtml(__('Update Quote List')) ?></span>
+    </button>
+    <input type="hidden" value="" id="update_quote_list_action_container" data-cart-item-update=""/>
+</div>

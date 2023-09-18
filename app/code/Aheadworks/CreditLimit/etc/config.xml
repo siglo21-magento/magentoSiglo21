@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <aw_credit_limit>
+            <email_settings>
+                <can_send_email_on_balance_update>0</can_send_email_on_balance_update>
+                <sender>general</sender>
+                <credit_balance_updated_template>aw_credit_limit_email_settings_credit_balance_updated_template</credit_balance_updated_template>
+            </email_settings>
+        </aw_credit_limit>
+        <payment>
+            <aw_credit_limit>
+                <active>0</active>
+                <model>AwCreditLimitFacade</model>
+                <payment_action>authorize_capture</payment_action>
+                <order_status>pending</order_status>
+                <can_initialize>0</can_initialize>
+                <can_order>1</can_order>
+                <can_refund>1</can_refund>
+                <can_refund_partial_per_invoice>1</can_refund_partial_per_invoice>
+                <can_capture>1</can_capture>
+                <can_cancel>1</can_cancel>
+                <can_use_checkout>1</can_use_checkout>
+                <can_use_internal>1</can_use_internal>
+                <is_offline>1</is_offline>
+                <title>Credit Limit</title>
+                <allowspecific>0</allowspecific>
+                <group>offline</group>
+            </aw_credit_limit>
+        </payment>
+    </default>
+</config>

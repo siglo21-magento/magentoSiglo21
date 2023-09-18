@@ -1,0 +1,1576 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Customer\Block\Form\Login $block */
+?>
+<?php
+/**
+ * Customer login form template
+ *
+ * @see \Magento\Customer\Block\Form\Login
+ * @var $block \Magento\Customer\Block\Form\Login
+ */
+?>
+
+<?php
+    $helperConfig = $this->helper('MGS\MollaTheme\Helper\Config');
+    $objTemplate = $helperConfig->createObjBlock('Magento\Customer\Block\Form\Login');
+?>
+<style type="text/css">
+    /* Modal Header */
+    .modal-header-confirm {
+        padding: 2px 16px;
+        border-bottom: 1px gray solid;
+    }
+
+    .modal-header-confirm h5 {
+        margin: 15px 0px;
+        font-size: 25px;
+    }
+
+    /* Modal Body */
+    .modal-body-confirm {
+        margin: 10px auto; 
+        padding: 0px 16px;
+    }
+
+    /* Modal Footer */
+    .modal-footer-confirm {
+        padding: 2px 16px;
+    }
+
+    .modal-footer-confirm button {
+        float: right;
+        width: 80px;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 15px;
+    }
+
+    .modal-popup .modal-inner-wrap { 
+        width: 50%; 
+    }
+</style>
+
+<div class="frame">
+    <div class="line">
+        <div class="form-box block block-customer-register" style="margin-top:10px !important;margin-bottom:10px !important">
+            <div class="form-tab">
+                <ul class="nav nav-pills nav-fill block-title" role="tablist">
+                    <li class="nav-item">
+                        <h2 class="title nav-link" role="heading" aria-level="2"><span>Solicitud de registro</span></h2>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-pane fade block-content active show">                
+                <form class="form form-register" id="form" enctype="multipart/form-data" method="POST" data-mage-init='{"validation":{}}'>
+                    <fieldset class="fieldset">
+                        <legend class="legend">
+                            <span>Informacion Comercial</span>
+                        </legend>
+                        <div class="fieldset-heading">
+                            <div class="wizard-locator">
+                                <div class="dot active current"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                            </div>
+                            <h3>
+                                Informacion Comercial
+                            </h3>
+                        </div>
+                        <div class="fieldset-container">
+                            <p class="fieldset-container__heading">Cliente</p>
+                            <div class="fieldset-content">
+                                <div class="control">
+                                    <input placeholder=" " class="input-control" type="text" id="company_name" name="company_name"   required> 
+                                    <label class="label" for="company_name"></label>
+                                    <div class="floater"></div>
+                                </div>
+                            </div>
+
+                            <div class="fieldset-content">
+                                <div class="control">
+                                    <input placeholder=" " class="input-control" type="text" name="ruc" id="pasruc" maxlength="15" required> 
+                                    <label class="label" for="ruc"></label>
+                                    <div class="floater"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="fieldset-container">
+                            <div class="fieldset-content input-radio-fieldset">
+                                <div class="fieldset-group">
+                                    <div class="input-radio-fieldset__container">
+                                        <span class="input-radio-fieldset__container__heading">Tipo de cliente</span>
+                                        <div class="radio-control">
+                                            <input class="input-control-radio" type="radio" id="nat" name="customer_type" value="Natural" required>
+                                            <label for="nat">Natural</label>
+                                        </div>
+                                        <div class="radio-control">
+                                            <input class="input-control-radio" type="radio" id="jur" name="customer_type" value="Juridico">
+                                            <label for="jur">Juridico</label>
+                                        </div>
+                                    </div>
+                                    <div class="input-radio-fieldset__container">
+                                        <span class="input-radio-fieldset__container__heading">Contribuyente especial</span>
+                                        <div class="radio-control">
+                                            <input class="input-control-radio" type="radio" id="t_yes" name="taxpayer" value="Si" required>
+                                            <label for="t_yes">Si</label>
+                                        </div>
+                                        <div class="radio-control">
+                                            <input class="input-control-radio" type="radio" id="t_no" name="taxpayer" value="No">
+                                            <label for="t_no">No</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fieldset-container">
+                            <p class="fieldset-container__heading">Contacto</p>
+                            <div class="fieldset-content">
+                                <div class="fieldset-group">                        
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="tel" name="tel_of" required> 
+                                        <label class="label" for="tel_of"></label>
+                                        <div class="floater"></div>
+                                    </div>
+   
+                                    <div class="control">
+                                            <input placeholder=" " class="input-control" type="email" name="email_corps" required> 
+                                            <label class="label" for="email_corps"></label>
+                                            <div class="floater"></div>
+                                    </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="fieldset-container">
+                            <p class="fieldset-container__heading">Ubicación</p>
+                            <div class="fieldset-content">
+                                <div class="fieldset-group">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="text" name="dir_comercial" required autocomplete="street-address"> 
+                                        <label class="label" for="dir_comercial"></label>
+                                        <div class="floater"></div>
+                                    </div>
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="text" name="province" required> 
+                                        <label class="label" for="province"></label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="fieldset-content">
+                                <div class="fieldset-group">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="text" name="city" required> 
+                                        <label class="label" for="city"></label>
+                                        <div class="floater"></div>
+                                    </div>
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="text" name="parro" required> 
+                                        <label class="label" for="parro"></label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fieldset-container">
+                            <div class="fieldset-content input-radio-fieldset">
+                                <div class="fieldset-group">
+                                    <div class="input-radio-fieldset__container">
+                                        <span class="input-radio-fieldset__container__heading">Tipo de local</span>
+                                        <div class="radio-control">
+                                            <input class="input-control-radio" type="radio" id="own" name="local_type" value="Propio">
+                                            <label for="own">Propio</label>
+                                        </div>
+                                        <div class="radio-control">
+                                            <input class="input-control-radio" type="radio" id="rent" name="local_type" value="Alquiler">
+                                            <label for="rent">Alquiler</label>
+                                        </div>
+                                    </div>
+                                    <div class="control" style="margin-top: 35px; display: block;">
+                                        <input placeholder=" " class="input-control" type="number" name="age_local" required> 
+                                        <label class="label" for="age_local"></label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fieldset-container">
+                                <p class="fieldset-container__heading">Empresa</p>
+                                <div class="fieldset-content">
+                                        <div class="control">
+                                            <input placeholder=" " class="input-control" type="date" name="age_company" required> 
+                                            <div class="floater"></div>
+                                        </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="number" name="cant_sucur_info" required> 
+                                        <label class="label" for="cant_sucur_info"></label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="fieldset">
+                        <legend>Adjuntos</legend>
+                        <div class="fieldset-heading">
+                            <div class="wizard-locator">
+                                <div class="dot active"></div>
+                                <div class="dot active current"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                            </div>
+                            <h3>
+                                Adjuntos
+                            </h3>
+                        </div>
+                        <div class="fieldset-container">
+                            <div id="files" class="field required">
+                                <div class="attach-container">
+                                    <span class="attach-message">Por favor seleccione "Tipo de cliente"</span>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="fieldset">
+                        <legend>Datos del representante Legal</legend>
+                        <div class="fieldset-heading">
+                            <div class="wizard-locator">
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active current"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                            </div>
+                            <h3>Datos del representante Legal</h3>
+                        </div>
+                        <div class="fieldset-container">
+                            <p class="fieldset-container__heading">Representante Legal</p>
+                            <div class="fieldset-content">
+                                <div class="control">
+                                    <input placeholder=" " class="input-control" type="text" id="rep_name" name="rep_name" required> 
+                                    <label class="label" for="rep_name"></label>
+                                    <div class="floater"></div>
+                                </div>
+                            </div>
+
+                            <div class="fieldset-content">
+                                <div class="control">
+                                    <input placeholder=" " class="input-control" type="text" name="nit" required> 
+                                    <label class="label" for="nit"></label>
+                                    <div class="floater"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fieldset-container">
+                            <p class="fieldset-container__heading">Contacto</p>
+                            <div class="fieldset-content">
+                                <div class="fieldset-group">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="tel" name="tel_rep" required> 
+                                        <label class="label" for="tel_rep"></label>
+                                        <div class="floater"></div>
+                                    </div>
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="tel" name="phone_rep" required> 
+                                        <label class="label" for="phone_rep"></label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="fieldset-content">
+                                <div class="control">
+                                    <input placeholder=" " class="input-control" type="email" name="email_rep" required> 
+                                    <label class="label" for="email_rep"></label>
+                                    <div class="floater"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fieldset-container">
+                            <p class="fieldset-container__heading">Ubicación</p>
+                            <div class="fieldset-content">
+                                <div class="control">
+                                    <input placeholder=" " class="input-control" type="text" name="dir_rep" required autocomplete="street-address"> 
+                                    <label class="label" for="dir_rep"></label>
+                                    <div class="floater"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fieldset-container">
+                            <div class="fieldset-content input-radio-fieldset">
+                                <div class="fieldset-group">
+                                    <div class="input-radio-fieldset__container">
+                                        <span class="input-radio-fieldset__container__heading">Tipo de residencia</span>
+                                        <div class="radio-control">
+                                            <input class="input-control-radio" type="radio" id="owned_2" name="house_type" value="Propio">
+                                            <label for="owned_2">Propia</label>
+                                        </div>
+                                        <div class="radio-control">
+                                            <input class="input-control-radio" type="radio" id="rent_2" name="house_type" value="Alquilada">
+                                            <label for="rent_2">Alquiler</label>
+                                        </div>
+                                        <div class="radio-control">
+                                            <input class="input-control-radio" type="radio" id="na" name="house_type" value="NA">
+                                            <label for="na">N/A</label>
+                                        </div>
+                                    </div>
+                                    <div class="control" style="margin-top: 35px; display: block;">
+                                        <input placeholder=" " class="input-control" type="number" name="house_age" required> 
+                                        <label class="label" for="house_age"></label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <!-- <fieldset class="fieldset">
+                        <legend>Referencias Comerciales</legend>
+                        <div class="fieldset-heading">
+                            <div class="wizard-locator">
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active current"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                            </div>
+                            <h3>Referencias Comerciales</h3>
+                            <p>Solo es explícitamente requerida la primera referencia. Sin embargo, más referencias podrían mejorar su solicitud</p>
+
+                        </div>
+                        <div class="fieldset-reference">
+                            <div class="fieldset-container">
+                                <p class="fieldset-container__heading">Referencia comercial 1</p>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="text" name="refs_company_1" required> 
+                                        <label class="label" for="refs_company">Empresa</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="text" name="refs_contact_1" required> 
+                                        <label class="label" for="refs_contact">Contacto</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="text" name="refs_monto_1" required> 
+                                        <label class="label" for="refs_monto">Monto</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="tel" name="refs_phone_1" required> 
+                                        <label class="label" for="refs_phone">Teléfono</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fieldset-reference">
+                            <div class="fieldset-container">
+                                <p class="fieldset-container__heading">Referencia comercial 2</p>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="text" name="refs_company_2"> 
+                                        <label class="label" for="refs_company">Empresa</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="text" name="refs_contact_2"> 
+                                        <label class="label" for="refs_contact">Contacto</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="text" name="refs_monto_2"> 
+                                        <label class="label" for="refs_monto">Monto</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="tel" name="refs_phone_2"> 
+                                        <label class="label" for="refs_phone">Teléfono</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fieldset-reference">
+                            <div class="fieldset-container">
+                                <p class="fieldset-container__heading">Referencia comercial 3</p>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="text" name="refs_company_3"> 
+                                        <label class="label" for="refs_company">Empresa</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="text" name="refs_contact_3"> 
+                                        <label class="label" for="refs_contact">Contacto</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="text" name="refs_monto_3"> 
+                                        <label class="label" for="refs_monto">Monto</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="tel" name="refs_phone_3"> 
+                                        <label class="label" for="refs_phone">Teléfono</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset> -->
+
+                    <!-- <fieldset class="fieldset">
+                        <legend>Referencias Familiares</legend>
+                        <div class="fieldset-heading">
+                            <div class="wizard-locator">
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active current"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                            </div>
+                            <h3>Referencias Familiares</h3>
+                            <p>Solo es explícitamente requerida la primera referencia. Sin embargo, más referencias podrían mejorar su solicitud</p>
+                        </div>
+                        <div class="fieldset-reference">
+                            <div class="fieldset-container">
+                                <p class="fieldset-container__heading">Referencia familiar 1</p>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="text" name="refs_fam_name_1" required> 
+                                        <label class="label" for="refs_fam_name">Nombre / Parentesco</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="text" name="refs_fam_dir_1" required> 
+                                        <label class="label" for="refs_fam_dir">Dirección</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="fieldset-group">
+                                        <div class="control">
+                                            <input placeholder=" " class="input-control" type="tel" name="refs_fam_telh_1" required> 
+                                            <label class="label" for="refs_fam_telh">Tel. Residencia</label>
+                                            <div class="floater"></div>
+                                        </div>
+                                        <div class="control">
+                                            <input placeholder=" " class="input-control" type="tel" name="refs_fam_telw_1" required> 
+                                            <label class="label" for="refs_fam_telw">Tel. Oficina</label>
+                                            <div class="floater"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fieldset-reference">
+                            <div class="fieldset-container">
+                                <p class="fieldset-container__heading">Referencia familiar 2</p>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="text" name="refs_fam_name_2"> 
+                                        <label class="label" for="refs_fam_name">Nombre / Parentesco</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="text" name="refs_fam_dir_2"> 
+                                        <label class="label" for="refs_fam_dir">Dirección</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="fieldset-group">
+                                        <div class="control">
+                                            <input placeholder=" " class="input-control" type="tel" name="refs_fam_telh_2"> 
+                                            <label class="label" for="refs_fam_telh">Tel. Residencia</label>
+                                            <div class="floater"></div>
+                                        </div>
+                                        <div class="control">
+                                            <input placeholder=" " class="input-control" type="tel" name="refs_fam_telw_2"> 
+                                            <label class="label" for="refs_fam_telw">Tel. Oficina</label>
+                                            <div class="floater"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fieldset-reference">
+                            <div class="fieldset-container">
+                                <p class="fieldset-container__heading">Referencia familiar 3</p>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="text" name="refs_fam_name_3"> 
+                                        <label class="label" for="refs_fam_name">Nombre / Parentesco</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="text" name="refs_fam_dir_3"> 
+                                        <label class="label" for="refs_fam_dir">Dirección</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="fieldset-group">
+                                        <div class="control">
+                                            <input placeholder=" " class="input-control" type="tel" name="refs_fam_telh_3"> 
+                                            <label class="label" for="refs_fam_telh">Tel. Residencia</label>
+                                            <div class="floater"></div>
+                                        </div>
+                                            <div class="control">
+                                            <input placeholder=" " class="input-control" type="tel" name="refs_fam_telw_3"> 
+                                            <label class="label" for="refs_fam_telw">Tel. Oficina</label>
+                                            <div class="floater"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>  -->
+                    
+                    
+                    <fieldset class="fieldset">
+                        <legend>Datos Informativos</legend>
+                        <div class="fieldset-heading">
+                            <div class="wizard-locator">
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active current"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                            </div>
+                            <h3>Datos Informativos</h3>
+                        </div>
+                        <div class="fieldset-container">
+                            <div class="fieldset-content">
+                                <div class="control">
+                                    <input placeholder=" " class="input-control" type="email" name="oferta_email" required> 
+                                    <label class="label" for="oferta_email"></label>
+                                    <div class="floater"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </fieldset>
+                    <fieldset class="fieldset">
+                        <legend>Intereses</legend>
+                        <div class="fieldset-heading">
+                            <div class="wizard-locator">
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active current"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                            </div>
+                            <h3>Intereses</h3>
+                            <p>Seleccione el tipo de productos que comercializa:</p>
+                        </div>
+                        <div class="fieldset-container">
+                            <div class="input-checkbox-fieldset__container">
+                                <div class="checkbox-control">
+                                    <input class="input-control-checkbox" type="checkbox" name="product1" value="Accesorios para computadores">
+                                    <label for="product1">Accesorios para computadores</label>
+                                </div>
+                                <div class="checkbox-control">
+                                    <input class="input-control-checkbox" type="checkbox" name="product2" value="Audio">
+                                    <label for="product2">Audio</label>
+                                </div>
+                                <div class="checkbox-control">
+                                    <input class="input-control-checkbox" type="checkbox" name="product3" value="Computo y Portabilidad">
+                                    <label for="product3">Computo y Portabilidad</label>
+                                </div>
+                                <div class="checkbox-control">
+                                    <input class="input-control-checkbox" type="checkbox" name="product4" value="Consumibles">
+                                    <label for="product4">Consumibles</label>
+                                </div>
+                                <div class="checkbox-control">
+                                    <input class="input-control-checkbox" type="checkbox" name="product5" value="Electronica de Consumo">
+                                    <label for="product5">Electrónica de Consumo</label>
+                                </div>
+                                <div class="checkbox-control">
+                                    <input class="input-control-checkbox" type="checkbox" name="product6" value="Impresion y Scaner">
+                                    <label for="product6">Impresión y Scanner</label>
+                                </div>
+                                <div class="checkbox-control">
+                                    <input class="input-control-checkbox" type="checkbox" name="product7" value="Celulares y Tablets">
+                                    <label for="product7">Celulares y Tablets</label>
+                                </div>
+                                <div class="checkbox-control">
+                                    <input class="input-control-checkbox" type="checkbox" name="product8" value="Punto de Venta">
+                                    <label for="product8">Punto de venta</label>
+                                </div>
+                                <div class="checkbox-control">
+                                    <input class="input-control-checkbox" type="checkbox" name="product9" value="Seguridad">
+                                    <label for="product9">Seguridad</label>
+                                </div>
+                                <div class="checkbox-control">
+                                    <input class="input-control-checkbox" type="checkbox" name="product10" value="Servidores y redes">
+                                    <label for="product10">Servidores y redes</label>
+                                </div>
+                                <div class="checkbox-control">
+                                    <input class="input-control-checkbox" type="checkbox" name="product11" value="Software">
+                                    <label for="product11">Software</label>
+                                </div>
+                                <div class="checkbox-control">
+                                    <input class="input-control-checkbox" type="checkbox" name="product12" value="Almacenamiento">
+                                    <label for="product12">Almacenamiento</label>
+                                </div>
+                                <div class="checkbox-control">
+                                    <input class="input-control-checkbox" type="checkbox" name="product13" value="Conectividad">
+                                    <label for="product13">Conectividad</label>
+                                </div>
+                                <div class="checkbox-control">
+                                    <input class="input-control-checkbox" type="checkbox" name="product14" value="Proyectores">
+                                    <label for="product14">Proyectores</label>
+                                </div>
+                                <div class="checkbox-control">
+                                    <input class="input-control-checkbox" type="checkbox" name="product15" value="Muebles Oficina">
+                                    <label for="product15">Muebles Oficina</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </fieldset>
+                
+                    <!-- <fieldset class="fieldset">
+                        <legend>Cargos Empresariales</legend>
+                        <div class="fieldset-heading">
+                            <div class="wizard-locator">
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active current"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                            </div>
+                            <h3>Cargos Empresariales</h3>
+                        </div>
+                        <div class="fieldset-reference">
+                            <div class="fieldset-container">
+                                <p class="fieldset-container__heading">Gerente General</p>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="text" name="ger_gen_name" required> 
+                                        <label class="label" for="ger_gen_name">Nombre Completo</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <label class="label" for="ger_gen_date">Fecha Nacimiento</label>
+                                        <input placeholder=" " class="input-control" type="date" name="ger_gen_date" required> 
+                                        
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="email" name="ger_gen_ema" required> 
+                                        <label class="label" for="ger_gen_ema">Email Corporativo</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="fieldset-group">
+                                        <div class="control">
+                                            <input placeholder=" " class="input-control" type="tel" name="ger_gen_cel" required> 
+                                            <label class="label" for="ger_gen_cel">Celular</label>
+                                            <div class="floater"></div>
+                                        </div>
+                                            <div class="control">
+                                            <input placeholder=" " class="input-control" type="tel" name="ger_gen_tel" required> 
+                                            <label class="label" for="ger_gen_tel">Tel. Oficina</label>
+                                            <div class="floater"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fieldset-reference">
+                            <div class="fieldset-container">
+                                <p class="fieldset-container__heading">Gerente Financiero</p>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="text" name="ger_fin_name" required> 
+                                        <label class="label" for="ger_fin_name">Nombre Completo</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <label class="label" for="ger_fin_date">Fecha Nacimiento</label>
+                                        <input placeholder=" " class="input-control" type="date" name="ger_fin_date" required> 
+                                        
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="email" name="ger_fin_ema" required> 
+                                        <label class="label" for="ger_fin_ema">Email Corporativo</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="fieldset-group">
+                                        <div class="control">
+                                            <input placeholder=" " class="input-control" type="tel" name="ger_fin_cel" required> 
+                                            <label class="label" for="ger_fin_cel">Celular</label>
+                                            <div class="floater"></div>
+                                        </div>
+                                            <div class="control">
+                                            <input placeholder=" " class="input-control" type="tel" name="ger_fin_tel" required> 
+                                            <label class="label" for="ger_fin_tel">Tel. Oficina</label>
+                                            <div class="floater"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fieldset-reference">
+                            <div class="fieldset-container">
+                                <p class="fieldset-container__heading">Jefe de Compra</p>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="text" name="jefe_comp_name" required> 
+                                        <label class="label" for="jefe_comp_name">Nombre Completo</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <label class="label" for="jefe_comp_date">Fecha Nacimiento</label>
+                                        <input placeholder=" " class="input-control" type="date" name="jefe_comp_date" required> 
+                                        
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="email" name="jefe_comp_ema" required> 
+                                        <label class="label" for="jefe_comp_ema">Email Corporativo</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="fieldset-group">
+                                        <div class="control">
+                                            <input placeholder=" " class="input-control" type="tel" name="jefe_comp_cel" required> 
+                                            <label class="label" for="jefe_comp_cel">Celular</label>
+                                            <div class="floater"></div>
+                                        </div>
+                                            <div class="control">
+                                            <input placeholder=" " class="input-control" type="tel" name="jefe_comp_tel" required> 
+                                            <label class="label" for="jefe_comp_tel">Tel. Oficina</label>
+                                            <div class="floater"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fieldset-reference">
+                            <div class="fieldset-container">
+                                <p class="fieldset-container__heading">Jefe de Venta</p>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="text" name="jefe_ven_name" required> 
+                                        <label class="label" for="jefe_ven_name">Nombre Completo</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <label class="label" for="jefe_ven_date">Fecha Nacimiento</label>
+                                        <input placeholder=" " class="input-control" type="date" name="jefe_ven_date" required> 
+                                        
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="email" name="jefe_ven_ema" required> 
+                                        <label class="label" for="jefe_ven_ema">Email Corporativo</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="fieldset-group">
+                                        <div class="control">
+                                            <input placeholder=" " class="input-control" type="tel" name="jefe_ven_cel" required> 
+                                            <label class="label" for="jefe_ven_cel">Celular</label>
+                                            <div class="floater"></div>
+                                        </div>
+                                            <div class="control">
+                                            <input placeholder=" " class="input-control" type="tel" name="jefe_ven_tel" required> 
+                                            <label class="label" for="jefe_ven_tel">Tel. Oficina</label>
+                                            <div class="floater"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fieldset-reference">
+                            <div class="fieldset-container">
+                                <p class="fieldset-container__heading">Comprador</p>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="text" name="comp_name" required> 
+                                        <label class="label" for="comp_name">Nombre Completo</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <label class="label" for="comp_date">Fecha Nacimiento</label>
+                                        <input placeholder=" " class="input-control" type="date" name="comp_date" required> 
+                                        
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="email" name="comp_ema" required> 
+                                        <label class="label" for="comp_ema">Email Corporativo</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="fieldset-group">
+                                        <div class="control">
+                                            <input placeholder=" " class="input-control" type="tel" name="comp_cel" required> 
+                                            <label class="label" for="comp_cel">Celular</label>
+                                            <div class="floater"></div>
+                                        </div>
+                                            <div class="control">
+                                            <input placeholder=" " class="input-control" type="tel" name="comp_tel" required> 
+                                            <label class="label" for="comp_tel">Tel. Oficina</label>
+                                            <div class="floater"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fieldset-reference">
+                            <div class="fieldset-container">
+                                <p class="fieldset-container__heading">Vendedor 1</p>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="text" name="ven_1_name" required> 
+                                        <label class="label" for="ven_1_name">Nombre Completo</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <label class="label" for="ven_1_date">Fecha Nacimiento</label>
+                                        <input placeholder=" " class="input-control" type="date" name="ven_1_date" required> 
+                                        
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="email" name="ven_1_ema" required> 
+                                        <label class="label" for="ven_1_ema">Email Corporativo</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="fieldset-group">
+                                        <div class="control">
+                                            <input placeholder=" " class="input-control" type="tel" name="ven_1_cel" required> 
+                                            <label class="label" for="ven_1_cel">Celular</label>
+                                            <div class="floater"></div>
+                                        </div>
+                                            <div class="control">
+                                            <input placeholder=" " class="input-control" type="tel" name="ven_1_tel" required> 
+                                            <label class="label" for="ven_1_tel">Tel. Oficina</label>
+                                            <div class="floater"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fieldset-reference">
+                            <div class="fieldset-container">
+                                <p class="fieldset-container__heading">Vendedor 2</p>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="text" name="ven_2_name" required> 
+                                        <label class="label" for="ven_2_name">Nombre Completo</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <label class="label" for="ven_2_date">Fecha Nacimiento</label>
+                                        <input placeholder=" " class="input-control" type="date" name="ven_2_date" required> 
+                                        
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="email" name="ven_2_ema" required> 
+                                        <label class="label" for="ven_2_ema">Email Corporativo</label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldset-content">
+                                    <div class="fieldset-group">
+                                        <div class="control">
+                                            <input placeholder=" " class="input-control" type="tel" name="ven_2_cel" required> 
+                                            <label class="label" for="ven_2_cel">Celular</label>
+                                            <div class="floater"></div>
+                                        </div>
+                                            <div class="control">
+                                            <input placeholder=" " class="input-control" type="tel" name="ven_2_tel" required> 
+                                            <label class="label" for="ven_2_tel">Tel. Oficina</label>
+                                            <div class="floater"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>  -->
+
+                
+
+                    <fieldset class="fieldset">
+                        <legend>Facturación electrónica</legend>
+                        <div class="fieldset-heading">
+                            <div class="wizard-locator">
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active current"></div>
+                                <div class="dot"></div>
+                            </div>
+                            <h3>Facturación electrónica</h3>
+                        </div>
+                        <p><b>Estimado Cliente:</b></p>
+                        <p style="text-align: justify; margin-bottom: 15px">
+                            En atención a la resolución del Servicio de Rentas Internas NAC-DGERCGC13-0236 Art 41
+                            y disposición general sexta del Reglamento de Comprobante de Venta. Retención y documentos complementarios;
+                            y Decretos ejecutivo 1063 y 1414. Emitidas por el Servicio de Rentas Interna el 17 de mayo del 2013,
+                            <b>nos complace en comunicar que hemos adaptado nuestros sistemas para que la emisión de facturas, notas de crédito y
+                            otros documentos sea de forma electrónica.</b>
+                        </p>
+                        <p style="text-align: justify; margin-bottom: 15px">
+                            Les invitamos a disfrutar de las facilidades y beneficios que le brinda este nuevo servicio que además de contribuir
+                            a precautelar el medio ambiente al evitar el uso de papel, <b>le permite recibir su factura en menor tiempo en un modo
+                            más seguro y optimizar sus costos administrativos.</b>
+                        </p>
+                        <div class="fieldset-container">
+                            <p class="fieldset-container__heading">Para la recepción de comprobantes electrónicos:</p>
+                            <div class="fieldset-content">
+                                <div class="fieldset-group">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" id="fac_elec_rs" type="text" name="fac_elec_rs" required> 
+                                        <label class="label" for="fac_elec_rs"></label>
+                                        <div class="floater"></div>
+                                    </div>
+                            
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="text" id="fac_elec_ruc" name="fac_elec_ruc" required> 
+                                        <label class="label" for="fac_elec_ruc"></label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="fieldset-content">
+                                <div class="fieldset-group">
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="text" id="fac_elec_name" name="fac_elec_name" required> 
+                                        <label class="label" for="fac_elec_name"></label>
+                                        <div class="floater"></div>
+                                    </div>
+                                    <div class="control">
+                                        <input placeholder=" " class="input-control" type="email" id="fac_elec_ema" name="fac_elec_ema" required> 
+                                        <label class="label" for="fac_elec_ema"></label>
+                                        <div class="floater"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="fieldset">
+                        <legend>Autorizo...</legend>
+                        <div class="fieldset-heading">
+                            <div class="wizard-locator">
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active"></div>
+                                <div class="dot active current"></div>
+                            </div>
+                            <h3>Autorizo...</h3>
+                        </div>
+
+                        <div class="fieldset-container">
+                            <div class="auth-field">
+                                <p style="text-align: justify">
+                                Autorizo a ELECTRONICA SIGLO XXI para que pueda obtener información crediticia de cualquier fuente, en
+                                especial de los burós de crédito. Asi mismo autoriza la publicación en dichos burós y medios similares,
+                                sobre la información de
+                                <b>
+                                    endeudamiento, pagos, saldos pendientes y vencidos, calificaciones crediticias,
+                                    comentarios, historial y demás información sobre el desenvolvimiento crediticio del cliente
+                                </b>
+                                para con ELECTRÓNICA SIGLO XXI
+                                </p>
+                                <div class="input-checkbox-fieldset__container">
+                                    <div class="checkbox-control">
+                                        <input class="input-control-checkbox" type="checkbox" name="auth_info_credit" required>
+                                        <label for="auth_info_credit">Sí</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="btn-control-register">
+                        <button type="submit" class="action btn btn-default btn-rounded" name="submit" value="Enviar solicitud" id="enviar">
+                            <span>Registrarse como cliente</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <div id="popup-modal">
+        <div class="modal-header-confirm">
+            <h5>Información</h5>
+        </div>
+        <div class="modal-body-confirm">
+            <p>Solicitud enviada correctamente; pronto estaremos en contacto contigo.</p>
+        </div>
+        <div class="modal-footer-confirm">
+            <button id="btnModal">Aceptar</button>
+        </div>
+    </div>
+    <!--<div class="line">
+        <div class="form-box block block-customer-login">
+        <div class="form-tab">
+            <ul class="nav nav-pills nav-fill block-title" role="tablist">
+                <li class="nav-item">
+                    <h2 class="title nav-link" id="block-customer-login" role="heading" aria-level="2"><span><?php /* @escapeNotVerified */ echo __('Sign In') ?></span></h2>
+                </li>
+                <li class="nav-item">
+                    <h2 class="title nav-link active" id="block-customer-register" role="heading" aria-level="2"><span><?php /* @escapeNotVerified */ echo __('Register') ?></span></h2>
+                </li>
+                <li class="nav-item">
+                    <h2 class="title nav-link" id="block-customer-register-2" role="heading" aria-level="2">
+                        <span><?= __('Register 2') ?></span>
+                    </h2>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade block-content" id="signin-2" role="tabpanel" aria-labelledby="signin-tab-2">
+                    <form class="form form-login"
+                          action="<?php /* @escapeNotVerified */ echo $objTemplate->getPostActionUrl() ?>"
+                          method="post"
+                          id="login-form"
+                          data-mage-init='{"validation":{}}'>
+                        <?= $objTemplate->getBlockHtml('formkey'); ?>
+                        <fieldset class="fieldset login" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>">
+                            <div class="form-group field email required">
+                                <div class="form-group">
+                                    <label for="login[username]" class="label required"><?= __('Username or email address'); ?><em> *</em></label>
+                                    <div class="control">
+                                        <input name="login[username]" value="<?= $objTemplate->escapeHtml($objTemplate->getUsername()) ?>" <?php if ($objTemplate->isAutocompleteDisabled()) :?> autocomplete="off"<?php endif; ?> id="email" type="email" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" data-validate="{required:true, 'validate-email':true}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group field password required">
+                                <div class="form-group">
+                                    <label for="login[username]" class="label required"><?= __('Password'); ?><em> *</em></label>
+                                    <div class="control">
+                                        <input name="login[password]" type="password" <?php if ($objTemplate->isAutocompleteDisabled()) :?> autocomplete="off"<?php endif; ?> class="input-text" id="pass" title="<?php /* @escapeNotVerified */ echo __('Password') ?>" data-validate="{required:true}">
+                                    </div>
+                                </div>
+
+                           </div>
+                           <div class="form-footer">
+                                <?= $objTemplate->getChildHtml('form_additional_info'); ?>
+                                <?php $helper = $this->helper('MGS\GDPR\Helper\Data') ?>
+								<?php $active = $helper->getStoreConfig('gdpr/register/active') ?>
+								<?php if($active): ?>
+								<?php $label = $helper->getStoreConfig('gdpr/register/label') ?>
+									<div class="field choice mgs-gdpr-checkbox">
+										<input name="login[accept_gdpr]" value="1" id="accept_gdpr_login" class="checkbox" type="checkbox" data-validate="{required:true}"/>
+										<label for="accept_gdpr_login" class="label"><span><?php /* @escapeNotVerified */ echo __($label) ?></span></label>
+									</div>
+								<?php endif ?>
+                                <div class="btn-control-login">
+                                    <div class="actions-toolbar padding-top10">
+                                        <button type="submit" class="action login btn  btn-default  btn-rounded icon-right" name="send" id="send2"><span><?php /* @escapeNotVerified */ echo __('LOG IN') ?></span></button>
+                                    </div>
+                                    <a class="remind" href="<?php /* @escapeNotVerified */ echo $objTemplate->getForgotPasswordUrl() ?>"><span><?php /* @escapeNotVerified */ echo __('Forgot Your Password?') ?></span></a>
+                                </div>
+                           </div>
+
+                        </fieldset>
+                    </form>
+                </div>
+               <div class="tab-pane fade block-content active show" id="register-2" role="tabpanel" aria-labelledby="register-tab-2">
+                    <?= $block->getChildHtml('form_fields_before')?>
+                    <?php /* Extensions placeholder */ ?>
+                    <?= $block->getChildHtml('customer.form.register.extra')?>
+                    <form class="form create account form-create-account" action="<?php /* @escapeNotVerified */ echo $block->getPostActionUrl() ?>" method="post" id="form-validate" enctype="multipart/form-data" autocomplete="off">
+                        <?= $objTemplate->getBlockHtml('formkey'); ?>
+                        <fieldset class="fieldset create info">
+                            <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Personal Information') ?></span></legend><br>
+                            <?= $objTemplate->getBlockHtml('formkey'); ?>
+                            <input type="hidden" name="success_url" value="<?php /* @escapeNotVerified */ echo $block->getSuccessUrl() ?>">
+                            <input type="hidden" name="error_url" value="<?php /* @escapeNotVerified */ echo $block->getErrorUrl() ?>">
+                            <?= $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Name')->setObject($block->getFormData())->setForceUseCustomerAttributes(true)->toHtml() ?>
+                            <?php if ($block->isNewsletterEnabled()): ?>
+                                <div class="field choice newsletter">
+                                    <input type="checkbox" name="is_subscribed" title="<?php /* @escapeNotVerified */ echo __('Sign Up for Newsletter') ?>" value="1" id="is_subscribed"<?php if ($block->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox">
+                                    <label for="is_subscribed" class="label"><span><?php /* @escapeNotVerified */ echo __('Sign Up for Newsletter') ?></span></label>
+                                </div>
+                                <?php /* Extensions placeholder */ ?>
+                                <?= $block->getChildHtml('customer.form.register.newsletter')?>
+                            <?php endif ?>
+
+                            <?php $_dob = $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Dob') ?>
+                            <?php if ($_dob->isEnabled()): ?>
+                                <?= $_dob->setDate($block->getFormData()->getDob())->toHtml() ?>
+                            <?php endif ?>
+
+                            <?php $_taxvat = $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Taxvat') ?>
+                            <?php if ($_taxvat->isEnabled()): ?>
+                                <?= $_taxvat->setTaxvat($block->getFormData()->getTaxvat())->toHtml() ?>
+                            <?php endif ?>
+
+                            <?php $_gender = $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Gender') ?>
+                            <?php if ($_gender->isEnabled()): ?>
+                                <?= $_gender->setGender($block->getFormData()->getGender())->toHtml() ?>
+                            <?php endif ?>
+                        </fieldset>
+                        <?php if ($block->getShowAddressFields()): ?>
+                            <fieldset class="fieldset address">
+                                <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Address Information') ?></span></legend><br>
+                                <input type="hidden" name="create_address" value="1" />
+                                <div class="field company">
+                                    <label for="company" class="label"><span><?php /* @escapeNotVerified */ echo __('Company') ?></span></label>
+                                    <div class="control">
+                                        <input type="text" name="company" id="company" value="<?= $block->escapeHtml($block->getFormData()->getCompany()) ?>" title="<?php /* @escapeNotVerified */ echo __('Company') ?>" class="input-text <?php /* @escapeNotVerified */ echo $this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('company') ?>">
+                                    </div>
+                                </div>
+                                <div class="field telephone">
+                                    <label for="telephone" class="label"><span><?php /* @escapeNotVerified */ echo __('Phone Number') ?></span></label>
+                                    <div class="control">
+                                        <input type="text" name="telephone" id="telephone" value="<?= $block->escapeHtml($block->getFormData()->getTelephone()) ?>" title="<?php /* @escapeNotVerified */ echo __('Phone Number') ?>" class="input-text <?php /* @escapeNotVerified */ echo $this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('telephone') ?>">
+                                    </div>
+                                </div>
+
+                                <?php $_streetValidationClass = $this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('street'); ?>
+
+                                <div class="field street required">
+                                    <label for="street_1" class="label"><span><?php /* @escapeNotVerified */ echo __('Street Address') ?></span></label>
+                                    <div class="control">
+                                        <input type="text" name="street[]" value="<?= $block->escapeHtml($block->getFormData()->getStreet(0)) ?>" title="<?php /* @escapeNotVerified */ echo __('Street Address') ?>" id="street_1" class="input-text <?php /* @escapeNotVerified */ echo $_streetValidationClass ?>">
+                                        <div class="nested">
+                                            <?php $_streetValidationClass = trim(str_replace('required-entry', '', $_streetValidationClass)); ?>
+                                            <?php for ($_i = 2, $_n = $this->helper('Magento\Customer\Helper\Address')->getStreetLines(); $_i <= $_n; $_i++): ?>
+                                                <div class="field additional">
+                                                    <label class="label" for="street_<?php /* @escapeNotVerified */ echo $_i ?>">
+                                                        <span><?php /* @escapeNotVerified */ echo __('Address') ?></span>
+                                                    </label>
+                                                    <div class="control">
+                                                        <input type="text" name="street[]" value="<?= $block->escapeHtml($block->getFormData()->getStreetLine($_i - 1)) ?>" title="<?php /* @escapeNotVerified */ echo __('Street Address %1', $_i) ?>" id="street_<?php /* @escapeNotVerified */ echo $_i ?>" class="input-text <?php /* @escapeNotVerified */ echo $_streetValidationClass ?>">
+                                                    </div>
+                                                </div>
+                                            <?php endfor; ?>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="field required">
+                                    <label for="city" class="label"><span><?php /* @escapeNotVerified */ echo __('City') ?></span></label>
+                                    <div class="control">
+                                        <input type="text" name="city" value="<?= $block->escapeHtml($block->getFormData()->getCity()) ?>" title="<?php /* @escapeNotVerified */ echo __('City') ?>" class="input-text <?php /* @escapeNotVerified */ echo $this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('city') ?>" id="city">
+                                    </div>
+                                </div>
+
+                                <div class="field region required">
+                                    <label for="region_id" class="label"><span><?php /* @escapeNotVerified */ echo __('State/Province') ?></span></label>
+                                    <div class="control">
+                                        <select id="region_id" name="region_id" title="<?php /* @escapeNotVerified */ echo __('State/Province') ?>" class="validate-select" style="display:none;">
+                                            <option value=""><?php /* @escapeNotVerified */ echo __('Please select a region, state or province.') ?></option>
+                                        </select>
+                                        <input type="text" id="region" name="region" value="<?= $block->escapeHtml($block->getRegion()) ?>" title="<?php /* @escapeNotVerified */ echo __('State/Province') ?>" class="input-text <?php /* @escapeNotVerified */ echo $this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('region') ?>" style="display:none;">
+                                    </div>
+                                </div>
+
+                                <div class="field zip required">
+                                    <label for="zip" class="label"><span><?php /* @escapeNotVerified */ echo __('Zip/Postal Code') ?></span></label>
+                                    <div class="control">
+                                        <input type="text" name="postcode" value="<?= $block->escapeHtml($block->getFormData()->getPostcode()) ?>" title="<?php /* @escapeNotVerified */ echo __('Zip/Postal Code') ?>" id="zip" class="input-text validate-zip-international <?php /* @escapeNotVerified */ echo $this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('postcode') ?>">
+                                    </div>
+                                </div>
+
+                                <div class="field country required">
+                                    <label for="country" class="label"><span><?php /* @escapeNotVerified */ echo __('Country') ?></span></label>
+                                    <div class="control">
+                                        <?= $block->getCountryHtmlSelect() ?>
+                                    </div>
+                                </div>
+                                <?php $addressAttributes = $block->getChildBlock('customer_form_address_user_attributes');?>
+                                <?php if ($addressAttributes): ?>
+                                    <?php $addressAttributes->setEntityType('customer_address'); ?>
+                                    <?php $addressAttributes->setFieldIdFormat('address:%1$s')->setFieldNameFormat('address[%1$s]');?>
+                                    <?php $block->restoreSessionData($addressAttributes->getMetadataForm(), 'address');?>
+                                    <?= $addressAttributes->setShowContainer(false)->toHtml()?>
+                                <?php endif;?>
+                                <input type="hidden" name="default_billing" value="1">
+                                <input type="hidden" name="default_shipping" value="1">
+                            </fieldset>
+                        <?php endif ?>
+                        <fieldset class="fieldset create account" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>">
+                            <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Sign-in Information') ?></span></legend><br>
+                            <div class="field required">
+                                <label for="email_address" class="label"><span><?php /* @escapeNotVerified */ echo __('Email') ?></span></label>
+                                <div class="control">
+                                    <input type="email" name="email" autocomplete="email" id="email_address" value="<?= $block->escapeHtml($block->getFormData()->getEmail()) ?>" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" class="input-text" data-validate="{required:true, 'validate-email':true}">
+                                </div>
+                            </div>
+                            <div class="field required">
+                                <label for="identification_customer" class="label"><span><?php /* @escapeNotVerified */ echo __('Identification Customer') ?></span></label>
+                                <div class="control">
+                                    <input type="text" name="identification_customer" id="identification_customer" value="<?= $block->escapeHtml($block->getFormData()->getEmail()) ?>" title="<?php /* @escapeNotVerified */ echo __('Identification Customer') ?>" class="input-text" data-validate="{required:true}">
+                                </div>
+                            </div>
+                            <div class="field password required" data-mage-init='{"passwordStrengthIndicator": {}}'>
+                                <label for="password" class="label"><span><?php /* @escapeNotVerified */ echo __('Password') ?></span></label>
+                                <div class="control">
+                                    <input type="password" name="password" id="password"
+                                           title="<?php /* @escapeNotVerified */ echo __('Password') ?>"
+                                           class="input-text"
+                                           data-password-min-length="<?= $block->escapeHtml($block->getMinimumPasswordLength()) ?>"
+                                           data-password-min-character-sets="<?= $block->escapeHtml($block->getRequiredCharacterClassesNumber()) ?>"
+                                           data-validate="{required:true, 'validate-customer-password':true}"
+                                           autocomplete="off">
+                                    <div id="password-strength-meter-container" data-role="password-strength-meter" >
+                                        <div id="password-strength-meter" class="password-strength-meter">
+                                            <?php /* @escapeNotVerified */ echo __('Password Strength'); ?>:
+                                            <span id="password-strength-meter-label" data-role="password-strength-meter-label" >
+                                                <?php /* @escapeNotVerified */ echo __('No Password'); ?>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="field confirmation required">
+                                <label for="password-confirmation" class="label"><span><?php /* @escapeNotVerified */ echo __('Confirm Password') ?></span></label>
+                                <div class="control">
+                                    <input type="password" name="password_confirmation" title="<?php /* @escapeNotVerified */ echo __('Confirm Password') ?>" id="password-confirmation" class="input-text" data-validate="{required:true, equalTo:'#password'}" autocomplete="off">
+                                </div>
+                            </div>
+                            <?= $block->getChildHtml('form_additional_info'); ?>
+                        </fieldset>
+                        <div class="actions-toolbar">
+                            <div class="primary">
+                                <button disabled type="submit" class="action submit primary btn  btn-default  btn-rounded icon-right" title="<?php /* @escapeNotVerified */ echo __('Sign Up') ?>"><span><?php /* @escapeNotVerified */ echo __('SIGN UP') ?></span></button>
+                            </div>
+                            <div class="secondary">
+                                <a class="action back" href="<?= $block->escapeUrl($block->getBackUrl()) ?>"><span><?php /* @escapeNotVerified */ echo __('Have an account?') ?></span></a>
+                            </div>
+                        </div>
+                    </form>
+                   </div>
+                <div class="tab-pane fade block-content" id="register-3" role="tabpanel" aria-labelledby="register-tab-3">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>-->
+</div>
+
+<script>
+require([
+    'jquery',
+    'mage/mage'
+], function($){
+
+    var dataForm = $('#form-validate');
+    var ignore = <?php /* @escapeNotVerified */ echo $_dob->isEnabled() ? '\'input[id$="full"]\'' : 'null'; ?>;
+
+    dataForm.mage('validation', {
+    <?php if ($_dob->isEnabled()): ?>
+        errorPlacement: function(error, element) {
+            if (element.prop('id').search('full') !== -1) {
+                var dobElement = $(element).parents('.customer-dob'),
+                    errorClass = error.prop('class');
+                error.insertAfter(element.parent());
+                dobElement.find('.validate-custom').addClass(errorClass)
+                    .after('<div class="' + errorClass + '"></div>');
+            }
+            else {
+                error.insertAfter(element);
+            }
+        },
+        ignore: ':hidden:not(' + ignore + ')'
+    <?php else: ?>
+        ignore: ignore ? ':hidden:not(' + ignore + ')' : ':hidden'
+    <?php endif ?>
+    }).find('input:text').attr('autocomplete', 'off');
+
+});
+</script>
+<?php if ($block->getShowAddressFields()): ?>
+<script type="text/x-magento-init">
+    {
+        "#country": {
+            "regionUpdater": {
+                "optionalRegionAllowed": <?php /* @escapeNotVerified */ echo($block->getConfig('general/region/display_all') ? 'true' : 'false'); ?>,
+                "regionListId": "#region_id",
+                "regionInputId": "#region",
+                "postcodeId": "#zip",
+                "form": "#form-validate",
+                "regionJson": <?php /* @escapeNotVerified */ echo $this->helper('Magento\Directory\Helper\Data')->getRegionJson() ?>,
+                "defaultRegion": "<?php /* @escapeNotVerified */ echo $block->getFormData()->getRegionId() ?>",
+                "countriesWithOptionalZip": <?php /* @escapeNotVerified */ echo $this->helper('Magento\Directory\Helper\Data')->getCountriesWithOptionalZip(true) ?>
+            }
+        }
+    }
+</script>
+<?php endif; ?>
+
+<script>
+    require(["jquery"], function($){
+        $("#block-customer-register").on('click', function() {
+            $("#signin-2").removeClass(' active show');
+            $("#register-2").addClass(' active show');
+            $('.nav-link').removeClass('active');
+            $(this).addClass('active');
+        });
+        $("#block-customer-login").on('click', function() {
+            $("#signin-2").addClass(' active show');
+            $("#register-2").removeClass(' active show');
+            $('.nav-link').removeClass('active');
+            $(this).addClass('active');
+        });
+    });
+
+    require(["jquery"], function ($) {
+
+        // $('#btnModal').on('click', function(e){
+        //     $('#popup-modal').modal('closeModal');
+        //     window.location = BASE_URL;
+        // });
+
+        $('#company_name').on('keyup', function(e){
+           $("#fac_elec_rs").val(this.value);
+        });
+        $('#pasruc').on('keyup', function(e){
+           $("#fac_elec_ruc").val(this.value);
+        });
+        $('#rep_name').on('keyup', function(e){
+           $("#fac_elec_name").val(this.value);
+        });
+
+        $('#form').on('submit', function (e) {
+            e.preventDefault();
+            //console.log($(this).serialize());
+
+           
+            var customurl = BASE_URL+'register/SendData/index';
+            var formData = new FormData();
+            var normal_data = $('#form').serializeArray();
+            var inputs = $('input[type=file]');
+            const miInput = document.querySelector("#file_ci_pn");
+            var error='';
+            
+
+            $.each(normal_data, function (k, input){
+                formData.append(input.name, input.value);
+            });
+            $.each(inputs, function(i, file){
+                formData.append('file-'+i, file.files[0]);
+            });
+            if ($('#form').valid()) {
+               
+                if(miInput==null){
+                
+                const miInput2 = document.querySelector("#file_ruc");
+                const miInput3 = document.querySelector("#file_ci_pj");
+               
+                    if(miInput2.files[0].size > 2000000){
+                           error+='- Archivo RUC muy pesado \n';
+                      
+                        }
+        
+                    if(miInput3.files[0].size > 2000000){
+                        error+='- Archivo CI muy pesado ';
+                           
+                    }
+                }else{
+        
+                    if(miInput.files[0].size > 2000000){
+                        error+='Archivo CI muy pesado';
+                    }    
+                }
+
+                if(error!=''){
+                    error+='\n Por favor, su ayuda comprimiendo el archivo menor a 2MB'
+                    alert(error)
+                    return false;
+                }
+
+                $("#enviar").css({"pointer-events":"none","opacity":0.5});
+                $("#enviar").html("<span>Enviando ...</span>")
+
+                    $.ajax({
+                    url: customurl,
+                    type: 'POST',
+                    //dataType: 'html',
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {        
+                        $('#popup-modal').modal('openModal');
+                        $("#enviar").html("<span>Registrado</span>");
+                        setTimeout(function(){ 
+                            $('#popup-modal').modal('closeModal');
+                             window.location = BASE_URL; }, 3000);
+                        },
+
+                    error: function (xhr, status, errorThrown) {
+                        console.log(xhr+' --- '+status+' ------ '+errorThrown);
+                        $("#enviar").html("<span>Registrarse como cliente</span>")
+                        $("#enviar").css({"pointer-events":"auto","opacity":1});
+                        //return false;
+                    }
+                });
+            }
+        });
+    });
+
+    require(["jquery"], function ($){
+        $('input[name="customer_type"]').on('change', function (e) {
+            var file_1 = '<div class="attach-container">'+
+                        '<p class="attach-heading">Persona Juridica</p>'+
+                        '<div class="attach-content">'+
+                        '<label for="file_ruc">Copia de RUC</label>'+
+                        '<input type="file" id="file_ruc" name="file_ruc" required>'+
+                        '</div>'+
+                        '<div class="attach-content">'+
+                        '<label for="file_ci_pj">'+'Copia a color CI Rep. Legal'+'</label>'+
+                        '<input type="file" id="file_ci_pj" name="file_ci_pj" required>'+
+                        '</div>'+
+                        '</div>';
+            var file_2 = 
+                        '<div class="attach-container">'+
+                        '<p class="attach-heading">Persona Natural</p>'+
+                        '<div class="attach-content">'+
+                        '<label for="file_ci_pn">Copia a color CI</label>'+
+                        '<input type="file" id="file_ci_pn" name="file_ci_pn" required="">'+
+                        '</div>'+
+                        '</div>';
+            if ($(this).val() == 'Natural') {
+                $('#files').html(file_2);
+            } else if($(this).val() == 'Juridico'){
+                $('#files').html(file_1);
+            }
+        });
+    });
+
+    require(['jquery', 'Magento_Ui/js/modal/modal'], function ($, modal) {
+        var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                title: '',
+                buttons: [],
+            };
+
+        var popup = modal(options, $('#popup-modal'));
+
+    });
+</script>
+

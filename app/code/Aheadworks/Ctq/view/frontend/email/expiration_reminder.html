@@ -1,0 +1,17 @@
+<!--@subject {{trans 'A Reminder About Expiring Quote "%quote_name"' quote_name=$quote.getName()}}@-->
+{{template config_path="design/email/header_template"}}
+
+<p>
+    {{trans 'Dear %customer_name,' customer_name=$customer_name}}<br />
+    {{depend days_number_until_expired}}
+        {{trans
+            'Your Quote %quote_name expires in %days_number_until_expired days.'
+            quote_name=$quote.getName() days_number_until_expired=$days_number_until_expired
+        }}
+    {{/depend}}
+</p>
+<p>{{trans 'Click <a href="%quote_url">here</a> to use it.' quote_url=$quote_url |raw }}</p>
+
+{{layout handle="aw_ctq_email_quote_details" quote=$quote store=$store area="frontend"}}
+
+{{template config_path="design/email/footer_template"}}

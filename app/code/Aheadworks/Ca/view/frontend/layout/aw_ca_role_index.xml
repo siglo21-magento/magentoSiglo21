@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <body>
+        <referenceContainer name="content">
+            <container name="aw_ca.role.list.add.container" htmlTag="div" htmlClass="aw-ca__customer-btn-wrapper">
+                <block class="Aheadworks\Ca\Block\ButtonWithCheckAcl"
+                       name="aw_ca.role.list.add">
+                    <arguments>
+                        <argument name="label" xsi:type="string">Add New Role</argument>
+                        <argument name="link" xsi:type="string">/aw_ca/role/create</argument>
+                        <argument name="additional_classes" xsi:type="string">primary right</argument>
+                    </arguments>
+                </block>
+            </container>
+            <block class="Aheadworks\Ca\Block\Role\RoleList"
+                   name="aw_ca.role.list"
+                   template="Aheadworks_Ca::role/list.phtml"
+                   cacheable="false">
+                <arguments>
+                    <argument name="role_view_model" xsi:type="object">Aheadworks\Ca\ViewModel\Role\Role</argument>
+                    <argument name="role_list_view_model" xsi:type="object">Aheadworks\Ca\ViewModel\Role\RoleList</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Customer\Block\Account\Dashboard"
+                   name="customer.account.link.back"
+                   template="Magento_Customer::account/link/back.phtml" />
+        </referenceContainer>
+        <block class="Aheadworks\Ca\Block\ButtonWithCheckAcl"
+               name="aw_ca.role.list.edit">
+            <arguments>
+                <argument name="label" xsi:type="string">Edit</argument>
+            </arguments>
+        </block>
+        <block class="Aheadworks\Ca\Block\ButtonWithCheckAcl"
+               name="aw_ca.role.list.delete">
+            <arguments>
+                <argument name="label" xsi:type="string">Delete</argument>
+                <argument name="additional_classes" xsi:type="string">confirm_window</argument>
+            </arguments>
+        </block>
+    </body>
+</page>

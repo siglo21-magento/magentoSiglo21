@@ -1,0 +1,22 @@
+{
+    "name": "aventi/module-ordercomment",
+    "description": "Add file comment to orders",
+    "type": "magento2-module",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Carlos Hernan Aguilar",
+            "email": "caguliar@aventi.co"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Aventi\\OrderComment\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}

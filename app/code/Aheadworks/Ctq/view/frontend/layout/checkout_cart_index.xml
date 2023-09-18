@@ -1,0 +1,148 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="checkout.cart.totals">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="block-totals" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="before_grandtotal" xsi:type="array">
+                                    <item name="children" xsi:type="array">
+                                        <item name="aw-ctq" xsi:type="array">
+                                            <item name="component" xsi:type="string">Aheadworks_Ctq/js/checkout/view/cart/totals/ctq-discount</item>
+                                            <item name="config" xsi:type="array">
+                                                <item name="title" xsi:type="string" translate="true">Negotiated Discount</item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+        <referenceContainer name="checkout.cart.methods">
+            <block class="Aheadworks\Ctq\Block\Checkout\RequestQuoteLink"
+                   name="checkout.cart.methods.aw.ctq.create.request"
+                   template="Aheadworks_Ctq::checkout/request_quote_link.phtml">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Checkout\RequestQuoteLink</argument>
+                    <argument name="file_uploader_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Customer\FileUploader</argument>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="awCtqRequestQuoteParent" xsi:type="array">
+                                <item name="component" xsi:type="string">uiComponent</item>
+                                <item name="children" xsi:type="array">
+                                    <item name="awCtqRequestQuoteLink" xsi:type="array">
+                                        <item name="component" xsi:type="string">Aheadworks_Ctq/js/ui/components/buyer/request-quote-link</item>
+                                        <item name="deps" xsi:type="array">
+                                            <item name="0" xsi:type="string">awCtqRequestQuoteProvider</item>
+                                        </item>
+                                    </item>
+                                    <item name="awCtqRequestQuote" xsi:type="array">
+                                        <item name="component" xsi:type="string">Magento_Ui/js/modal/modal-component</item>
+                                        <item name="modalClass" xsi:type="string">aw_ctq__modal-request-quote</item>
+                                        <item name="config" xsi:type="array">
+                                            <item name="options" xsi:type="array">
+                                                <item name="title" xsi:type="string" translate="true">New quote</item>
+                                                <item name="modalClass" xsi:type="string">aw_ctq__modal-request-quote-wrapper</item>
+                                            </item>
+                                        </item>
+                                        <item name="deps" xsi:type="array">
+                                            <item name="0" xsi:type="string">awCtqRequestQuoteProvider</item>
+                                        </item>
+                                        <item name="children" xsi:type="array">
+                                            <item name="awCtqRequestQuoteForm" xsi:type="array">
+                                                <item name="component" xsi:type="string">Aheadworks_Ctq/js/ui/form/form</item>
+                                                <item name="deps" xsi:type="array">
+                                                    <item name="0" xsi:type="string">awCtqRequestQuoteProvider</item>
+                                                </item>
+                                                <item name="dataScope" xsi:type="string">data</item>
+                                                <item name="children" xsi:type="array">
+                                                    <item name="fieldset" xsi:type="array">
+                                                        <item name="component" xsi:type="string">Magento_Ui/js/form/components/fieldset</item>
+                                                        <item name="label" xsi:type="string" translate="true"> </item>
+                                                        <item name="template" xsi:type="string">Aheadworks_Ctq/form/element/fieldset</item>
+                                                        <item name="children" xsi:type="array">
+                                                            <item name="quote_name" xsi:type="array">
+                                                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                                <item name="dataScope" xsi:type="string">quote_name</item>
+                                                                <item name="provider" xsi:type="string">awCtqRequestQuoteProvider</item>
+                                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                                <item name="label" xsi:type="string" translate="true">Quote Name</item>
+                                                                <item name="default" xsi:type="string" translate="true">My Quote</item>
+                                                                <item name="validation" xsi:type="array">
+                                                                    <item name="required-entry" xsi:type="boolean">true</item>
+                                                                </item>
+                                                                <item name="sortOrder" xsi:type="number">10</item>
+                                                            </item>
+                                                            <item name="comment" xsi:type="array">
+                                                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/textarea</item>
+                                                                <item name="dataScope" xsi:type="string">comment.comment</item>
+                                                                <item name="provider" xsi:type="string">awCtqRequestQuoteProvider</item>
+                                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                                <item name="label" xsi:type="string" translate="true">Comment</item>
+                                                                <item name="validation" xsi:type="array">
+                                                                    <item name="required-entry" xsi:type="boolean">true</item>
+                                                                </item>
+                                                                <item name="previewSettings" xsi:type="array">
+                                                                    <item name="maxCountOfWords" xsi:type="number">5</item>
+                                                                </item>
+                                                                <item name="sortOrder" xsi:type="number">20</item>
+                                                            </item>
+                                                            <item name="awCtqFileUploader" xsi:type="array">
+                                                                <item name="component" xsi:type="string">Aheadworks_Ctq/js/ui/form/element/file-uploader</item>
+                                                                <item name="template" xsi:type="string">Aheadworks_Ctq/form/element/uploader/uploader</item>
+                                                                <item name="previewTmpl" xsi:type="string">Aheadworks_Ctq/form/element/uploader/preview</item>
+                                                                <item name="provider" xsi:type="string">awCtqRequestQuoteProvider</item>
+                                                                <item name="isMultipleFiles" xsi:type="boolean">true</item>
+                                                                <item name="dataScope" xsi:type="string">comment.attachments</item>
+                                                                <item name="elementToDisable" xsi:type="string">.aw_ctq__modal-request-quote-wrapper button.primary</item>
+                                                            </item>
+                                                            <item name="send" xsi:type="array">
+                                                                <item name="component" xsi:type="string">Magento_Ui/js/form/components/button</item>
+                                                                <item name="provider" xsi:type="string">awCtqRequestQuoteProvider</item>
+                                                                <item name="title" xsi:type="string" translate="true">Send</item>
+                                                                <item name="sortOrder" xsi:type="number">30</item>
+                                                                <item name="buttonClasses" xsi:type="string">action primary</item>
+                                                                <item name="actions" xsi:type="array">
+                                                                    <item name="0" xsi:type="array">
+                                                                        <item name="targetName" xsi:type="string">awCtqRequestQuoteParent.awCtqRequestQuote.awCtqRequestQuoteForm</item>
+                                                                        <item name="actionName" xsi:type="string">save</item>
+                                                                    </item>
+                                                                </item>
+                                                            </item>
+                                                            <item name="note" xsi:type="array">
+                                                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                                <item name="elementTmpl" xsi:type="string">ui/form/element/text</item>
+                                                                <item name="value" xsi:type="string" translate="true">Note, any discounts applied will be discarded</item>
+                                                                <item name="additionalClasses" xsi:type="string">aw-ctq-modal-note</item>
+                                                                <item name="sortOrder" xsi:type="number">40</item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                            <item name="awCtqRequestQuoteProvider" xsi:type="array">
+                                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+                                <item name="clientConfig" xsi:type="array">
+                                    <item name="urls" xsi:type="array">
+                                        <item name="save" xsi:type="url" path="aw_ctq/requestQuote/submit"/>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

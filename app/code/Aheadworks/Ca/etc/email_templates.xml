@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="aw_ca_email_new_company_approved_template"
+              label="AW CA - New Company Approved"
+              file="new_company_approved.html"
+              type="html"
+              module="Aheadworks_Ca"
+              area="frontend"/>
+    <template id="aw_ca_email_new_company_submitted_template"
+              label="AW CA - New Company Submitted"
+              file="new_company_submitted.html"
+              type="html"
+              module="Aheadworks_Ca"
+              area="frontend"/>
+    <template id="aw_ca_email_new_company_declined_template"
+              label="AW CA - New Company Declined"
+              file="new_company_declined.html"
+              type="html"
+              module="Aheadworks_Ca"
+              area="frontend"/>
+    <template id="aw_ca_email_company_status_changed_template"
+              label="AW CA - Company Status Changed"
+              file="company_status_changed.html"
+              type="html"
+              module="Aheadworks_Ca"
+              area="frontend"/>
+    <template id="aw_ca_email_new_company_user_created_template"
+              label="AW CA - New Company User Created"
+              file="new_company_user_created.html"
+              type="html"
+              module="Aheadworks_Ca"
+              area="frontend"/>
+</config>

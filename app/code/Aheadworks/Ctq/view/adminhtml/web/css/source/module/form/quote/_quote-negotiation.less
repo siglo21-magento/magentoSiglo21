@@ -1,0 +1,51 @@
+//
+//  Quote Negotiation
+//  _____________________________________________
+
+#quote-negotiation {
+    .price-negotiation-table {
+        width: 100%;
+
+        input {
+            text-align: right;
+        }
+
+        .error-message {
+            background: #fffbbb;
+            border: 1px solid #ee7d7d;
+            box-sizing: border-box;
+            color: #555555;
+            font-size: 12px;
+
+            .error-text {
+                margin: 5px;
+            }
+        }
+        .row {
+            text-align: left;
+            width: 40%;
+            font-size: 1.3rem;
+            vertical-align: middle;
+        }
+        td {
+            width: 60%;
+
+            input {
+                -moz-appearance: textfield;
+            }
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+            label {
+                &.mage-error {
+                    display: none !important;
+                }
+            }
+        }
+        th,td {
+            padding: 5px;
+        }
+    }
+}

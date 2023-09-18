@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="aw_ctq_quote_edit_item_price"/>
+    <update handle="aw_ctq_quote_edit_comments_and_history_block"/>
+    <body>
+        <referenceBlock name="content">
+            <block class="Magento\Sales\Block\Adminhtml\Order\Create\Data" template="Aheadworks_Ctq::quote/edit/data.phtml" name="data">
+                <!-- Quote Information (main details) -->
+                <block class="Aheadworks\Ctq\Block\Adminhtml\Quote\Edit\QuoteInformation" template="Aheadworks_Ctq::quote/edit/section.phtml" name="quote_information">
+                    <block class="Aheadworks\Ctq\Block\Adminhtml\Quote\Edit\QuoteInformation\Form" template="Aheadworks_Ctq::quote/edit/quote_information/form.phtml" name="quote_edit_quote_information_form" as="form"/>
+                    <block class="Magento\Backend\Block\Template" name="quote_edit_quote_information_form" as="form"
+                           template="Aheadworks_Ctq::quote/edit/form/quote_information.phtml">
+                        <arguments>
+                            <argument name="form_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Quote\Edit\Form\QuoteInformation</argument>
+                        </arguments>
+                    </block>
+                </block>
+
+                <!-- Section with order totals -->
+                <block class="Aheadworks\Ctq\Block\Adminhtml\Quote\Edit\OrderTotals" template="Aheadworks_Ctq::quote/edit/order_totals.phtml" name="order_totals"/>
+
+                <!-- Shipping information section -->
+                <block class="Aheadworks\Ctq\Block\Adminhtml\Quote\Edit\ShippingInformation" template="Aheadworks_Ctq::quote/edit/section_shipping_information.phtml" name="shipping_information">
+                    <block class="Aheadworks\Ctq\Block\Adminhtml\Quote\Edit\Shipping\Address" template="Aheadworks_Ctq::quote/edit/form/shipping_address.phtml" name="shipping_address">
+                        <arguments>
+                            <argument name="customerAddressFormatter" xsi:type="object">Magento\Sales\ViewModel\Customer\AddressFormatter</argument>
+                            <argument name="customerAddressCollection" xsi:type="object">Magento\Customer\Model\ResourceModel\Address\Collection</argument>
+                        </arguments>
+                    </block>
+                    <block class="Aheadworks\Ctq\Block\Adminhtml\Quote\Edit\Shipping\Method" template="Aheadworks_Ctq::quote/edit/section.phtml" name="shipping_method">
+                        <block class="Aheadworks\Ctq\Block\Adminhtml\Quote\Edit\Shipping\Method\Form" template="Aheadworks_Ctq::quote/edit/form/shipping_method.phtml" name="shipping_method_form" as="form">
+                            <arguments>
+                                <argument name="quote_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Quote\Edit\CurrentQuote</argument>
+                            </arguments>
+                        </block>
+                    </block>
+                </block>
+
+                <!-- Product selection grid on 'Add Products' click -->
+                <block class="Aheadworks\Ctq\Block\Adminhtml\Quote\Edit\ProductSelection" template="Aheadworks_Ctq::quote/edit/section.phtml" name="search">
+                    <block class="Aheadworks\Ctq\Block\Adminhtml\Quote\Edit\ProductSelection\Grid" name="search_grid" as="grid"/>
+                </block>
+
+                <!-- Quoted items grid -->
+                <block class="Aheadworks\Ctq\Block\Adminhtml\Quote\Edit\QuotedItems" template="Aheadworks_Ctq::quote/edit/section_quoted_items.phtml" name="items">
+                    <block class="Aheadworks\Ctq\Block\Adminhtml\Quote\Edit\QuotedItems\Grid" template="Aheadworks_Ctq::quote/edit/grid/quoted_items.phtml" name="items_grid">
+                        <arguments>
+                            <argument name="quote_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Quote\Edit\CurrentQuote</argument>
+                        </arguments>
+                    </block>
+                </block>
+
+                <!-- Comment, History Tabs section -->
+                <container name="comments.and.history.container" as="comments_and_history_container" htmlTag="div"/>
+
+                <!-- Section with totals -->
+                <block class="Aheadworks\Ctq\Block\Adminhtml\Quote\Edit\Totals" template="Aheadworks_Ctq::quote/edit/totals.phtml" name="totals">
+                    <block class="Magento\Backend\Block\Template" name="quote_edit_negotiation_form" as="negotiation_form"
+                           template="Aheadworks_Ctq::quote/edit/form/negotiation.phtml">
+                        <arguments>
+                            <argument name="form_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Quote\Edit\Form\Negotiation</argument>
+                            <argument name="quote_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Quote\Edit\CurrentQuote</argument>
+                        </arguments>
+                    </block>
+                </block>
+                <block class="Magento\Framework\View\Element\Text\ListText" name="quote_item_extra_info"/>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

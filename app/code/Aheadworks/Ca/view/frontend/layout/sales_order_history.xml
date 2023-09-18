@@ -1,0 +1,21 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="sales.order.history.extra.column.header">
+            <block name="aw_ca.order.history.extra.column.header.created.by"
+                   template="Aheadworks_Ca::order/column/created_by/header.phtml">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Aheadworks\Ca\ViewModel\Order\Column\CreatedBy</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceBlock name="sales.order.history.extra.container">
+            <block name="aw_ca.order.history.extra.column.data.created.by"
+                   template="Aheadworks_Ca::order/column/created_by/data.phtml">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Aheadworks\Ca\ViewModel\Order\Column\CreatedBy</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

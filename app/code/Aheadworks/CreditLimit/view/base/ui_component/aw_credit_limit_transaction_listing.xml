@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:framework:Ui/etc/ui_configuration.xsd"
+         class="Aheadworks\CreditLimit\Ui\Component\Listing\Transaction\Listing">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">aw_credit_limit_transaction_listing.aw_credit_limit_transaction_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>aw_credit_limit_transaction_columns</spinner>
+        <deps>
+            <dep>aw_credit_limit_transaction_listing.aw_credit_limit_transaction_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="aw_credit_limit_transaction_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+            <filterUrlParams>
+                <param name="customer_id">*</param>
+                <param name="company_id">*</param>
+            </filterUrlParams>
+        </settings>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="aw_credit_limit_transaction_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <filters name="listing_filters">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="templates" xsi:type="array">
+                        <item name="filters" xsi:type="array">
+                            <item name="select" xsi:type="array">
+                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</item>
+                                <item name="template" xsi:type="string">ui/grid/filters/elements/ui-select</item>
+                            </item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </filters>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="aw_credit_limit_transaction_columns">
+        <column name="created_at" sortOrder="10" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <settings>
+                <filter>dateRange</filter>
+                <label translate="true">Date</label>
+                <dataType>date</dataType>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <column name="action" component="Magento_Ui/js/grid/columns/select" sortOrder="20">
+            <settings>
+                <options class="Aheadworks\CreditLimit\Model\Source\Transaction\Action"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Action</label>
+            </settings>
+        </column>
+        <column name="amount" sortOrder="30" class="Aheadworks\CreditLimit\Ui\Component\Listing\Transaction\Columns\MultiCurrencyPrice">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="showPlus" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Amount</label>
+                <bodyTmpl>Aheadworks_CreditLimit/ui/grid/cells/styled-price</bodyTmpl>
+            </settings>
+        </column>
+        <column name="amount" sortOrder="30" class="Aheadworks\CreditLimit\Ui\Component\Listing\Transaction\Columns\MultiCurrencyPrice">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="showPlus" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Amount</label>
+                <bodyTmpl>Aheadworks_CreditLimit/ui/grid/cells/styled-price</bodyTmpl>
+            </settings>
+        </column>
+        <column name="credit_balance" sortOrder="40" class="Aheadworks\CreditLimit\Ui\Component\Listing\Columns\Price">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Credit Balance</label>
+            </settings>
+        </column>
+        <column name="credit_available" sortOrder="50" class="Aheadworks\CreditLimit\Ui\Component\Listing\Columns\Price">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Available Credit</label>
+            </settings>
+        </column>
+        <column name="credit_limit" sortOrder="60" class="Aheadworks\CreditLimit\Ui\Component\Listing\Columns\Price">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Credit Limit</label>
+            </settings>
+        </column>
+        <column name="po_number" sortOrder="70">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Purchase Order</label>
+            </settings>
+        </column>
+        <column name="comment_to_admin" sortOrder="80">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Comment to Admin</label>
+            </settings>
+        </column>
+        <column name="comment_to_customer" sortOrder="90" class="Aheadworks\CreditLimit\Ui\Component\Listing\Transaction\Columns\CommentToCustomer">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Comment to Customer</label>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+            </settings>
+        </column>
+    </columns>
+</listing>

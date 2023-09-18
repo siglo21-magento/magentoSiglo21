@@ -1,0 +1,26 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="sales_model_service_quote_submit_success">
+        <observer name="awCtq" instance="Aheadworks\Ctq\Observer\QuotePurchased" />
+    </event>
+    <event name="sales_model_service_quote_submit_before">
+        <observer name="awCtq" instance="Aheadworks\Ctq\Observer\RedeemForOrder" />
+    </event>
+    <event name="sales_order_invoice_register">
+        <observer name="awCtq" instance="Aheadworks\Ctq\Observer\IncreaseOrderCtqInvoicedAmount" />
+    </event>
+    <event name="sales_order_creditmemo_refund">
+        <observer name="awCtq" instance="Aheadworks\Ctq\Observer\IncreaseOrderCtqRefundedAmount" />
+    </event>
+    <event name="sales_quote_save_before">
+        <observer name="awCtq" instance="Aheadworks\Ctq\Observer\UnsetCustomerId" />
+    </event>
+    <event name="controller_front_send_response_before">
+        <observer name="awCtq" instance="Aheadworks\Ctq\Observer\ClearQuote" />
+    </event>
+
+<!--    Uncomment when guest users will be supported -->
+<!--    <event name="customer_login">-->
+<!--        <observer name="awCtq" instance="Aheadworks\Ctq\Observer\MergeQuoteListsObserver" />-->
+<!--    </event>-->
+</config>

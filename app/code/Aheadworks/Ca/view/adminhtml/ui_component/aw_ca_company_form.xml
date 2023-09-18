@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd"
+      component="Aheadworks_Ca/js/ui/form/company_form">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">aw_ca_company_form.awCaCompanyProvider</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Company</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back" class="Aheadworks\Ca\Block\Adminhtml\Company\Edit\Button\Back"/>
+            <button name="reset" class="Aheadworks\Ca\Block\Adminhtml\Company\Edit\Button\Reset"/>
+            <button name="save_and_continue" class="Aheadworks\Ca\Block\Adminhtml\Company\Edit\Button\SaveAndContinue"/>
+            <button name="save" class="Aheadworks\Ca\Block\Adminhtml\Company\Edit\Button\Save"/>
+        </buttons>
+        <namespace>aw_ca_company_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>aw_ca_company_form.awCaCompanyProvider</dep>
+        </deps>
+    </settings>
+    <dataSource name="awCaCompanyProvider">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="aw_ca/company/save"/>
+        </settings>
+        <dataProvider class="Aheadworks\Ca\Ui\DataProvider\Company\FormDataProvider"/>
+    </dataSource>
+    <fieldset name="general" sortOrder="10">
+        <settings>
+            <collapsible>false</collapsible>
+            <label>General</label>
+            <dataScope>company</dataScope>
+        </settings>
+        <field name="id" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>id</dataScope>
+            </settings>
+        </field>
+        <field name="name" sortOrder="10" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Company Name</label>
+                <dataScope>name</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="status" sortOrder="20" formElement="select">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Status</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Aheadworks\Ca\Model\Source\Company\Status"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="email" sortOrder="30" component="Aheadworks_Ca/js/ui/form/element/validated-email" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="emailType" xsi:type="string">company</item>
+                    <item name="validateEmailUrl" xsi:type="url" path="aw_ca/user/checkEmail"/>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Company Email</label>
+                <elementTmpl>Aheadworks_Ca/form/element/validated-email</elementTmpl>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-email" xsi:type="boolean">true</rule>
+                    <rule name="aw-ca-validate-email" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="sales_representative_id" sortOrder="40" formElement="select">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Sales Representative</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Aheadworks\Ca\Model\Source\Admin\User"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="is_allowed_to_quote" class="Aheadworks\Ca\Ui\Component\Form\Company\AllowQuoteField" sortOrder="60" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Allow Quotes</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+    </fieldset>
+    <fieldset name="account_information" sortOrder="20">
+        <settings>
+            <collapsible>false</collapsible>
+            <label>Account Information</label>
+            <dataScope>company</dataScope>
+        </settings>
+        <field name="legal_name" sortOrder="10" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Company Legal Name</label>
+            </settings>
+        </field>
+        <field name="tax_id" sortOrder="20" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Tax ID / VAT ID</label>
+            </settings>
+        </field>
+        <field name="re_seller_id" sortOrder="30" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Reseller ID</label>
+            </settings>
+        </field>
+    </fieldset>
+    <fieldset name="legal_address" sortOrder="30">
+        <settings>
+            <collapsible>false</collapsible>
+            <label>Legal Address</label>
+            <dataScope>company</dataScope>
+        </settings>
+        <field name="street" sortOrder="10" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Street Address</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="city" sortOrder="20" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">City</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="country_id" sortOrder="30" formElement="select">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Country</label>
+                <imports>
+                    <link name="initialOptions">${ $.provider }:dictionaries.country_id</link>
+                    <link name="setOptions">${ $.provider }:dictionaries.country_id</link>
+                </imports>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="region_id" sortOrder="40" formElement="select">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">State/Province</label>
+                <imports>
+                    <link name="initialOptions">${ $.provider }:dictionaries.region_id</link>
+                    <link name="setOptions">${ $.provider }:dictionaries.region_id</link>
+                </imports>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <filterBy>
+                            <field>country_id</field>
+                            <target>${ $.provider }:${ $.parentScope }.country_id</target>
+                        </filterBy>
+                        <customEntry>region</customEntry>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="region" formElement="input" sortOrder="50">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">State/Province</label>
+                <visible>false</visible>
+            </settings>
+        </field>
+        <field name="postcode" formElement="input" sortOrder="60">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">ZIP/Postal Code</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="telephone" formElement="input" sortOrder="70">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Company Phone Number</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+            </settings>
+        </field>
+    </fieldset>
+    <fieldset name="company_admin_information" sortOrder="40">
+        <settings>
+            <collapsible>false</collapsible>
+            <label>Company Admin Information</label>
+            <dataScope/>
+        </settings>
+        <field name="firstname" sortOrder="10" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">First Name</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="lastname" sortOrder="20" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Last Name</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="email" sortOrder="5" component="Aheadworks_Ca/js/ui/form/element/validated-email-and-convert-available" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="checkUrl" xsi:type="url" path="aw_ca/user/checkAvailableToConvert"/>
+                    <item name="map" xsi:type="array">
+                        <item name="firstname" xsi:type="array">
+                            <item name="customer" xsi:type="string">firstname</item>
+                            <item name="data" xsi:type="string">firstname</item>
+                        </item>
+                        <item name="lastname" xsi:type="array">
+                            <item name="customer" xsi:type="string">lastname</item>
+                            <item name="data" xsi:type="string">lastname</item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Company Admin Email</label>
+                <elementTmpl>Aheadworks_Ca/form/element/validated-email</elementTmpl>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-email" xsi:type="boolean">true</rule>
+                    <rule name="aw-ca-validate-email-check-convert" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="customer_job" sortOrder="40" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <dataScope>extension_attributes.aw_ca_company_user.job_title</dataScope>
+                <label translate="true">Job Position</label>
+            </settings>
+        </field>
+        <field name="customer_telephone" sortOrder="45" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <dataScope>extension_attributes.aw_ca_company_user.telephone</dataScope>
+                <label translate="true">Phone Number</label>
+            </settings>
+        </field>
+        <field name="group_id" sortOrder="50" formElement="select">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Customer Group For Company Users</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Aheadworks\Ca\Model\Source\Customer\Group"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="website_id" sortOrder="60" component="Magento_Ui/js/form/element/website" formElement="select">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>number</dataType>
+                <label translate="true">Associate to Website</label>
+                <imports>
+                    <link name="customerId">${ $.provider }:data.id</link>
+                </imports>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Aheadworks\Ca\Model\Source\System\Website"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="store_id" sortOrder="70" formElement="select">
+            <settings>
+                <dataType>number</dataType>
+                <label translate="true">Send Welcome Email From</label>
+                <imports>
+                    <link name="value">${ $.provider }:data.store_id</link>
+                    <link name="disabled">${ $.provider }:data.id</link>
+                </imports>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Magento\Store\Model\System\Store"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+    </fieldset>
+    <fieldset name="credit_limit_fieldset" sortOrder="50" class="Aheadworks\Ca\Ui\Component\Form\Company\AllowCreditLimit">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="additionalClasses" xsi:type="string">aw_cl__credit_limit_section</item>
+            </item>
+        </argument>
+        <settings>
+            <collapsible>false</collapsible>
+            <label>Credit Limit</label>
+            <dataScope>aw_credit_limit</dataScope>
+        </settings>
+        <container name="aw_credit_limit_top_totals" sortOrder="10">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Aheadworks_CreditLimit/js/ui/customer/top-totals</item>
+                </item>
+            </argument>
+            <container name="credit_balance">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="component" xsi:type="string">Aheadworks_CreditLimit/js/ui/customer/top-totals/total</item>
+                        <item name="label" xsi:type="string" translate="true">Credit Balance</item>
+                        <item name="dataType" xsi:type="string">price</item>
+                    </item>
+                </argument>
+            </container>
+            <container name="credit_available">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="component" xsi:type="string">Aheadworks_CreditLimit/js/ui/customer/top-totals/total</item>
+                        <item name="label" xsi:type="string" translate="true">Available Credit</item>
+                        <item name="dataType" xsi:type="string">price</item>
+                    </item>
+                </argument>
+            </container>
+            <container name="credit_limit">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="component" xsi:type="string">Aheadworks_CreditLimit/js/ui/customer/top-totals/total</item>
+                        <item name="label" xsi:type="string" translate="true">Credit Limit</item>
+                        <item name="dataType" xsi:type="string">price</item>
+                    </item>
+                </argument>
+            </container>
+        </container>
+        <field name="credit_limit" formElement="input" sortOrder="20" class="Aheadworks\Ca\Ui\Component\Form\Company\CreditLimit\CurrencyPriceField">
+            <settings>
+                <label>Credit Limit</label>
+                <dataType>text</dataType>
+                <dataScope>credit_limit</dataScope>
+                <validation>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                    <rule name="validate-zero-or-greater" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="credit_limit_comment_to_admin" formElement="textarea" sortOrder="30">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="rows" xsi:type="number">3</item>
+                    <item name="additionalClasses" xsi:type="string">comment admin-comment</item>
+                </item>
+            </argument>
+            <settings>
+                <label>Comment</label>
+                <dataType>text</dataType>
+                <imports>
+                    <link name="disabled">${ $.parentName }.credit_limit:disabled</link>
+                </imports>
+            </settings>
+        </field>
+        <container name="update_balance_heading" sortOrder="40">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="template" xsi:type="string">Aheadworks_CreditLimit/ui/form/customer/new-section-heading</item>
+                    <item name="headingText" xsi:type="string" translate="true">Update Balance</item>
+                </item>
+            </argument>
+        </container>
+        <field name="amount_currency" formElement="select" sortOrder="50">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Amount Currency</label>
+                <imports>
+                    <link name="visible">!${ $.provider }:data.aw_credit_limit.is_data_new</link>
+                    <link name="setOptions">${ $.provider }:data.aw_credit_limit.allowedCurrencyList</link>
+                    <link name="value">${ $.provider }:data.aw_credit_limit.baseCurrency</link>
+                </imports>
+            </settings>
+        </field>
+        <field name="amount" formElement="input" sortOrder="60">
+            <settings>
+                <label>Amount to Add</label>
+                <dataType>text</dataType>
+                <validation>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="po_number" formElement="input" sortOrder="70">
+            <settings>
+                <label>PO Number</label>
+                <dataType>text</dataType>
+                <validation>
+                    <rule name="max_text_length" xsi:type="number">32</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="balance_comment_to_customer" formElement="textarea" sortOrder="80">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="rows" xsi:type="number">3</item>
+                    <item name="additionalClasses" xsi:type="string">comment customer-comment</item>
+                </item>
+            </argument>
+            <settings>
+                <label>Comment</label>
+                <dataType>text</dataType>
+            </settings>
+        </field>
+        <field name="balance_comment_to_admin" formElement="textarea" sortOrder="90">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="rows" xsi:type="number">3</item>
+                    <item name="additionalClasses" xsi:type="string">comment admin-comment</item>
+                </item>
+            </argument>
+            <settings>
+                <label>Comment</label>
+                <dataType>text</dataType>
+            </settings>
+        </field>
+        <fieldset name="balance_history" sortOrder="100">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="string">aw_cl__balance-history-listing</item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Credit History</label>
+            </settings>
+            <insertListing name="aw_credit_limit_transaction_listing">
+                <settings>
+                    <autoRender>true</autoRender>
+                    <dataScope>aw_credit_limit_transaction_listing</dataScope>
+                    <externalProvider>${ $.ns }.aw_credit_limit_transaction_listing_data_source</externalProvider>
+                    <ns>aw_credit_limit_transaction_listing</ns>
+                    <externalFilterMode>true</externalFilterMode>
+                    <imports>
+                        <link name="company_id">${ $.provider }:data.aw_credit_limit.company_id</link>
+                    </imports>
+                    <exports>
+                        <link name="company_id">${ $.externalProvider }:params.company_id</link>
+                    </exports>
+                    <dataLinks>
+                        <exports>false</exports>
+                        <imports>true</imports>
+                    </dataLinks>
+                </settings>
+            </insertListing>
+        </fieldset>
+    </fieldset>
+    <fieldset name="notes" sortOrder="60">
+        <settings>
+            <collapsible>false</collapsible>
+            <label>Notes</label>
+            <dataScope>company</dataScope>
+        </settings>
+        <field name="notes" formElement="textarea" sortOrder="10">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Notes about company</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+            </settings>
+        </field>
+    </fieldset>
+    <fieldset name="allowed_payment_methods_fieldset" sortOrder="70" class="Aheadworks\Ca\Ui\Component\Form\Company\AllowPayRest">
+        <settings>
+            <collapsible>false</collapsible>
+            <label>Allowed Payment Methods</label>
+            <dataScope>company</dataScope>
+        </settings>
+        <field name="allowed_payment_methods" sortOrder="10" formElement="multiselect">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Payment Methods</label>
+                <notice translate="true">If no payment method is selected, default Payment Restriction configuration is applied</notice>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="Aheadworks\Ca\Model\Source\Company\PaymentMethod"/>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
+    </fieldset>
+</form>

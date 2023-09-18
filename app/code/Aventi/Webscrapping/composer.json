@@ -1,0 +1,26 @@
+{
+    "name": "aventi/module-webscrapping",
+    "description": "Scraping web for product details",
+    "type": "magento2-module",
+    "license": "OSL-3.0",
+    "authors": [
+        {
+            "name": "Mage2Gen",
+            "email": "info@mage2gen.com"
+        },
+        {
+            "name": "C\u00e9sar Adri\u00e1n Robledo Olave",
+            "email": "adrian.olave@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Aventi\\Webscrapping\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}

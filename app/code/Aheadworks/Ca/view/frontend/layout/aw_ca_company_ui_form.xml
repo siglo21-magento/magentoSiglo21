@@ -1,0 +1,276 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Aheadworks\Ca\Block\Form"
+                   name="aw.ca.company.form"
+                   cacheable="false">
+                <arguments>
+                    <argument name="form_view_model" xsi:type="object">Aheadworks\Ca\ViewModel\Company\Form</argument>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="awCaForm" xsi:type="array">
+                                <item name="component" xsi:type="string">Aheadworks_Ca/js/ui/form/form</item>
+                                <item name="deps" xsi:type="array">
+                                    <item name="0" xsi:type="string">awCaCompanyProvider</item>
+                                </item>
+                                <item name="children" xsi:type="array">
+                                    <item name="general" xsi:type="array">
+                                        <item name="component" xsi:type="string">Magento_Ui/js/form/components/fieldset</item>
+                                        <item name="label" xsi:type="string" translate="true">Company Information</item>
+                                        <item name="template" xsi:type="string">Aheadworks_Ca/form/element/fieldset</item>
+                                        <item name="dataScope" xsi:type="string">data.company</item>
+                                        <item name="children" xsi:type="array">
+                                            <item name="name" xsi:type="array">
+                                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                <item name="dataScope" xsi:type="string">name</item>
+                                                <item name="provider" xsi:type="string">awCaCompanyProvider</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="label" xsi:type="string" translate="true">Company Name</item>
+                                                <item name="validation" xsi:type="array">
+                                                    <item name="required-entry" xsi:type="boolean">true</item>
+                                                </item>
+                                                <item name="sortOrder" xsi:type="number">10</item>
+                                            </item>
+                                            <item name="legal_name" xsi:type="array">
+                                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                <item name="dataScope" xsi:type="string">legal_name</item>
+                                                <item name="provider" xsi:type="string">awCaCompanyProvider</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="label" xsi:type="string" translate="true">Company Legal Name</item>
+                                                <item name="validation" xsi:type="array">
+                                                    <item name="required-entry" xsi:type="boolean">false</item>
+                                                </item>
+                                                <item name="sortOrder" xsi:type="number">20</item>
+                                            </item>
+                                            <item name="email" xsi:type="array">
+                                                <item name="component" xsi:type="string">Aheadworks_Ca/js/ui/form/element/validated-email</item>
+                                                <item name="dataScope" xsi:type="string">email</item>
+                                                <item name="provider" xsi:type="string">awCaCompanyProvider</item>
+                                                <item name="emailType" xsi:type="string">company</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="elementTmpl" xsi:type="string">Aheadworks_Ca/form/element/validated-email</item>
+                                                <item name="validateEmailUrl" xsi:type="url" path="aw_ca/user/checkEmail"/>
+                                                <item name="label" xsi:type="string" translate="true">Company Email</item>
+                                                <item name="validation" xsi:type="array">
+                                                    <item name="required-entry" xsi:type="boolean">true</item>
+                                                    <item name="validate-email" xsi:type="boolean">true</item>
+                                                    <item name="aw-ca-validate-email" xsi:type="boolean">true</item>
+                                                </item>
+                                                <item name="sortOrder" xsi:type="number">30</item>
+                                            </item>
+                                            <item name="tax_id" xsi:type="array">
+                                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                <item name="dataScope" xsi:type="string">tax_id</item>
+                                                <item name="provider" xsi:type="string">awCaCompanyProvider</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="label" xsi:type="string" translate="true">VAT/TAX ID</item>
+                                                <item name="validation" xsi:type="array">
+                                                    <item name="required-entry" xsi:type="boolean">false</item>
+                                                </item>
+                                                <item name="sortOrder" xsi:type="number">40</item>
+                                            </item>
+                                            <item name="re_seller_id" xsi:type="array">
+                                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                <item name="dataScope" xsi:type="string">re_seller_id</item>
+                                                <item name="provider" xsi:type="string">awCaCompanyProvider</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="label" xsi:type="string" translate="true">Reseller ID</item>
+                                                <item name="validation" xsi:type="array">
+                                                    <item name="required-entry" xsi:type="boolean">false</item>
+                                                </item>
+                                                <item name="sortOrder" xsi:type="number">50</item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                    <item name="address" xsi:type="array">
+                                        <item name="component" xsi:type="string">Magento_Ui/js/form/components/fieldset</item>
+                                        <item name="label" xsi:type="string" translate="true">Legal Address</item>
+                                        <item name="template" xsi:type="string">Aheadworks_Ca/form/element/fieldset</item>
+                                        <item name="dataScope" xsi:type="string">data.company</item>
+                                        <item name="children" xsi:type="array">
+                                            <item name="street" xsi:type="array">
+                                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                <item name="dataScope" xsi:type="string">street</item>
+                                                <item name="provider" xsi:type="string">awCaCompanyProvider</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="label" xsi:type="string" translate="true">Street Address</item>
+                                                <item name="validation" xsi:type="array">
+                                                    <item name="required-entry" xsi:type="boolean">true</item>
+                                                </item>
+                                                <item name="sortOrder" xsi:type="number">10</item>
+                                            </item>
+                                            <item name="city" xsi:type="array">
+                                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                <item name="dataScope" xsi:type="string">city</item>
+                                                <item name="provider" xsi:type="string">awCaCompanyProvider</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="label" xsi:type="string" translate="true">City</item>
+                                                <item name="validation" xsi:type="array">
+                                                    <item name="required-entry" xsi:type="boolean">true</item>
+                                                </item>
+                                                <item name="sortOrder" xsi:type="number">20</item>
+                                            </item>
+                                            <item name="country_id" xsi:type="array">
+                                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/select</item>
+                                                <item name="dataScope" xsi:type="string">country_id</item>
+                                                <item name="provider" xsi:type="string">awCaCompanyProvider</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="elementTmpl" xsi:type="string">ui/form/element/select</item>
+                                                <item name="label" xsi:type="string" translate="true">Country</item>
+                                                <item name="validation" xsi:type="array">
+                                                    <item name="required-entry" xsi:type="boolean">true</item>
+                                                </item>
+                                                <item name="imports" xsi:type="array">
+                                                    <item name="initialOptions" xsi:type="string">index = ${ $.provider }:dictionaries.country_id</item>
+                                                    <item name="setOptions" xsi:type="string">index = ${ $.provider }:dictionaries.country_id</item>
+                                                </item>
+                                                <item name="sortOrder" xsi:type="number">30</item>
+                                            </item>
+                                            <item name="region" xsi:type="array">
+                                                <item name="visible" xsi:type="boolean">false</item>
+                                                <item name="provider" xsi:type="string">awCaCompanyProvider</item>
+                                            </item>
+                                            <item name="region_id" xsi:type="array">
+                                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/region</item>
+                                                <item name="provider" xsi:type="string">awCaCompanyProvider</item>
+                                                <item name="dataScope" xsi:type="string">region_id</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="customScope" xsi:type="string">shippingAddress</item>
+                                                <item name="elementTmpl" xsi:type="string">ui/form/element/select</item>
+                                                <item name="customEntry" xsi:type="string">region</item>
+                                                <item name="imports" xsi:type="array">
+                                                    <item name="initialOptions" xsi:type="string">index = ${ $.provider }:dictionaries.region_id</item>
+                                                    <item name="setOptions" xsi:type="string">index = ${ $.provider }:dictionaries.region_id</item>
+                                                </item>
+                                                <item name="label" xsi:type="string" translate="true">State/Province</item>
+                                                <item name="validation" xsi:type="array">
+                                                    <item name="required-entry" xsi:type="boolean">true</item>
+                                                </item>
+                                                <item name="filterBy" xsi:type="array">
+                                                    <item name="target" xsi:type="string"><![CDATA[${ $.provider }:${ $.parentScope }.country_id]]></item>
+                                                    <item name="field" xsi:type="string">country_id</item>
+                                                </item>
+                                            </item>
+                                            <item name="postcode" xsi:type="array">
+                                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                <item name="dataScope" xsi:type="string">postcode</item>
+                                                <item name="provider" xsi:type="string">awCaCompanyProvider</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="label" xsi:type="string" translate="true">ZIP/Postal Code</item>
+                                                <item name="validation" xsi:type="array">
+                                                    <item name="required-entry" xsi:type="boolean">true</item>
+                                                </item>
+                                                <item name="sortOrder" xsi:type="number">50</item>
+                                            </item>
+                                            <item name="telephone" xsi:type="array">
+                                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                <item name="dataScope" xsi:type="string">telephone</item>
+                                                <item name="provider" xsi:type="string">awCaCompanyProvider</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="label" xsi:type="string" translate="true">Company Phone Number</item>
+                                                <item name="validation" xsi:type="array">
+                                                    <item name="required-entry" xsi:type="boolean">false</item>
+                                                </item>
+                                                <item name="sortOrder" xsi:type="number">60</item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                    <item name="administrator" xsi:type="array">
+                                        <item name="component" xsi:type="string">Magento_Ui/js/form/components/fieldset</item>
+                                        <item name="label" xsi:type="string" translate="true">Company Administrator</item>
+                                        <item name="template" xsi:type="string">Aheadworks_Ca/form/element/fieldset</item>
+                                        <item name="dataScope" xsi:type="string">data</item>
+                                        <item name="children" xsi:type="array">
+                                            <item name="job_title" xsi:type="array">
+                                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                <item name="dataScope" xsi:type="string">extension_attributes.aw_ca_company_user.job_title</item>
+                                                <item name="provider" xsi:type="string">awCaCompanyProvider</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="label" xsi:type="string" translate="true">Job Position</item>
+                                                <item name="validation" xsi:type="array">
+                                                    <item name="required-entry" xsi:type="boolean">false</item>
+                                                </item>
+                                                <item name="sortOrder" xsi:type="number">45</item>
+                                            </item>
+                                            <item name="firstname" xsi:type="array">
+                                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                <item name="dataScope" xsi:type="string">firstname</item>
+                                                <item name="provider" xsi:type="string">awCaCompanyProvider</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="label" xsi:type="string" translate="true">First Name</item>
+                                                <item name="validation" xsi:type="array">
+                                                    <item name="required-entry" xsi:type="boolean">true</item>
+                                                </item>
+                                                <item name="sortOrder" xsi:type="number">20</item>
+                                            </item>
+                                            <item name="lastname" xsi:type="array">
+                                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                <item name="dataScope" xsi:type="string">lastname</item>
+                                                <item name="provider" xsi:type="string">awCaCompanyProvider</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="label" xsi:type="string" translate="true">Last Name</item>
+                                                <item name="validation" xsi:type="array">
+                                                    <item name="required-entry" xsi:type="boolean">true</item>
+                                                </item>
+                                                <item name="sortOrder" xsi:type="number">30</item>
+                                            </item>
+                                            <item name="email" xsi:type="array">
+                                                <item name="component" xsi:type="string">Aheadworks_Ca/js/ui/form/element/validated-email</item>
+                                                <item name="dataScope" xsi:type="string">email</item>
+                                                <item name="provider" xsi:type="string">awCaCompanyProvider</item>
+                                                <item name="emailType" xsi:type="string">customer</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="elementTmpl" xsi:type="string">Aheadworks_Ca/form/element/validated-email</item>
+                                                <item name="validateEmailUrl" xsi:type="url" path="aw_ca/user/checkEmail"/>
+                                                <item name="label" xsi:type="string" translate="true">Email</item>
+                                                <item name="validation" xsi:type="array">
+                                                    <item name="required-entry" xsi:type="boolean">true</item>
+                                                    <item name="validate-email" xsi:type="string"/>
+                                                    <item name="aw-ca-validate-email" xsi:type="boolean">true</item>
+                                                </item>
+                                                <item name="sortOrder" xsi:type="number">40</item>
+                                            </item>
+                                            <item name="telephone" xsi:type="array">
+                                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                <item name="dataScope" xsi:type="string">extension_attributes.aw_ca_company_user.telephone</item>
+                                                <item name="provider" xsi:type="string">awCaCompanyProvider</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="label" xsi:type="string" translate="true">Phone number</item>
+                                                <item name="validation" xsi:type="array">
+                                                    <item name="required-entry" xsi:type="boolean">true</item>
+                                                </item>
+                                                <item name="sortOrder" xsi:type="number">50</item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                    <item name="send" xsi:type="array">
+                                        <item name="component" xsi:type="string">Magento_Ui/js/form/components/button</item>
+                                        <item name="provider" xsi:type="string">awCaCompanyProvider</item>
+                                        <item name="title" xsi:type="string" translate="true">Submit</item>
+                                        <item name="sortOrder" xsi:type="number">30</item>
+                                        <item name="buttonClasses" xsi:type="string">action primary</item>
+                                        <item name="actions" xsi:type="array">
+                                            <item name="0" xsi:type="array">
+                                                <item name="targetName" xsi:type="string">awCaForm</item>
+                                                <item name="actionName" xsi:type="string">save</item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                            <item name="awCaCompanyProvider" xsi:type="array">
+                                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+                                <item name="clientConfig" xsi:type="array">
+                                    <item name="urls" xsi:type="array">
+                                        <item name="save" xsi:type="url" path="aw_ca/company/savePost"/>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

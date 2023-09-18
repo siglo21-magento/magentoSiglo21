@@ -1,0 +1,15 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+/** @var $block \Aheadworks\CreditLimit\Block\Customer\BalanceHistory\Listing */
+?>
+<div class="block aw-cl__balance-history-listing-wrapper <?= /* @escapeNotVerified */ $block->getData('additionalClasses') ?>">
+    <div class="block-title"><strong><?= $block->escapeHtml(__('Credit History')) ?></strong></div>
+    <div class="block-content">
+        <?= /* @escapeNotVerified */ $block->renderApp(); ?>
+    </div>
+</div>

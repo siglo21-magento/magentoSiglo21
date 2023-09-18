@@ -1,0 +1,501 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="Aheadworks\Ca\Api\Data\CompanyInterface" type="Aheadworks\Ca\Model\Company" />
+    <preference for="Aheadworks\Ca\Api\Data\CompanySearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Aheadworks\Ca\Api\CompanyRepositoryInterface" type="Aheadworks\Ca\Model\CompanyRepository" />
+    <preference for="Aheadworks\Ca\Api\SellerCompanyManagementInterface" type="Aheadworks\Ca\Model\Service\SellerCompanyService" />
+
+    <preference for="Aheadworks\Ca\Api\Data\CompanyUserInterface" type="Aheadworks\Ca\Model\Customer\CompanyUser" />
+    <preference for="Aheadworks\Ca\Api\CompanyUserManagementInterface" type="Aheadworks\Ca\Model\Service\CompanyUserService" />
+
+    <preference for="Aheadworks\Ca\Api\Data\RoleInterface" type="Aheadworks\Ca\Model\Role" />
+    <preference for="Aheadworks\Ca\Api\Data\RolePermissionInterface" type="Aheadworks\Ca\Model\Role\Permission" />
+    <preference for="Aheadworks\Ca\Api\Data\RoleSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Aheadworks\Ca\Api\RoleRepositoryInterface" type="Aheadworks\Ca\Model\RoleRepository" />
+    <preference for="Aheadworks\Ca\Api\RoleManagementInterface" type="Aheadworks\Ca\Model\Service\RoleService" />
+    <preference for="Aheadworks\Ca\Api\AuthorizationManagementInterface" type="Aheadworks\Ca\Model\Service\AuthorizationService" />
+
+    <preference for="Aheadworks\Ca\Api\Data\GroupInterface" type="Aheadworks\Ca\Model\Group" />
+    <preference for="Aheadworks\Ca\Api\Data\GroupSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Aheadworks\Ca\Api\GroupRepositoryInterface" type="Aheadworks\Ca\Model\GroupRepository" />
+    <preference for="Aheadworks\Ca\Api\GroupManagementInterface" type="Aheadworks\Ca\Model\Service\GroupService" />
+    <preference for="Aheadworks\Ca\Api\AclManagementInterface" type="Aheadworks\Ca\Model\Service\AclService" />
+
+    <preference for="Aheadworks\Ca\Api\Data\EmailAvailabilityResultInterface" type="Aheadworks\Ca\Model\Customer\Checker\EmailAvailability\Result" />
+    <preference for="Aheadworks\Ca\Model\Email\EmailMetadataInterface" type="Aheadworks\Ca\Model\Email\EmailMetadata" />
+
+    <type name="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="Aheadworks\Ca\Api\Data\GroupInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="const">Aheadworks\Ca\Model\ResourceModel\Group::MAIN_TABLE_NAME</item>
+                    <item name="identifierField" xsi:type="const">Aheadworks\Ca\Api\Data\GroupInterface::ID</item>
+                </item>
+            </argument>
+            <argument name="metadata" xsi:type="array">
+                <item name="Aheadworks\Ca\Api\Data\CompanyInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="const">Aheadworks\Ca\Model\ResourceModel\Company::MAIN_TABLE_NAME</item>
+                    <item name="identifierField" xsi:type="const">Aheadworks\Ca\Api\Data\CompanyInterface::ID</item>
+                </item>
+            </argument>
+            <argument name="metadata" xsi:type="array">
+                <item name="Aheadworks\Ca\Api\Data\RoleInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="const">Aheadworks\Ca\Model\ResourceModel\Role::MAIN_TABLE_NAME</item>
+                    <item name="identifierField" xsi:type="const">Aheadworks\Ca\Api\Data\RoleInterface::ID</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\EntityManager\Operation\ExtensionPool">
+        <arguments>
+            <argument name="extensionActions" xsi:type="array">
+                <item name="Aheadworks\Ca\Api\Data\CompanyInterface" xsi:type="array">
+                    <item name="create" xsi:type="array">
+                        <item name="allowedPaymentMethodCreator" xsi:type="string">Aheadworks\Ca\Model\ResourceModel\Company\Relation\PaymentMethods\SaveHandler</item>
+                    </item>
+                    <item name="read" xsi:type="array">
+                        <item name="allowedPaymentMethodReader" xsi:type="string">Aheadworks\Ca\Model\ResourceModel\Company\Relation\PaymentMethods\ReadHandler</item>
+                    </item>
+                    <item name="update" xsi:type="array">
+                        <item name="allowedPaymentMethodUpdater" xsi:type="string">Aheadworks\Ca\Model\ResourceModel\Company\Relation\PaymentMethods\SaveHandler</item>
+                    </item>
+                </item>
+                <item name="Aheadworks\RequisitionLists\Api\Data\RequisitionListItemInterface" xsi:type="array">
+                    <item name="create" xsi:type="array">
+                        <item name="requisitionListItemUpdated" xsi:type="string">Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RequisitionLists\Model\Item\SaveHandler</item>
+                    </item>
+                    <item name="update" xsi:type="array">
+                        <item name="requisitionListItemUpdated" xsi:type="string">Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RequisitionLists\Model\Item\SaveHandler</item>
+                    </item>
+                    <item name="delete" xsi:type="array">
+                        <item name="requisitionListItemUpdated" xsi:type="string">Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RequisitionLists\Model\Item\SaveHandler</item>
+                    </item>
+                </item>
+                <item name="Aheadworks\RequisitionLists\Api\Data\RequisitionListInterface" xsi:type="array">
+                    <item name="create" xsi:type="array">
+                        <item name="requisitionListUpdated" xsi:type="string">Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RequisitionLists\Model\SaveHandler</item>
+                    </item>
+                    <item name="update" xsi:type="array">
+                        <item name="requisitionListUpdated" xsi:type="string">Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RequisitionLists\Model\SaveHandler</item>
+                    </item>
+                    <item name="delete" xsi:type="array">
+                        <item name="requisitionListUpdated" xsi:type="string">Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RequisitionLists\Model\SaveHandler</item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="rlist" xsi:type="object">Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RequisitionLists\Ui\DataProvider\RequisitionListFilter</item>
+                <item name="rlist_admin" xsi:type="object">Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RequisitionLists\Ui\DataProvider\RequisitionListAdminFilter</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Customer\Model\ResourceModel\Customer">
+        <plugin name="awCa" type="Aheadworks\Ca\Plugin\Model\ExtensionAttributes\Customer\ResourceModelPlugin" />
+    </type>
+    <type name="Magento\Customer\Model\ResourceModel\CustomerRepository">
+        <plugin name="awCa" type="Aheadworks\Ca\Plugin\Model\ExtensionAttributes\Customer\RepositoryPlugin" />
+    </type>
+    <type name="Magento\Customer\Model\EmailNotificationInterface">
+        <plugin name="awCa" type="Aheadworks\Ca\Plugin\Model\Email\CustomerEmailNotificationPlugin"/>
+    </type>
+
+    <type name="Aheadworks\StoreCredit\Model\Service\CustomerStoreCreditService">
+        <plugin name="awCa" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\StoreCredit\Plugin\Customer\StoreCreditServicePlugin"/>
+    </type>
+    <type name="Aheadworks\StoreCredit\Block\Customer\Subscribe">
+        <plugin name="awCa" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\StoreCredit\Plugin\Customer\SubscribePlugin"/>
+    </type>
+    <type name="Aheadworks\StoreCredit\Block\Customer\StoreCreditBalance\Account\Transaction">
+        <arguments>
+            <argument name="customerSession" xsi:type="object">Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\StoreCredit\Model\Customer\TransactionSession</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\StoreCredit\Api\TransactionManagementInterface">
+        <plugin name="awCa" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\StoreCredit\Plugin\Customer\TransactionManagementPlugin"/>
+    </type>
+    <type name="Aheadworks\StoreCredit\Model\Sender">
+        <plugin name="awCa" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\StoreCredit\Plugin\SenderPlugin"/>
+    </type>
+    <type name="Aheadworks\Ca\Api\CompanyUserManagementInterface">
+        <plugin name="awCaCompanyUserStoreCredit" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\StoreCredit\Plugin\CompanyUserManagementPlugin"/>
+    </type>
+    <type name="Aheadworks\StoreCredit\Block\Customer\StoreCreditBalance\Account">
+        <plugin name="awCaCompany" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\StoreCredit\Plugin\Block\AccountPlugin"/>
+    </type>
+
+    <type name="Aheadworks\RewardPoints\Api\CustomerRewardPointsManagementInterface">
+        <plugin name="awCa" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RewardPoints\Plugin\Customer\RewardPointsServicePlugin"/>
+    </type>
+    <type name="Aheadworks\RewardPoints\Block\Customer\RewardPointsBalance\Account\Transaction">
+        <arguments>
+            <argument name="customerSession" xsi:type="object">Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RewardPoints\Model\Customer\TransactionSession</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\RewardPoints\Model\Service\PointsSummaryService">
+        <plugin name="awCa" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RewardPoints\Plugin\Customer\PointsSummaryServicePlugin" />
+    </type>
+    <type name="Aheadworks\RewardPoints\Block\Customer\Subscribe">
+        <plugin name="awCa" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RewardPoints\Plugin\Customer\SubscribePlugin"/>
+    </type>
+    <type name="Aheadworks\RewardPoints\Model\Calculator\Spending">
+        <plugin name="awCa" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RewardPoints\Plugin\Customer\SpendingPlugin"/>
+    </type>
+    <type name="Aheadworks\RewardPoints\Model\Calculator\Earning">
+        <plugin name="awCa" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RewardPoints\Plugin\Customer\EarningPlugin"/>
+    </type>
+    <type name="Aheadworks\RewardPoints\Model\Calculator\RateCalculator">
+        <plugin name="awCa" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RewardPoints\Plugin\Customer\RateCalculatorPlugin"/>
+    </type>
+    <type name="Aheadworks\RewardPoints\Model\Sender">
+        <plugin name="awCa" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RewardPoints\Plugin\SenderPlugin"/>
+    </type>
+    <type name="Aheadworks\Ca\Api\CompanyUserManagementInterface">
+        <plugin name="awCaCompanyUserRewardPoints" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RewardPoints\Plugin\CompanyUserManagementPlugin"/>
+    </type>
+    <type name="Aheadworks\RewardPoints\Block\Customer\RewardPointsBalance\Account">
+        <plugin name="awCaCompany" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RewardPoints\Plugin\Block\AccountPlugin"/>
+    </type>
+
+    <type name="Aheadworks\PaymentRestrictions\Model\PaymentManagement">
+        <plugin name="awCaCompany" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\PaymentRestrictions\Plugin\Model\PaymentManagementPlugin"/>
+    </type>
+
+    <type name="Aheadworks\CreditLimit\Api\TransactionManagementInterface">
+        <plugin name="awCaCompany" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\CreditLimit\Plugin\TransactionServicePlugin"/>
+    </type>
+    <type name="Aheadworks\CreditLimit\Api\CustomerManagementInterface">
+        <plugin name="awCaCompany" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\CreditLimit\Plugin\CustomerServicePlugin"/>
+    </type>
+
+    <type name="Aheadworks\Ca\Model\Authorization\Acl\ResourceMapper">
+        <arguments>
+            <argument name="map" xsi:type="array">
+                <item name="Aheadworks_Ca::companies_view" xsi:type="array">
+                    <item name="0" xsi:type="string">aw_ca/company</item>
+                    <item name="1" xsi:type="string">aw_ca/company/index</item>
+                </item>
+                <item name="Aheadworks_Ca::pruebas_view" xsi:type="array">
+                    <item name="0" xsi:type="string">aw_ca/prueba</item>
+                    <item name="1" xsi:type="string">aw_ca/prueba/index</item>
+                </item>
+                <item name="Aheadworks_Ca::companies_edit" xsi:type="array">
+                    <item name="0" xsi:type="string">aw_ca/company/edit</item>
+                </item>
+
+                <item name="Aheadworks_Ca::company_users_view" xsi:type="array">
+                    <item name="0" xsi:type="string">aw_ca/user</item>
+                    <item name="1" xsi:type="string">aw_ca/user/index</item>
+                </item>
+                <item name="Aheadworks_Ca::company_users_add_new" xsi:type="array">
+                    <item name="0" xsi:type="string">aw_ca/user/create</item>
+                </item>
+                <item name="Aheadworks_Ca::company_users_edit" xsi:type="array">
+                    <item name="0" xsi:type="string">aw_ca/user/edit</item>
+                </item>
+                <item name="Aheadworks_Ca::company_users_change_status" xsi:type="array">
+                    <item name="0" xsi:type="string">aw_ca/user/changeStatus</item>
+                </item>
+
+                <item name="Aheadworks_Ca::company_roles_view" xsi:type="array">
+                    <item name="0" xsi:type="string">aw_ca/role</item>
+                    <item name="1" xsi:type="string">aw_ca/role/index</item>
+                </item>
+                <item name="Aheadworks_Ca::company_roles_add_new" xsi:type="array">
+                    <item name="0" xsi:type="string">aw_ca/role/create</item>
+                </item>
+                <item name="Aheadworks_Ca::company_roles_edit" xsi:type="array">
+                    <item name="0" xsi:type="string">aw_ca/role/edit</item>
+                </item>
+                <item name="Aheadworks_StoreCredit::company_stc_view_and_use" xsi:type="array">
+                    <item name="0" xsi:type="string">aw_store_credit/info</item>
+                    <item name="1" xsi:type="string">aw_store_credit/info/index</item>
+                </item>
+                <item name="Aheadworks_RewardPoints::company_rp_view_and_use" xsi:type="array">
+                    <item name="0" xsi:type="string">aw_rewardpoints/info</item>
+                    <item name="1" xsi:type="string">aw_rewardpoints/info/index</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\Ca\Model\Authorization\Acl\AclResource\Config\Reader\Filesystem" type="Magento\Framework\Acl\AclResource\Config\Reader\Filesystem">
+        <arguments>
+            <argument name="fileName" xsi:type="string">company_acl.xml</argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Ca\Model\Authorization\Acl\AclResource\Provider">
+        <arguments>
+            <argument name="configReader" xsi:type="object">Aheadworks\Ca\Model\Authorization\Acl\AclResource\Config\Reader\Filesystem</argument>
+            <argument name="cacheKey" xsi:type="string">aw_ca_provider_acl_resources_cache</argument>
+            <argument name="customProcessor" xsi:type="object">Aheadworks\Ca\Model\Authorization\CustomProcessor\ProcessorComposite</argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\Ca\Model\Authorization\Acl\RootResource" type="Magento\Framework\Acl\RootResource">
+        <arguments>
+            <argument name="identifier" xsi:type="string">Aheadworks_Ca::all</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Aheadworks\Ca\Model\Authorization\Acl\ResourceLoader" type="Magento\Framework\Acl\Loader\ResourceLoader">
+        <arguments>
+            <argument name="resourceProvider" xsi:type="object">Aheadworks\Ca\Model\Authorization\Acl\AclResource\Provider</argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Ca\Model\Authorization\Acl\RuleLoader">
+        <arguments>
+            <argument name="rootResource" xsi:type="object">Aheadworks\Ca\Model\Authorization\Acl\RootResource</argument>
+            <argument name="resourceProvider" xsi:type="object">Aheadworks\Ca\Model\Authorization\Acl\AclResource\Provider</argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\Ca\Model\Authorization\Acl\Builder" type="Magento\Framework\Acl\Builder">
+        <arguments>
+            <argument name="roleLoader" xsi:type="object">Aheadworks\Ca\Model\Authorization\Acl\Loader\Role</argument>
+            <argument name="resourceLoader" xsi:type="object">Aheadworks\Ca\Model\Authorization\Acl\ResourceLoader</argument>
+            <argument name="ruleLoader" xsi:type="object">Aheadworks\Ca\Model\Authorization\Acl\Loader\Rule</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Ca\Model\Authorization\Acl\Policy" type="Magento\Framework\Authorization\Policy\Acl">
+        <arguments>
+            <argument name="aclBuilder" xsi:type="object">Aheadworks\Ca\Model\Authorization\Acl\Builder</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Ca\Model\Authorization" type="Magento\Framework\Authorization">
+        <arguments>
+            <argument name="aclPolicy" xsi:type="object">Aheadworks\Ca\Model\Authorization\Acl\Policy</argument>
+            <argument name="roleLocator" xsi:type="object">Aheadworks\Ca\Model\Authorization\Acl\RoleLocator</argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Ca\Model\Service\AuthorizationService">
+        <arguments>
+            <argument name="authorization" xsi:type="object">Aheadworks\Ca\Model\Authorization</argument>
+            <argument name="customProcessor" xsi:type="object">Aheadworks\Ca\Model\Authorization\CustomProcessor\ProcessorComposite</argument>
+        </arguments>
+    </type>
+
+    <type name="Aheadworks\Ca\Model\Role\EntityProcessor">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="permissions" xsi:type="object">Aheadworks\Ca\Model\Role\EntityProcessor\Permissions</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Aheadworks\Ca\Model\Service\AclService">
+        <arguments>
+            <argument name="aclResourceProvider" xsi:type="object">Aheadworks\Ca\Model\Authorization\Acl\AclResource\Provider</argument>
+            <argument name="rootResource" xsi:type="object">Aheadworks\Ca\Model\Authorization\Acl\RootResource</argument>
+        </arguments>
+    </type>
+
+    <type name="Aheadworks\Ca\Model\Authorization\CustomProcessor\ProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="awCtqProcessor" xsi:type="object">Aheadworks\Ca\Model\Authorization\CustomProcessor\AwCtqProcessor</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Aheadworks\Ca\Model\Company\Notifier\VariableProcessor\Composite" type="Aheadworks\Ca\Model\Email\VariableProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="userName" xsi:type="object">Aheadworks\Ca\Model\Company\Notifier\VariableProcessor\UserName</item>
+                <item name="resetPasswordUrl" xsi:type="object">Aheadworks\Ca\Model\Company\Notifier\VariableProcessor\ResetPasswordUrl</item>
+                <item name="companyUrl" xsi:type="object">Aheadworks\Ca\Model\Company\Notifier\VariableProcessor\CompanyUrl</item>
+                <item name="adminName" xsi:type="object">Aheadworks\Ca\Model\Company\Notifier\VariableProcessor\AdminName</item>
+                <item name="companyStatus" xsi:type="object">Aheadworks\Ca\Model\Company\Notifier\VariableProcessor\CompanyStatus</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Ca\Model\Company\Notifier\EmailProcessor\AbstractProcessor">
+        <arguments>
+            <argument name="variableProcessorComposite" xsi:type="object">Aheadworks\Ca\Model\Company\Notifier\VariableProcessor\Composite</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Ca\Model\Company\Notifier">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="new_company_created_processor" xsi:type="object">Aheadworks\Ca\Model\Company\Notifier\EmailProcessor\NewCompanyCreated</item>
+                <item name="new_company_approved_processor" xsi:type="object">Aheadworks\Ca\Model\Company\Notifier\EmailProcessor\NewCompanyApproved</item>
+                <item name="new_company_declined_processor" xsi:type="object">Aheadworks\Ca\Model\Company\Notifier\EmailProcessor\NewCompanyDeclined</item>
+                <item name="company_status_changed_processor" xsi:type="object">Aheadworks\Ca\Model\Company\Notifier\EmailProcessor\CompanyStatusChanged</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Aheadworks\Ca\Model\Customer\CompanyUser\Notifier\VariableProcessor\Composite" type="Aheadworks\Ca\Model\Email\VariableProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="userName" xsi:type="object">Aheadworks\Ca\Model\Company\Notifier\VariableProcessor\UserName</item>
+                <item name="resetPasswordUrl" xsi:type="object">Aheadworks\Ca\Model\Company\Notifier\VariableProcessor\ResetPasswordUrl</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Ca\Model\Customer\CompanyUser\Notifier\NewCompanyUserCreated">
+        <arguments>
+            <argument name="variableProcessorComposite" xsi:type="object">Aheadworks\Ca\Model\Customer\CompanyUser\Notifier\VariableProcessor\Composite</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Ca\Model\Customer\CompanyUser\Notifier">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="new_company_user_created_processor" xsi:type="object">Aheadworks\Ca\Model\Customer\CompanyUser\Notifier\NewCompanyUserCreated</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Aheadworks\Ca\Ui\DataProvider\Role\FormDataProvider">
+        <arguments>
+            <argument name="modifiersPool" xsi:type="object">Aheadworks\Ca\Ui\DataProvider\Role\Form\Modifier\Pool</argument>
+            <argument name="collectionFactory" xsi:type="string">Aheadworks\Ca\Model\ResourceModel\Role\CollectionFactory</argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\Ca\Ui\DataProvider\Role\Form\Modifier\Pool" type="Magento\Ui\DataProvider\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="permissions" xsi:type="array">
+                    <item name="class" xsi:type="string">Aheadworks\Ca\Ui\DataProvider\Role\Form\Modifier\Permissions</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+                <item name="aw_store_credit" xsi:type="array">
+                    <item name="class" xsi:type="string">Aheadworks\Ca\Ui\DataProvider\Role\Form\Modifier\AwStoreCredit</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                </item>
+                <item name="aw_reward_points" xsi:type="array">
+                    <item name="class" xsi:type="string">Aheadworks\Ca\Ui\DataProvider\Role\Form\Modifier\AwRewardPoints</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                </item>
+                <item name="set_as_default" xsi:type="array">
+                    <item name="class" xsi:type="string">Aheadworks\Ca\Ui\DataProvider\Role\Form\Modifier\SetAsDefault</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Aheadworks\Ca\Ui\DataProvider\CompanyUser\FormDataProvider">
+        <arguments>
+            <argument name="modifiersPool" xsi:type="object">Aheadworks\Ca\Ui\DataProvider\CompanyUser\Form\Modifier\Pool</argument>
+            <argument name="collectionFactory" xsi:type="string">Magento\Customer\Model\ResourceModel\Customer\CollectionFactory</argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\Ca\Ui\DataProvider\CompanyUser\Form\Modifier\Pool" type="Magento\Ui\DataProvider\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="role" xsi:type="array">
+                    <item name="class" xsi:type="string">Aheadworks\Ca\Ui\DataProvider\CompanyUser\Form\Modifier\Role</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+                <item name="ext_attributes" xsi:type="array">
+                    <item name="class" xsi:type="string">Aheadworks\Ca\Ui\DataProvider\CompanyUser\Form\Modifier\ExtensionAttributes</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Aheadworks\Ca\Ui\DataProvider\Company\FormDataProvider">
+        <arguments>
+            <argument name="modifiersPool" xsi:type="object">Aheadworks\Ca\Ui\DataProvider\Company\Form\Modifier\Pool</argument>
+            <argument name="collectionFactory" xsi:type="string">Aheadworks\Ca\Model\ResourceModel\Company\CollectionFactory</argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\Ca\Ui\DataProvider\Company\Form\Modifier\Pool" type="Magento\Ui\DataProvider\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="address_dictionaries" xsi:type="array">
+                    <item name="class" xsi:type="string">Aheadworks\Ca\Ui\DataProvider\Company\Form\Modifier\Address</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+                <item name="administrator" xsi:type="array">
+                    <item name="class" xsi:type="string">Aheadworks\Ca\Ui\DataProvider\Company\Form\Modifier\Administrator</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Aheadworks\Ca\Model\Company\Validator">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="status" xsi:type="object">Aheadworks\Ca\Model\Company\Validator\Status</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Aheadworks\Ca\Model\Api\SearchCriteria\CollectionProcessor\CompanyFilterProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor">
+        <arguments>
+            <argument name="customFilters" xsi:type="array">
+                <item name="website" xsi:type="object">Aheadworks\Ca\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor\Company\WebsiteFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Ca\Model\Api\SearchCriteria\CompanyCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="filters" xsi:type="object">Aheadworks\Ca\Model\Api\SearchCriteria\CollectionProcessor\CompanyFilterProcessor</item>
+                <item name="sorting" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor</item>
+                <item name="pagination" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Ca\Model\CompanyRepository">
+        <arguments>
+            <argument name="collectionProcessor" xsi:type="object">Aheadworks\Ca\Model\Api\SearchCriteria\CompanyCollectionProcessor</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor">
+        <arguments>
+            <argument name="customFilters" xsi:type="array">
+                <item name="aw_ca_customer_by_group_path" xsi:type="object">Aheadworks\Ca\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor\Customer\ByGroupPathFilter</item>
+                <item name="aw_ca_customer_by_company_id" xsi:type="object">Aheadworks\Ca\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor\Customer\ByCompanyIdFilter</item>
+                <item name="aw_ca_customer_is_root" xsi:type="object">Aheadworks\Ca\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor\Customer\UserIsRootFilter</item>
+                <item name="aw_ca_customer_is_activated_join" xsi:type="object">Aheadworks\Ca\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor\Customer\UserIsActivatedJoin</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Aheadworks\Ca\Model\ResourceModel\Company\Grid\Collection">
+        <arguments>
+            <argument name="model" xsi:type="string">Aheadworks\Ca\Ui\DataProvider\Company\Listing\Document</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="aw_ca_company_listing_data_source" xsi:type="string">Aheadworks\Ca\Model\ResourceModel\Company\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Aheadworks\Ca\Model\Customer\CompanyUser\EntityProcessor">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="isRoot" xsi:type="object">Aheadworks\Ca\Model\Customer\CompanyUser\EntityProcessor\IsRootField</item>
+                <item name="isActivated" xsi:type="object">Aheadworks\Ca\Model\Customer\CompanyUser\EntityProcessor\IsActivatedField</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Aheadworks\Ca\Setup\SampleData\Installer">
+        <arguments>
+            <argument name="installers" xsi:type="array">
+                <item name="cmsPage" xsi:type="object">Aheadworks\Ca\Setup\SampleData\Installer\CmsPage</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

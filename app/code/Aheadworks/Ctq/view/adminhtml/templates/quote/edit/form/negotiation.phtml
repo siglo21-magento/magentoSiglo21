@@ -1,0 +1,62 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Backend\Block\Template */
+?>
+<?php
+/** @var \Aheadworks\Ctq\ViewModel\Quote\Edit\Form\Negotiation $formViewModel */
+$formViewModel = $block->getFormViewModel();
+/** @var Aheadworks\Ctq\ViewModel\Quote\Edit\CurrentQuote $quoteViewModel */
+$quoteViewModel = $block->getQuoteViewModel();
+$cart = $block->getParentBlock()->getQuote();
+?>
+<table class="price-negotiation-table" data-mage-init='{
+                "awCtqNegotiatedDiscountSelector": {
+                    "total": <?= /* @noEscape */ $formViewModel->getCartTotal($cart) ?>,
+                    "errorText": {
+                        "percent": "<?= $block->escapeHtml(__('The negotiated price cannot be higher than 100 or less than 0 percent.')) ?>",
+                        "amount": "<?= $block->escapeHtml(__('The negotiated price cannot be less than 0 or higher than catalog price.')) ?>"
+                    }
+                }
+            }'>
+    <?php foreach ($formViewModel->getDiscountTypeConfig($cart) as $type => $config): ?>
+        <tr class="<?= $block->escapeHtml($type) ?>">
+            <th class="row">
+                <input type="radio"
+                       name="quote[negotiated_discount_type]"
+                       <?= $block->escapeHtmlAttr($quoteViewModel->isEditQuote($block->getParentBlock()->getQuoteId()) ? "" : "disabled"); ?>
+                       value="<?= $block->escapeHtmlAttr($type) ?>"
+                       <?= $block->escapeHtml($formViewModel->getDiscountTypeChecked($cart, $type)) ?>
+                />
+                <?= $block->escapeHtml($config['label']) ?>
+            </th>
+            <td data-th="<?= $block->escapeHtml($config['label']) ?>">
+                <div class="admin__control-addon">
+                    <input class="admin__control-text"
+                           type="number"
+                           name="quote[negotiated_discount_value]"
+                           <?= $block->escapeHtmlAttr($quoteViewModel->isEditQuote($block->getParentBlock()->getQuoteId()) ? "" : "disabled"); ?>
+                           data-validate='{<?= /* @noEscape */ $formViewModel->getValidationRuleForDiscountInput($config, $type) ?>}'
+                           data-discount-type="<?= $block->escapeHtmlAttr($type) ?>"
+                           value="<?= $block->escapeHtmlAttr($formViewModel->getDiscountValue($cart, $type)) ?>"
+                    />
+                    <?php if ($formViewModel->isNeedToDisplayCurrencySymbol($type)): ?>
+                        <label class="admin__addon-prefix"><?= $block->escapeHtmlAttr($formViewModel->getCurrencySymbol($cart)) ?></label>
+                    <?php else: ?>
+                        <label class="admin__addon-suffix">%</label>
+                    <?php endif; ?>
+                </div>
+            </td>
+        </tr>
+    <?php endforeach ?>
+    <tr class="error-message" style="display: none">
+        <td colspan="2">
+            <div class="error-text"/>
+        </td>
+    </tr>
+</table>

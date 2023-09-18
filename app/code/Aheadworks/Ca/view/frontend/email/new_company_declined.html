@@ -1,0 +1,19 @@
+<!--@subject {{trans 'Your new company request has been declined'}}@-->
+{{template config_path="design/email/header_template"}}
+
+<h2>Compañía Declinada</h2>
+<p>
+    {{trans 'Dear %user_name,' user_name=$user_name}}<br />
+    {{trans
+        'Your company registration has been declined.'
+    |raw}}
+</p>
+<p>
+    {{trans 'You may contact the seller for more information'}}
+</p>
+<p class="interactable">
+    <a href="{{store direct_url=""}}contact"><span>Contáctanos</span></a>
+</p>
+
+
+{{template config_path="design/email/footer_template"}}

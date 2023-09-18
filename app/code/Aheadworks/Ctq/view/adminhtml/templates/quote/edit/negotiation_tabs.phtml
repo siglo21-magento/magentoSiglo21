@@ -1,0 +1,45 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+/** @var  $block Aheadworks\Ctq\Block\Adminhtml\Quote\Edit\NegotiationTabs */
+?>
+<div class="admin__page-section-title">
+    <span class="title"><?= $block->escapeHtml($block->getHeaderText()) ?></span>
+</div>
+<div class="quote-negotiation-tabs grid_tabs" data-mage-init='{"tabs":{}}'>
+    <ul class="tabs-horiz">
+        <li>
+            <a href="#comments" id="grid_tab_comments"
+               title="<?= $block->escapeHtmlAttr(__('Comments')) ?>"
+               class="ui-tabs-anchor" data-tab-type="">
+                <span>
+                    <span class="changed" title="<?= $block->escapeHtmlAttr($block->getChangedText()) ?>"></span>
+                    <span class="error" title="<?= $block->escapeHtmlAttr($block->getErrorText()) ?>"></span>
+                    <span class="loader" title="<?= $block->escapeHtmlAttr($block->getLoaderText()) ?>"></span>
+                    <?= $block->escapeHtml(__('Comments')) ?>
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="#history" id="grid_tab_history"
+               title="<?= $block->escapeHtmlAttr(__('History Log')) ?>"
+               class="ui-tabs-anchor" data-tab-type="">
+                <span>
+                    <span class="changed" title="<?= $block->escapeHtmlAttr($block->getChangedText()) ?>"></span>
+                    <span class="error" title="<?= $block->escapeHtmlAttr($block->getErrorText()) ?>"></span>
+                    <span class="loader" title="<?= $block->escapeHtmlAttr($block->getLoaderText()) ?>"></span>
+                    <?= $block->escapeHtml(__('History Log')) ?>
+                </span>
+            </a>
+        </li>
+    </ul>
+    <div id="comments" class="quote-negotiation-comments" style="display:none">
+        <?= /* @noEscape */ $block->getChildHtml('quote_comments') ?>
+    </div>
+    <div id="history" class="quote-negotiation-history" style="display:none">
+        <?= /* @noEscape */ $block->getChildHtml('quote_history') ?>
+    </div>
+</div>

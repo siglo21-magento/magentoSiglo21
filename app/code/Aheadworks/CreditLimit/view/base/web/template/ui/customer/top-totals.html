@@ -1,0 +1,12 @@
+<div if="isTopTotalsVisible()" class="aw-cl__top-totals-list-wrap">
+    <ul class="total-list">
+        <li class="total-item" outerfasteach="data: elems(), as: '$total'">
+            <span class="title" text="$total.label" />:
+            <div class="total_value">
+                <span class="total" text="$total.getValue($parent.topTotals)" />
+                <span if="$total.getConvertedValue($parent.topTotals)"
+                      class="total" text="$total.getConvertedValue($parent.topTotals)" />
+            </div>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,32 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Aheadworks\Ctq\Block\RequestQuote\Success */
+?>
+<div class="aw-ctq__quote-submit-success">
+    <p>
+        <?= __(
+            'Your quote number is: %1.',
+            sprintf(
+                '<a href="%s" class="quote-number"><strong>%s</strong></a>',
+                $block->escapeHtml($block->getQuoteViewModel()->getEditQuoteUrl($block->getLastQuoteId())),
+                $block->escapeHtml($block->getLastQuoteId())
+            )
+        ) ?>
+    </p>
+    <p><?= $block->escapeHtml(__('The quote has been sent to the merchant.')) ?></p>
+
+    <div class="actions-toolbar">
+        <div class="primary">
+            <a class="action primary continue"
+               href="<?= $block->escapeUrl($block->getContinueUrl()) ?>">
+                <span><?= $block->escapeHtml(__('Continue Shopping')) ?></span>
+            </a>
+        </div>
+    </div>
+</div>

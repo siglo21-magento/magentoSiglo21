@@ -1,0 +1,19 @@
+<!--@subject {{trans 'New Quote %quote_name' quote_name=$quote.getName()}}@-->
+{{template config_path="design/email/header_template"}}
+
+<p>
+    {{trans 'Dear %user_name,' user_name=$user_name}}<br />
+    {{trans
+        'Your new Quote <a href="%quote_url">%quote_name</a> has been successfully created.'
+        quote_url=$quote_url quote_name=$quote.getName()
+    |raw}}
+</p>
+{{depend expiration_date}}
+    <p>
+        {{trans 'The Quote expires after %expiration_date.' expiration_date=$expiration_date}}
+    </p>
+{{/depend}}
+
+{{layout handle="aw_ctq_email_quote_details" quote=$quote store=$store area="frontend"}}
+
+{{template config_path="design/email/footer_template"}}

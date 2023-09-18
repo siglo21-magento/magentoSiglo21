@@ -1,0 +1,16 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+/** @var \Aheadworks\Ctq\ViewModel\Customer\Export\Address $addressViewModel */
+$addressViewModel = $block->getAddressViewModel();
+?>
+<?php if ($addressViewModel) : ?>
+    <div>
+        <?= $addressViewModel->getAddressHtml(); ?>
+    </div>
+    <br />
+<?php endif ?>

@@ -1,0 +1,53 @@
+<?php
+
+
+namespace Aventi\SAP\Cron;
+
+use Aventi\SAP\Model\Sync\Stock as ManagerStock;
+use Bcn\Component\Json\Exception\ReadingError;
+use Magento\Framework\Exception\FileSystemException;
+
+/**
+ * Class StockFaster
+ *
+ * @package Aventi\SAP\Cron
+ */
+class StockFaster
+{
+
+    protected $logger;
+
+     /**
+     * @var ManagerStock;
+     */
+    private $stock;
+
+    /**
+     * Constructor
+     *
+     * @param \Psr\Log\LoggerInterface $logger
+     * @param ManagerStock $stock
+     */
+    public function __construct(
+        \Psr\Log\LoggerInterface $logger,
+        ManagerStock $stock
+    )
+    {
+        $this->logger = $logger;
+        $this->stock = $stock;
+    }
+
+    /**
+     * Execute the cron
+     *
+     * @return void
+     * @throws ReadingError
+     * @throws FileSystemException
+     */
+    public function execute()
+    {
+        $this->logger->addInfo("Cronjob StockFaster is executed.");
+        $this->stock->updateStock('stock', true, null);
+    }
+}
+

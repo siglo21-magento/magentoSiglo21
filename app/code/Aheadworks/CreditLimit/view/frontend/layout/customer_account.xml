@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="customer_account_navigation">
+            <block class="Aheadworks\CreditLimit\Block\Customer\Link"
+                   name="customer-account-navigation-credit-limit-link"
+                   after="customer-account-navigation-newsletter-subscriptions-link">
+                <arguments>
+                    <argument name="path" xsi:type="string">aw_credit_limit/balance</argument>
+                    <argument name="label" xsi:type="string">Credit Limit</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Customer:etc/sections.xsd">
+    <action name="checkout/cart/add">
+        <section name="quote-list"/>
+    </action>
+    <action name="checkout/cart/delete">
+        <section name="quote-list"/>
+    </action>
+    <action name="checkout/cart/updatePost">
+        <section name="quote-list"/>
+    </action>
+    <action name="checkout/cart/updateItemOptions">
+        <section name="quote-list"/>
+    </action>
+    <action name="checkout/cart/estimatePost">
+        <section name="quote-list"/>
+    </action>
+    <action name="checkout/cart/estimateUpdatePost">
+        <section name="quote-list"/>
+    </action>
+    <action name="aw_ctq/requestQuote/submit">
+        <section name="quote-list"/>
+    </action>
+    <action name="aw_ctq/quoteList/add">
+        <section name="quote-list"/>
+    </action>
+    <action name="checkout/sidebar/removeItem">
+        <section name="quote-list"/>
+    </action>
+    <action name="checkout/onepage/saveOrder">
+        <section name="quote-list"/>
+    </action>
+    <action name="checkout/sidebar/updateItemQty">
+        <section name="quote-list"/>
+    </action>
+    <action name="rest/*/V1/carts/*/payment-information">
+        <section name="quote-list"/>
+    </action>
+    <action name="rest/*/V1/guest-carts/*/payment-information">
+        <section name="quote-list"/>
+    </action>
+    <action name="rest/*/V1/guest-carts/*/selected-payment-method">
+        <section name="quote-list"/>
+    </action>
+    <action name="rest/*/V1/carts/*/selected-payment-method">
+        <section name="quote-list"/>
+    </action>
+</config>

@@ -1,0 +1,58 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Checkout\Block\Cart\Sidebar */
+/** @var \Aheadworks\Ctq\ViewModel\QuoteList\AddButton $viewModel */
+$viewModel = $block->getQuoteListViewModel();
+$quoteListUrl = $block->getUrl('aw_ctq/quoteList/', ['_secure' => true]);
+
+
+
+?>
+
+
+<?php if ($viewModel && $viewModel->isAllowed()): ?>
+<div data-block="mini-quote-list" class="aw-ctq mini-quote-list minicart-wrapper">
+    <!-- <a class="action showlist" href="<?= $block->escapeUrl($quoteListUrl) ?>" -->
+    <a class="action showlist theme-header-icon" href="<?= $block->escapeUrl($quoteListUrl) ?>"
+       data-bind="scope: 'mini_quotelist_content'">
+        <div class="quote-ico-container">
+           <i class="la la-file-text-o"></i>
+           <span class="counter qty empty"
+                 data-bind="
+                     css: { empty: !!getQuoteListParam('summary_count') == false && !isLoading() },
+                     blockLoader: isLoading">
+           <!--<span class="counter-number">--><!-- ko text: getQuoteListParam('summary_qty') --><!-- /ko --><!--</span>-->
+           </span>
+       </div>
+        <span class="quote-label"><?php echo __('Quotes') ?></span>
+    </a>
+    <div class="block block-minicart quote-list-block"
+         data-role="dropdownDialog"
+         data-mage-init='{"dropdownDialog":{
+             "appendTo":"[data-block=mini-quote-list]",
+             "triggerTarget":".showlist",
+             "timeout": "2000",
+             "closeOnMouseLeave": false,
+             "closeOnEscape": true,
+             "triggerClass":"active",
+             "parentClass":"active",
+             "buttons":[]}}'>
+        <div id="mini-quote-list-content-wrapper" data-bind="scope: 'mini_quotelist_content'">
+            <!-- ko template: getTemplate() --><!-- /ko -->
+        </div>
+    </div>
+    <script type="text/x-magento-init">
+    {
+        "[data-block='mini-quote-list']": {
+            "Magento_Ui/js/core/app": <?= /* @noEscape */ $block->getJsLayout() ?>
+        }
+    }
+    </script>
+</div>
+<?php endif; ?>

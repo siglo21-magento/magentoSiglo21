@@ -1,0 +1,67 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
+		<plugin disabled="false" name="Aventi_SAP_Plugin_Magento_Checkout_Block_Checkout_LayoutProcessor" sortOrder="10" type="Aventi\SAP\Plugin\Magento\Checkout\Block\Checkout\LayoutProcessor"/>
+	</type>
+	<preference for="Aventi\SAP\Api\IdentificationManagementInterface" type="Aventi\SAP\Model\IdentificationManagement"/>
+    <preference for="Aventi\SAP\Api\DocumentStatusRepositoryInterface" type="Aventi\SAP\Model\DocumentStatusRepository"/>
+    <preference for="Aventi\SAP\Api\Data\DocumentStatusInterface" type="Aventi\SAP\Model\Data\DocumentStatus"/>
+    <preference for="Aventi\SAP\Api\Data\DocumentStatusSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <preference for="Aventi\SAP\Api\ItemStatusRepositoryInterface" type="Aventi\SAP\Model\ItemStatusRepository"/>
+    <preference for="Aventi\SAP\Api\Data\ItemStatusInterface" type="Aventi\SAP\Model\Data\ItemStatus"/>
+    <preference for="Aventi\SAP\Api\Data\ItemStatusSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <preference for="Aheadworks\Ca\Controller\User\SavePost" type="Aventi\SAP\Rewrite\Aheadworks\Ca\Controller\User\SavePost"/>
+	<type name="Magento\Framework\Console\CommandList">
+		<arguments>
+			<argument name="commands" xsi:type="array">
+				<item name="Product" xsi:type="object">Aventi\SAP\Console\Command\Product</item>
+				<item name="Stock" xsi:type="object">Aventi\SAP\Console\Command\Stock</item>
+				<item name="Price" xsi:type="object">Aventi\SAP\Console\Command\Price</item>
+                <item name="PriceList" xsi:type="object">Aventi\SAP\Console\Command\PriceList</item>
+				<item name="PriceFaster" xsi:type="object">Aventi\SAP\Console\Command\PriceFaster</item>
+				<item name="SycnOrder" xsi:type="object">Aventi\SAP\Console\Command\SycnOrder</item>
+                <item name="Quote" xsi:type="object">Aventi\SAP\Console\Command\Quote</item>
+				<item name="OrderSent" xsi:type="object">Aventi\SAP\Console\Command\OrderSent</item>
+				<item name="CustomerAddress" xsi:type="object">Aventi\SAP\Console\Command\CustomerAddress</item>
+				<item name="Customer" xsi:type="object">Aventi\SAP\Console\Command\Customer</item>
+				<item name="Cities" xsi:type="object">Aventi\SAP\Console\Command\ImportCities</item>
+				<item name="TestEmail" xsi:type="object">Aventi\SAP\Console\Command\TestEmail</item>
+				<item name="DraftStatus" xsi:type="object">Aventi\SAP\Console\Command\DraftStatus</item>
+                <item name="Promotion" xsi:type="object">Aventi\SAP\Console\Command\Promotion</item>
+			</argument>
+		</arguments>
+	</type>
+	<type name="Aheadworks\Ca\Controller\User\SavePost">
+		<plugin disabled="false" name="Aventi_SAP_Plugin_Aheadworks_Ca_Controller_User_SavePost" sortOrder="10" type="Aventi\SAP\Plugin\Aheadworks\Ca\Controller\User\SavePost"/>
+	</type>
+	<type name="Magento\Checkout\Model\ShippingInformationManagement">
+        <plugin name="Aventi_SAP_Plugin_Magento_Checkout_Model_ShippingInformationManagment" type="Aventi\SAP\Plugin\Magento\Checkout\Model\ShippingInformationManagement" sortOrder="1"/>
+    </type>
+     <preference for="\Magento\Framework\Mail\Template\TransportBuilder" type="Aventi\SAP\Model\Mail\Template\AddEmailAttachment" />
+    <type name="\Magento\Customer\Controller\Account\LoginPost">
+        <plugin name="aventi_sap_loginpostplugin" type="\Aventi\SAP\Plugin\LoginPostPlugin" sortOrder="1" />
+    </type>
+    <type name="\Magento\Customer\Controller\Account\LoginPost">
+        <plugin name="aventi_sap_loginpostplugin" type="\Aventi\SAP\Plugin\LoginPostPlugin" sortOrder="1" />
+    </type>
+    <type name="Aheadworks\Ctq\Controller\Adminhtml\Quote\Save">
+        <plugin name="aventi_sap_quote_update" type="Aventi\SAP\Plugin\Aheadworks\Ctq\Controller\Adminhtml\Quote\Save" sortOrder="1" />
+    </type>
+    <type name="Magento\Quote\Model\Quote\Item\ToOrderItem">
+        <plugin name="aventi_sap_quote_item_to_order_item" type="Aventi\SAP\Plugin\Magento\Model\Quote\Item\ConvertQuoteItemToOrderItemPlugin" sortOrder="10"/>
+    </type>
+
+    <type name="Aventi\SAP\Logger\Handler">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <type name="Aventi\SAP\Logger\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">aventi_sap_debug</argument>
+            <argument name="handlers"  xsi:type="array">
+                <item name="system" xsi:type="object">Aventi\SAP\Logger\Handler</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

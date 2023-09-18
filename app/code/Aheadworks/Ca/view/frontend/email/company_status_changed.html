@@ -1,0 +1,16 @@
+<!--@subject {{trans 'Your company %company_status' company_status=$company_status}}@-->
+{{template config_path="design/email/header_template"}}
+
+<h2>El estado de la compañía ha cambiado</h2>
+<p>
+    {{trans 'Dear %user_name,' user_name=$user_name}}<br />
+    {{trans
+    'The status of your company has been changed into %company_status.'
+        company_status=$company_status
+    |raw}}
+</p>
+<p>
+    {{trans 'You may contact the seller for more information.'}}
+</p>
+
+{{template config_path="design/email/footer_template"}}

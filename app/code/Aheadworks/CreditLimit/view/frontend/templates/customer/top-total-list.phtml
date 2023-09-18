@@ -1,0 +1,19 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+/* @var $block \Aheadworks\CreditLimit\Block\Customer\TotalList */
+?>
+<div data-role="aw-cl__top-total-list"  data-bind="scope: 'aw_credit_limit_top_totals'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "[data-role=aw-cl__top-total-list]": {
+            "Magento_Ui/js/core/app": <?= /* @noEscape */ $block->getJsLayout() ?>
+        }
+    }
+</script>

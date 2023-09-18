@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <!--<referenceContainer name="content" htmlClass="aw-create-customer" htmlTag="div">
+        <block after="-"
+               class="Aheadworks\Ca\Block\Customer\CreateCompanyButton"
+               name="aw_customer_company_create"
+               template="Aheadworks_Ca::customer/company_create_button.phtml">
+        </block>
+    </referenceContainer>-->
+</page>

@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Aheadworks\Ctq\ViewModel\Customer\Quote\Comment">
+        <arguments>
+            <argument name="area" xsi:type="const">Magento\Framework\App\Area::AREA_ADMINHTML</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Ctq\ViewModel\Customer\Quote\DataProvider">
+        <arguments>
+            <argument name="quoteIdParamName" xsi:type="string">id</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Ctq\Block\Adminhtml\Quote\Edit\Shipping\Address">
+        <arguments>
+            <argument name="sessionQuote" xsi:type="object">Aheadworks\Ctq\Model\Quote\Admin\Session\Quote</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Ui\Model\Export\MetadataProvider">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="aw_ctq_quote_listing" xsi:type="array">
+                    <item name="created_at" xsi:type="string">created_at</item>
+                    <item name="last_updated_at" xsi:type="string">last_updated_at</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Aheadworks\Ctq\Model\Email\Product\ConfigurationPool"
+                 type="Magento\Catalog\Helper\Product\ConfigurationPool">
+        <arguments>
+            <argument name="instancesByType" xsi:type="array">
+                <item name="default" xsi:type="object">Magento\Catalog\Helper\Product\Configuration</item>
+                <item name="bundle" xsi:type="object">Magento\Bundle\Helper\Catalog\Product\Configuration</item>
+                <item name="downloadable" xsi:type="object">Magento\Downloadable\Helper\Catalog\Product\Configuration</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\PageBuilder\Model\Stage\Preview">
+        <plugin name="awCtq" type="Aheadworks\Ctq\Plugin\Model\PageBuilder\Stage\PreviewPlugin" />
+    </type>
+
+</config>

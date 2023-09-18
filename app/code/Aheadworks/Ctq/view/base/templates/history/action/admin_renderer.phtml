@@ -1,0 +1,33 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+/* @var $block \Aheadworks\Ctq\Block\History\Action\AdminRenderer */
+
+// @codingStandardsIgnoreFile
+$action = $block->getAction();
+?>
+<div class="aw-ctq__history-row">
+    <div class="history-label">
+        <strong>
+            <?= $block->escapeHtml($block->getHistoryViewModel()->getActionTypeFormatted($action->getType())) ?>
+        </strong>
+    </div>
+    <div class="history-value">
+        <?php if ($action->getOldValue()): ?>
+            <span class="old-value">
+                <?= $block->escapeHtml(
+                        $block->getAdminViewModel()->getAdminName($action->getOldValue())
+                ) ?>
+            </span>
+            <span class="aw-ctq__right-arrow"></span>
+        <?php endif; ?>
+        <span class="new-value">
+            <?= $block->escapeHtml(
+                $block->getAdminViewModel()->getAdminName($action->getValue())
+            ) ?>
+        </span>
+    </div>
+</div>

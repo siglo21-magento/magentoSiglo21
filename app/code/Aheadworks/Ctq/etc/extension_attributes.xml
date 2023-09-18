@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
+    <extension_attributes for="Magento\Quote\Api\Data\CartInterface">
+        <attribute code="aw_ctq_quote" type="Aheadworks\Ctq\Api\Data\QuoteInterface">
+            <join reference_table="aw_ctq_quote" reference_field="id" join_on_field="entity_id">
+                <field>id</field>
+                <field>customer_id</field>
+                <field>name</field>
+                <field>created_at</field>
+                <field>last_updated_at</field>
+                <field>status</field>
+                <field>expiration_date</field>
+                <field>cart</field>
+                <field>store_id</field>
+                <field>base_quote_total</field>
+                <field>quote_total</field>
+                <field>base_quote_total_negotiated</field>
+                <field>quote_total_negotiated</field>
+            </join>
+        </attribute>
+    </extension_attributes>
+</config>

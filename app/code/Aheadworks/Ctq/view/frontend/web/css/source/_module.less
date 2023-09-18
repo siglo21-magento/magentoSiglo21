@@ -1,0 +1,358 @@
+@import "components/_variables";
+@import "components/_mixins";
+@import "components/_file_uploader";
+@import "components/customer/quote/_comment";
+@import "components/ui/form/_form";
+@import "components/customer/quote/_history";
+@import "components/customer/quote/_edit";
+@import "components/customer/quote/_header";
+@import "components/_quotelist";
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true){
+  .cart-summary {
+    .checkout-methods-items {
+      .aw-atq__request-quote-action {
+        width: 100%;
+      }
+    }
+  }
+
+  .aw_ctq__clear-cart-wrapper {
+    width: 75%;
+    padding-right: 4%;
+    box-sizing: border-box;
+
+    .actions {
+      float: right;
+    }
+  }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  .aw_ctq__clear-cart-wrapper {
+    margin-bottom: 20px;
+    text-align: center;
+    padding-right: 0;
+    width: auto;
+
+    .actions {
+      float: none;
+    }
+  }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+}
+
+//QUOTES TABLE
+.account table .col {
+  min-width: unset !important;
+  text-align: left;
+  width: auto;
+}
+
+td.col.action a {
+  min-width: unset;
+}
+
+.col.quote-id {
+  width: 20px;
+}
+
+@media (max-width: 640px) {
+  .account table .col {
+    text-align: right;
+  }
+}
+
+// QUOTES ON CATEGORY BUTTONS
+.aw-ctq-button-container {
+  width: 100%;
+  button#addtoquotelist_button {
+    width: 100%;
+    margin: 0;
+    border: 0;
+    background: transparent;
+    text-decoration: underline;
+    font-size: 14px;
+    opacity: .5;
+    text-align: right;
+  }
+}
+
+.products-grid {
+  .aw-ctq-button-container {
+    position: absolute;
+    bottom: 5px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all .25s ease;
+    transition-delay: 0s;
+  }
+
+  .product-item-actions>.actions-primary {
+    bottom: 40px !important;
+  }
+
+  .product-item .product-item-info {
+    padding-bottom: 20px !important;
+
+    &.login{
+    padding-bottom: 75px !important;
+      
+    }
+  }
+
+  li.item.product.product-item:hover .aw-ctq-button-container {
+      transform: translateY(0);
+      opacity: 1;
+      transition-delay: .25s;
+  }
+}
+
+//QUOTES MINICART
+header {
+  .menu-header-icon {
+    .aw-ctq.mini-quote-list.minicart-wrapper {
+      @media (max-width: 640px) {
+        margin-top: 10px !important;
+        a i {
+          font-size: 25px !important;
+        }
+      }
+      a {
+        display: flex;
+        align-items: center;
+        position: relative;
+        .quote-ico-container {
+          height: 30px;
+          i {
+            font-size: 27px;
+          }
+        }
+        span.counter.qty {
+          height: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          width: 20px;
+          position: absolute;
+          top: -12px !important;
+          left: 15px;
+          font-size: 11px;
+        }
+        .quote-label {
+          color: black;
+          transform: none;
+          margin: 0;
+          font-size: 13px;
+          margin-left: 6px;
+        }  
+      }
+    }
+    .minicart-wrapper {
+      a {
+        span.counter.qty {
+          height: 20px !important;
+          width: 20px !important;
+          top: -9px !important;
+        }
+      }
+    }
+    .subtotal {
+      .label {
+        text-align: left;
+      }
+      span.price-wrapper {
+        font-weight: bold !important;
+      }
+    }
+  }
+
+  .quote-list-block .actions.main-action {
+    display: flex;
+    align-items: center;
+    justify-content: center !important;
+    .secondary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #E41F13;
+      padding: 10px;
+      color: white !important;
+      transition: .3s ease all;
+      &:hover {
+        transform: translateY(-10px);
+      }
+      a {
+        color:white;
+        &:hover {
+          color: white !important;
+        }
+      }
+    }
+  }
+}
+
+//QUOTES DETAIL
+.aw-ctq__quote-header .actions-toolbar {
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 0;
+  .action {
+    margin-right: 15px !important;
+    margin-left: 0;
+    min-width: unset;
+    min-height: 40px;
+    @media (max-width: 1000px) {
+      margin-top: 10px;
+    }
+  }
+}
+
+.aw_ctq-quote-edit,
+.aw_ctq-quote-comment,
+.aw_ctq-quote-history {
+  .page-title-wrapper {
+    display: none;
+  }
+  .column.main {
+    margin-bottom: 40px;
+  }
+  @media (max-width: 1000px) {
+    .columns {
+      display: flex;
+      flex-direction: column-reverse;
+      & > * {
+        width: 100% !important;
+      }
+    }
+  }
+}
+
+.quote-status-container {
+  display: flex;
+  align-items: center;
+  & > * {
+    margin-right: 15px;
+  }
+}
+
+ul.items.order-links.aw_ctq__quote-links {
+  border: none;
+  margin: 0;
+  > li  {
+    padding: 10px 20px;
+    margin: 0;
+    margin-bottom: -2px;
+    @media (max-width: 390px) {
+      padding: 10px 8px;
+    }
+  }
+  .item.current {
+    border: 1px solid #d1d1d1;
+    border-bottom: none;
+    background: white;
+    color: #333;
+  }
+}
+
+.order-details-items {
+  border: 1px solid #d1d1d1;
+  @media (max-width: 640px) {
+    padding: 20px;
+  }
+  &.aw-ctq__comment-block,
+  &.aw-ctq__history-block {
+    padding: 20px;
+  }
+  
+  &.aw-ctq__products-tab table {
+    tr th {
+      text-transform: none;
+      text-align: left;
+    }
+    td.col.price,
+    td.col.subtotal {
+      * {
+        font-size: 14px;
+      }
+    }
+    @media (max-width: 640px) {
+      td.col.draggable {
+        text-align: center;
+        color: #333;
+        &:before {
+          display: none;
+        }
+        .draggable-handle {
+          font-size: 20px;
+          &:before {
+            content: "\f047";
+            font-family: "Font Awesome 5 Pro" !important;
+            width: unset;
+            height: unset;
+            line-height: 1;
+            padding: unset;
+            cursor: move;
+            margin-top: 0;
+            font-size: unset;
+            font-family: unset;
+            letter-spacing: unset;
+            vertical-align: unset;
+            display: inline-block;
+            font-weight: 900;
+            overflow: unset;
+            speak: none;
+            text-align: center;
+            -webkit-font-smoothing: antialiased;
+          }
+        }
+      }
+
+      table.data.totals {
+        th,
+        td {
+          padding: 0;
+        }
+      }
+    }
+
+    
+  }
+}
+
+.products.wrapper.mgs-products.excel.products-excel {
+  .actions-container {
+    .actions-primary {
+      display: flex;
+      & > *:not(:last-child) {
+        margin-right: 10px;
+      }
+      @media (max-width: 480px) {
+        flex-direction: column;
+        & > *:not(:last-child) {
+          margin: 0;
+          margin-bottom: 10px;
+        }
+      }
+      .aw-ctq-button-container i {
+        color: white;
+      }
+    }
+  }
+}

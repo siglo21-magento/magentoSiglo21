@@ -1,0 +1,33 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+?>
+
+<div class="admin__page-section-title">
+    <span class="title"><?= /* @escapeNotVerified */ $block->getHeaderText() ?></span>
+</div>
+
+<div class="collapsible-section"
+     data-mage-init='{
+         "collapsible":{
+             "active": <?php if ($block->isShippingInfoSpecified()): ?>true<?php else: ?>false<?php endif; ?>,
+             "openedState": "active",
+             "saveState": false
+         }
+     }'>
+    <a href="#" id="aw_ctq-shipping-section-add-info" data-role="title" class="title action-default">
+        <span><?= $block->escapeHtml(__('Add/Hide shipping information')) ?></span>
+    </a>
+    <div class="admin__page-section-content" data-role="content" aria-labelledby="aw_ctq-shipping-section-add-info">
+        <div id="quote-shipping_address" class="admin__page-section-item quote-shipping-address">
+            <?= $block->getChildHtml('shipping_address') ?>
+        </div>
+        <div id="quote-shipping_method" class="admin__page-section-item quote-shipping-method">
+            <?= $block->getChildHtml('shipping_method') ?>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="header-wrapper">
+
+            <block class="Magento\Checkout\Block\Cart\Sidebar" name="mini_quote_list" as="mini_quote_list" before="minicart" template="Aheadworks_Ctq::quote_list/mini.phtml">
+                <arguments>
+                    <argument name="quote_list_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\QuoteList\Mini</argument>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="types" xsi:type="array"/>
+                        <item name="components" xsi:type="array">
+                            <item name="mini_quotelist_content" xsi:type="array">
+                                <item name="component" xsi:type="string">Aheadworks_Ctq/js/quote-list/mini</item>
+                                <item name="config" xsi:type="array">
+                                    <item name="template" xsi:type="string">Aheadworks_Ctq/quote-list/content</item>
+                                    <item name="quoteListUrl" xsi:type="url" path="aw_ctq/quoteList" />
+                                    <item name="itemRenderer" xsi:type="array">
+                                        <item name="default" xsi:type="string">defaultRenderer</item>
+                                        <item name="simple" xsi:type="string">defaultRenderer</item>
+                                        <item name="virtual" xsi:type="string">defaultRenderer</item>
+                                    </item>
+                                </item>
+                                <item name="children" xsi:type="array">
+                                    <item name="subtotal.container" xsi:type="array">
+                                        <item name="component" xsi:type="string">uiComponent</item>
+                                        <item name="config" xsi:type="array">
+                                            <item name="displayArea" xsi:type="string">subtotalContainer</item>
+                                        </item>
+                                        <item name="children" xsi:type="array">
+                                            <item name="subtotal" xsi:type="array">
+                                                <item name="component" xsi:type="string">Aheadworks_Ctq/js/quote-list/mini/subtotal</item>
+                                                <item name="config" xsi:type="array">
+                                                    <item name="template" xsi:type="string">Aheadworks_Ctq/quote-list/subtotal</item>
+                                                    <item name="totalsTmpl" xsi:type="string">Magento_Tax/checkout/minicart/subtotal/totals</item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                    <item name="item.renderer" xsi:type="array">
+                                        <item name="component" xsi:type="string">uiComponent</item>
+                                        <item name="config" xsi:type="array">
+                                            <item name="displayArea" xsi:type="string">defaultRenderer</item>
+                                            <item name="template" xsi:type="string">Magento_Checkout/minicart/item/default</item>
+                                        </item>
+                                        <item name="children" xsi:type="array">
+                                            <item name="item.image" xsi:type="array">
+                                                <item name="component" xsi:type="string">Magento_Catalog/js/view/image</item>
+                                                <item name="config" xsi:type="array">
+                                                    <item name="template" xsi:type="string">Magento_Catalog/product/image</item>
+                                                    <item name="displayArea" xsi:type="string">itemImage</item>
+                                                </item>
+                                            </item>
+                                            <item name="checkout.cart.item.price.sidebar" xsi:type="array">
+                                                <item name="component" xsi:type="string">uiComponent</item>
+                                                <item name="config" xsi:type="array">
+                                                    <item name="template" xsi:type="string">Magento_Checkout/minicart/item/price</item>
+                                                    <item name="displayArea" xsi:type="string">priceSidebar</item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+
+        <move element="mini_quote_list" destination="theme.headers"/>
+
+
+    </body>
+</page>

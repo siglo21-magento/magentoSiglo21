@@ -1,0 +1,64 @@
+//
+// Shipping Information
+//  _____________________________________________
+
+.quote-shipping-information {
+    .admin__page-section-item {
+        width: ~'calc( (100%) * .5 - 30px )';
+    }
+    .quote-shipping-method {
+        float: right;
+        position: relative;
+
+        .admin__quote-shipment-methods-title {
+            font-weight: 700;
+            margin: 0 0 0.5rem;
+        }
+        .admin__quote-shipment-methods-options {
+            margin: 0 0 2rem;
+        }
+        .admin__quote-shipment-methods-options-list {
+            list-style: none;
+            margin: 0;
+        }
+
+        .quote-shipping-method-summary {
+            .has-shipping {
+                visibility: hidden;
+            }
+        }
+    }
+    .quote-shipping-address {
+        float: left;
+    }
+
+    .quote-methods-overlay {
+        background-color: rgba(255, 255, 255, 0.5);
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .quote-methods-overlay span {
+        background-color: #ffffff;
+        display: block;
+        font-weight: 700;
+        left: 0;
+        padding: 0.5rem 0;
+        position: absolute;
+        top: 42px;
+    }
+    .action-default {
+        font-weight: 400;
+        padding: 0;
+        color: #007bdb;
+        background-color: transparent;
+        border-color: transparent;
+        text-shadow: none;
+    }
+
+    #aw_ctq-shipping-section-add-info {
+        margin-bottom: 10px;
+    }
+}

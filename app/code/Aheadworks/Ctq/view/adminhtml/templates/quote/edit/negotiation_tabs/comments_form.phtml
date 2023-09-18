@@ -1,0 +1,54 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+/* @var $block \Aheadworks\Ctq\Block\Adminhtml\Quote\Edit\NegotiationTabs\Comment */
+
+// @codingStandardsIgnoreFile
+$quoteId = $block->getDataProviderViewModel()->getQuoteId();
+?>
+<div class="aw-ctq__comment-form">
+    <form data-role="aw-ctq-submit-comment-form"
+          action="<?= $block->escapeUrl($block->getCommentViewModel()->getAddCommentUrl()) ?>"
+          method="post"
+          data-mage-init='{"validation":{}}'>
+        <?php /* @noEscape */ echo $block->getBlockHtml('formkey') ?>
+        <input type="hidden" name="quote_id" value="<?= /* @noEscape */ $quoteId ?>">
+        <fieldset class="fieldset">
+            <div class="field control">
+                <label class="label" for="message">
+                    <span><?= $block->escapeHtml(__('Comment')) ?></span>
+                </label>
+                <div class="control">
+                <textarea
+                        name="comment"
+                        placeholder="<?= $block->escapeHtml(__('Type here to add your comment to this Quote')) ?>"
+                        rows="5"></textarea>
+                </div>
+            </div>
+            <?= $block->getChildHtml('file_uploader') ?>
+        </fieldset>
+        <?php if ($quoteId): ?>
+            <div class="aw-ctq__button-comment">
+                <button data-role="aw-ctq-submit-comment-button"
+                        type="button"
+                        class="aw-ctq__submit-comment action-default primary"
+                        title="<?= $block->escapeHtml(__('Send')) ?>">
+                    <span><?= $block->escapeHtml(__('Send')) ?></span>
+                </button>
+            </div>
+            <script type="text/x-magento-init">
+            {
+                "[data-role=aw-ctq-submit-comment-button]": {
+                    "awCtqCommentButtonControl": {
+                        "formSelector": "#edit_form",
+                        "formAction": "<?= $block->escapeUrl($block->getCommentViewModel()->getAddCommentUrl()) ?>"
+                    }
+                }
+            }
+            </script>
+        <?php endif; ?>
+    </form>
+</div>

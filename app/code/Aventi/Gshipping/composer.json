@@ -1,0 +1,26 @@
+{
+    "name": "aventi/module-gshipping",
+    "description": "M\u00f3dulo de software para la integraci\u00f3n en l\u00ednea entre su plataforma de comercio electr\u00f3nico con Gshipping, incluye cotizaci\u00f3n de env\u00edos",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Mage2Gen",
+            "email": "info@mage2gen.com"
+        },
+        {
+            "name": "C\u00e9sar Adri\u00e1n Robledo Olave",
+            "email": "adrian.olave@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Aventi\\Gshipping\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}

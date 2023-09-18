@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <block class="Aheadworks\Ctq\Block\History\Render"
+               name="aw_ctq.quote.history.render"
+               template="Aheadworks_Ctq::history/render.phtml">
+        <arguments>
+            <argument name="history_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\History\History</argument>
+            <argument name="quote_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Customer\Quote</argument>
+        </arguments>
+            <block class="Magento\Framework\View\Element\RendererList"
+                   name="aw_ctq.quote.history.actions.renderers"
+                   as="action.renderer.list">
+                <block class="Aheadworks\Ctq\Block\History\Action\DefaultRenderer"
+                       name="aw_ctq.quote.history.actions.renderers.default"
+                       template="Aheadworks_Ctq::history/action/default.phtml"
+                       as="default"/>
+                <block class="Aheadworks\Ctq\Block\History\Action\DefaultRenderer"
+                       name="aw_ctq.quote.history.actions.renderers.comment"
+                       template="Aheadworks_Ctq::history/action/comment_renderer.phtml"
+                       as="comment">
+                    <arguments>
+                        <argument name="comment_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Customer\Quote\Comment</argument>
+                    </arguments>
+                </block>
+                <block class="Aheadworks\Ctq\Block\History\Action\ProductRenderer"
+                       name="aw_ctq.quote.history.actions.renderers.product"
+                       template="Aheadworks_Ctq::history/action/product_renderer.phtml"
+                       as="product">
+                    <arguments>
+                        <argument name="product_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\History\Action\ProductRenderer</argument>
+                    </arguments>
+                </block>
+                <block class="Aheadworks\Ctq\Block\History\Action\AdminRenderer"
+                       name="aw_ctq.quote.history.actions.renderers.admin"
+                       template="Aheadworks_Ctq::history/action/admin_renderer.phtml"
+                       as="admin">
+                    <arguments>
+                        <argument name="admin_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\History\Action\AdminRendererViewModel</argument>
+                    </arguments>
+                </block>
+                <block class="Aheadworks\Ctq\Block\History\Action\ShippingAddressRenderer"
+                       name="aw_ctq.quote.history.actions.renderers.shipping.address"
+                       template="Aheadworks_Ctq::history/action/shipping_address.phtml"
+                       as="shipping_address"/>
+            </block>
+        </block>
+    </body>
+</page>

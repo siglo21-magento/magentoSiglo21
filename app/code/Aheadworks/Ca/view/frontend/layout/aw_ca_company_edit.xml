@@ -1,0 +1,22 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="aw_ca_company_ui_form"/>
+    <body>
+        <referenceContainer name="content" htmlClass="aw-ca-company-create" htmlTag="div"/>
+        <referenceBlock name="aw.ca.company.form">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="awCaForm" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="send" xsi:type="array">
+                                    <item name="title" xsi:type="string" translate="true">Save</item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

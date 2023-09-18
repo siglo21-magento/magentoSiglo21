@@ -1,0 +1,44 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+/* @var $block \Aheadworks\Ctq\Block\Customer\Quote\Header */
+
+// @codingStandardsIgnoreFile
+$quote = $block->getDataProviderViewModel()->getQuote();
+?>
+
+<div class="aw-ctq__quote-header">
+    <div class="aw-ctq__quote-data">
+        <div class="aw-ctq__quote-id">
+            <strong><?= $block->escapeHtml(__('Quote #:')) ?></strong>
+            <span><?= $block->escapeHtml($quote->getId()) ?></span>
+        </div>
+        <div class="aw-ctq__quote-status">
+            <strong><?= $block->escapeHtml(__('Status:')) ?></strong>
+            <span class="aw-ctq__quote-status">
+                <?= $block->escapeHtml($block->getQuoteViewModel()->getStatusLabel($quote->getStatus())) ?>
+            </span>
+        </div>
+        <?php if ($quote->getOrderId()): ?>
+            <div class="aw-ctq__quote-order-id">
+                <strong><?= $block->escapeHtml(__('Order:')) ?></strong>
+                <a href="<?= $block->escapeUrl($block->getQuoteViewModel()->getOrderUrl($quote->getOrderId())) ?>" class="order-link">
+                    <span><?= $block->escapeHtml($block->getQuoteViewModel()->getOrderIdFormatted($quote->getOrderId())) ?></span>
+                </a>
+            </div>
+        <?php endif; ?>
+        <div class="aw-ctq__quote-created-date">
+            <strong><?= $block->escapeHtml(__('Created:')) ?></strong>
+            <span><?= $block->escapeHtml($block->getQuoteViewModel()->getCreatedAtFormatted($quote->getCreatedAt())) ?></span>
+        </div>
+        <?php if ($quote->getExpirationDate()): ?>
+            <div class="aw-ctq__quote-expired-date">
+                <strong><?= $block->escapeHtml(__('Expired:')) ?></strong>
+                <span><?= $block->escapeHtml($block->getQuoteViewModel()->getExpiredDateFormatted($quote->getExpirationDate())) ?></span>
+            </div>
+        <?php endif; ?>
+    </div>
+</div>

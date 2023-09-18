@@ -1,0 +1,22 @@
+{
+    "name": "aventi/module-updateorderstatus",
+    "description": "order status update cron",
+    "type": "magento2-module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aventi",
+            "email": "soporte@aventi.co"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Aventi\\UpdateOrderStatus\\": ""
+        }
+    }
+}

@@ -1,0 +1,78 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+/* @var $block \Aheadworks\Ctq\Block\Customer\Quote\Edit\Item */
+
+// @codingStandardsIgnoreFile
+?>
+<?php
+$item = $block->getItem();
+$itemProduct = $item->getProduct();
+$itemOptions = $block->getViewModel()->getOptionList($item);
+$itemId = $item->getId();
+?>
+<tr>
+    <?php if ($block->getIsAllowSorting()): ?>
+        <td class="col draggable">
+            <div class="draggable-handle"></div>
+            <input name="sort[]" type="hidden" value="<?= /* @noEscape */ $item->getId() ?>" />
+        </td>
+    <?php endif; ?>
+    <td class="col name" data-th="<?= $block->escapeHtml(__('Product Name')) ?>">
+        <?= $block->escapeHtml($itemProduct->getName()) ?>
+        <?php if ($itemOptions): ?>
+            <div>
+                <?php foreach ($itemOptions as $itemOption): ?>
+                    <?php $formattedOptionValue = $block->getViewModel()->getFormattedOptionValue($itemOption) ?>
+                    <dt><?= $block->escapeHtml($itemOption['label']) ?></dt>
+                    <dd>
+                        <?php if (isset($formattedOptionValue['full_view'])): ?>
+                            <?= /* @noEscape */ $formattedOptionValue['full_view'] ?>
+                        <?php else: ?>
+                            <?= $block->escapeHtml($formattedOptionValue['value'], ['span']) ?>
+                        <?php endif; ?>
+                    </dd>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+        <?php if ($block->getViewModel() && $block->getIsExport()): ?>
+            <div class="product-item-photo">
+                <?= /* @noEscape */ $block->getViewModel()->getProductImageHtml($item, 'product_thumbnail_image') ?>
+            </div>
+        <?php endif; ?>
+        <?php if ($messages = $block->getViewModel()->getMessages($item)): ?>
+            <?php foreach ($messages as $message): ?>
+                <div class="item message <?= /* @noEscape */ $message['type'] ?>">
+                    <div><?= $block->escapeHtml($message['text']) ?></div>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </td>
+    <td class="col sku" data-th="<?= $block->escapeHtml(__('SKU')) ?>">
+        <?= /* @noEscape */ $itemProduct->getSku() ?>
+    </td>
+    <td class="col price" data-th="<?= $block->escapeHtml(__('Price')) ?>">
+        <?= /* @noEscape */ $block->getUnitPriceHtml($item) ?>
+    </td>
+    <td class="col qty" data-th="<?= $block->escapeHtml(__('Qty')) ?>">
+        <?php if ($block->getIsEdit()): ?>
+            <div class="control qty">
+                <input name="cart[<?= /* @noEscape */ $item->getId() ?>][qty]"
+                       value="<?= /* @noEscape */ $block->getQty() ?>"
+                       type="number"
+                       size="4"
+                       title="<?= $block->escapeHtml(__('Qty')) ?>"
+                       class="input-text qty"
+                       data-validate="{required:true,'validate-zero-or-greater':true}"/>
+            </div>
+        <?php else: ?>
+            <?= /* @noEscape */ $block->getQty() ?>
+        <?php endif; ?>
+    </td>
+    <td class="col subtotal" data-th="<?= $block->escapeHtml(__('Subtotal')) ?>">
+        <?= /* @noEscape */ $block->getRowTotalHtml($item) ?>
+    </td>
+</tr>

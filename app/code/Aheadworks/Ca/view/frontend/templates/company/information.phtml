@@ -1,0 +1,89 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+/* @var $block \Magento\Framework\View\Element\Template */
+$customerViewModel = $block->getCustomerViewModel();
+$companyViewModel = $block->getCompanyViewModel();
+
+$company = $companyViewModel->getCompanyByCustomer($customerViewModel->getCurrentCompanyUser());
+$rootCustomer = $customerViewModel->getRootCompanyUser($company->getId());
+
+/** @var \Aheadworks\Ca\ViewModel\Company\Formatter $formatter */
+$formatter = $block->getFormatterViewModel();
+?>
+<div class="block block-account-information">
+    <div class="block-title">
+        <strong><?= $block->escapeHtml(__('Account Information')) ?></strong>
+    </div>
+    <div class="block-content">
+        <div class="box box-account-information">
+            <div class="box-content">
+                <p><?= $block->escapeHtml($formatter->formatCompanyName($company)) ?></p>
+                <p><?= $block->escapeHtml($company->getEmail()) ?></p>
+                <p><?php
+                    if (!empty($company->getTaxId())): ?>
+                        <?= $block->escapeHtml(__('VAT/TAX ID: ')) . $block->escapeHtml($company->getTaxId()); ?>
+                    <?php endif; ?></p>
+
+                <p><?php
+                    if (!empty($company->getReSellerId())): ?>
+                        <?= $block->escapeHtml(__('Re-seller ID: ')) . $block->escapeHtml($company->getReSellerId()); ?>
+                    <?php endif; ?></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="block block-legal-address">
+    <div class="block-title">
+        <strong><?= $block->escapeHtml(__('Legal Address')) ?></strong>
+    </div>
+    <div class="block-content">
+        <div class="box box-legal-address">
+            <div class="box-content">
+                <address><?= /* @noEscape */ $formatter->formatAddress($company) ?></address>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="block block-contacts">
+    <div class="block-title">
+        <strong>
+            <?= $block->escapeHtml(__('Contacts')) ?>
+        </strong>
+    </div>
+    <div class="block-content">
+        <div class="box box-contacts">
+            <strong class="box-title">
+                <span><?= $block->escapeHtml(__('Company Administrator')) ?></span>
+            </strong>
+            <div class="box-content">
+                <p><?= $block->escapeHtml($formatter->formatCompanyAdministratorName($rootCustomer)) ?></p>
+                <?php if ($formatter->getCompanyAdministratorJobTitle($rootCustomer)): ?>
+                    <p><?= $block->escapeHtml($formatter->getCompanyAdministratorJobTitle($rootCustomer)) ?></p>
+                <?php endif; ?>
+                <p><?= $block->escapeHtml($rootCustomer->getEmail()) ?></p>
+                <?php if ($formatter->getCompanyAdministratorTelephone($rootCustomer)): ?>
+                    <p>T:
+                        <a href="tel:<?= $block->escapeHtml($formatter->getCompanyAdministratorTelephone($rootCustomer)) ?>">
+                            <?= $block->escapeHtml($formatter->getCompanyAdministratorTelephone($rootCustomer)) ?>
+                        </a>
+                    </p>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <div class="box box-contact-information">
+            <strong class="box-title">
+                <span><?= $block->escapeHtml(__('Sales Representative')) ?></span>
+            </strong>
+            <div class="box-content">
+                <p><?= $block->escapeHtml($formatter->formatSalesRepresentativeName($company)) ?></p>
+                <p><?= $block->escapeHtml($formatter->getSalesRepresentativeEmail($company)) ?></p>
+            </div>
+        </div>
+    </div>
+</div>

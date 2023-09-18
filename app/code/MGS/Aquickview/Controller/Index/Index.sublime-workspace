@@ -1,0 +1,400 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"num",
+				"number_format"
+			],
+			[
+				"in",
+				"intval"
+			],
+			[
+				"at",
+				"attribute_code"
+			],
+			[
+				"reg",
+				"region_id"
+			],
+			[
+				"se",
+				"section\tTag"
+			],
+			[
+				"da",
+				"data-children"
+			],
+			[
+				"js-",
+				"js-hiden-data"
+			],
+			[
+				"cre",
+				"ceroTres"
+			],
+			[
+				"wo",
+				"wordpress"
+			],
+			[
+				"utf",
+				"utf8_encode"
+			],
+			[
+				"o",
+				"order_id"
+			],
+			[
+				"s",
+				"str"
+			],
+			[
+				"json",
+				"json_encode"
+			],
+			[
+				"a",
+				"attribute_id"
+			],
+			[
+				"c",
+				"cei"
+			],
+			[
+				"mar",
+				"margin\tproperty"
+			],
+			[
+				"t",
+				"top"
+			],
+			[
+				"tex-a",
+				"text-align\tproperty"
+			],
+			[
+				"bar",
+				"background-color"
+			],
+			[
+				"f",
+				"ffffff"
+			],
+			[
+				"ba",
+				"background\tproperty"
+			],
+			[
+				"fon",
+				"font-weight"
+			],
+			[
+				"b",
+				"border-image\tproperty"
+			],
+			[
+				"e",
+				"entity_id"
+			],
+			[
+				"ca",
+				"campos"
+			],
+			[
+				"op",
+				"option\tTag"
+			],
+			[
+				"fo",
+				"foreach\tforeach …"
+			],
+			[
+				"ac",
+				"action\tAttr"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"html",
+				"Set Syntax: HTML"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/www/magento/ticket/app/code/Aventi/SAP/etc/di.xml",
+		"/home/www/magento/siglo21/app/code/Aventi/SAP/Setup/InstallData.php",
+		"/home/caguilar/Escritorio/tmp.txt",
+		"/home/www/magento/ticket/app/code/Aventi/SAP/Cron/OrderCompleted.php",
+		"/home/www/magento/ticket/app/code/Aventi/SAP/Cron/Price.php",
+		"/home/www/magento/ticket/app/code/Aventi/SAP/Model/IdentificationManagement.php",
+		"/home/www/magento/ticket/app/code/Aventi/SAP/view/frontend/web/js/main.js",
+		"/home/www/magento/ticket/app/code/Aventi/SAP/view/frontend/layout/checkout_index_index.xml",
+		"/home/www/magento/ticket/app/code/Aventi/SAP/etc/db_schema.xml",
+		"/home/www/magento/ticket/app/code/Aventi/SAP/Setup/UpgradeData.php",
+		"/home/www/magento/ticket/app/code/Aventi/SAP/Setup/InstallData.php",
+		"/home/www/magento/ticket/app/code/Aventi/SAP/Plugin/Magento/Checkout/Block/Checkout/LayoutProcessor.php",
+		"/home/www/magento/ticket/app/code/Aventi/SAP/Observer/Sales/ModelServiceQuoteSubmitBefore.php",
+		"/home/www/magento/ticket/app/code/Aventi/SAP/composer.json",
+		"/home/www/magento/ticket/app/code/Aventi/SAP/etc/crontab.xml",
+		"/home/www/magento/ticket/app/code/Aventi/SAP/etc/adminhtml/system.xml",
+		"/home/www/magento/ticket/app/code/Aventi/SAP/etc/adminhtml/menu.xml",
+		"/home/www/magento/ticket/app/code/Aventi/SAP/etc/module.xml",
+		"/home/www/magento/ticket/app/code/Aventi/SAP/registration.php",
+		"/home/www/magento/ticket/app/code/Aventi/SAP/Api/IdentificationManagementInterface.php",
+		"/home/www/magento/ticket/app/code/Aventi/SAP/Helper/Data.php",
+		"/home/www/magento/ticket/app/code/Aventi/SAP/etc/events.xml",
+		"/home/www/magento/ticket/app/code/Aventi/SAP/Cron/OrderError.php",
+		"/home/caguilar/Escritorio/commerce-to-community.sql",
+		"/home/www/magento/magentoPruebas/app/code/Aheadworks/Ctq/registration.php",
+		"/etc/pulse/client.conf",
+		"/home/caguilar/.cache/.fr-1RsWsL/registration.php",
+		"/home/caguilar/.cache/.fr-RizZBE/registration.php",
+		"/home/caguilar/.cache/.fr-HpXAIj/Block/Account/Link.php",
+		"/home/caguilar/.cache/.fr-lxJIqV/registration.php",
+		"/etc/pulse/default.pa",
+		"/home/www/prueba.php",
+		"/home/caguilar/.cache/.fr-opJtG6/Block/Adminhtml/System/Currencies.php",
+		"/home/caguilar/Documentos/Proyectos/Saluti/data.txt",
+		"/home/www/generarImages/generarImportMagento.php",
+		"/home/www/generarImages/generarImportParteEquipos.php",
+		"/home/caguilar/Escritorio/firma.html",
+		"/home/caguilar/.cache/.fr-F4iXpc/app/code/Mageplaza/Smtp/Helper/Data.php",
+		"/home/caguilar/.cache/.fr-BOC1ES/Tigren_Ajaxcart_v1.5.0/code/Tigren/Ajaxcart/Controller/Cart/ShowPopup.php",
+		"/home/caguilar/.cache/.fr-wsFJ3p/MGS_Ajaxlayernavigation_Free/app/code/MGS/Ajaxlayernavigation/Model/Layer/Filter/Attribute.php",
+		"/home/caguilar/.cache/.fr-BAH36B/MGS_Ajaxlayernavigation_Free/app/code/MGS/Ajaxlayernavigation/Model/Layer/Filter/Item.php",
+		"/home/caguilar/.cache/.fr-eRoI2l/MGS_Ajaxlayernavigation_Free/app/code/MGS/Ajaxlayernavigation/Model/Layer/Filter/ItemBuilder.php",
+		"/home/www/magento/parteEquipos/app/code/Aventi/SAP/Model/Task.php",
+		"/home/www/magento/salutiEE/app/design/frontend/Aventi/saluti/Magento_Catalog/templates/price_description.phtml",
+		"/tmp/fun.js",
+		"/home/caguilar/.ssh/config",
+		"/home/www/meteor/simple-todo/client/main.html",
+		"/home/www/meteor/simple-todo/client/main.js",
+		"/home/www/magento/magentoPruebas/var/log/debug.log",
+		"/home/www/meteor/simple-todo/client/main.css",
+		"/home/www/meteor/simple-todo/package.json",
+		"/home/www/meteor/simple-todo/imports/ui/App.js",
+		"/home/www/meteor/simple-todo/imports/ui/Task.js",
+		"/home/caguilar/.ssh/known_hosts",
+		"/home/caguilar/.cache/.fr-i6Oyiw/PulpoWms/composer.json",
+		"/home/caguilar/.cache/.fr-QLP2Yr/PulpoWms/composer.json",
+		"/tmp/ticket2.sql",
+		"/home/www/TuCompraTest.php",
+		"/home/caguilar/.ssh/servidor_ticket",
+		"/etc/apache2/apache2.conf",
+		"/tmp/email.html",
+		"/tmp/index-spanish.html",
+		"/home/www/magento/parteEquipos/app/code/Aventi/SAP/Helper/Data.php",
+		"/home/www/magento/magentoTools/getAllOptionProductConfigurable.php",
+		"/home/www/magento/ticket/var/log/sql.log",
+		"/home/caguilar/.cache/.fr-dS6cUP/Aventi/LookForProduct/Console/Command/Test.php",
+		"/home/www/magento/salutiEE/var/Aventi/prices.json",
+		"/home/www/react/my-app/src/index.js",
+		"/home/www/react/my-app/src/index.css",
+		"/home/www/magento/easyMovil/app/code/Aventi/TuCompra/Controller/Index/Confirm.php",
+		"/home/www/magento/easyMovil/app/code/Aventi/TuCompra/view/frontend/templates/index/success.phtml",
+		"/home/www/magento/easyMovil/app/code/Aventi/TuCompra/Block/Index/Success.php",
+		"/home/www/magento/easyMovil/app/code/Aventi/TuCompra/Controller/Index/Success.php",
+		"/tmp/diesel_icons.html",
+		"/home/www/chat.html",
+		"/home/caguilar/.cache/.fr-ByRuFD/Controller/Adminhtml/Smtp/Clear.php",
+		"/home/www/magento/parteEquipos/app/code/Aventi/SAP/Plugin/Magento/Sales/Model/Order/Item.php",
+		"/home/caguilar/Escritorio/diesel.sql",
+		"/tmp/ejemplo.csv",
+		"/tmp/catalogrule_201911251334.sql",
+		"/tmp/ejemplo (2).csv",
+		"/home/www/magento/parteEquipos/var/log/sql.log",
+		"/home/www/wordpress/aventi/wp-content/themes/aventi/package.json",
+		"/home/www/wordpress/aventi/wp-content/themes/aventi/Gruntfile.js",
+		"/tmp/faltantes (1).csv",
+		"/tmp/faltantes.csv",
+		"/tmp/faltantes2.csv",
+		"/home/caguilar/.cache/.fr-4F1YnO/app/design/frontend/Smartwave/porto/Magento_Catalog/templates/product/list.phtml",
+		"/home/www/prueba.html",
+		"/home/www/untitled.php",
+		"/home/www/limipar.php",
+		"/home/www/magento/easyMovil/var/log/sync.log",
+		"/home/caguilar/Escritorio/cambiarbacklog.sql",
+		"/tmp/tarea de aNGELA.psc",
+		"/home/caguilar/Escritorio/email.html",
+		"/home/www/magento/diesel/pub/static/frontend/Sm/autostore/es_CO/css/styles-m.css",
+		"/tmp/email-template-1.html",
+		"/tmp/styles-m.css",
+		"/tmp/Relacionar Sustitutos.csv",
+		"/home/caguilar/Escritorio/consultas.txt",
+		"/tmp/imagenes.csv",
+		"/tmp/prueba.csv",
+		"/tmp/images.csv",
+		"/tmp/imagenes-1.csv",
+		"/home/www/info.php",
+		"/tmp/template2.txt",
+		"/tmp/template2.html",
+		"/tmp/log/support/debug_784a982d7981d99a5dfa109504cea713.log",
+		"/tmp/log/support/debug_88ff920d88c37805f16ebe7b7f6b1aee.log",
+		"/tmp/log/support/debug_59d387fff2927460bb7970eedaf2d610.log",
+		"/home/www/prueba/Javierjsv-prueba-frontend/angular.json",
+		"/home/www/magento/easyMovil/var/log/debug.log",
+		"/home/www/prueba/Javierjsv-prueba-frontend/package.json",
+		"/home/www/prueba/Javierjsv-prueba-frontend/src/styles.css",
+		"/home/www/prueba/Javierjsv-prueba-frontend/package-lock.json",
+		"/tmp/ReorderFieldsAddress/composer.json",
+		"/tmp/ReorderFieldsAddress/etc/di.xml",
+		"/tmp/ReorderFieldsAddress/Plugin/Magento/Checkout/Block/Checkout/LayoutProcessor.php",
+		"/tmp/ReorderFieldsAddress/etc/module.xml",
+		"/home/www/magento/easyMovil/var/log/var/log/debug.log"
+	],
+	"find":
+	{
+		"height": 24.0
+	},
+	"find_in_files":
+	{
+		"height": 322.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 57.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "Index.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 323.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

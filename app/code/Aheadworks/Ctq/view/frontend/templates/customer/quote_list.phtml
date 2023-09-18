@@ -1,0 +1,77 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+/* @var $block \Aheadworks\Ctq\Block\Customer\QuoteList */
+
+// @codingStandardsIgnoreFile
+?>
+<?php
+$quoteList = $block->getQuoteListViewModel()->getQuoteList();
+?>
+<?php if ($quoteList && count($quoteList)): ?>
+    <div class="table-wrapper aw-ctq__customer-quotes">
+        <table class="data table">
+            <caption class="table-caption">
+                <?= $block->escapeHtml(__('Quotes')) ?>
+            </caption>
+            <thead>
+                <tr>
+                    <th scope="col" class="col quote-id"><?= $block->escapeHtml(__('#')) ?></th>
+                    <th scope="col" class="col quote-name"><?= $block->escapeHtml(__('  ')) ?></th>
+                    <?= /* @noEscape */ $block->getChildHtml('extra.column.header') ?>
+                    <th scope="col" class="col created"><?= $block->escapeHtml(__('Created')) ?></th>
+                    <th scope="col" class="col status"><?= $block->escapeHtml(__('Status')) ?></th>
+                    <th scope="col" class="col last-updated"><?= $block->escapeHtml(__('Last Updated')) ?></th>
+                    <th scope="col" class="col quote-total"><?= $block->escapeHtml(__('Quote Total')) ?></th>
+                    <!-- <th scope="col" class="col action"><?= $block->escapeHtml(__('Actions')) ?></th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <?php /** @var $quote \Aheadworks\Ctq\Api\Data\QuoteInterface */  ?>
+                <?php foreach ($quoteList as $quote): ?>
+                    <tr>
+                        <td data-th="<?= $block->escapeHtml(__('Quote #')) ?>" class="col quote-id">
+                            <?= $block->escapeHtml($quote->getId()) ?>
+                        </td>
+                        <td data-th="<?= $block->escapeHtml(__('Quote Name')) ?>" class="col quote-name">
+                            <?= $block->escapeHtml($quote->getName()) ?>
+                        </td>
+                        <?php $extra = $block->getChildBlock('extra.container'); ?>
+                        <?php if ($extra): ?>
+                            <?php $extra->setQuote($quote); ?>
+                            <?= /* @noEscape */ $extra->getChildHtml() ?>
+                        <?php endif; ?>
+                        <td data-th="<?= $block->escapeHtml(__('Created')) ?>" class="col created">
+                            <?= $block->escapeHtml($block->getQuoteViewModel()->getCreatedAtFormatted($quote->getCreatedAt())) ?>
+                        </td>
+                        <td data-th="<?= $block->escapeHtml(__('Status')) ?>" class="col status">
+                            <?= $block->escapeHtml($block->getQuoteViewModel()->getStatusLabel($quote->getStatus())) ?>
+                        </td>
+                        <td data-th="<?= $block->escapeHtml(__('Last Updated')) ?>" class="col last-updated">
+                            <?= $block->escapeHtml($block->getQuoteViewModel()->getLastUpdatedAtFormatted($quote->getLastUpdatedAt())) ?>
+                        </td>
+                        <td data-th="<?= $block->escapeHtml(__('Quote Total')) ?>" class="col quote-total">
+                            <?= $block->escapeHtml($block->getQuoteViewModel()->getQuoteTotalFormatted($quote->getBaseQuoteTotal())) ?>
+                        </td>
+                        <td data-th="<?= $block->escapeHtml(__('Actions')) ?>" class="col action">
+                            <a href="<?= $block->escapeUrl($block->getQuoteViewModel()->getEditQuoteUrl($quote->getId())) ?>"
+                               class="action">
+                                <span><?= $block->escapeHtml(__('View Action')) ?></span>
+                            </a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <?php if ($block->getChildHtml('pager')): ?>
+        <div class="toolbar bottom"><?= /* @noEscape */ $block->getChildHtml('pager') ?></div>
+    <?php endif ?>
+<?php else: ?>
+    <div class="message info empty">
+        <span><?= $block->escapeHtml(__('You have created no quotes.')) ?></span>
+    </div>
+<?php endif ?>

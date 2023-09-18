@@ -1,0 +1,116 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Sales\Model\ResourceModel\Order\CollectionFactoryInterface" type="Aheadworks\Ca\Model\ResourceModel\Order\CollectionFactory" />
+    <type name="Magento\Framework\App\Action\AbstractAction">
+        <plugin name="awCa" type="Aheadworks\Ca\Plugin\Controller\FrontActionPlugin" />
+    </type>
+    <type name="Magento\Framework\View\Element\Html\Link\Current">
+        <plugin name="awCa" type="Aheadworks\Ca\Plugin\Block\AccountLinkPlugin" />
+    </type>
+    <type name="Magento\Framework\Model\ActionValidator\RemoveAction">
+        <plugin name="awCa" type="Aheadworks\Ca\Plugin\Model\ActionValidator\RemoveActionPlugin" />
+    </type>
+    <type name="Magento\Customer\Model\AuthenticationInterface">
+        <plugin name="awCa" type="Aheadworks\Ca\Plugin\Model\Authentication\CustomerLoginPlugin" />
+    </type>
+    <type name="Aheadworks\Ctq\ViewModel\Customer\QuoteList">
+        <plugin name="awCa" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\Ctq\Plugin\QuoteListPlugin" />
+    </type>
+    <type name="Aheadworks\Ctq\Api\BuyerPermissionManagementInterface">
+        <plugin name="awCa" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\Ctq\Plugin\BuyerPermissionManagementPlugin" />
+    </type>
+    <type name="Aheadworks\Ctq\Api\BuyerQuoteManagementInterface">
+        <plugin name="awCa" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\Ctq\Plugin\BuyerQuoteManagementPlugin" />
+    </type>
+    <type name="Aheadworks\Ctq\Api\CommentManagementInterface">
+        <plugin name="awCa" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\Ctq\Plugin\CommentManagementPlugin" />
+    </type>
+    <type name="Magento\Sales\Controller\AbstractController\OrderViewAuthorization">
+        <plugin name="awCa" type="Aheadworks\Ca\Plugin\Model\Authentication\OrderViewAuthorizationPlugin" />
+    </type>
+
+    <type name="Aheadworks\CreditLimit\Block\Customer\BalanceHistory\Listing">
+        <plugin name="awCa" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\CreditLimit\Plugin\Block\BalanceHistoryListingPlugin"/>
+    </type>
+    <type name="Aheadworks\CreditLimit\Block\Customer\TotalList">
+        <plugin name="awCa" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\CreditLimit\Plugin\Block\TotalListPlugin"/>
+    </type>
+
+    <type name="Aheadworks\RequisitionLists\ViewModel\Customer\RequisitionList\DataProvider">
+        <plugin name="awCa" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RequisitionLists\Plugin\Customer\RequisitionList\DataProviderPlugin"/>
+    </type>
+    <type name="Aheadworks\RequisitionLists\Ui\Component\RequisitionList\Item\Listing\Column\Name">
+        <plugin name="awCa" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RequisitionLists\Plugin\Ui\Component\Listing\Column\NamePlugin"/>
+    </type>
+    <type name="Aheadworks\RequisitionLists\Ui\Component\RequisitionList\Item\Listing\MassAction\Option\AbstractOption">
+        <plugin name="awCa" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RequisitionLists\Plugin\Ui\Component\Listing\MassActionPlugin" />
+    </type>
+    <type name="Aheadworks\RequisitionLists\CustomerData\RequisitionList">
+        <plugin name="awCa" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RequisitionLists\Plugin\CustomerData\RequisitionListPlugin" />
+    </type>
+
+    <type name="Magento\Sales\Controller\AbstractController\OrderViewAuthorization">
+        <arguments>
+            <argument name="customerSession" xsi:type="object">Aheadworks\Ca\Model\ThirdPartyModule\Magento\Sales\Model\OrderViewSession</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Ctq\Controller\BuyerAction">
+        <arguments>
+            <argument name="customerSession" xsi:type="object">Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\Ctq\Model\QuoteCustomerSession</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\RequisitionLists\Controller\RList\AbstractRequisitionListAction">
+        <arguments>
+            <argument name="customerSession" xsi:type="object">Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RequisitionLists\Model\ListCustomerSession</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\RequisitionLists\Controller\RList\AbstractUpdateItemAction">
+        <arguments>
+            <argument name="customerSession" xsi:type="object">Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RequisitionLists\Model\ListCustomerSession</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\RequisitionLists\Ui\DataProvider\RequisitionList\Item\ListingDataProvider">
+        <arguments>
+            <argument name="customerSession" xsi:type="object">Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RequisitionLists\Model\ListCustomerSession</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Aheadworks\Ca\ViewModel\Role\Form" type="Aheadworks\Ca\ViewModel\Form">
+        <arguments>
+            <argument name="dataProvider" xsi:type="object">Aheadworks\Ca\Ui\DataProvider\Role\FormDataProvider</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Ca\Ui\DataProvider\Role\FormDataProvider" type="Aheadworks\Ca\Ui\DataProvider\FormDataProvider">
+        <arguments>
+            <argument name="name" xsi:type="string">awCaRoleProvider</argument>
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Aheadworks\Ca\ViewModel\CompanyUser\Form" type="Aheadworks\Ca\ViewModel\Form">
+        <arguments>
+            <argument name="dataProvider" xsi:type="object">Aheadworks\Ca\Ui\DataProvider\CompanyUser\FormDataProvider</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Ca\Ui\DataProvider\CompanyUser\FormDataProvider" type="Aheadworks\Ca\Ui\DataProvider\FormDataProvider">
+        <arguments>
+            <argument name="name" xsi:type="string">awCaUserProvider</argument>
+            <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
+            <argument name="requestFieldName" xsi:type="string">entity_id</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Aheadworks\Ca\ViewModel\Company\Form" type="Aheadworks\Ca\ViewModel\Form">
+        <arguments>
+            <argument name="dataProvider" xsi:type="object">Aheadworks\Ca\Ui\DataProvider\Company\FormDataProvider</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Ca\Ui\DataProvider\Company\FormDataProvider" type="Aheadworks\Ca\Ui\DataProvider\FormDataProvider">
+        <arguments>
+            <argument name="name" xsi:type="string">awCaCompanyProvider</argument>
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+        </arguments>
+    </virtualType>
+</config>

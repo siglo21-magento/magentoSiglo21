@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="product.info.addtocart">
+            <block class="Aheadworks\Ctq\Block\QuoteList\ProductList\Item\AddButton"
+                   name="aw_ctq.product.info.addtoquotelist"
+                   as="to_quote_list"
+                   template="Aheadworks_Ctq::product/view/addtoquotelist.phtml"
+                   before="-">
+                <arguments>
+                    <argument name="quote_list_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\QuoteList\AddButton</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

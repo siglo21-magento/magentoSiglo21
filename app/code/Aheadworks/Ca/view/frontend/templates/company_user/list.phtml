@@ -1,0 +1,106 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+/* @var $block \Aheadworks\Ca\Block\User\UserList */
+
+// @codingStandardsIgnoreFile
+
+$companyUserList = $block->getUserListViewModel()->getSearchResults()->getItems();
+$companyUserViewModel = $block->getUserViewModel();
+?>
+<?php if ($companyUserList && count($companyUserList)): ?>
+    <div class="table-wrapper aw-ca__customer-subscriptions">
+        <table class="data table">
+            <caption class="table-caption">
+                <?= $block->escapeHtml(__('Company Users')) ?>
+            </caption>
+            <thead>
+                <tr>
+                    <th scope="col" class="col id"><?= $block->escapeHtml(__('ID')) ?></th>
+                    <th scope="col" class="col name"><?= $block->escapeHtml(__('Name')) ?></th>
+                    <th scope="col" class="col email"><?= $block->escapeHtml(__('Email')) ?></th>
+                    <th scope="col" class="col email"><?= $block->escapeHtml(__('Phone Number')) ?></th>
+                    <th scope="col" class="col role"><?= $block->escapeHtml(__('Role')) ?></th>
+                    <th scope="col" class="col email"><?= $block->escapeHtml(__('Job Position')) ?></th>
+                    <th scope="col" class="col role"><?= $block->escapeHtml(__('Status')) ?></th>
+                    <th scope="col" class="col action"><?= $block->escapeHtml(__('Actions')) ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php /** @var $companyUser \Magento\Customer\Api\Data\CustomerInterface */  ?>
+                <?php foreach ($companyUserList as $companyUser): ?>
+                    <tr>
+                        <td data-th="<?= $block->escapeHtml(__('ID')) ?>" class="col id">
+                            <?= $block->escapeHtml($companyUser->getId()) ?>
+                        </td>
+                        <td data-th="<?= $block->escapeHtml(__('Name')) ?>" class="col name">
+                            <?= $block->escapeHtml($companyUser->getFirstname() . ' ' . $companyUser->getLastname()) ?>
+                        </td>
+                        <td data-th="<?= $block->escapeHtml(__('Email')) ?>" class="col email">
+                            <?= $block->escapeHtml($companyUser->getEmail()) ?>
+                        </td>
+                        <td data-th="<?= $block->escapeHtml(__('Phone Number')) ?>" class="col email">
+                            <?= $block->escapeHtml($companyUser->getExtensionAttributes()->getAwCaCompanyUser()->getTelephone()) ?>
+                        </td>
+                        <td data-th="<?= $block->escapeHtml(__('Role')) ?>" class="col role">
+                            <?= $block->escapeHtml($companyUserViewModel->getRoleName($companyUser->getExtensionAttributes()->getAwCaCompanyUser()->getCompanyRoleId())) ?>
+                        </td>
+                        <td data-th="<?= $block->escapeHtml(__('Job Position')) ?>" class="col email">
+                            <?= $block->escapeHtml($companyUser->getExtensionAttributes()->getAwCaCompanyUser()->getJobTitle()) ?>
+                        </td>
+                        <td data-th="<?= $block->escapeHtml(__('Status')) ?>" class="col role">
+                            <?= $block->escapeHtml($companyUserViewModel->getStatusLabel($companyUser->getExtensionAttributes()->getAwCaCompanyUser()->getIsActivated())) ?>
+                        </td>
+                        <td data-th="<?= $block->escapeHtml(__('Actions')) ?>" class="col action">
+                            <?php
+                             $editButton = $block->renderButton('aw_ca.customer.user.list.edit', $companyUserViewModel->getEditUrl($companyUser->getId()));
+                             $changeStatusButton = '';
+                            if (!$companyUserViewModel->isCurrentCompanyUser($companyUser->getId())
+                                && !$companyUserViewModel->isRoot($companyUser)
+                            ) {
+                                $changeStatusButton = !$companyUserViewModel->isActivated($companyUser)
+                                    ? $block->renderButton('aw_ca.customer.user.list.activate', $companyUserViewModel->getChangeStatusUrl($companyUser->getId(), true))
+                                    : $block->renderButton('aw_ca.customer.user.list.deactivate', $companyUserViewModel->getChangeStatusUrl($companyUser->getId(), false));
+                            } ?>
+                            <?= /* @noEscape */ $editButton . ($editButton != '' && $changeStatusButton != '' ? ' | ' : '') . $changeStatusButton ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        require([
+            'jquery',
+            'Magento_Ui/js/modal/confirm'
+        ],
+        function($, confirmation) {
+            $('.confirm_window').on('click', function(event) {
+                var self = $(this);
+                event.preventDefault();
+                confirmation({
+                    title: 'Delete this User?',
+                    content: 'The user account and content will be deleted permanently. User’s orders will be visible for parent user and the merchant.',
+                    actions: {
+                        /**
+                         * Callback confirm.
+                         */
+                        confirm: function () {
+                            window.location.href = self.attr('href');
+                        },
+                    }
+                });
+            });
+        });
+    </script>
+    <?php if ($block->getChildHtml('pager')): ?>
+        <div class="toolbar bottom"><?= /* @noEscape */ $block->getChildHtml('pager') ?></div>
+    <?php endif ?>
+<?php else: ?>
+    <div class="message info empty">
+        <span><?= $block->escapeHtml(__('You have created no users.')) ?></span>
+    </div>
+<?php endif ?>

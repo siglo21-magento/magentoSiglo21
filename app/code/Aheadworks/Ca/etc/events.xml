@@ -1,0 +1,6 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="aw_rl_collection_load_before">
+        <observer name="awCa" instance="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RequisitionLists\Observer\AttachListData" />
+    </event>
+</config>

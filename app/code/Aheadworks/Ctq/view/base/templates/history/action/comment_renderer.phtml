@@ -1,0 +1,43 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+/* @var $block \Aheadworks\Ctq\Block\History\Action\DefaultRenderer */
+
+// @codingStandardsIgnoreFile
+$action = $block->getAction();
+$quoteId = $block->getHistory()->getQuoteId();
+$commentId = $action->getValue();
+?>
+<div class="aw-ctq__history-row">
+    <div class="history-label">
+        <strong>
+            <?= $block->escapeHtml($block->getHistoryViewModel()->getActionTypeFormatted($action->getType())) ?>
+        </strong>
+    </div>
+    <div class="history-value">
+        <div class="new-value">
+            <span>
+                <?= $block->escapeHtml($action->getOldValue()) ?>
+            </span>
+        </div>
+        <div>
+            <?php if ($action->getActions()): ?>
+                <?php foreach ($action->getActions() as $commentAction): ?>
+                    <?php if ($commentId): ?>
+                        <a target="_blank"
+                           href="<?= $block->escapeUrl(
+                               $block->getCommentViewModel()->getDownloadUrl($commentAction->getValue(), $quoteId, $commentId, $block->getIsEmailForSeller())
+                           ) ?>">
+                            <?= $block->escapeHtml($commentAction->getName()) ?>
+                        </a>
+                    <?php else: ?>
+                        <?= $block->escapeHtml($commentAction->getName()) ?>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>

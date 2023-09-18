@@ -1,0 +1,1782 @@
+// /**
+//  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Variables
+//  _____________________________________________
+
+@account-nav-background: @sidebar__background-color;
+@account-nav-color: false;
+
+@account-nav-current-border: 3px solid transparent;
+@account-nav-current-border-color: @color-orange-red1;
+@account-nav-current-color: false;
+@account-nav-current-font-weight: @font-weight__semibold;
+
+@account-nav-item-hover: @color-gray91;
+
+@_password-default: @color-gray-light01;
+@_password-weak: #ffafae;
+@_password-medium: #ffd6b3;
+@_password-strong: #c5eeac;
+@_password-very-strong: #81b562;
+@_siglo21-blue: #2F3E47;
+@_siglo21-red: #E41F13;
+
+
+//
+// Style for customer page
+//----------------------------
+
+
+& when (@media-common = true) {
+
+	//
+	// Style for page login, register, forgotpassword
+	//----------------------------
+
+	.customer-account-create {
+		.block-customer-register {
+			.block-content.tab-pane {
+				form {
+					.fieldset {
+						padding-top: 50px;
+						> legend {
+							display: none;
+						}
+						.fieldset-heading {
+							display: flex;
+							flex-direction: column;
+							align-items: center;
+							.wizard-locator {
+								display: flex;
+								align-items: center;
+								justify-content: center;
+								.dot {
+									width: 5px;
+									height: 5px;
+									margin: 5px 2px;
+									border-radius: 5px;
+									background: @_siglo21-blue;
+									opacity: .3;
+									&.active {
+										opacity: 1;
+									}
+									&.current {
+										width: 15px;
+									}
+								}
+							}
+							h3 {
+								font-size: 22px;
+								font-weight: 500;
+								color: #333;
+								width: 70%;
+								text-align: center;
+								position: relative;
+								&:after,
+								&:before {
+									content: '';
+									width: 15%;
+									height: 2px;
+									top: 8px;
+									background: #333;
+									position: absolute;
+								}
+								&:after {
+									right: -20%;
+								}
+								&:before {
+									left: -20%;
+								}
+							}
+							p  {
+								text-align: center;
+							}
+						}
+						.fieldset-container {
+							&__heading {
+								font-weight: bold;
+								font-size: 14px;
+								color: #333;
+								margin-top: 10px;
+							}
+							.fieldset-content {
+								.fieldset-group {
+									display: flex;
+									.control {
+										width: 50%;
+										display: flex;
+										flex-direction: column;
+										justify-content: flex-end;
+											&:first-child {
+												padding-right: 10px;
+												border-right: 1px solid #E0E0E0;
+											}
+											&:last-child {
+												padding-left: 10px;
+												.input-control {
+													& ~ .floater:before {
+														left: 25px;
+													}
+													&:focus ~ .floater:before,
+													&:not(:placeholder-shown) ~ .floater:before {
+														left: 14px;
+														padding: 0 16px;
+													}
+												}
+											}
+										
+									}
+								}
+								.control {
+									position: relative;
+									margin: 15px 0 10px;
+									.label {
+										margin-left: 15px;
+										font-weight: 500;
+									}
+
+									.input-control {
+										& + label {											
+											display: none;
+										}
+										& ~ .floater:before {
+											display: block;
+											position: absolute;
+											top: 10px;
+											left: 15px;
+											background: white;
+											font-size: 14px;
+											pointer-events: none;
+											transition: .25s all ease-in-out;
+											font-weight: 500;
+										}
+										&:focus ~ .floater:before,
+										&:not(:placeholder-shown) ~ .floater:before {
+											position: absolute;
+											font-size: 12px;
+											top: -8px;
+											left: 4px;
+											padding: 0 6px;
+										}
+									}
+									input[name="company_name"]~.floater:before,
+									input[name="company_name"]:focus~.floater:before {
+									  content: "Razón Social / Nombre de la empresa *";
+									}
+									input[name="ruc"]~.floater:before,
+									input[name="ruc"]:focus~.floater:before {
+									  content: "RUC *";
+									}
+									input[name="tel_of"]~.floater:before,
+									input[name="tel_of"]:focus~.floater:before {
+									  content: "Teléfono/Oficina";
+									}
+
+									input[name="email_corps"]~.floater:before,
+									input[name="email_corps"]:focus~.floater:before {
+									  content: "Email Corporativo *";
+									}
+									input[name="dir_comercial"]~.floater:before,
+									input[name="dir_comercial"]:focus~.floater:before {
+									  content: "Dirección Comercial *";
+									}
+									input[name="province"]~.floater:before,
+									input[name="province"]:focus~.floater:before {
+									  content: "Provincia *";
+									}
+									input[name="city"]~.floater:before,
+									input[name="city"]:focus~.floater:before {
+									  content: "Ciudad *";
+									}
+									input[name="parro"]~.floater:before,
+									input[name="parro"]:focus~.floater:before {
+									  content: "Parroquia *";
+									}
+									input[name="age_local"]~.floater:before,
+									input[name="age_local"]:focus~.floater:before {
+									  content: "Tiempo en local *";
+									}
+
+									input[name="age_company"]~.floater:before,
+									input[name="age_company"]:focus~.floater:before {
+									  content: "Fecha de creación *";
+									}
+									input[name="cant_sucur_info"]~.floater:before,
+									input[name="cant_sucur_info"]:focus~.floater:before {
+									  content: "Cantidad de sucursales *";
+									}
+									input[name="rep_name"]~.floater:before,
+									input[name="rep_name"]:focus~.floater:before {
+									  content: "Nombre completo *";
+									}
+									input[name="nit"]~.floater:before,
+									input[name="nit"]:focus~.floater:before {
+									  content: "Cédula / Pasaporte *";
+									}
+									input[name="tel_rep"]~.floater:before,
+									input[name="tel_rep"]:focus~.floater:before {
+									  content: "Tel. Residencia *";
+									}
+									input[name="phone_rep"]~.floater:before,
+									input[name="phone_rep"]:focus~.floater:before {
+									  content: "Tel. Celular *";
+									}
+									input[name="email_rep"]~.floater:before,
+									input[name="email_rep"]:focus~.floater:before {
+									  content: "Email *";
+									}
+									input[name="dir_rep"]~.floater:before,
+									input[name="dir_rep"]:focus~.floater:before {
+									  content: "Dirección Residencia *";
+									}
+									input[name="house_age"]~.floater:before,
+									input[name="house_age"]:focus~.floater:before {
+									  content: "Tiempo en residencia *";
+									}
+									input[name="oferta_email"]~.floater:before,
+									input[name="oferta_email"]:focus~.floater:before {
+									  content: "Email para promociones *";
+									}
+
+									// input[name="refs_company_1"]~.floater:before,
+									// input[name="refs_company_1"]:focus~.floater:before {
+									// 	content: "Empresa *";
+									// }
+									// input[name="refs_company_2"]~.floater:before,
+									// input[name="refs_company_2"]:focus~.floater:before,
+									// input[name="refs_company_3"]~.floater:before,
+									// input[name="refs_company_3"]:focus~.floater:before {
+									//   content: "Empresa";
+									// }
+									// input[name="refs_contact_1"]~.floater:before,
+									// input[name="refs_contact_1"]:focus~.floater:before {
+									// 	content: "Contacto *";
+									// }
+									// input[name="refs_contact_2"]~.floater:before,
+									// input[name="refs_contact_2"]:focus~.floater:before,
+									// input[name="refs_contact_3"]~.floater:before,
+									// input[name="refs_contact_3"]:focus~.floater:before {
+									//   content: "Contacto";
+									// }
+									// input[name="refs_monto_1"]~.floater:before,
+									// input[name="refs_monto_1"]:focus~.floater:before {
+									// 	content: "Monto *";
+									// }
+									// input[name="refs_monto_2"]~.floater:before,
+									// input[name="refs_monto_2"]:focus~.floater:before,
+									// input[name="refs_monto_3"]~.floater:before,
+									// input[name="refs_monto_3"]:focus~.floater:before {
+									//   content: "Monto";
+									// }
+									// input[name="refs_phone_1"]~.floater:before,
+									// input[name="refs_phone_1"]:focus~.floater:before {
+									// 	content: "Teléfono *";
+									// }
+									// input[name="refs_phone_2"]~.floater:before,
+									// input[name="refs_phone_2"]:focus~.floater:before,
+									// input[name="refs_phone_3"]~.floater:before,
+									// input[name="refs_phone_3"]:focus~.floater:before {
+									//   content: "Teléfono";
+									// }
+									// input[name="refs_fam_name_1"]~.floater:before,
+									// input[name="refs_fam_name_1"]:focus~.floater:before {
+									// 	content: "Nombre / Parentesco *";
+									// }
+									// input[name="refs_fam_name_2"]~.floater:before,
+									// input[name="refs_fam_name_2"]:focus~.floater:before,
+									// input[name="refs_fam_name_3"]~.floater:before,
+									// input[name="refs_fam_name_3"]:focus~.floater:before {
+									//   content: "Nombre / Parentesco";
+									// }
+									// input[name="refs_fam_dir_1"]~.floater:before,
+									// input[name="refs_fam_dir_1"]:focus~.floater:before {
+									// 	content: "Dirección *";
+									// }
+									// input[name="refs_fam_dir_2"]~.floater:before,
+									// input[name="refs_fam_dir_2"]:focus~.floater:before,
+									// input[name="refs_fam_dir_3"]~.floater:before,
+									// input[name="refs_fam_dir_3"]:focus~.floater:before {
+									//   content: "Dirección";
+									// }
+									// input[name="refs_fam_telh_1"]~.floater:before,
+									// input[name="refs_fam_telh_1"]:focus~.floater:before {
+									// 	content: "Tel. Residencia *";
+									// }
+									// input[name="refs_fam_telh_2"]~.floater:before,
+									// input[name="refs_fam_telh_2"]:focus~.floater:before,
+									// input[name="refs_fam_telh_3"]~.floater:before,
+									// input[name="refs_fam_telh_3"]:focus~.floater:before {
+									//   content: "Tel. Residencia";
+									// }
+									// input[name="refs_fam_telw_1"]~.floater:before,
+									// input[name="refs_fam_telw_1"]:focus~.floater:before {
+									// 	content: "Tel. Oficina *";
+									// }
+									// input[name="refs_fam_telw_2"]~.floater:before,
+									// input[name="refs_fam_telw_2"]:focus~.floater:before,
+									// input[name="refs_fam_telw_3"]~.floater:before,
+									// input[name="refs_fam_telw_3"]:focus~.floater:before {
+									//   content: "Tel. Oficina";
+									// }
+
+									// input[name="ger_gen_name"]~.floater:before,
+									// input[name="ger_gen_name"]:focus~.floater:before,
+									// input[name="ger_fin_name"]~.floater:before,
+									// input[name="ger_fin_name"]:focus~.floater:before,
+									// input[name="jefe_comp_name"]~.floater:before,
+									// input[name="jefe_comp_name"]:focus~.floater:before,
+									// input[name="jefe_ven_name"]~.floater:before,
+									// input[name="jefe_ven_name"]:focus~.floater:before,
+									// input[name="comp_name"]~.floater:before,
+									// input[name="comp_name"]:focus~.floater:before,
+									// input[name="ven_1_name"]~.floater:before,
+									// input[name="ven_1_name"]:focus~.floater:before,
+									// input[name="ven_2_name"]~.floater:before,
+									// input[name="ven_2_name"]:focus~.floater:before {
+									//   content: "Nombre Completo *";
+									// }
+									// input[name="ger_gen_date"]~.floater:before,
+									// input[name="ger_gen_date"]:focus~.floater:before,
+									// input[name="ger_fin_date"]~.floater:before,
+									// input[name="ger_fin_date"]:focus~.floater:before,
+									// input[name="jefe_comp_date"]~.floater:before,
+									// input[name="jefe_comp_date"]:focus~.floater:before,
+									// input[name="jefe_ven_date"]~.floater:before,
+									// input[name="jefe_ven_date"]:focus~.floater:before,
+									// input[name="comp_date"]~.floater:before,
+									// input[name="comp_date"]:focus~.floater:before,
+									// input[name="ven_1_date"]~.floater:before,
+									// input[name="ven_1_date"]:focus~.floater:before,
+									// input[name="ven_2_date"]~.floater:before,
+									// input[name="ven_2_date"]:focus~.floater:before {
+									//   content: "Fecha Nacimiento *";
+									// }
+									// input[name="ger_gen_ema"]~.floater:before,
+									// input[name="ger_gen_ema"]:focus~.floater:before,
+									// input[name="ger_fin_ema"]~.floater:before,
+									// input[name="ger_fin_ema"]:focus~.floater:before,
+									// input[name="jefe_comp_ema"]~.floater:before,
+									// input[name="jefe_comp_ema"]:focus~.floater:before,
+									// input[name="jefe_ven_ema"]~.floater:before,
+									// input[name="jefe_ven_ema"]:focus~.floater:before,
+									// input[name="comp_ema"]~.floater:before,
+									// input[name="comp_ema"]:focus~.floater:before,
+									// input[name="ven_1_ema"]~.floater:before,
+									// input[name="ven_1_ema"]:focus~.floater:before,
+									// input[name="ven_2_ema"]~.floater:before,
+									// input[name="ven_2_ema"]:focus~.floater:before {
+									//   content: "Email Corporativo *";
+									// }
+									// input[name="ger_gen_cel"]~.floater:before,
+									// input[name="ger_gen_cel"]:focus~.floater:before,
+									// input[name="ger_fin_cel"]~.floater:before,
+									// input[name="ger_fin_cel"]:focus~.floater:before,
+									// input[name="jefe_comp_cel"]~.floater:before,
+									// input[name="jefe_comp_cel"]:focus~.floater:before,
+									// input[name="jefe_ven_cel"]~.floater:before,
+									// input[name="jefe_ven_cel"]:focus~.floater:before,
+									// input[name="comp_cel"]~.floater:before,
+									// input[name="comp_cel"]:focus~.floater:before,
+									// input[name="ven_1_cel"]~.floater:before,
+									// input[name="ven_1_cel"]:focus~.floater:before,
+									// input[name="ven_2_cel"]~.floater:before,
+									// input[name="ven_2_cel"]:focus~.floater:before {
+									//   content: "Celular *";
+									// }
+									// input[name="ger_gen_tel"]~.floater:before,
+									// input[name="ger_gen_tel"]:focus~.floater:before,
+									// input[name="ger_fin_tel"]~.floater:before,
+									// input[name="ger_fin_tel"]:focus~.floater:before,
+									// input[name="jefe_comp_tel"]~.floater:before,
+									// input[name="jefe_comp_tel"]:focus~.floater:before,
+									// input[name="jefe_ven_tel"]~.floater:before,
+									// input[name="jefe_ven_tel"]:focus~.floater:before,
+									// input[name="comp_tel"]~.floater:before,
+									// input[name="comp_tel"]:focus~.floater:before,
+									// input[name="ven_1_tel"]~.floater:before,
+									// input[name="ven_1_tel"]:focus~.floater:before,
+									// input[name="ven_2_tel"]~.floater:before,
+									// input[name="ven_2_tel"]:focus~.floater:before {
+									//   content: "Tel. Oficina *";
+									// }
+									input[name="fac_elec_rs"]~.floater:before,
+									input[name="fac_elec_rs"]:focus~.floater:before {
+										content: "Razón Social *";
+									}
+									input[name="fac_elec_ruc"]~.floater:before,
+									input[name="fac_elec_ruc"]:focus~.floater:before {
+										content: "RUC *";
+									}
+									input[name="fac_elec_name"]~.floater:before,
+									input[name="fac_elec_name"]:focus~.floater:before {
+										content: "Nombre completo *";
+									}
+									input[name="fac_elec_ema"]~.floater:before,
+									input[name="fac_elec_ema"]:focus~.floater:before {
+										content: "Email *";
+									}
+									input[type="date"] {
+										width: 100%;
+										height: 45px;
+										margin-top: 5px;
+										& + label {											
+											display: block;
+											font-weight: 500;
+											margin-left: 15px;
+										}
+									}
+								}
+							}
+							.input-radio-fieldset {
+								margin: 15px 0 10px;
+								&__container {
+									width: 50%;
+									display: flex;
+									flex-direction: column;
+									justify-content: flex-end;
+									&:first-child {
+										padding-right: 10px;
+										border-right: 1px solid #E0E0E0;
+									}
+									&:last-child {
+										padding-left: 10px;
+									}
+									&__heading {
+										font-weight: bold;
+										font-size: 14px;
+										color: #333;
+									}
+									.radio-control {
+									    display: flex;
+										align-items: center;
+										padding: 0 15px 0;
+										border: 1px solid #d7d7d7;
+										margin: 15px 0 0;
+										&:hover {
+											border-color: @_siglo21-red;
+										}
+										input {
+											top: 0;
+											flex-shrink: 0;
+											cursor: pointer;
+
+											&:checked + label {
+												color: @_siglo21-blue;
+											}
+										}
+										label {
+											width: 100%;
+											padding: 10px 0;
+											padding-left: 10px;
+											font-weight: 500;
+											cursor: pointer;
+
+										}
+									}
+								}
+							}
+							#files {
+								padding: 10px 25px;
+								background: #F2F2F2;
+								border: 1px solid #E0E0E0;
+								.attach-heading {
+									font-weight: bold;
+									font-size: 14px;
+									color: #333;
+								}
+								.attach-container {
+									
+									.attach-message {
+										color: #828282;
+										font-weight: bold;
+										font-size: 14px;
+									}
+									.attach-content {
+										display: flex;
+										flex-direction: column;
+										padding: 10px 0;
+										label {
+											font-size: 14px;
+											color: #333;
+										}
+										input {
+											margin-bottom: 15px;
+										}
+										&:last-child {
+											border-top: 1px solid #E0E0E0;
+										}
+									}
+								}
+							}
+							.input-checkbox-fieldset__container {
+								display: flex;
+								flex-direction: column;
+								flex-flow: wrap;
+								justify-content: center;
+								
+								.checkbox-control {
+									width: 47%;
+									display: flex;
+									align-items: center;
+									padding: 0 15px 0;
+									border: 1px solid #d7d7d7;
+									margin: 15px 0 0;
+									min-height: 60px;
+									@media(max-width: 500px) {
+										width: 100%;
+    									margin: 10px 0 !important;
+									}
+									&:nth-child(odd) {
+										margin-right: 10px;
+									}
+									&:nth-child(even){
+										margin-left: 10px;
+									}
+									&:hover {
+										border-color: @_siglo21-red;
+									}
+									input {
+										top: 0;
+										flex-shrink: 0;
+										cursor: pointer;
+										width: 30px;
+										height: 30px;
+										&:checked + label {
+											color: @_siglo21-blue;
+										}
+									}
+									label {
+										width: 100%;
+										padding: 10px 0;
+										padding-left: 10px;
+										font-weight: 500;
+
+									}
+								}
+								
+							}
+							.auth-field {
+								p {
+									text-align: justify;
+								}
+								.checkbox-control {
+									margin: 20px 0;
+									width: 100%;
+								}
+							}
+						}
+						
+					}
+					.btn-control-register {
+						display: flex;
+						justify-content: center;
+						button {
+							border-radius: 0;
+							background: @_siglo21-blue;
+							font-weight: 900;
+							text-transform: uppercase;
+							color: white !important;
+							border-color: @_siglo21-blue !important;
+
+							&:hover,
+							&:active {
+								border: 1px solid @_siglo21-blue !important;
+								color: @_siglo21-blue !important;
+								background: white !important;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.customer-account-login {
+		#block-customer-login {
+			border-bottom-color: #D1d1d1 !important;
+			span {
+				color: @_siglo21-blue;
+			}
+		}
+		.form-group label {
+			font-weight: 500 !important;
+			color: @_siglo21-blue !important;
+			margin-bottom: 5px !important;
+		}
+		.form-footer .btn-control-login {
+			justify-content: space-around !important;
+			.actions-toolbar button {
+				background: @_siglo21-blue;
+				color: white !important;
+				font-weight: 800;
+				border-radius: 0;
+				border: none;
+			}
+			a.remind {
+				font-weight: 500;
+			}
+		}
+		.after-login-block {
+			&__container {
+				text-align: center;
+				padding: 50px 0 25px;
+				h4 {
+					font-size: 24px;
+    				font-weight: 7	00;
+				}
+				p {
+					font-size: 14px;
+					font-weight: 500;
+					color: @_siglo21-blue;
+					margin-bottom: 30px;
+				}
+				.btn {
+					background: @_siglo21-blue;
+					border: 2px @_siglo21-blue solid !important;
+					color: white;
+					font-weight: 900;
+					text-transform: uppercase;
+					&:hover {
+						color: #2f3e47 !important;
+   						background: white !important;
+					}
+				}
+			}
+		}
+	}
+	.block-customer-forgot-password {
+		.password.forget {
+			.actions-toolbar .primary:hover {
+				background: none;
+			}
+		}
+	}
+	.customer-account-login, .customer-account-create, .customer-account-forgotpassword {
+		.page-main {
+			//background-image: url(../images/login-bg.jpg);
+			max-width: 100% !important;
+			width: 100%;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			.columns {
+				padding-bottom: 0;
+				max-width: 100%;
+				.main {
+					padding-bottom: 0;
+				}
+				.form-box {
+					padding: 37px 60px 64px;
+					margin: auto;
+					box-shadow: 0 3px 16px rgba(51,51,51,0.1);
+					background-color: #fff;
+					width: 100%;
+					margin-bottom: 120px;
+					margin-top: 120px;
+
+					@media(max-width: 575px) {
+						margin-bottom: 80px;
+						margin-top: 80px;
+					}
+
+					@media(max-width: 767px) {
+						padding: 20px 20px 44px;
+						padding-bottom: 30px;
+					}
+
+					@media(max-width: 1200px) {
+						width: 575px;
+					}
+					.form-tab {
+						.nav.nav-pills {
+							color: #333;
+							&.block-title {
+								border-bottom: 1px solid #ebebeb;
+								padding-bottom: 0;
+							}
+							.nav-item {
+								margin-bottom: -1px;
+								flex: 1 1 0;
+								text-align: center;
+								cursor: pointer;
+								.nav-link {
+									text-transform: capitalize;
+									font-weight: 400;
+									letter-spacing: -0.6px;
+									color: inherit;
+									border-bottom-width: 2px;
+									padding: 9px 10px;
+									margin-bottom: 0;
+									line-height: 36px;
+									@media(max-width: 575px) {
+										padding-bottom: 6px;
+									}
+									&.active {
+										color: inherit;
+										border-bottom: 2px solid #4D6782;
+									}
+									span {
+										font-size: 24px;
+										@media(max-width: 767px) {
+											font-size: 20px;
+										}
+									}
+								}
+							}
+						}
+						.nav {
+							display: -ms-flexbox;
+							display: flex;
+							-ms-flex-wrap: wrap;
+							flex-wrap: wrap;
+							padding-left: 0;
+							margin-bottom: 0;
+							list-style: none;
+						}
+						.tab-content {
+							.tab-pane {
+								padding:23px 0 0;
+								display: none;
+								&.active {
+									display: block;
+									-webkit-animation: show-content 1s ease-out;
+									-moz-animation: show-content 1s ease-out;
+								}
+							}
+							.fieldset .field + .field {
+								margin: 13px 0 0;
+							}
+							.form-group {
+								label {
+									color:#666;
+									font-weight: 300;
+									font-size: 14px;
+									margin: 0 0 14px;
+									display: inline-block;
+								}
+
+								.mage-error {
+									margin-top: 0;
+								}
+							}
+
+							.form-footer {
+								.btn-control-login {
+									display: flex;
+									align-items: center;
+									justify-content: space-between;
+									margin-top: 16px;
+									@media(max-width: 575px) {
+										flex-direction: column;
+										.actions-toolbar {
+											order: 2;
+											width: 100%;
+											.btn {
+												width: 100%;
+												text-align: center;
+											}
+										}
+
+										.remind {
+											order: 1;
+											display: inline-block;
+											width: 100%;
+											margin-bottom: 16px;
+
+										}
+									}
+
+									@media(min-width: 576px) and (max-width: 767px) { 
+										flex-direction: row-reverse;
+									}
+									.actions-toolbar {
+										margin-top: 0;
+									}
+								}
+
+								.mgs-gdpr-checkbox {
+									padding-top: 16px;
+								}
+
+							}
+
+							.fieldset {
+								margin-left: 0;
+								margin-right: 0;
+								&::after {
+									display: none;
+								}
+								.field {
+									.control {
+										.input-text {
+											margin-bottom: 3px;
+										}
+									}
+								}
+
+							}
+
+							#register-2 {
+								form {
+									min-width: auto;
+									width: auto;
+									.fieldset {
+										.field {
+											.control {
+												width: 100%;
+												.input-text {
+													margin-bottom: 0;
+												}
+											}
+										}
+									}
+
+									.mage-error {
+										margin-top: 0;
+									}
+									.input-text.mage-error {
+										margin-bottom: 3px !important;
+									}
+								}
+							}
+
+							.form-create-account {
+								label {
+									color:#666;
+									font-weight: 300;
+									font-size: 14px;
+									margin: 0 0 14px;
+									display: inline-block;
+								}
+
+								.field.choice.newsletter {
+									margin-top: 19px;
+								}
+
+								fieldset {
+									.legend {
+										padding: 0px;
+										span {
+											font-size: 17px;
+											color:#333;
+											font-weight: 400;
+										}
+									}
+								}
+
+								.actions-toolbar {
+									margin-top: 10px;
+									@media(min-width: 576px) and (max-width: 767px) { 
+										display: flex;
+										flex-direction: row-reverse;
+										justify-content: space-between;
+									}
+									.primary, .secondary {
+										text-align: center !important;
+										.action {
+											@media(min-width: 576px) and (max-width: 767px) {
+												width: auto !important;
+											}
+											a.action {
+												margin-top: 0;
+												padding: 9.5px 15px;
+											}
+										}
+									}
+									.primary {
+										margin: 0;
+									}
+								}
+
+								.mgs-gdpr-checkbox {
+									margin-top: 20px;
+									.label {
+										&::after {
+											top: 1px !important;
+										}
+									}
+								}
+
+								.create.account {
+									margin-top: 8px;
+								}
+							}
+						}
+					}
+				}
+
+				/*.login-container {
+					padding-bottom: 120px;
+					padding-top: 120px;
+
+					@media(max-width: 575px) {
+						padding-bottom: 80px;
+						padding-top: 80px;
+					}
+				}*/
+			}
+		}
+
+		.field.choice:not(.review-field-rating) input[type="checkbox"]:checked + label::after, .field.choice:not(.review-field-rating) input[type="checkbox"]:checked + .label::after {
+			top: 1px !important;
+		}
+
+		/*.page-main .columns .form-box .form-tab .tab-content .form-create-account label::after {
+			top: 1px !important;
+			content: '\e801';
+			font-family: molla;
+			position: absolute;
+			left: 4px;
+			line-height: 14px;
+		}*/
+	}
+
+	@-webkit-keyframes show-content {
+		  0% { opacity: 0;} 
+		  25% { opacity: 0.25; }
+		  50% {opacity: 0.5;} 
+		  75% { opacity: 0.9; } 
+		100% { opacity: 1;}
+	}
+	@-moz-keyframes show-content {
+		  0% { opacity: 0;} 
+		  25% { opacity: 0.25; }
+		  50% {opacity: 0.5;} 
+		  75% { opacity: 0.9; } 
+		100% { opacity: 1;}
+	}
+
+	.customer-account-forgotpassword {
+		.block.form-box.block-customer-forgot-password {
+			margin-top: 120px;
+			margin-bottom: 120px;
+			.block-title {
+				margin-top: 9px;
+				h2 {
+					text-align:center;
+					span {
+						font-size: 24px;
+						text-transform: capitalize;
+						font-weight: 400;
+						letter-spacing: -0.6px;
+						padding: 9px 10px;
+						margin-bottom: 0;
+						line-height: 36px;
+					}
+				}
+			}
+			form {
+				min-width: unset;
+				width: auto;
+				margin-top: 11px;
+				.label {
+					margin-bottom: 13px;
+					span {
+						color:#666;
+						font-weight: 300;
+						font-size: 14px;
+						display: inline-block;
+					}
+				}
+				.input-text {
+					margin-bottom: 0;
+				}
+				.mage-error {
+					margin-top: 0;
+				}
+				.input-text.mage-error {
+					margin-bottom: 3px;
+				}
+				.actions-toolbar {
+					margin-top: 24px;
+					.primary {
+						.action.submit {
+							margin-right: 0;
+							text-align: center;
+						}
+					}
+					.secondary {
+						a {
+							margin-top: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	//
+	// Style for my account page
+	//
+	
+	.block-dashboard-addresses,
+	.block-dashboard-info {
+		.block-content {
+			display: block !important;
+			.box-billing-address,
+			.box-information {
+				margin-bottom: 50px;
+			}
+		}
+	}
+	.block-reviews-dashboard view {
+		margin-left: 20px;
+	}
+
+	.account {
+		.primary.btn span {
+			color: white !important;
+		}
+	
+		.primary.btn:after {
+			color: white;
+		}
+	
+		.primary.btn:hover {
+			filter: saturate(2);
+		}	
+		#maincontent {
+			padding: 20px;
+		}
+
+		.pager {
+			display: flex;
+			align-items: center;
+			padding-top: 10px;
+			border-top: 1px solid #DDD;
+			justify-content: space-between;
+			p.toolbar-amount {
+				padding: 0 10px;
+				margin: 0 10px;
+				border-right: 1px #DDD solid;
+			}
+			.limiter {
+				display: flex;
+				align-items: center;
+				padding: 0 10px;
+				margin: 0 10px;
+			}
+		}		
+	}
+	.account {
+		&.page-layout-2columns-left {
+			.page-main {
+				.main {
+					@media(max-width: 991px) {
+						order: 3;
+					}
+					overflow: hidden;
+					.block {
+						.block-title {
+							border-bottom: 1px solid #ebebeb;
+							padding: 15px 0;
+							margin-bottom: 25px;
+							padding-top: 0;
+							strong {
+								font-size: 22px;
+								color: #333;
+								font-weight: 400;
+							}
+						}
+
+						.block-content {
+							.box-title {
+								span {
+									font-size: 17px;
+									color: #333;
+									font-weight: 400;
+								}
+							}
+						}
+					}
+
+					form {
+						.legend {
+							padding: 0;
+							span {
+								font-size: 22px;
+							    color: #333;
+							    font-weight: 400;
+							}
+						}
+
+						.field {
+							.control {
+								.input-text {
+									margin-bottom: 0;
+								}
+							}
+						}
+
+						.fieldset {
+							margin-bottom: 30px;
+						}
+
+					}
+
+					.actions-toolbar {
+						.action {
+							text-align: center;
+							margin-top: 0;
+							margin-right: 0;
+						}
+					}
+
+					.block-dashboard-info, .block-dashboard-addresses {
+						.block-content {
+							display: flex;
+							justify-content: space-between;
+							@media(max-width: 767px) {
+								flex-direction: column;
+								.box {
+									margin-bottom: 20px;
+								}
+							}
+						}
+					}
+				}
+				.sidebar {
+					margin-bottom: 30px;
+					@media(max-width: 991px) {
+						order: 1;
+					}
+					overflow: hidden;
+					.account-nav {
+						.content {
+							background-color: transparent;
+							padding-top: 0;
+							.items {
+								.item {
+									> a {
+										overflow: hidden;
+										position: relative;
+										font-weight: 300;
+										font-size: 14px;
+										line-height: 1.5;
+										padding: 14px 0;
+										color: #333;
+										border-bottom: 1px solid #ebebeb;
+										display: block;
+										&:hover {
+											background-color: transparent;
+											color: #4D6782;
+										}
+
+									}
+									&.current {
+										strong {
+											overflow: hidden;
+											position: relative;
+											font-weight: 300;
+											font-size: 14px;
+											line-height: 1.5;
+											padding: 14px 0;
+											color: #E41F13;
+											border-bottom: 1px solid #ebebeb;
+											padding-left: 20px;
+											border-left: unset;
+											cursor: pointer;
+											display: block;
+											&::before {
+												font-family: "molla";
+												content: '\f274';
+												display: block;
+												font-size: 15px;
+												line-height: 1;
+												position: absolute;
+												top: 50%;
+												left: 0;
+												margin-top: -7.5px;
+												transition: all .3s;
+												/*opacity: 0;*/
+											}
+										}
+										a {
+											overflow: hidden;
+											position: relative;
+											font-weight: 300;
+											font-size: 14px;
+											line-height: 1.5;
+											padding: 14px 0;
+											color: #4D6782;
+											border-bottom: 1px solid #ebebeb;
+											padding-left: 20px;
+											border-left: unset;
+											cursor: pointer;
+											padding-left: 0;
+										}
+									}
+								}
+							}
+						}
+						.title {
+							strong {
+								font-size: 22px;
+								color: #333;
+								font-weight: 400;
+							}
+						}
+					}
+				}
+				.sidebar-additional {
+					@media(max-width: 991px) {
+						order: 2;
+					}
+					margin-top: 0;
+					.block {
+						.block-title {
+							strong {
+								font-size: 22px;
+								color:#333;
+								font-weight: 400;
+							}
+						}
+						.block-content {
+							#cart-sidebar-reorder {
+								.product-item {
+									display: flex;
+									align-items: center;
+									.product-item-name {
+										margin-left: 10px;
+										a {
+											span {
+												font-weight: 300;
+												font-size: 14px;
+												color:#333;
+											}
+										}
+									}
+									.field.item.choice {
+										display: block;
+										.control {
+											width: 20px;
+											.checkbox {
+												position: static;
+												opacity: 1;
+											}
+										}
+									}
+								}
+							}
+							.actions-toolbar {
+								display: flex;
+								flex-direction: column;
+								align-items: center;
+								.primary {
+									.action.tocart {
+										margin-right: 0;
+										text-align: center;
+									}
+								}
+							}
+							
+						}
+						&.block-compare {
+							.block-content .actions-toolbar {
+								display: block;
+								> .primary {
+									margin-bottom: 0;
+								}
+							}
+						}
+					}
+				}
+				.columns {
+					margin-top: 38px;
+				}
+				.box-actions {
+					margin-top: 20px;
+				}
+			}
+		}
+		&.wishlist-index-index {
+			.products {
+				.product-item {
+					margin-left: 0;
+					.product-item-info {
+						.product-item-name {
+							padding: 16px 5px;
+							display: inline-block;
+							text-align: center;
+							width: 100%;
+							padding-bottom: 4px;
+						}
+						.price-as-configured {
+							text-align: center;
+						}
+
+						.product-item-inner {
+							.box-tocart {
+								.control {
+									text-align: center;
+									position: relative;
+									display: inline-block;
+									margin-left: 10px;
+									button {
+										position: absolute;
+										background-color: transparent;
+										border: unset;
+										font-size: 10px;
+										font-weight: 300;
+										color:#999;
+										top: 50%;
+										transform: translateY(-50%);
+										&::after {
+											font-family: 'fontAwesome';
+										}
+										&.minus::after {
+											content: '\f068';
+										}
+										&.plus::after {
+											content: '\f067';
+										}
+										&.minus {
+											left: 0;
+										}
+										&.plus {
+											right: 0;
+										}
+									}
+								}
+								.qty {
+									height: 40px;
+								}
+
+								.fieldset {
+									margin-bottom: 10px;
+								}
+							}
+
+							.fieldset {
+								.field {
+									display: flex;
+									/*justify-content: center;*/
+									align-items: center;
+									.label {
+										margin-bottom: 0;
+									}
+								}
+							}
+
+							.comment-box {
+								.control {
+									padding: 0 5px;
+								}
+							}
+							.product-item-actions {
+								text-align: center;
+								padding: 0 5px;
+								.action {
+									min-width: auto;
+									/*padding: 5.5px 15px;*/
+									&.tocart {
+										padding: 7px 2px;
+									}
+								}
+
+							}
+
+							.product-item-comment {
+								margin-top: 4px;
+							}
+
+						}
+					}
+				}
+			}
+			#wishlist-view-form {
+				> .actions-toolbar {
+					> .primary {
+						&:hover {
+							background-color: transparent;
+						}
+					}
+				}
+			}
+
+			.product-items {
+				@media(max-width: 767px) {
+					flex-direction: column;
+					.product-item {
+						max-width: 100%;
+						.product-item-info {
+							.product-item-photo {
+								float: unset;
+								display: block;
+								margin: 0;
+								.product-image-container {
+									max-width: 100%;
+								}
+							}
+							.product-item-name {
+								margin: 0;
+								padding-top: 0;
+								.product-item-link {
+									font-size: 18px;
+								}
+							}
+							.price-box {
+								margin: 0;
+							}
+							.product-item-inner {
+								.product-item-actions {
+									clear: both;
+									display: flex;
+									justify-content: space-between;
+									.action {
+										float: unset;
+									}
+									.actions-primary {
+										position: static;
+										opacity: 1;
+										visibility: visible;
+										transform: unset;
+										max-width: 100%;
+										margin-top: 15px;
+										
+										.action.tocart  {
+											padding: 7px 62px;
+											/*max-width: 170px;*/
+											width: 100%;
+										}
+									}
+								}
+								.box-tocart {
+									width: 100%;
+								}
+							}
+						}
+					}
+				}
+
+				@media(min-width: 425px) and (max-width: 767px) {
+					.product-item {
+						.product-item-info {
+							.product-item-inner {
+								.box-tocart {
+									.fieldset {
+										display: flex;
+										.action.tocart {
+											padding: 8.5px 57px;
+										}
+										.actions-primary {
+											margin: 0;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+
+				@media(min-width: 768px) and (max-width: 1199px) {
+					.product-item {
+						.product-item-info {
+							.product-item-inner {
+								.box-tocart {
+									.fieldset {
+										.actions-primary {
+											position: static;
+											opacity: 1;
+											visibility: visible;
+											transform: unset;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		&.customer-address-index {
+			.modal-popup {
+				transition: 500ms ease all;
+				transform: scale(0.8);
+				opacity: 0.5;
+				&._show {
+					transform: scale(1);
+					opacity: 1;
+				}
+				.modal-inner-wrap {
+					width: 310px;
+					top: 50%;
+					transform: translateY(-50%);
+					margin: 0 auto;
+					.modal-header {
+						padding-top: 30px;
+					}
+					.modal-footer {
+						padding-top: 30px;
+						padding-bottom: 30px;
+						button {
+							padding: 8.5px 15px;
+							border-width: 1px;
+							border-style: solid;
+							text-align: center;
+							display: inline-block;
+							font-size: 14px;
+							font-weight: 400;
+							outline: none;
+							cursor: pointer;
+							text-decoration: none;
+							min-width: 100px;
+							transition: 500ms ease all;
+							&.action-accept {
+								color:#4D6782;
+								background-color:transparent;
+								border-color:#4D6782;
+								&:hover {
+									color:#fff;
+									background-color:#4D6782;
+									border-color:#4D6782;
+									box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+								}
+							}
+
+							&.action-dismiss {
+								&:hover {
+									border-color:#4D6782;
+									color: #4D6782;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.block-addresses-list {
+				.item.actions {
+					.action {
+						@media(max-width: 425px) {
+							min-width: 100px;
+						}
+						
+					}
+				}
+			}
+
+			.block-addresses-default {
+				margin-bottom: 50px;
+				.block-content {
+					display: flex;
+					justify-content: space-between;
+					flex-direction: row;
+					& > div {
+						flex: 1;
+						border-left: 1px solid gray;
+						padding-left: 20px;
+					}
+					@media(max-width: 767px) {
+						flex-direction: column;
+						.box-address-billing {
+							margin-bottom: 30px;
+						}
+					}
+				}
+			}
+		}
+
+		table {
+			.col {
+				max-width: 20% !important;
+			}
+			tr {
+				th, td {
+					text-align: center;
+					padding: 15px;
+				}
+				th {
+					text-transform: uppercase;
+				    color: #000;
+				    font-weight: 600;
+				    padding-left: 0;
+				    border: none;
+				    text-align: center;
+				}
+			}
+
+			@media (max-width: 639px) {
+				tbody {
+					tr {
+						border-bottom: 1px solid #d7d7d7;
+					    padding: 20px 0;
+					    display: block;
+					    td {
+					    	text-align: center;
+					    	display: block;
+	    					border: none;
+	    					padding: 5px 0;
+	    					&.col {
+	    						max-width: 100% !important;
+	    					}
+	    					&::before {
+	    						content: attr(data-th) ': ';
+							    float: left;
+							    font-weight: 500;
+							    color: #000;
+							    margin-right: 20px;
+	    					}
+	    					&.actions, &.item {
+	    						&::before {
+	    							line-height: 40px;
+	    						}
+	    					}
+	    					&.summary {
+	    						clear: both;
+	    					}
+					    }
+					}
+				}
+			}
+		}
+
+		&.sales-order-view {
+			.order-links {
+				margin-bottom: 25px;
+				.nav.item.current {
+					padding: 15px 0;
+					strong {
+						font-size: 22px;
+						color:#333;
+						font-weight: 400;
+					}
+				}
+			}
+			.order-details-items {
+				.order-title {
+					strong {
+						margin-top: 0;
+						font-size: 17px;
+						color:#333;
+						font-weight: 400;
+					}
+				}
+				.order-items {
+					tbody {
+						tr {
+							td {
+								strong, .price, .title {
+									font-size: 14px;
+									font-weight: 300;
+									color: #999;
+								}
+							}
+						}
+					}
+				}
+			}
+			.box-order-billing-method {
+				.box-content {
+					.title {
+						font-size: 17px;
+						color: #333;
+						font-weight: 600;
+					}
+				}
+			}
+		}
+
+	}
+	.customer-account-index .column.main > .block {
+		margin-bottom: 50px;
+	}
+	#accept_gdpr-error {
+		margin-top: 0;
+		color: #cc9966;
+		font-size: 14px;
+		font-weight: 400;
+	}
+	
+	@media(max-width: 767px) {
+		.customer-account-index.page-layout-2columns-left .page-main .main .block .block-title {
+			padding-bottom: 10px;
+		}
+	}
+
+	.customer-account-create .page-main .columns .form-box .form-tab .tab-content .form-group label {
+		line-height: 26px;
+	}
+
+	.field.choice:not(.review-field-rating) input[type="checkbox"] + .label, .form .choice:not(.review-field-rating) input[type="checkbox"] + .label {
+		color: #666;
+		line-height: 26px;
+	}
+
+	.field.choice:not(.review-field-rating) input[type="checkbox"] + .label::before, .form .choice:not(.review-field-rating) input[type="checkbox"] + .label::before {
+		width: 16px;
+		height: 16px;
+	}
+	.field.choice:not(.review-field-rating) input[type="checkbox"]:checked + .label:after , 
+	.form .choice:not(.review-field-rating) input[type="checkbox"]:checked + .label:after {
+		width: 16px;
+		height: 16px;
+	}
+	.customer-account-create .field.choice:not(.review-field-rating) input[type="checkbox"]:checked + .label::after {
+		top: 4px !important;
+	}
+
+	.customer-account-create .page-main .columns .form-box .form-tab .tab-content .form-create-account .mgs-gdpr-checkbox .label::after,  .customer-account-login .field.choice:not(.review-field-rating) input[type="checkbox"]:checked + .label::after,
+	.customer-account-login .page-main .columns .form-box .form-tab .tab-content .form-create-account .mgs-gdpr-checkbox .label::after {
+		top: 4px !important;
+	}
+
+	.customer-account-create .page-main .columns .form-box .form-tab .tab-content .form-create-account label, .customer-account-login .page-main .columns .form-box .form-tab .tab-content .form-group label {
+		line-height: 26px;
+	}
+
+	.field .control {
+		position: relative;
+	}
+
+	.field.choice.mgs-gdpr-checkbox {
+		position: relative;
+	}
+	.field.choice.mgs-gdpr-checkbox div.mage-error {
+		position: absolute;
+		top: 100%;
+		font-size: 12px !important;
+		font-style: italic;
+		color: #cc9966 !important;
+	}
+	.field.choice:not(.review-field-rating), .form .choice:not(.review-field-rating), .checkbox .choice {
+		overflow: visible;
+	}
+
+	.customer-account-login .page-main .columns .form-box .form-tab .tab-content .fieldset .field + .field, .customer-account-create .page-main .columns .form-box .form-tab .tab-content .fieldset .field + .field, .customer-account-forgotpassword .page-main .columns .form-box .form-tab .tab-content .fieldset .field + .field {
+		margin: 15px 0 0;
+	}
+
+	.customer-account-login .page-main .columns .form-box .form-tab .tab-content .form-footer .mgs-gdpr-checkbox, .customer-account-create .page-main .columns .form-box .form-tab .tab-content .form-footer .mgs-gdpr-checkbox, .customer-account-forgotpassword .page-main .columns .form-box .form-tab .tab-content .form-footer .mgs-gdpr-checkbox {
+		margin-top: 18px;
+		padding-top: 0;
+	}
+	.customer-account-login .page-main .columns .form-box .form-tab .tab-content .form-footer .btn-control-login, .customer-account-create .page-main .columns .form-box .form-tab .tab-content .form-footer .btn-control-login, .customer-account-forgotpassword .page-main .columns .form-box .form-tab .tab-content .form-footer .btn-control-login {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-top: 25px;
+	}
+
+	.customer-account-login .page-main .columns .form-box .form-tab .tab-content .form-create-account .actions-toolbar,
+	.customer-account-create .page-main .columns .form-box .form-tab .tab-content .form-create-account .actions-toolbar {
+		margin-top: 25px;
+	}
+	.customer-account-forgotpassword .block.form-box.block-customer-forgot-password form .input-text.mage-error {
+		margin-bottom: 0;
+	}
+
+	.customer-account-login .page-main .columns .form-box .form-tab .tab-content #register-2 form .input-text.mage-error, .customer-account-create .page-main .columns .form-box .form-tab .tab-content #register-2 form .input-text.mage-error, .customer-account-forgotpassword .page-main .columns .form-box .form-tab .tab-content #register-2 form .input-text.mage-error {
+		margin-bottom: 0px !important;
+	}
+	.customer-account-index .form-box form .secondary .action.back {
+		margin-top: 0;
+		padding: 9.5px 15px;
+	}
+}
+
+

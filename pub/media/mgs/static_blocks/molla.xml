@@ -1,0 +1,377 @@
+<static_block>
+	<item>
+		<title><![CDATA[Footer 6 Block Logo]]></title>
+		<identifier><![CDATA[footer-6-block-logo]]></identifier>
+		<content><![CDATA[<img src="{{media url="wysiwyg/logo-footer_2.png"}}" alt="logo" />]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Footer 6 block about]]></title>
+		<identifier><![CDATA[footer-block-about]]></identifier>
+		<content><![CDATA[
+<h4 class="widget-title">About Molla</h4>
+<p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.</p>
+<div class="social-icons-block">
+    <a href="#" class="social-item" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+    <a href="#" class="social-item" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
+    <a href="#" class="social-item" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+    <a href="#" class="social-item" title="Youtube" target="_blank"><i class="icon-youtube"></i></a>
+    <a href="#" class="social-item" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
+</div>]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Header CustomStatic Block_1]]></title>
+		<identifier><![CDATA[header_custom_static_block_1]]></identifier>
+		<content><![CDATA[<div class="message">Special collection already available.<a class="text-primary-hover" title="read more " href="#">&nbsp;Read more ...</a></div>]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Header Custom Static Block_2]]></title>
+		<identifier><![CDATA[header_custom_static_block_2]]></identifier>
+		<content><![CDATA[<div class='banner-sale'><i class="la la-lightbulb-o"></i>
+Clearance<span class="highlight">&nbsp;Up to 30% Off</span></div>]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Menu Vertical Header 1]]></title>
+		<identifier><![CDATA[menu-vertical-header-1]]></identifier>
+		<content><![CDATA[<div class="category-dropdown"><a class="dropdown-toggle title-vertical-menu" title="Browse Categories" href="#" data-toggle="dropdown" data-display="static"> Browse Categories </a>
+<div class='dropdown-menu'>{{block class="MGS\Mmegamenu\Block\Vertical" menu_id="2" template="MGS_Mmegamenu::vertical.phtml"}}</div>
+</div>]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Footer 1 block info]]></title>
+		<identifier><![CDATA[footer-1-block-info]]></identifier>
+		<content><![CDATA[<h4 class="widget-title">Information</h4>
+<ul class="widget-list">
+    <li><a href="about.html">About Molla</a></li>
+    <li><a href="#">How to shop on Molla</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="contact.html">Contact us</a></li>
+    <li><a href="login.html">Log in</a></li>
+</ul>]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Footer 1 customer service]]></title>
+		<identifier><![CDATA[footer-1-customer-service]]></identifier>
+		<content><![CDATA[<h4 class="widget-title">Customer Service</h4>
+<ul class="widget-list">
+<li><a href="#">Payment Methods</a></li>
+<li><a href="#">Money-back guarantee!</a></li>
+<li><a href="#">Returns</a></li>
+<li><a href="#">Shipping</a></li>
+<li><a href="#">Terms and conditions</a></li>
+<li><a href="#">Privacy Policy</a></li>
+</ul>]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Footer 1 block my account]]></title>
+		<identifier><![CDATA[footer-1-block-my-account]]></identifier>
+		<content><![CDATA[<h4 class="widget-title">My Account</h4>
+<ul class="widget-list">
+    <li><a href="#">Sign In</a></li>
+    <li><a href="cart.html">View Cart</a></li>
+    <li><a href="#">My Wishlist</a></li>
+    <li><a href="#">Track My Order</a></li>
+    <li><a href="#">Help</a></li>
+</ul>
+
+
+
+
+
+
+
+
+]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Footer 1 block social media]]></title>
+		<identifier><![CDATA[footer-1-block-social-media]]></identifier>
+		<content><![CDATA[<div class="social-icons social-icons-color">
+    <span class="social-label">Social Media</span>
+    <a href="#" class="social-icon social-facebook" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+    <a href="#" class="social-icon social-twitter" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
+    <a href="#" class="social-icon social-instagram" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+    <a href="#" class="social-icon social-youtube" title="Youtube" target="_blank"><i class="icon-youtube"></i></a>
+    <a href="#" class="social-icon social-pinterest" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
+</div>]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Footer 1 block menu]]></title>
+		<identifier><![CDATA[footer-1-block-menu]]></identifier>
+		<content><![CDATA[<ul class="footer-menu">
+    <li><a href="#">Terms Of Use</a></li>
+    <li><a href="#">Privacy Policy</a></li>
+</ul>]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Footer 1 block about]]></title>
+		<identifier><![CDATA[footer-1-block-about]]></identifier>
+		<content><![CDATA[<p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
+<div class="widget-about-info">
+<div class="line">
+<div class="col-mb-12 col-des-4 col-tb-4"><span class="widget-about-title">Got Question? Call us 24/7</span> <a href="tel:123456789">+0123 456 789</a></div>
+<!-- End .col-mb-6 -->
+<div class="col-mb-12 col-des-8 col-tb-8"><span class="widget-about-title">Payment Method</span><figure class="footer-payments"><img src="{{media url="wysiwyg/payment.png"}}" alt="Payment methods" width="272" height="20" /></figure><!-- End .footer-payments --></div>
+<!-- End .col-mb-6 --></div>
+<!-- End .line --></div>]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Footer 2 block newsletter]]></title>
+		<identifier><![CDATA[footer-2-block-newsletter]]></identifier>
+		<content><![CDATA[<div class="widget widget-newsletter">
+    <h4 class="widget-title">Sign Up to Newsletter</h4><!-- End .widget-title -->
+
+    <p>Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan.</p>
+    
+    <form action="#">
+        <div class="input-group">
+            <input type="email" class="form-control" placeholder="Enter your Email Address" aria-label="Email Adress" required="">
+            <div class="input-group-append">
+                <button class="btn btn-dark" type="submit"><i class="icon-long-arrow-right"></i></button>
+            </div><!-- .End .input-group-append -->
+        </div><!-- .End .input-group -->
+    </form>
+</div>]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Footer 3 block about]]></title>
+		<identifier><![CDATA[footer-3-block-about]]></identifier>
+		<content><![CDATA[<p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.</p>
+<div class="widget-call"><i class="icon-phone"></i> Got Question? Call us 24/7 <a href="tel:#">+0123 456 789</a></div>]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Footer 4 block about ]]></title>
+		<identifier><![CDATA[footer-4-block-about]]></identifier>
+		<content><![CDATA[<p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. </p>
+<div class="social-icons">
+    <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+    <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
+    <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+    <a href="#" class="social-icon" title="Youtube" target="_blank"><i class="icon-youtube"></i></a>
+    <a href="#" class="social-icon" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
+</div>]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Footer block payment]]></title>
+		<identifier><![CDATA[footer-block-payment]]></identifier>
+		<content><![CDATA[
+<img src="{{media url="wysiwyg/payment.png"}}"  alt="Payment methods" width="272" height="20">]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Footer 3 block useful]]></title>
+		<identifier><![CDATA[footer-2-block-useful-link]]></identifier>
+		<content><![CDATA[<h4 class="widget-title">Useful Links</h4>
+<ul class="widget-list">
+	<li><a href="about.html">About Molla</a></li>
+        <li><a href="#">Our Services</a></li>
+	<li><a href="#">How to shop on Molla</a></li>
+	<li><a href="faq.html">FAQ</a></li>
+	<li><a href="contact.html">Contact us</a></li>
+</ul>]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Header Custom Static Block Social Mobile]]></title>
+		<identifier><![CDATA[header_custom_static_block_social_mobile]]></identifier>
+		<content><![CDATA[<div class="social-icons">
+                <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
+                <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
+                <a href="#" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
+                <a href="#" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
+            </div>]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Header 2 Custom Static Block]]></title>
+		<identifier><![CDATA[header_2_custom_static_block]]></identifier>
+		<content><![CDATA[<div class='hide-mb'><a href="tel:#"><i class="icon-phone"></i> Call: +0123 456 789</a></div>
+<div class='hide-mb'><a href="about.html">About Us</a></div>
+<div class='hide-mb'><a href="contact.html">Contact Us</a></div>]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Block tab shipping and return ]]></title>
+		<identifier><![CDATA[block-tab-shipping-return]]></identifier>
+		<content><![CDATA[<div class="product-desc-content">
+                                    <h3>Delivery &amp; returns</h3>
+                                    <p>We deliver to over 100 countries around the world. For full details of the delivery options we offer, please view our <a href="#">Delivery information</a><br>
+                                    We hope you’ll love every purchase, but if you ever need to return an item you can do so within a month of receipt. For full details of how to make a return, please view our <a href="#">Returns information</a></p>
+                                </div>]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Header 2 Custom Static Block 1]]></title>
+		<identifier><![CDATA[header_2_custom_static_block_1]]></identifier>
+		<content><![CDATA[<p><a class="info-tell" href="tel:#"><i class="icon-phone"></i>Call: +0123 456 789</a></p>]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Menu Vertical Header Market]]></title>
+		<identifier><![CDATA[menu-vertical-header-market]]></identifier>
+		<content><![CDATA[<div class="category-dropdown category-market "><a class="dropdown-toggle title-vertical-menu" title="Browse Categories" href="#" data-toggle="dropdown" data-display="static"> Browse Categories </a>
+<div class="dropdown-menu">{{block class="MGS\Mmegamenu\Block\Vertical" menu_id="3" template="MGS_Mmegamenu::vertical.phtml"}}</div>
+</div>]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Block Content Contact Page 1]]></title>
+		<identifier><![CDATA[block_content_contact_page_1]]></identifier>
+		<content><![CDATA[<h2 class="title mb-1">Contact Information</h2>
+<!-- End .title mb-2 -->
+<p class="mb-3">Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.</p>
+<div class="line">
+<div class="col-des-7 col-tb-7 col-mb-12 ">
+<div class="contact-info">
+<h3>The Office</h3>
+<ul class="contact-list">
+<li><i class="icon-map-marker"></i> 70 Washington Square South New York, NY 10012, United States</li>
+<li><i class="icon-phone"></i> <a href="tel:#">+92 423 567</a></li>
+<li><i class="icon-envelope"></i> <a href="mailto:#">info@Molla.com</a></li>
+</ul>
+<!-- End .contact-list --></div>
+<!-- End .contact-info --></div>
+<!-- End .col-sm-7 -->
+<div class="col-des-5 col-tb-5 col-mb-12 ">
+<div class="contact-info">
+<h3>The Office</h3>
+<ul class="contact-list">
+<li><i class="icon-clock-o"></i> <span class="text-dark">Monday-Saturday</span> <br />11am-7pm ET</li>
+<li><i class="icon-calendar"></i> <span class="text-dark">Sunday</span> <br />11am-6pm ET</li>
+</ul>
+<!-- End .contact-list --></div>
+<!-- End .contact-info --></div>
+<!-- End .col-sm-5 --></div>
+<!-- End .row -->]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Banner Slider Cate]]></title>
+		<identifier><![CDATA[banner-slider-cate]]></identifier>
+		<content><![CDATA[<img src="{{media url="wysiwyg/img-1.jpg"}}" alt="" />]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Ad Box Blog Classic]]></title>
+		<identifier><![CDATA[ad_box_blog_class]]></identifier>
+		<content><![CDATA[<div class="widget widget-banner-sidebar">
+<div class="banner-sidebar-title">ad box 280 x 280</div>
+<!-- End .ad-title -->
+<div class="banner-sidebar banner-overlay"><a href="#"> <img src="{{media url="wysiwyg/banner.jpg"}}" alt="" /></a></div>
+<!-- End .banner-ad --></div>]]></content>
+	</item>
+	<item>
+		<title><![CDATA[About Blog]]></title>
+		<identifier><![CDATA[about_blog]]></identifier>
+		<content><![CDATA[<div class="widget widget-text">
+                                    <h3 class="widget-title">About Blog</h3><!-- End .widget-title -->
+
+                                    <div class="widget-text-content">
+                                        <p>Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, pulvinar nunc sapien ornare nisl.</p>
+                                    </div><!-- End .widget-text-content -->
+                                </div>]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Block size guide]]></title>
+		<identifier><![CDATA[product_block_size_guide]]></identifier>
+		<content><![CDATA[<div class="extra-link">
+<a href="#" class="size-guide"><i class="icon-th-list"></i>size guide</a>
+</div>
+<div id="extra-product-block" class="extra-block" style="display: none;">
+<img class="img-responsive" src="{{media url="wysiwyg/sizecharts.png"}}" alt="" />
+</div>
+<script type="text/javascript">
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function(
+            $,
+            modal
+        ) {
+			
+			$('.extra-link').click(function (){
+                $('body').css({
+                    "overflow-x": "hidden",
+                });
+                $("#extra-product-block").removeClass('js-form-hidden');
+                $("#extra-product-block").addClass('js-form-active');
+				var options = {
+					type: 'popup',
+					responsive: true,
+                    innerScroll: true,
+                    modalClass: 'extra-product-block',
+                    closed: function() {
+                        $("#extra-product-block").removeClass('js-form-active');
+                        $("#extra-product-block").addClass('js-form-hidden');
+                    }
+				};
+
+				var popup = modal(options, $('#extra-product-block'));
+
+				$('#extra-product-block').modal('openModal');
+				});
+        }
+    );
+</script>]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Service Cart]]></title>
+		<identifier><![CDATA[service_cart]]></identifier>
+		<content><![CDATA[<div class="frame no-padding"><div class="line"><div class="col-des-3 col-tb-6 col-mb-12  col-sm-6  banner-service"><div class="line"><div class="panel-block-row  panel-block col-des-12 block448"><div style=""><div class="icon-box icon-box-left icon-box-side"><span class="icon-box-icon text-dark"> <i class="icon-rocket"></i> </span>
+<div class="icon-box-content">
+<h3 class="icon-box-title">Free Shipping</h3>
+<!-- End .icon-box-title -->
+<p>orders $50 or more</p>
+</div>
+<!-- End .icon-box-content --></div></div></div></div></div><div class="col-des-3 col-tb-6 col-mb-12  col-sm-6  banner-service"><div class="line"><div class="panel-block-row  panel-block col-des-12 block449"><div style=""><div class="icon-box icon-box-left icon-box-side"><span class="icon-box-icon text-dark"> <i class="icon-rotate-left"></i> </span>
+<div class="icon-box-content">
+<h3 class="icon-box-title">Free Returns</h3>
+<!-- End .icon-box-title -->
+<p>within 30 days</p>
+</div>
+<!-- End .icon-box-content --></div></div></div></div></div><div class="col-des-3 col-tb-6 col-mb-12  col-sm-6  banner-service"><div class="line"><div class="panel-block-row  panel-block col-des-12 block450"><div style=""><div class="icon-box icon-box-left icon-box-side"><span class="icon-box-icon text-dark"> <i class="icon-info-circle"></i> </span>
+<div class="icon-box-content">
+<h3 class="icon-box-title">Get 20% Off 1 Item</h3>
+<!-- End .icon-box-title -->
+<p>When you sign up</p>
+</div>
+<!-- End .icon-box-content --></div></div></div></div></div><div class="col-des-3 col-tb-6 col-mb-12  col-sm-6  banner-service"><div class="line"><div class="panel-block-row  panel-block col-des-12 block451"><div style=""><div class="icon-box icon-box-left icon-box-side"><span class="icon-box-icon text-dark"> <i class="icon-life-ring"></i> </span>
+<div class="icon-box-content">
+<h3 class="icon-box-title">We Support</h3>
+<!-- End .icon-box-title -->
+<p>24/7 amazing services</p>
+</div>
+<!-- End .icon-box-content --></div></div></div></div></div></div></div>]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Footer Block Logo - Home market]]></title>
+		<identifier><![CDATA[footer-block-logo]]></identifier>
+		<content><![CDATA[<p style="margin-bottom: 15px;"><img src="{{media url="wysiwyg/fbuilder/logo-footer_1_.png"}}" alt="logo" /></p>]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Menu Vertical Game Header  ]]></title>
+		<identifier><![CDATA[menu-vertical-game-header]]></identifier>
+		<content><![CDATA[<div class="category-dropdown"><a class="dropdown-toggle title-vertical-menu" title="Browse Categories" href="#" data-toggle="dropdown" data-display="static"> Browse Categories </a>
+<div class="dropdown-menu">{{block class="MGS\Mmegamenu\Block\Vertical" menu_id="3" template="MGS_Mmegamenu::vertical.phtml"}}</div>
+</div>]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Footer 4 block logo]]></title>
+		<identifier><![CDATA[footer-block-logo]]></identifier>
+		<content><![CDATA[<img src="{{media url="wysiwyg/logo-footer_3.png"}}" alt="" />]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Footer Block logo]]></title>
+		<identifier><![CDATA[footer-block-logo]]></identifier>
+		<content><![CDATA[<p><img src="{{media url="wysiwyg/logo-footer_30a38a39e1aa181068c6dec4c4e4d3cc.png"}}" alt="" /></p>]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Footer Block Logo]]></title>
+		<identifier><![CDATA[footer-block-logo]]></identifier>
+		<content><![CDATA[<img src="{{media url="wysiwyg/logo-footer_3.png"}}" alt="" />]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Menu Vertical Header Tools]]></title>
+		<identifier><![CDATA[menu-vertical-header-tools]]></identifier>
+		<content><![CDATA[<div class="category-dropdown category-market "><a class="dropdown-toggle title-vertical-menu" title="Browse Categories" href="#" data-toggle="dropdown" data-display="static"> Browse Categories </a>
+<div class="dropdown-menu">	{{block class="MGS\Mmegamenu\Block\Vertical" menu_id="5" template="MGS_Mmegamenu::vertical.phtml"}}</div>
+</div>]]></content>
+	</item>
+	<item>
+		<title><![CDATA[Footer Block Logo]]></title>
+		<identifier><![CDATA[footer-block-logo]]></identifier>
+		<content><![CDATA[<img src="{{media url="wysiwyg/logo-footer_3.png"}}" alt="" />]]></content>
+	</item>
+</static_block>

@@ -1,0 +1,15 @@
+<input class="admin__control-text" type="email" data-bind="
+    event: {
+        focusout: emailHasChanged,
+        change: userChanges
+    },
+    hasFocus: focused,
+    value: value,
+    attr: {
+        name: inputName,
+        placeholder: placeholder,
+        'aria-describedby': noticeId,
+        id: uid,
+        disabled: disabled,
+        'is-email-valid': isEmailValid
+    }"/>

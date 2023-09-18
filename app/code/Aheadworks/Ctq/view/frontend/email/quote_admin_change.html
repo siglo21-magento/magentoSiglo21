@@ -1,0 +1,18 @@
+<!--@subject {{trans 'The Quote %quote_name assigned to you' quote_name=$quote.getName()}}@-->
+{{template config_path="design/email/header_template"}}
+
+<p>
+    {{trans 'Hello %user_name,' user_name=$user_name}}<br />
+    {{trans
+        'You are responsible for the Quote %quote_name.'
+        quote_name=$quote.getName()
+    |raw}}<br />
+    {{trans
+        'Click <a href="%quote_url">here</a> to check it.'
+        quote_url=$quote_url
+    |raw}}
+</p>
+
+{{layout handle="aw_ctq_email_quote_details" quote=$quote store=$store area="frontend"}}
+
+{{template config_path="design/email/footer_template"}}

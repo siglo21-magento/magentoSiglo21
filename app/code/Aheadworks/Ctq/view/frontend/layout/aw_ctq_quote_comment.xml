@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="aw_ctq_quote_header"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Aheadworks\Ctq\Block\Customer\Quote\Comment"
+                   name="aw_ctq.customer.quote.comment"
+                   template="Aheadworks_Ctq::customer/quote/comment.phtml"
+                   cacheable="false">
+                <arguments>
+                    <argument name="data_provider_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Customer\Quote\DataProvider</argument>
+                    <argument name="comment_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Customer\Quote\Comment</argument>
+                    <argument name="comment_list_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Customer\Quote\CommentList</argument>
+                </arguments>
+                <block class="Aheadworks\Ctq\Block\Customer\FileUploader" as="file_uploader" name="aw.ctq.customer.quote.comment.file.uploader">
+                    <arguments>
+                        <argument name="view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Customer\FileUploader</argument>
+                        <argument name="jsLayout" xsi:type="array">
+                            <item name="components" xsi:type="array">
+                                <item name="awCtqFileUploader" xsi:type="array">
+                                    <item name="component" xsi:type="string">Aheadworks_Ctq/js/ui/form/element/file-uploader</item>
+                                    <item name="template" xsi:type="string">Aheadworks_Ctq/form/element/uploader/uploader</item>
+                                    <item name="previewTmpl" xsi:type="string">Aheadworks_Ctq/form/element/uploader/preview</item>
+                                    <item name="isMultipleFiles" xsi:type="boolean">true</item>
+                                    <item name="dataScope" xsi:type="string">uploader.attachments</item>
+                                    <item name="elementToDisable" xsi:type="string">button[data-role=aw-ctq-submit-comment-button]</item>
+                                </item>
+                            </item>
+                        </argument>
+                    </arguments>
+                </block>
+            </block>
+            <block class="Magento\Customer\Block\Account\Dashboard"
+                   name="customer.account.link.back"
+                   template="Magento_Customer::account/link/back.phtml" />
+        </referenceContainer>
+    </body>
+</page>

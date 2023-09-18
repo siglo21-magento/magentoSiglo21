@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+
+    <!-- Company management -->
+    <route url="/V1/awCaCompany" method="GET">
+        <service class="Aheadworks\Ca\Api\CompanyRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Aheadworks_Ca::companies"/>
+        </resources>
+    </route>
+    <route url="/V1/awCaCompany/:companyId" method="GET">
+        <service class="Aheadworks\Ca\Api\CompanyRepositoryInterface" method="get"/>
+        <resources>
+            <resource ref="Aheadworks_Ca::companies"/>
+        </resources>
+    </route>
+    <route url="/V1/awCaCompany" method="POST">
+        <service class="Aheadworks\Ca\Api\SellerCompanyManagementInterface" method="createCompany"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/awCaCompany" method="PUT">
+        <service class="Aheadworks\Ca\Api\SellerCompanyManagementInterface" method="updateCompany"/>
+        <resources>
+            <resource ref="Aheadworks_Ca::companies"/>
+        </resources>
+    </route>
+    <route url="/V1/awCaCompany/:companyId/isBlocked" method="GET">
+        <service class="Aheadworks\Ca\Api\SellerCompanyManagementInterface" method="isBlockedCompany"/>
+        <resources>
+            <resource ref="Aheadworks_Ca::companies"/>
+        </resources>
+    </route>
+    <route url="/V1/awCaCompany/changeStatus" method="POST">
+        <service class="Aheadworks\Ca\Api\SellerCompanyManagementInterface" method="changeStatus"/>
+        <resources>
+            <resource ref="Aheadworks_Ca::companies"/>
+        </resources>
+    </route>
+    <route url="/V1/awCaCompany/byCustomer/:customerId" method="GET">
+        <service class="Aheadworks\Ca\Api\SellerCompanyManagementInterface" method="getCompanyByCustomerId"/>
+        <resources>
+            <resource ref="Aheadworks_Ca::companies"/>
+        </resources>
+    </route>
+
+    <!-- Company user management -->
+    <route url="/V1/awCaCompanyUser" method="POST">
+        <service class="Aheadworks\Ca\Api\CompanyUserManagementInterface" method="saveUser"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCaCompanyUser" method="PUT">
+        <service class="Aheadworks\Ca\Api\CompanyUserManagementInterface" method="saveUser"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCaCompanyUser/rootForCustomer/:customerId" method="GET">
+        <service class="Aheadworks\Ca\Api\CompanyUserManagementInterface" method="getRootUserForCustomer"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCaCompanyUser/rootForCompany/:companyId" method="GET">
+        <service class="Aheadworks\Ca\Api\CompanyUserManagementInterface" method="getRootUserForCompany"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCaCompanyUser/child/:userId" method="GET">
+        <service class="Aheadworks\Ca\Api\CompanyUserManagementInterface" method="getChildUsers"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCaCompanyUser/childIds/:userId" method="GET">
+        <service class="Aheadworks\Ca\Api\CompanyUserManagementInterface" method="getChildUsersIds"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCaCompanyUser/allForCompany/:companyId" method="GET">
+        <service class="Aheadworks\Ca\Api\CompanyUserManagementInterface" method="getAllUserForCompany"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCaCompanyUser/isEmailAvailable" method="GET">
+        <service class="Aheadworks\Ca\Api\CompanyUserManagementInterface" method="isEmailAvailable"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/awCaCompanyUser/isAvailableConvertToCompanyAdmin" method="GET">
+        <service class="Aheadworks\Ca\Api\CompanyUserManagementInterface" method="isAvailableConvertToCompanyAdmin"/>
+        <resources>
+            <resource ref="Aheadworks_Ca::companies"/>
+        </resources>
+    </route>
+    <route url="/V1/awCaCompanyUser/assignUserToCompany" method="POST">
+        <service class="Aheadworks\Ca\Api\CompanyUserManagementInterface" method="assignUserToCompany"/>
+        <resources>
+            <resource ref="Aheadworks_Ca::companies"/>
+        </resources>
+    </route>
+
+    <!-- Role management -->
+    <route url="/V1/awCaRole/:roleId" method="GET">
+        <service class="Aheadworks\Ca\Api\RoleRepositoryInterface" method="get"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCaRole" method="GET">
+        <service class="Aheadworks\Ca\Api\RoleRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCaRole" method="POST">
+        <service class="Aheadworks\Ca\Api\RoleManagementInterface" method="saveRole"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCaRole" method="PUT">
+        <service class="Aheadworks\Ca\Api\RoleManagementInterface" method="saveRole"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCaAuth/isAllowed/:path" method="GET">
+        <service class="Aheadworks\Ca\Api\AuthorizationManagementInterface" method="isAllowed"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCaAuth/isAllowedByResource/:resource" method="GET">
+        <service class="Aheadworks\Ca\Api\AuthorizationManagementInterface" method="isAllowedByResource"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCaAuth/getRootResourceId" method="GET">
+        <service class="Aheadworks\Ca\Api\AclManagementInterface" method="getRootResourceId"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCaAuth/getResourceKeys" method="GET">
+        <service class="Aheadworks\Ca\Api\AclManagementInterface" method="getResourceKeys"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awCaAuth/getResourceStructure" method="GET">
+        <service class="Aheadworks\Ca\Api\AclManagementInterface" method="getResourceStructure"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+</routes>

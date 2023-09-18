@@ -1,0 +1,25 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+/** @var \Magento\Framework\View\Element\Template $block */
+$form = $block->escapeJs($block->escapeHtml($block->getMethodCode()));
+?>
+<script>
+    //<![CDATA[
+    require(
+        [
+            'Aheadworks_CreditLimit/js/view/payment/aw-credit-limit',
+            'jquery',
+            'domReady!'
+        ], function(awCreditLimit, $) {
+            var config = {},
+                form = $('#payment_form_<?= /* @noEscape */ $form ?>');
+
+            config.active = form.length > 0 && !form.is(':hidden');
+            new awCreditLimit(config);
+        });
+    //]]>
+</script>

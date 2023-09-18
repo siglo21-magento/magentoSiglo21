@@ -1,0 +1,39 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+/* @var $block \Aheadworks\Ctq\Block\History\Action\ProductRenderer */
+
+// @codingStandardsIgnoreFile
+$action = $block->getAction();
+?>
+<div class="aw-ctq__history-row">
+    <div class="history-label">
+        <strong>
+            <?= $block->escapeHtml($block->getProductViewModel()->getProductName($action->getValue())) ?>
+        </strong>
+        <span>(<?= $block->escapeHtml($block->getHistoryViewModel()->getActionStatusFormatted($action->getStatus())) ?>)</span>
+    </div>
+    <div class="history-value">
+        <?php if ($action->getActions()): ?>
+            <?php foreach ($action->getActions() as $productAction): ?>
+                <div class="action-item">
+                    <span class="label-text">
+                        <?= $block->escapeHtml($block->getHistoryViewModel()->getActionTypeFormatted($productAction->getType())) ?>:
+                    </span>
+                    <?php if ($productAction->getOldValue()): ?>
+                        <span class="old-value">
+                            <?= $block->escapeHtml($productAction->getOldValue()) ?>
+                        </span>
+                        <span class="aw-ctq__right-arrow"></span>
+                    <?php endif; ?>
+                    <span class="new-value">
+                        <?= $block->escapeHtml($productAction->getValue()) ?>
+                    </span>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Aheadworks_CreditLimit::home"
+             title="Credit Limit by Aheadworks"
+             module="Aheadworks_CreditLimit"
+             sortOrder="100" 
+             parent="Magento_Sales::sales"
+             resource="Aheadworks_CreditLimit::home"/>
+        <add id="Aheadworks_CreditLimit::customers"
+             title="Credit Summary"
+             module="Aheadworks_CreditLimit"
+             sortOrder="10" 
+             parent="Aheadworks_CreditLimit::home"
+             action="aw_credit_limit/customer/index"
+             resource="Aheadworks_CreditLimit::customers"/>
+    </menu>
+</config>

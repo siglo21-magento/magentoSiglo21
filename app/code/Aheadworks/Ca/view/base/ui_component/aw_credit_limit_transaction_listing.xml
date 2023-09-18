@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:framework:Ui/etc/ui_configuration.xsd"
+         class="Aheadworks\CreditLimit\Ui\Component\Listing\Transaction\Listing">
+    <columns name="aw_credit_limit_transaction_columns">
+        <column name="updated_by" sortOrder="75">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Updated By</label>
+                <dataType>text</dataType>
+            </settings>
+        </column>
+    </columns>
+</listing>

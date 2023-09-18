@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="customer_account_navigation">
+            <block class="Magento\Customer\Block\Account\Delimiter" name="customer.account.navigation.aw.ca.delimiter.top"
+                   template="Magento_Customer::account/navigation-delimiter.phtml">
+            </block>
+            <block class="Magento\Framework\View\Element\Html\Link\Current"
+                   name="customer.account.navigation.aw.ca.company">
+                <arguments>
+                    <argument name="path" xsi:type="string">aw_ca/company</argument>
+                    <argument name="label" xsi:type="string" translate="true">Company Information</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Framework\View\Element\Html\Link\Current"
+                   name="customer.account.navigation.aw.ca.user">
+                <arguments>
+                    <argument name="path" xsi:type="string">aw_ca/user</argument>
+                    <argument name="label" xsi:type="string" translate="true">Company Users</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Framework\View\Element\Html\Link\Current"
+                   name="customer.account.navigation.aw.ca.role">
+                <arguments>
+                    <argument name="path" xsi:type="string">aw_ca/role</argument>
+                    <argument name="label" xsi:type="string" translate="true">Roles and Permissions</argument>
+                </arguments>
+            </block>
+             <block class="Magento\Framework\View\Element\Html\Link\Current"
+                   name="customer.account.navigation.aw.prueba">
+                <arguments>
+                    <argument name="path" xsi:type="string">aw_ca/prueba</argument>
+                    <argument name="label" xsi:type="string" translate="true">Prueba</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

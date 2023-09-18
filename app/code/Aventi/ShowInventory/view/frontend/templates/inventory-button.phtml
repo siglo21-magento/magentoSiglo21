@@ -1,0 +1,16 @@
+<?php
+/**
+ * @var $block \Aventi\ShowInventory\Block\Product\Inventory
+ */
+?>
+<div class="inventory-button">
+    <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g opacity="0.45">
+            <path d="M11 1.30066H1V10.3007H11V1.30066Z" stroke="#2F3E47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M11 4.30066H13.2857L15 6.55066V10.3007H11V4.30066Z" stroke="#2F3E47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3.5 13.3007C4.32843 13.3007 5 12.6291 5 11.8007C5 10.9722 4.32843 10.3007 3.5 10.3007C2.67157 10.3007 2 10.9722 2 11.8007C2 12.6291 2.67157 13.3007 3.5 13.3007Z" stroke="#2F3E47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12.5 13.3007C13.3284 13.3007 14 12.6291 14 11.8007C14 10.9722 13.3284 10.3007 12.5 10.3007C11.6716 10.3007 11 10.9722 11 11.8007C11 12.6291 11.6716 13.3007 12.5 13.3007Z" stroke="#2F3E47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+    </svg>
+    <a href="#" id="btn-show-inventory" data-sku="<?php echo $block->getKey(); ?>" class="btn-show-inventory"><?php echo __('Show available by office')?></a>
+</div>

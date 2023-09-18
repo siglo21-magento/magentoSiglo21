@@ -1,0 +1,118 @@
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true){
+  .aw_ctq__modal-request-quote-wrapper {
+    .modal-title {
+      color: @aw-modal-request-quote-title__color;
+      font-weight: normal;
+      border: none;
+    }
+  }
+
+  .aw_ctq__modal-request-quote {
+    overflow: hidden;
+    padding: 10px 0 50px 0;
+
+    .field {
+
+    }
+
+    .label {
+      text-align: left;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 1.1;
+      color: @aw-modal-request-quote__color;
+      opacity: 1;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .control {
+      margin-bottom: 30px;
+
+      input[type="text"] {
+        color: @aw-modal-request-quote__color;
+      }
+
+      textarea {
+        color: @aw-modal-request-quote__color;
+        min-height: 140px;
+      }
+    }
+
+    .action-basic {
+      float: right;
+    }
+
+    .aw-ctq-modal-note {
+      font-size: 12px;
+      line-height: 32px;
+
+      .label {
+        display: none;
+      }
+
+      .control {
+        margin: 0;
+      }
+    }
+  }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  .aw_ctq__modal-request-quote-wrapper {
+    .modal-title {
+      font-size: 20px;
+      font-weight: normal;
+    }
+  }
+
+  .aw_ctq__modal-request-quote {
+    .aw-ctq-modal-note {
+      line-height: 1.3;
+    }
+  }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  .aw_ctq__modal-request-quote-wrapper {
+    .modal-title {
+      font-size: 30px;
+      padding: 30px 20px 0 20px;
+    }
+  }
+
+  .aw_ctq__modal-request-quote {
+    padding: 25px 20px 70px 20px;
+  }
+}
+
+
+.aw_ctq__modal-request-quote {
+	.admin__fieldset-wrapper-content._hide fieldset {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		flex-direction: column;
+		& > * {
+			width: 100%;
+		}
+	}
+	.field.aw-ctq-modal-note {
+		text-align: center;
+	}
+	button.action.primary.action-basic {
+		float: none;
+	}
+}

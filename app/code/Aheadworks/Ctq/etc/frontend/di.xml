@@ -1,0 +1,98 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\PageCache\Model\DepersonalizeChecker" type="Aheadworks\Ctq\Model\PageCache\DepersonalizeChecker" />
+
+    <type name="Aheadworks\Ctq\Block\Customer\Quote\Edit\Totals">
+        <arguments>
+            <argument name="layoutProcessors" xsi:type="array">
+                <item name="totals" xsi:type="object">Aheadworks\Ctq\Model\Layout\Customer\Quote\TotalsProcessor</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Ctq\Model\Quote\Customer\ConfigProvider\Composite">
+        <arguments>
+            <argument name="configProviders" xsi:type="array">
+                <item name="common" xsi:type="object">Aheadworks\Ctq\Model\Quote\Customer\ConfigProvider\Common</item>
+                <item name="totals" xsi:type="object">Aheadworks\Ctq\Model\Quote\Customer\ConfigProvider\Totals</item>
+                <item name="payment" xsi:type="object">Aheadworks\Ctq\Model\Quote\Customer\ConfigProvider\Payment</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+        <arguments>
+            <argument name="configProviders" xsi:type="array">
+                <item name="aw_ctq_shipping_address_provider" xsi:type="object">Aheadworks\Ctq\Model\Cart\Checkout\ConfigProvider\ShippingAddress</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Ctq\Model\Cart\Purchase\LeaveCheckoutChecker">
+        <arguments>
+            <argument name="allow" xsi:type="array">
+                <item name="0" xsi:type="array">
+                    <item name="module" xsi:type="string">aw_ctq</item>
+                    <item name="controller" xsi:type="string">quote</item>
+                    <item name="action" xsi:type="string">buy</item>
+                </item>
+                <item name="2" xsi:type="array">
+                    <item name="module" xsi:type="string">checkout</item>
+                    <item name="controller" xsi:type="string">index</item>
+                    <item name="action" xsi:type="string">*</item>
+                </item>
+                <item name="3" xsi:type="array">
+                    <item name="module" xsi:type="string">onestepcheckout</item>
+                    <item name="controller" xsi:type="string">index</item>
+                    <item name="action" xsi:type="string">*</item>
+                </item>
+            </argument>
+            <argument name="disallow" xsi:type="array"/>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\Message\MessageConfigurationsPool">
+        <arguments>
+            <argument name="configurationsMap" xsi:type="array">
+                <item name="addQuoteListSuccessMessage" xsi:type="array">
+                    <item name="renderer" xsi:type="const">Magento\Framework\View\Element\Message\Renderer\BlockRenderer::CODE</item>
+                    <item name="data" xsi:type="array">
+                        <item name="template" xsi:type="string">Aheadworks_Ctq::messages/addQuoteListSuccessMessage.phtml</item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Customer\CustomerData\SectionPoolInterface">
+        <arguments>
+            <argument name="sectionSourceMap" xsi:type="array">
+                <item name="quote-list" xsi:type="string">Aheadworks\Ctq\CustomerData\QuoteList</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Customer\Block\CustomerData">
+        <arguments>
+            <argument name="expirableSectionNames" xsi:type="array">
+                <item name="quote-list" xsi:type="string">quote-list</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\Ctq\ViewModel\QuoteList\Mini" type="Aheadworks\Ctq\ViewModel\QuoteList\AddButton" />
+    <type name="Magento\Customer\CustomerData\JsLayoutDataProviderPoolInterface">
+        <arguments>
+            <argument name="jsLayoutDataProviders" xsi:type="array">
+                <item name="quote_list_totals" xsi:type="object">Aheadworks\Ctq\CustomerData\QuoteList\TotalsJsLayoutDataProvider</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\Ctq\Block\QuoteList\Totals" type="Magento\Checkout\Block\Cart\Totals">
+        <arguments>
+            <argument name="layoutProcessors" xsi:type="array">
+                <item name="removeDiscountTotal" xsi:type="object">Aheadworks\Ctq\Block\QuoteList\DiscountProcessor</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\App\Action\AbstractAction">
+        <plugin name="awCtq" type="Aheadworks\Ctq\Plugin\Controller\FrontActionPlugin" />
+    </type>
+    <type name="Magento\Directory\Controller\Currency\SwitchAction">
+        <plugin name="awCtq" type="Aheadworks\Ctq\Plugin\Controller\Directory\SwitchActionPlugin" />
+    </type>
+</config>

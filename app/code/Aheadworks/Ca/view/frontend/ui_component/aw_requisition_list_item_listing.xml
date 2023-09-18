@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <listingToolbar name="listing_top">
+        <massaction name="listing_massaction" template="Aheadworks_Ca/requisition_lists/ui/grid/massactions-tree">
+            <action name="remove" class="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RequisitionLists\Ui\Component\Listing\Action" />
+        </massaction>
+    </listingToolbar>
+    <listingToolbar name="listing_bottom">
+        <massaction name="listing_massaction">
+            <action name="update" class="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\RequisitionLists\Ui\Component\Listing\Action" />
+        </massaction>
+    </listingToolbar>
+    <columns name="aw_requisition_list_item_columns">
+        <column name="product_name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="actionsTmpl" xsi:type="string">Aheadworks_Ca/requisition_lists/ui/grid/column/actions</item>
+                </item>
+            </argument>
+        </column>
+    </columns>
+</listing>

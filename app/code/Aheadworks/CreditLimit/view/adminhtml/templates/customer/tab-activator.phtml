@@ -1,0 +1,18 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+/* @var $block \Aheadworks\CreditLimit\Block\Adminhtml\Customer\TabActivator */
+?>
+<?php if ($block->isActive()) : ?>
+    <script>
+        require([
+            "jquery",
+            "domReady!"
+        ], function($) {
+            $('#' + '<?= $block->escapeJs($block->getTabId()) ?>').click();
+        });
+    </script>
+<?php endif; ?>

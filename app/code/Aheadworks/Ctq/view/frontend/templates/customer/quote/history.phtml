@@ -1,0 +1,24 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+/* @var $block \Aheadworks\Ctq\Block\Customer\Quote\History */
+
+// @codingStandardsIgnoreFile
+$quote = $block->getDataProviderViewModel()->getQuote();
+$quoteId = $quote->getId();
+?>
+<div class="order-details-items aw-ctq__history-block">
+    <ul>
+        <?php foreach ($block->getHistoryListViewModel()->getHistorySearchResults($quoteId)->getItems() as $history): ?>
+            <li>
+                <?= /* @noEscape */ $block->getHistoryItemHtml($history) ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+    <?php if ($block->getChildHtml('pager')): ?>
+        <div class="toolbar bottom"><?= /* @noEscape */ $block->getChildHtml('pager') ?></div>
+    <?php endif ?>
+</div>

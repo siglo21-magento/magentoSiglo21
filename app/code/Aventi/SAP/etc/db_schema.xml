@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="sales_order" resource="sales" engine="innodb" comment="Sales Flat Order">
+		<column length="255" name="sap_id" nullable="true" xsi:type="varchar"/>
+		<column xsi:type="tinyint" name="credit_exceeded" nullable="true" default="0" comment="Credit exceeded"/>
+		<column xsi:type="tinyint" name="sap_notification_send" nullable="true" default="0" comment="notification status"/>
+		<column length="255" name="sap_doc_entry" nullable="true" xsi:type="varchar"/>
+		<column length="255" name="sap_type" nullable="true" xsi:type="varchar"/>
+	</table>
+	<table name="sales_order_grid" resource="sales" engine="innodb" comment="Sales Flat Order Grid">
+		<column length="255" name="sap_id" nullable="true" xsi:type="varchar"/>
+		<column length="255" name="sap_doc_entry" nullable="true" xsi:type="varchar"/>
+		<column length="255" name="sap_type" nullable="true" xsi:type="varchar"/>
+	</table>
+	<table name="aw_cl_credit_summary" engine="innodb" resource="default">
+		<column name="balance" nullable="true" precision="12" scale="4" xsi:type="decimal"/>
+		<column name="payment_condition" length="100" xsi:type="varchar"/>
+	</table>
+	<table name="aw_ca_company" engine="innodb" resource="default">
+		<column xsi:type="varchar" name="sap" nullable="true" length="50" comment="SAP ID"/>
+	</table>
+	<table name="customer_address_entity" resource="default" engine="innodb" comment="Customer Address Entity">
+		<column xsi:type="varchar" name="sap" nullable="true" length="255" comment="SAP ID"/>
+	</table>
+    <table name="aw_ctq_quote" resource="default" engine="innodb" comment="SAP ID">
+        <column xsi:type="varchar" name="sap" nullable="true" length="255" comment="SAP ID"/>
+        <column xsi:type="varchar" name="sap_doc_entry" nullable="true" length="255" comment="SAP DOC ENTRY"/>
+        <column xsi:type="varchar" name="sap_state" nullable="true" length="255" comment="Sap state"/>
+        <column xsi:type="varchar" name="sap_result" nullable="true" length="255" comment="Sap result"/>
+    </table>
+    <table name="aventi_sap_documentstatus" resource="default" engine="innodb" comment="aventi_sap_documentstatus Table">
+        <column xsi:type="smallint" name="documentstatus_id" padding="6" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="documentstatus_id"/>
+        </constraint>
+        <column name="sap" nullable="true" xsi:type="text" comment="sap"/>
+        <column name="sap_doc_entry" nullable="true" xsi:type="text" comment="sap_doc_entry"/>
+        <column name="sap_status" nullable="true" xsi:type="text" comment="sap_status"/>
+        <column name="sap_result" nullable="true" xsi:type="text" comment="sap_result"/>
+        <column name="type" nullable="true" xsi:type="text" comment="type"/>
+        <column name="parent_id" nullable="true" xsi:type="text" comment="parent_id"/>
+    </table>
+    <table name="aventi_sap_itemstatus" resource="default" engine="innodb" comment="aventi_sap_itemstatus Table">
+        <column xsi:type="smallint" name="itemstatus_id" padding="6" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="itemstatus_id"/>
+        </constraint>
+        <column name="line_sap" nullable="true" xsi:type="varchar" comment="line_sap" length="255"/>
+        <column name="base_entry" nullable="true" xsi:type="varchar" comment="base_entry" length="255"/>
+        <column name="base_type" nullable="true" xsi:type="varchar" comment="base_type" length="255"/>
+        <column name="item_id" nullable="true" xsi:type="varchar" comment="item_id" length="255"/>
+    </table>
+</schema>

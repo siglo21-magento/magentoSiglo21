@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="aw_ctq_quote_edit_comments_and_history_block"/>
+    <body>
+        <!-- Comment, History Tabs section -->
+        <container name="comments.and.history.container" as="comments_and_history_container" htmlTag="div"/>
+    </body>
+</page>

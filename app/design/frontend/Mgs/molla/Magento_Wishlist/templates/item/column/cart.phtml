@@ -1,0 +1,67 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/* @var $block \Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Cart */
+/* @var \Magento\Wishlist\Model\Item $item */
+$item = $block->getItem();
+$product = $item->getProduct();
+?>
+<?php foreach ($block->getChildNames() as $childName): ?>
+    <?php /* @escapeNotVerified */ echo $block->getLayout()->renderElement($childName, false); ?>
+<?php endforeach;?>
+<div class="box-tocart">
+    <fieldset class="fieldset">
+    <div>
+        
+    <?php if ($product->isSaleable()): ?>
+        <?php if ($product->getTypeId() == 'simple'):?>
+        <?php if ($item->canHaveQty() && $product->isVisibleInSiteVisibility()): ?>
+            <div class="field qty">
+                <label class="label" for="qty[<?php /* @escapeNotVerified */ echo $item->getId() ?>]"><span><?php /* @escapeNotVerified */ echo __('Qty') ?></span></label>
+                <div class="control">
+                    <button type="button"  class="minus"><i class="icon-minus"></i></button>
+                    <input type="number" data-role="qty" id="qty[<?php /* @escapeNotVerified */ echo $item->getId() ?>]" class="input-text qty" data-validate="{'required-number':true,'validate-greater-than-zero':true}"
+                   name="qty[<?php /* @escapeNotVerified */ echo $item->getId() ?>]" value="<?php /* @escapeNotVerified */ echo $block->getAddToCartQty($item) * 1 ?>">
+                   <button type="button"  class="plus"><i class="icon-plus"></i></button>
+                </div>
+            </div>
+        <?php endif; ?>
+        <div class="product-item-actions">
+            <div>
+                <button type="button" data-role="tocart" data-post='<?php /* @escapeNotVerified */ echo $block->getItemAddToCartParams($item)?>' title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>" data-item-id="<?php /* @escapeNotVerified */ echo $item->getId()?>">
+                    <!-- <span><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span> -->
+                    <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M2.44275 1.20152C2.33619 1.20129 2.23347 1.21336 2.13585 1.23629C2.00204 0.941361 1.82529 0.676766 1.62426 0.475736C1.28306 0.134532 0.744931 0 0 0V1.2C0.455069 1.2 0.71694 1.26547 0.775736 1.32426C1.00252 1.55105 1.2 2.01184 1.2 2.4L1.20603 2.48485L1.79395 6.6003C0.810213 6.65134 0.0481186 7.41529 0.000737148 8.37027L0 9C0.0580927 9.98636 0.817652 10.7451 1.76594 10.799L1.90216 10.7992C2.14904 11.4988 2.81598 12 3.6 12C4.38373 12 5.05047 11.4991 5.29758 10.8H6.70242C6.94953 11.4991 7.61627 12 8.4 12C9.39411 12 10.2 11.1941 10.2 10.2C10.2 9.20589 9.39411 8.4 8.4 8.4C7.61627 8.4 6.94953 8.90088 6.70242 9.6H5.29758C5.05047 8.90088 4.38373 8.4 3.6 8.4C2.81627 8.4 2.14953 8.90088 1.90242 9.6H1.8C1.49401 9.58163 1.21952 9.30744 1.19892 8.96407L1.2 8.4C1.21618 8.08879 1.48879 7.81618 1.82973 7.79926L3.01422 7.79956L3.0228 7.8H9.07011L9.15867 7.7719C9.61361 7.62754 9.97779 7.28498 10.1502 6.84152L10.2134 6.71641L10.4188 6.30952C10.6313 5.88835 10.8437 5.46645 11.0508 5.05428C11.5579 4.04464 11.8769 3.403 11.9475 3.24543C12.3102 2.43627 11.5755 1.81348 10.8244 1.80022L2.44275 1.20152ZM8.86163 6.60001H3.0677C3.02917 6.5893 2.99981 6.55667 2.99407 6.51602L2.40613 2.40045L10.736 2.99697C10.5902 3.2942 10.3253 3.82511 9.97844 4.51567L9.96974 4.53297C9.77174 4.92713 9.55956 5.34844 9.34738 5.76905L9.14226 6.17542L9.06451 6.32931L9.03524 6.39734C9.0039 6.48466 8.94167 6.55642 8.86163 6.60001ZM8.39999 10.8C8.73136 10.8 8.99999 10.5313 8.99999 10.2C8.99999 9.8686 8.73136 9.59998 8.39999 9.59998C8.06862 9.59998 7.79999 9.8686 7.79999 10.2C7.79999 10.5313 8.06862 10.8 8.39999 10.8ZM4.2 10.2C4.2 10.5313 3.93137 10.8 3.6 10.8C3.26863 10.8 3 10.5313 3 10.2C3 9.8686 3.26863 9.59998 3.6 9.59998C3.93137 9.59998 4.2 9.8686 4.2 10.2Z" fill="white"/>
+                    </svg>
+
+                </button>
+            </div>
+        </div>
+        <?php else: ?>
+        <div class="product-item-actions">
+            <div class="actions-primary">
+                <a class="select-option action primary tocart btn btn-default  btn-product btn-cart" href="<?php echo $product->getProductUrl(); ?>">Select option</a>
+            </div>
+        </div>
+        <?php endif; ?> 
+    
+    <?php else: ?>
+        <?php if ($product->getIsSalable()): ?>
+            <p class="available stock" title="<?php /* @escapeNotVerified */ echo __('Availability') ?>">
+                <span><?php /* @escapeNotVerified */ echo __('In stock') ?></span>
+            </p>
+        <?php else: ?>
+            <p class="unavailable stock btn action tocart disabled" title="<?php /* @escapeNotVerified */ echo __('Availability') ?>">
+                <span><?php /* @escapeNotVerified */ echo __('Out of stock') ?></span>
+            </p>
+        <?php endif; ?>
+    <?php endif; ?>
+
+    </div>
+    </fieldset>
+</div>

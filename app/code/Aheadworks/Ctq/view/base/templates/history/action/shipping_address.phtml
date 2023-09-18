@@ -1,0 +1,36 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+/* @var $block \Aheadworks\Ctq\Block\History\Action\ShippingAddressRenderer */
+
+// @codingStandardsIgnoreFile
+$action = $block->getAction();
+?>
+<div class="aw-ctq__history-row">
+    <div class="history-label">
+        <strong>
+            <?= $block->escapeHtml($block->getHistoryViewModel()->getActionTypeFormatted($action->getType())) ?>
+        </strong>
+    </div>
+    <div class="history-value">
+        <?php if ($action->getActions()): ?>
+            <?php foreach ($action->getActions() as $shippingAction): ?>
+                <div class="action-item">
+                    <?php if ($shippingAction->getOldValue()): ?>
+                        <span class="old-value">
+                            <?= $block->escapeHtml($shippingAction->getOldValue()) ?>
+                        </span>
+                    <span class="aw-ctq__right-arrow"></span>
+                    <?php endif; ?>
+                    <span class="new-value">
+                        <?= $block->escapeHtml($shippingAction->getValue()) ?>
+                    </span>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
+</div>
+

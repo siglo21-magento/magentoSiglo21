@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Aheadworks\Ctq\Block\Adminhtml\Quote\Edit\Shipping\Method" template="Aheadworks_Ctq::quote/edit/section.phtml" name="shipping_method">
+                <block class="Aheadworks\Ctq\Block\Adminhtml\Quote\Edit\Shipping\Method\Form" template="Aheadworks_Ctq::quote/edit/form/shipping_method.phtml" name="shipping_method_form" as="form">
+                    <arguments>
+                        <argument name="quote_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Quote\Edit\CurrentQuote</argument>
+                    </arguments>
+                </block>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="content">
+            <block name="aw_cl_payment_script"
+                   as="aw_cl_payment_script"
+                   template="Aheadworks_CreditLimit::payment/script.phtml"
+                   class="Magento\Framework\View\Element\Template"
+                   after="billing_method">
+                <arguments>
+                    <argument name="method_code" xsi:type="const">Aheadworks\CreditLimit\Model\Checkout\ConfigProvider::METHOD_CODE</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

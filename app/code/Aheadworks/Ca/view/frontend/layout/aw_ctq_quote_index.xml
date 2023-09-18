@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="aw_ctq.customer.quote.list.extra.column.header">
+            <block name="aw_ca.quote.history.extra.column.header.created_by"
+                   template="Aheadworks_Ca::aw_ctq_quote/column/created_by/header.phtml">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Aheadworks\Ca\ViewModel\AwCtqQuote\Column\CreatedBy</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceBlock name="aw_ctq.customer.quote.list.extra.container">
+            <block name="aw_ca.quote.history.extra.column.data.created_by"
+                   template="Aheadworks_Ca::aw_ctq_quote/column/created_by/data.phtml">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Aheadworks\Ca\ViewModel\AwCtqQuote\Column\CreatedBy</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

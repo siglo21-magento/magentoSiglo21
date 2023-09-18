@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+  <update handle="customer_account"/>
+  <body>
+    <referenceContainer name="content">
+        <block class="Aventi\Cartera\Block\Account\Cartera" name="customer_account_dashboard_cartera" as="cartera" template="Aventi_Cartera::account/dashboard/cartera.phtml" before="-" cacheable="false">
+        	    <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="types" xsi:type="array"/>
+                        <item name="components" xsi:type="array">
+                            <item name="aw_credit_limit_top_totals" xsi:type="array">
+                                <item name="component" xsi:type="string">Aheadworks_CreditLimit/js/ui/customer/top-totals</item>
+                                <item name="deps" xsi:type="array">
+                                    <item name="0" xsi:type="string">aw_cl_top_totals_data_provider</item>
+                                </item>
+                                <item name="children" xsi:type="array">
+                                    <item name="credit_balance" xsi:type="array">
+                                        <item name="component" xsi:type="string">Aheadworks_CreditLimit/js/ui/customer/top-totals/total</item>
+                                        <item name="label" xsi:type="string" translate="true">Credit Balance</item>
+                                        <item name="dataType" xsi:type="string">price</item>
+                                        <item name="provider" xsi:type="string">aw_cl_top_totals_data_provider</item>
+                                    </item>
+                                    <item name="credit_available" xsi:type="array">
+                                        <item name="component" xsi:type="string">Aheadworks_CreditLimit/js/ui/customer/top-totals/total</item>
+                                        <item name="label" xsi:type="string" translate="true">Available Credit</item>
+                                        <item name="dataType" xsi:type="string">price</item>
+                                        <item name="provider" xsi:type="string">aw_cl_top_totals_data_provider</item>
+                                    </item>
+                                    <item name="credit_limit" xsi:type="array">
+                                        <item name="component" xsi:type="string">Aheadworks_CreditLimit/js/ui/customer/top-totals/total</item>
+                                        <item name="label" xsi:type="string" translate="true">Credit Limit</item>
+                                        <item name="dataType" xsi:type="string">price</item>
+                                        <item name="provider" xsi:type="string">aw_cl_top_totals_data_provider</item>
+                                    </item>
+                                </item>
+                            </item>
+                            <item name="aw_cl_top_totals_data_provider" xsi:type="array">
+                                <item name="component" xsi:type="string">uiElement</item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+           
+       </block>
+    </referenceContainer>
+  </body>
+</page>

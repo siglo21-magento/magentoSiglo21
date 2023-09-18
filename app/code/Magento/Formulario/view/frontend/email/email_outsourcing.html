@@ -1,0 +1,40 @@
+<!--@subject {{trans "Outsourcing"}} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<h2>OUTSOURCING</h2>
+
+<p>Su solicitud Outsourcing de Siglo21 ha sido enviada de forma correcta. Más abajo puedes <b>revisar y comprobar los datos que se enviaron como solicitud.</b></p>
+
+<hr>
+<h3 class="register-table-heading">Información de Cliente</h3>
+<table class="register-table" width="100%">
+	<tr>
+		<td width="40%" class="table-left-side table-side">Nombre</td>
+		<td width="60%" class="table-right-side table-side">{{var name}} </td>
+	</tr>
+	<tr>
+		<td width="40%" class="table-left-side table-side">Apellido</td>
+		<td width="60%" class="table-right-side table-side">{{var apellido}} </td>
+	</tr>
+	<tr>
+		<td width="40%" class="table-left-side table-side">Email Corporativo</td>
+		<td width="60%" class="table-right-side table-side">{{var email}} </td>
+	</tr>
+	<tr>
+		<td width="40%" class="table-left-side table-side">Empresa</td>
+		<td width="60%" class="table-right-side table-side">{{var empresa}} </td>
+	</tr>
+	<tr>
+		<td width="40%" class="table-left-side table-side">Teléfono</td>
+		<td width="60%" class="table-right-side table-side">{{var telefono}} </td>
+	</tr>
+	<tr>
+		<td width="40%" class="table-left-side table-side">Comentario</td>
+		<td width="60%" class="table-right-side table-side">{{var comment}} </td>
+	</tr>
+
+
+</table>
+
+{{template config_path="design/email/footer_template"}}

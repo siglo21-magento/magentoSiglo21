@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+
+		<gshipping_config>
+			<shipping_settings>
+				<model>Aventi\Gshipping\Model\Carrier\Gshipping</model>
+                <active>1</active>
+			</shipping_settings>
+		</gshipping_config>
+
+		<carriers>
+			<gshipping>
+                <model>Aventi\Gshipping\Model\Carrier\Gshipping</model>
+				<active>1</active>
+				<day>Day</day>
+				<price>0.00</price>
+				<sort_order>0</sort_order>
+				<specificerrmsg>This shipping method is not available. To use this shipping method, please contact us.</specificerrmsg>
+				<sallowspecific>0</sallowspecific>
+
+				<!-- Valores por defecto para guia y condiciones de Envíos -->	
+				<name>G-Shipping</name>
+				<title>Envío</title>
+				<activepackage>0</activepackage>
+				<units>1</units>
+				<high>3</high>
+				<width>15</width>
+				<length>15</length>
+				
+				<weight>0.15</weight>
+				<cubicactive>1</cubicactive>
+				<cubiccapacity>5.000</cubiccapacity>
+				
+				<!-- Condiciones pagos -->	
+				<freeshipping>0</freeshipping>
+				<pricefree>50</pricefree>
+				<lowerfreightprice>3.31</lowerfreightprice>
+				<ratekg>0.23</ratekg>
+				<lowweightprice>0.15</lowweightprice>
+				<formula>%LFP% + %RKG% * (%weight% - %LWP%)</formula>
+				 <!-- Condiciones de Envío -->	
+			</gshipping>
+		</carriers>
+
+	</default>
+</config>

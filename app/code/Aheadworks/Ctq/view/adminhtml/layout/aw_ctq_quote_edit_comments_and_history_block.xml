@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="comments.and.history.container">
+            <!-- Comment, History Tabs section -->
+            <block class="Aheadworks\Ctq\Block\Adminhtml\Quote\Edit\NegotiationTabs" template="Aheadworks_Ctq::quote/edit/negotiation_tabs.phtml" name="negotiation_tabs">
+                <block class="Aheadworks\Ctq\Block\Adminhtml\Quote\Edit\NegotiationTabs\History"
+                       name="aw_ctq.customer.quote.history"
+                       as="quote_history"
+                       template="Aheadworks_Ctq::quote/edit/negotiation_tabs/history.phtml">
+                    <arguments>
+                        <argument name="history_list_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\History\HistoryList</argument>
+                    </arguments>
+                </block>
+                <container as="quote_comments" htmlTag="div" htmlClass="order-details-items aw-ctq__comment-block" name="aw_ctq.customer.quote.comment.wrapper">
+                    <block class="Aheadworks\Ctq\Block\Adminhtml\Quote\Edit\NegotiationTabs\Comment"
+                           name="aw_ctq.customer.quote.comment.list"
+                           as="quote_comments_list"
+                           template="Aheadworks_Ctq::quote/edit/negotiation_tabs/comments_list.phtml">
+                        <arguments>
+                            <argument name="data_provider_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Customer\Quote\DataProvider</argument>
+                            <argument name="comment_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Customer\Quote\Comment</argument>
+                            <argument name="comment_list_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Customer\Quote\CommentList</argument>
+                        </arguments>
+                    </block>
+                    <block class="Aheadworks\Ctq\Block\Adminhtml\Quote\Edit\NegotiationTabs\Comment"
+                           name="aw_ctq.customer.quote.comment.form"
+                           as="quote_comments_form"
+                           template="Aheadworks_Ctq::quote/edit/negotiation_tabs/comments_form.phtml">
+                        <arguments>
+                            <argument name="data_provider_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Customer\Quote\DataProvider</argument>
+                            <argument name="comment_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Customer\Quote\Comment</argument>
+                            <argument name="comment_list_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Customer\Quote\CommentList</argument>
+                        </arguments>
+                        <block class="Aheadworks\Ctq\Block\Customer\FileUploader" as="file_uploader" name="aw.ctq.customer.quote.comment.file.uploader">
+                            <arguments>
+                                <argument name="view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Customer\FileUploader</argument>
+                                <argument name="jsLayout" xsi:type="array">
+                                    <item name="components" xsi:type="array">
+                                        <item name="awCtqFileUploader" xsi:type="array">
+                                            <item name="component" xsi:type="string">Aheadworks_Ctq/js/ui/form/element/file-uploader</item>
+                                            <item name="template" xsi:type="string">Aheadworks_Ctq/form/element/uploader/uploader</item>
+                                            <item name="previewTmpl" xsi:type="string">Aheadworks_Ctq/form/element/uploader/preview</item>
+                                            <item name="isMultipleFiles" xsi:type="boolean">true</item>
+                                            <item name="dataScope" xsi:type="string">uploader.attachments</item>
+                                            <item name="elementToDisable" xsi:type="string">.action-default</item>
+                                        </item>
+                                    </item>
+                                </argument>
+                            </arguments>
+                        </block>
+                    </block>
+                </container>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

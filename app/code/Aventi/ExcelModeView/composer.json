@@ -1,0 +1,22 @@
+{
+    "name": "aventi/module-excelmodeview",
+    "description": "Modo de vista Excel para productos",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Juan Jose Ñustes",
+            "email": "jnustes@aventi.com.co"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Aventi\\ExcelModeView\\": ""
+        }
+    }
+}

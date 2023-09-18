@@ -1,0 +1,175 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<tab id="aventi" sortOrder="999" translate="label">
+			<label>AVENTI SOLUTIONS</label>
+		</tab>
+        <section id="integration" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+			<label>SAP Integration</label>
+			<tab>aventi</tab>
+			<resource>Aventi_SAP::config_aventi_sap</resource>
+			<group id="settings" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+				<label>Connection Settings</label>
+                <field id="url" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="text">
+                    <label>Url</label>
+                    <comment>WebService URL</comment>
+                </field>
+                <field id="user" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label" type="text">
+                    <label>Username</label>
+                    <comment/>
+                </field>
+                <field id="password" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="30" translate="label" type="text">
+                    <label>Password</label>
+                    <comment/>
+                </field>
+			</group>
+            <group id="ws_urls" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label">
+                <label>WS Endpoints</label>
+                <field id="ws_products_url" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="text">
+                    <label>WS URL Products</label>
+                    <comment><![CDATA[
+                        Url to sincronice products from SAP to Magento.
+                    ]]></comment>
+                </field>
+                <field id="ws_products_fast_url" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label" type="text">
+                    <label>WS URL Products (Fast Method)</label>
+                    <comment><![CDATA[
+                        Url to sincronice products from SAP to Magento. (Fast method).
+                    ]]></comment>
+                </field>
+                <field id="ws_price_url" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="30" translate="label" type="text">
+                    <label>WS URL Price</label>
+                    <comment><![CDATA[
+                        Url to sincronice prices from SAP to Magento.
+                    ]]></comment>
+                </field>
+                <field id="ws_price_fast_url" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="40" translate="label" type="text">
+                    <label>WS URL Price (Fast Method)</label>
+                    <comment><![CDATA[
+                        Url to sincronice prices from SAP to Magento. (Fast method).
+                    ]]></comment>
+                </field>
+                <field id="ws_price_list_url" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="50" translate="label" type="text">
+                    <label>WS URL Price List</label>
+                    <comment><![CDATA[
+                        Url to sincronice prices lists from SAP to Magento.
+                    ]]></comment>
+                </field>
+                <field id="ws_stock_url" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="60" translate="label" type="text">
+                    <label>WS URL Stock</label>
+                    <comment><![CDATA[
+                        Url to sincronice stock from SAP to Magento.
+                    ]]></comment>
+                </field>
+                <field id="ws_stock_fast_url" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="70" translate="label" type="text">
+                    <label>WS URL Stock (Fast Method)</label>
+                    <comment><![CDATA[
+                        Url to sincronice stock from SAP to Magento. (Fast method).
+                    ]]></comment>
+                </field>
+                <field id="ws_sales_stock_url" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="80" translate="label" type="text">
+                    <label>WS URL Sales Stock</label>
+                    <comment><![CDATA[
+                        Url to sincronice sales stock from SAP to Magento.
+                    ]]></comment>
+                </field>
+                <field id="ws_create_orders_url" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="90" translate="label" type="text">
+                    <label>WS URL Orders (Create)</label>
+                    <comment><![CDATA[
+                        Url to sincronice orders from Magento to SAP. (Create process).
+                    ]]></comment>
+                </field>
+                <field id="ws_update_orders_url" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="100" translate="label" type="text">
+                    <label>WS URL Orders (Update)</label>
+                    <comment><![CDATA[
+                        Url to sincronice orders from Magento to SAP. (Update process).
+                    ]]></comment>
+                </field>
+                <field id="ws_status_orders_url" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="110" translate="label" type="text">
+                    <label>WS URL Status Order Documents</label>
+                    <comment><![CDATA[
+                        Url to sincronice draft documents from Magento to SAP.
+                    ]]></comment>
+                </field>
+                <field id="ws_draft_orders_url" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="120" translate="label" type="text">
+                    <label>WS URL Draft Documents</label>
+                    <comment><![CDATA[
+                        Url to sincronice draft documents from Magento to SAP.
+                    ]]></comment>
+                </field>
+                <field id="ws_sales_url" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="130" translate="label" type="text">
+                    <label>WS URL Sales</label>
+                    <comment><![CDATA[
+                        Url to sincronice sales rule from SAP to SAP.
+                    ]]></comment>
+                </field>
+                <field id="ws_customers_url" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="140" translate="label" type="text">
+                    <label>WS URL Customers</label>
+                    <comment><![CDATA[
+                        Url to sincronice customers from SAP to Magento.
+                    ]]></comment>
+                </field>
+                <field id="ws_customers_fast_url" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="150" translate="label" type="text">
+                    <label>WS URL Customers (Fast Method)</label>
+                    <comment><![CDATA[
+                        Url to sincronice customers from SAP to Magento. (Fast Method).
+                    ]]></comment>
+                </field>
+                <field id="ws_addresses_url" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="160" translate="label" type="text">
+                    <label>WS URL Addresses</label>
+                    <comment><![CDATA[
+                        Url to sincronice customers addresses from SAP to Magento.
+                    ]]></comment>
+                </field>
+                <field id="ws_addresses_fast_url" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="170" translate="label" type="text">
+                    <label>WS URL Addresses (Fast Method)</label>
+                    <comment><![CDATA[
+                        Url to sincronice customers addresses from SAP to Magento. (Fast Method).
+                    ]]></comment>
+                </field>
+            </group>
+			<group id="document" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="30" translate="label">
+				<label>Create document default values</label>
+				<field id="serie" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="text">
+					<label>Serie</label>
+					<comment>Serie from document</comment>
+				</field>
+				<field id="whscode" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label" type="text">
+					<label>WhsCode</label>
+					<comment>Warehouse code to items</comment>
+				</field>
+				<field id="cardcode" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="30" translate="label" type="text">
+					<label>CardCode</label>
+					<comment>CardCode to create orders</comment>
+				</field>
+				<field id="shipping" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="40" translate="label" type="text">
+					<label>Shipping Code</label>
+					<comment>Product shipping code to save the value</comment>
+				</field>
+				<field id="docduedate" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="50" translate="label" type="text">
+					<label>Doc Due Date</label>
+					<comment>Delivery time: DocDueDate</comment>
+				</field>
+			</group>
+			<group id="customer" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="40" translate="label">
+				<label>Create customer</label>
+				<field id="sendemail" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
+					<label>Send email</label>
+					<comment/>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id="copy" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label" type="text">
+					<label>Copy Emails</label>
+					<comment/>
+				</field>
+			</group>
+            <group id="options_city" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="50" translate="label">
+                <label>Import Cities</label>
+                <field id="path_file_city" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="text">
+                    <label>Path</label>
+                    <comment/>
+                </field>
+            </group>
+		</section>
+	</system>
+</config>

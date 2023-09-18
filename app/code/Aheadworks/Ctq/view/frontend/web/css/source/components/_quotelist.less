@@ -1,0 +1,85 @@
+.product-add-form {
+  .actions .toquotelist {
+    margin-bottom: 15px;
+    width: 49%;
+    margin-right: 1%;
+    line-height: 2.2rem  !important;
+    padding: 14px 17px !important;
+    font-size: 1.8rem  !important;
+  }
+}
+
+.wishlist.split.button {
+  margin-right: 0 !important;
+}
+
+.block .product-item-actions {
+  .toquotelist {
+    margin-left: 0 !important;
+  }
+}
+
+.product-item-actions {
+  .actions-primary {
+    vertical-align: middle;
+  }
+
+  .aw-ctq-button-container {
+    display: inline-block;
+    vertical-align: middle;
+
+    .toquotelist {
+      margin-left: 8px;
+      font-size: 1.3rem;
+      border-radius: 0;
+      line-height: 1;
+      padding: 10px;
+      white-space: nowrap;
+    }
+  }
+}
+
+// Mini quote list
+.aw-ctq {
+  &.mini-quote-list {
+    .action {
+      &.showlist i {
+        //text-decoration: none;
+        font-style: normal !important;
+      }
+
+      &.showlist:before {
+        //background: url('@{baseDir}Aheadworks_Ctq/images/mini-quote-list.svg') no-repeat 100%;
+        //background-size: 100%;
+        //line-height: 30px;
+        //content: '\00a0';
+        //vertical-align: top;
+        //display: inline-block;
+        //width: 22px;
+      }
+
+      .counter.qty {
+        line-height: 24px;
+        border-radius: 2px;
+        display: inline-block;
+        padding: 0 3px;
+        text-align: center;
+        margin: 3px 0 0;
+        background: #e41f13;
+        color: #ffffff;
+        height: 24px;
+        min-width: 18px;
+        overflow: hidden;
+        white-space: normal;
+
+        &.empty {
+          display: none;
+        }
+      }
+
+      .viewquotelist {
+        cursor: pointer;
+      }
+    }
+  }
+}

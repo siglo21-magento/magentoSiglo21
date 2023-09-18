@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <update handle="aw_ctq_quote_links"/>
+    <body>
+        <referenceBlock name="customer_account_navigation">
+            <action method="setActive">
+                <argument name="path" xsi:type="string">aw_ctq/quote</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="main">
+            <block class="Aheadworks\Ctq\Block\Customer\Quote\Header"
+                   name="aw_ctq.customer.quote.header"
+                   template="Aheadworks_Ctq::customer/quote/header.phtml"
+                   before="-">
+                <arguments>
+                    <argument name="quote_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Customer\Quote</argument>
+                    <argument name="data_provider_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Customer\Quote\DataProvider</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

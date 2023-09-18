@@ -1,0 +1,64 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+/* @var $block \Aheadworks\Ctq\Block\Customer\Quote */
+
+// @codingStandardsIgnoreFile
+
+$quote = $block->getDataProviderViewModel()->getQuote();
+$cart = $block->getDataProviderViewModel()->getCart();
+$items = $cart->getAllVisibleItems();
+?>
+<div class="order-details-items aw-ctq__products-tab">
+    <form action="<?= $block->escapeUrl($block->getUrl('aw_ctq/quote/save', ['quote_id' => $quote->getId()])) ?>"
+          method="post"
+          data-mage-init='{"validation":{}}'
+          data-role="aw-ctq-quote-form"
+          class="form">
+        <?= $block->getBlockHtml('formkey') ?>
+        <div class="table-wrapper">
+            <table class="data table abs-table-striped"
+                   summary="<?= $block->escapeHtml(__('Items Ordered')) ?>">
+                <caption class="table-caption">
+                    <?= $block->escapeHtml(__('Items Ordered')) ?>
+                </caption>
+                <thead>
+                    <tr>
+                        <?php if ($block->getQuoteViewModel()->isAllowSorting($quote)): ?>
+                            <th class="col draggable"></th>
+                        <?php endif; ?>
+                        <th class="col name"><?= $block->escapeHtml(__('Product Name')) ?></th>
+                        <th class="col sku"><?= $block->escapeHtml(__('SKU')) ?></th>
+                        <th class="col price"><?= $block->escapeHtml(__('Price')) ?></th>
+                        <th class="col qty">
+                            <?= $block->escapeHtml(__('Qty')) ?>
+                            <span class="aw-ctq__tooltip">
+                                <a href="#" class="tooltip-toggle"></a>
+                                <span class="tooltip-content"><?= $block->escapeHtml(__('Enter 0 to remove item')) ?></span>
+                            </span>
+                        </th>
+                        <th class="col subtotal"><?= $block->escapeHtml(__('Subtotal')) ?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($items as $item): ?>
+                        <?= /* @noEscape */ $block->getItemHtml($item) ?>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </form>
+    <?php if ($block->getQuoteViewModel()->isAllowSorting($quote)): ?>
+        <script type="text/x-magento-init">
+        {
+            "*": {
+                "awCtqSorting": {}
+            }
+        }
+        </script>
+    <?php endif; ?>
+    <?= /* @noEscape */ $block->getChildHtml('totals') ?>
+</div>

@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<payment>
+			<pointofsalepayment>
+				<active>1</active>
+				<model>Aventi\PointOfSale\Model\Payment\PointOfSalePayment</model>
+				<order_status>pending</order_status>
+				<title>PointOfSalePayment</title>
+				<allowspecific>0</allowspecific>
+				<group>offline</group>
+			</pointofsalepayment>
+		</payment>
+	</default>
+</config>

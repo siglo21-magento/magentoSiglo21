@@ -1,0 +1,69 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+?>
+<div class="page-quote-view">
+    <div id="combined-top-section" class="admin__page-section combined-section">
+        <section id="quote-information" class="admin__page-section left quote-information">
+            <?= $block->getChildHtml('quote_information') ?>
+        </section>
+        <section class="admin__page-section order_totals right">
+            <div class="admin__page-section-title">
+                <span class="title"><?= /* @escapeNotVerified */ __('Order Total') ?></span>
+            </div>
+            <div class="admin__page-section-content">
+                <fieldset id="quote-order_totals" class="admin__fieldset quote-order-totals">
+                    <?= $block->getChildHtml('order_totals') ?>
+                </fieldset>
+            </div>
+        </section>
+    </div>
+
+    <div id="quote-additional_area" style="display: none" class="admin__page-section quote-additional-area">
+        <?= $block->getChildHtml('additional_area') ?>
+    </div>
+
+    <div id="quote-search" style="display: none" class="admin__page-section quote-search-items">
+        <?= $block->getChildHtml('search') ?>
+    </div>
+
+    <section id="quote-items" class="admin__page-section quote-items" data-mage-init='{"loader": {}}'>
+        <?= $block->getChildHtml('items') ?>
+    </section>
+
+    <div id="quote-errors" class="order-errors"><?= $block->getChildHtml('errors') ?></div>
+
+    <section id="quote-form_account" class="admin__page-section quote-account-information">
+        <?= $block->getChildHtml('form_account') ?>
+    </section>
+
+    <section id="quote-shipping" class="admin__page-section quote-shipping-information">
+        <?= $block->getChildHtml('shipping_information') ?>
+    </section>
+
+    <?php if ($block->getChildBlock('card_validation')): ?>
+    <section id="order-card_validation" class="admin__page-section order-card-validation">
+        <?= $block->getChildHtml('card_validation') ?>
+    </section>
+    <?php endif; ?>
+
+    <div id="combined-bottom-section" class="admin__page-section combined-section">
+        <section id="quote-negotiation-tabs" class="admin__page-section left quote-negotiation-tabs">
+            <?= $block->getChildHtml('comments_and_history_container') ?>
+        </section>
+        <section class="admin__page-section quote_totals right">
+            <div class="admin__page-section-title">
+                <span class="title"><?= /* @escapeNotVerified */ __('Quote Totals') ?></span>
+            </div>
+            <div class="admin__page-section-content">
+                <fieldset id="quote-totals" class="admin__fieldset quote-totals">
+                    <?= $block->getChildHtml('totals') ?>
+                </fieldset>
+            </div>
+        </section>
+    </div>
+</div>

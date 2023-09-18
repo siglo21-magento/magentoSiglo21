@@ -1,0 +1,37 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var $block \Aheadworks\CreditLimit\Block\Payment\Form
+ */
+?>
+<script>
+    require([
+        'uiLayout',
+        'jquery'
+    ], function (layout, $) {
+        $(function () {
+            var paymentMethodData = {
+                method: 'aw_credit_limit'
+            };
+
+            layout([
+                {
+                    component: 'Aheadworks_CreditLimit/js/payment/method-renderer/aw-credit-limit-method',
+                    name: 'payment_method_aw_credit_limit',
+                    method: paymentMethodData.method,
+                    item: paymentMethodData,
+                    checkoutTotal: <?= $block->escapeJs($block->getMultishippingTotal()) ?>
+                }
+            ]);
+
+            $('body').trigger('contentUpdated');
+        })
+    })
+</script>
+<!-- ko template: getTemplate() --><!-- /ko -->

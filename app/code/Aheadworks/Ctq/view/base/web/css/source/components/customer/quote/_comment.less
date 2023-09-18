@@ -1,0 +1,90 @@
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true){
+  .aw-ctq__comment-block {
+    .comments {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 2rem;
+    }
+
+    .comment {
+      display: block;
+      margin-bottom: 1rem;
+      padding: 2rem;
+      width: 70%;
+      box-sizing: border-box;
+
+      &.seller {
+        background: @aw-ctq__comment-seller__background-color;
+      }
+
+      &.buyer {
+        background: @aw-ctq__comment-buyer__background-color;
+        margin-left: 30%;
+        color: @aw-ctq__comment-buyer-text__color;
+
+        a {
+          color: @aw-ctq__comment-buyer-text__color;
+          text-decoration: underline;
+        }
+      }
+
+      .attachments,
+      .comment-text {
+        margin-top: 1rem;
+      }
+
+      .comment-text {
+        white-space: pre-wrap;
+      }
+    }
+
+    .aw-ctq__owner-name {
+      font-weight: 600;
+    }
+
+    .aw-ctq__comment-form {
+      padding-right: 40px;
+
+      .control {
+        margin-bottom: 30px;
+
+        .label {
+          color: @aw-ctq__comment-form__color;
+        }
+
+        textarea {
+          min-height: 140px;
+        }
+      }
+
+      .fieldset {
+        margin-bottom: 0;
+      }
+
+      .aw-ctq__button-comment {
+        text-align: right;
+      }
+
+    }
+  }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+}

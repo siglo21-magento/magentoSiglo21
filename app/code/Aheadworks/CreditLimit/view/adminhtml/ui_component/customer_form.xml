@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="aw_credit_limit_data" class="Aheadworks\CreditLimit\Ui\Component\Form\Customer\CreditLimitFieldset">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="additionalClasses" xsi:type="string">aw_cl__credit_limit_section</item>
+            </item>
+        </argument>
+        <settings>
+            <label translate="true">Credit Limit</label>
+            <dataScope>data.aw_credit_limit</dataScope>
+        </settings>
+        <container name="message-container" sortOrder="40">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="template" xsi:type="string">Aheadworks_CreditLimit/ui/form/customer/message-container</item>
+                    <item name="componentDisabled" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+        </container>
+        <container name="aw_credit_limit_top_totals" sortOrder="10">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Aheadworks_CreditLimit/js/ui/customer/top-totals</item>
+                </item>
+            </argument>
+            <container name="credit_balance">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="component" xsi:type="string">Aheadworks_CreditLimit/js/ui/customer/top-totals/total</item>
+                        <item name="label" xsi:type="string" translate="true">Credit Balance</item>
+                        <item name="dataType" xsi:type="string">price</item>
+                    </item>
+                </argument>
+            </container>
+            <container name="credit_available">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="component" xsi:type="string">Aheadworks_CreditLimit/js/ui/customer/top-totals/total</item>
+                        <item name="label" xsi:type="string" translate="true">Available Credit</item>
+                        <item name="dataType" xsi:type="string">price</item>
+                    </item>
+                </argument>
+            </container>
+            <container name="credit_limit">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="component" xsi:type="string">Aheadworks_CreditLimit/js/ui/customer/top-totals/total</item>
+                        <item name="label" xsi:type="string" translate="true">Credit Limit</item>
+                        <item name="dataType" xsi:type="string">price</item>
+                    </item>
+                </argument>
+            </container>
+        </container>
+        <field name="credit_limit" formElement="input" sortOrder="20" class="Aheadworks\CreditLimit\Ui\Component\Form\Customer\CurrencyPriceField">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="service" xsi:type="array">
+                        <item name="template" xsi:type="string">Aheadworks_CreditLimit/ui/form/customer/helper/service-settings</item>
+                        <item name="label" xsi:type="string" translate="true">Use Config Value</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <label>Custom Credit Limit</label>
+                <dataType>text</dataType>
+                <dataScope>credit_limit</dataScope>
+                <imports>
+                    <link name="usedDefault">!${ $.provider }:data.aw_credit_limit.is_custom_credit_limit</link>
+                    <link name="disabled">!${ $.provider }:data.aw_credit_limit.is_custom_credit_limit</link>
+                    <link name="isServiceVisible">${ $.provider }:data.aw_credit_limit.can_use_default_credit_limit</link>
+                </imports>
+                <validation>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                    <rule name="validate-zero-or-greater" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="credit_limit_comment_to_admin" formElement="textarea" sortOrder="30">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="rows" xsi:type="number">3</item>
+                    <item name="additionalClasses" xsi:type="string">comment admin-comment</item>
+                </item>
+            </argument>
+            <settings>
+                <label>Comment</label>
+                <dataType>text</dataType>
+                <imports>
+                    <link name="disabled">${ $.parentName }.credit_limit:disabled</link>
+                </imports>
+            </settings>
+        </field>
+        <container name="update_balance_heading" sortOrder="40">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="template" xsi:type="string">Aheadworks_CreditLimit/ui/form/customer/new-section-heading</item>
+                    <item name="headingText" xsi:type="string" translate="true">Update Balance</item>
+                </item>
+            </argument>
+        </container>
+        <field name="amount_currency" formElement="select" sortOrder="50">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Amount Currency</label>
+                <imports>
+                    <link name="setOptions">${ $.provider }:data.aw_credit_limit.allowedCurrencyList</link>
+                    <link name="value">${ $.provider }:data.aw_credit_limit.baseCurrency</link>
+                </imports>
+            </settings>
+        </field>
+        <field name="amount" formElement="input" sortOrder="60">
+            <settings>
+                <label>Amount to Add</label>
+                <dataType>text</dataType>
+                <validation>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="po_number" formElement="input" sortOrder="70">
+            <settings>
+                <label>PO Number</label>
+                <dataType>text</dataType>
+                <validation>
+                    <rule name="max_text_length" xsi:type="number">32</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="balance_comment_to_customer" formElement="textarea" sortOrder="80">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="rows" xsi:type="number">3</item>
+                    <item name="additionalClasses" xsi:type="string">comment customer-comment</item>
+                </item>
+            </argument>
+            <settings>
+                <label>Comment</label>
+                <dataType>text</dataType>
+            </settings>
+        </field>
+        <field name="balance_comment_to_admin" formElement="textarea" sortOrder="90">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="rows" xsi:type="number">3</item>
+                    <item name="additionalClasses" xsi:type="string">comment admin-comment</item>
+                </item>
+            </argument>
+            <settings>
+                <label>Comment</label>
+                <dataType>text</dataType>
+            </settings>
+        </field>
+        <fieldset name="balance_history" sortOrder="100">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="string">aw_cl__balance-history-listing</item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Credit History</label>
+            </settings>
+            <insertListing name="aw_credit_limit_transaction_listing">
+                <settings>
+                    <autoRender>true</autoRender>
+                    <dataScope>aw_credit_limit_transaction_listing</dataScope>
+                    <externalProvider>${ $.ns }.aw_credit_limit_transaction_listing_data_source</externalProvider>
+                    <ns>aw_credit_limit_transaction_listing</ns>
+                    <externalFilterMode>true</externalFilterMode>
+                    <imports>
+                        <link name="customer_id">${ $.provider }:data.customer_id</link>
+                    </imports>
+                    <exports>
+                        <link name="customer_id">${ $.externalProvider }:params.customer_id</link>
+                    </exports>
+                    <dataLinks>
+                        <exports>false</exports>
+                        <imports>true</imports>
+                    </dataLinks>
+                </settings>
+            </insertListing>
+        </fieldset>
+    </fieldset>
+</form>

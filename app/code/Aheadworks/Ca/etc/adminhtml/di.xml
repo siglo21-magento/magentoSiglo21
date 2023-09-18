@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Aheadworks\Ca\Model\ResourceModel\Company\Grid\Collection">
+        <arguments>
+            <argument name="eventPrefix" xsi:type="string">aw_ca_comment_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">company_grid_collection</argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\Ca\Ui\DataProvider\Company\FormDataProvider" type="Aheadworks\Ca\Ui\DataProvider\FormDataProvider">
+        <arguments>
+            <argument name="name" xsi:type="string">awCaCompanyProvider</argument>
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Aheadworks\Ca\Ui\DataProvider\Company\Form\Modifier\Pool" type="Magento\Ui\DataProvider\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="address_dictionaries" xsi:type="array">
+                    <item name="class" xsi:type="string">Aheadworks\Ca\Ui\DataProvider\Company\Form\Modifier\Address</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+                <item name="administrator" xsi:type="array">
+                    <item name="class" xsi:type="string">Aheadworks\Ca\Ui\DataProvider\Company\Form\Modifier\Administrator</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                </item>
+                <item name="converter" xsi:type="array">
+                    <item name="class" xsi:type="string">Aheadworks\Ca\Ui\DataProvider\Company\Form\Modifier\ConvertToCompanyAdmin</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                </item>
+                <item name="credit_limit" xsi:type="array">
+                    <item name="class" xsi:type="string">Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\CreditLimit\Ui\CreditLimitFormModifier</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Aheadworks\Ca\Ui\DataProvider\Company\Listing\Modifier\AllowedPaymentMethods">
+        <arguments>
+            <argument name="optionSource" xsi:type="object">Aheadworks\Ca\Model\Source\Company\PaymentMethodList</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Aheadworks\Ca\Ui\DataProvider\Company\Listing\Modifier\Pool"
+                 type="Magento\Ui\DataProvider\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="address_dictionaries" xsi:type="array">
+                    <item name="class" xsi:type="string">Aheadworks\Ca\Ui\DataProvider\Company\Listing\Modifier\AllowedPaymentMethods</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Aheadworks\Ca\Ui\DataProvider\Company\ListingDataProvider"
+                 type="Aheadworks\Ca\Ui\DataProvider\ListingDataProvider">
+        <arguments>
+            <argument name="modifierPool" xsi:type="object">Aheadworks\Ca\Ui\DataProvider\Company\Listing\Modifier\Pool</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Aheadworks\Ca\Model\Service\CompanyUserService">
+        <arguments>
+            <argument name="userContext" xsi:type="object">Aheadworks\Ca\Model\Authorization\Adminhtml\CompanyUserContext</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Aheadworks\Ca\Model\ResourceModel\Company\Grid\ThirdParty\CustomerEntityCollection" type="Aheadworks\Ca\Model\ResourceModel\Company\Grid\ThirdParty\Collection">
+        <arguments>
+            <argument name="relativeField" xsi:type="string">entity_id</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Ca\Model\ResourceModel\Company\Grid\ThirdParty\CustomerCollection" type="Aheadworks\Ca\Model\ResourceModel\Company\Grid\ThirdParty\Collection">
+        <arguments>
+            <argument name="relativeField" xsi:type="string">customer_id</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Ca\Model\ResourceModel\Company\Grid\ThirdParty\EntityCollection" type="Aheadworks\Ca\Model\ResourceModel\Company\Grid\ThirdParty\Collection">
+        <arguments>
+            <argument name="relativeField" xsi:type="string">entity_id</argument>
+            <argument name="mainTable" xsi:type="string">e</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Ca\Model\ResourceModel\Company\Grid\ThirdParty\AwCreditLimitCollection" type="Aheadworks\Ca\Model\ResourceModel\Company\Grid\ThirdParty\EntityCollection">
+        <arguments>
+            <argument name="additionalCompanyUserColumns" xsi:type="array">
+                <item name="aw_ca_is_admin" xsi:type="string">awca_company_user.is_root</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Aheadworks\Ca\Plugin\Model\ResourceModel\Grid\CompanyColumn\BaseCollectionPlugin">
+        <arguments>
+            <argument name="collection" xsi:type="object">Aheadworks\Ca\Model\ResourceModel\Company\Grid\ThirdParty\CustomerEntityCollection</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Ca\Plugin\Model\ResourceModel\Grid\CompanyColumn\CustomerCollectionPlugin">
+        <arguments>
+            <argument name="collection" xsi:type="object">Aheadworks\Ca\Model\ResourceModel\Company\Grid\ThirdParty\CustomerCollection</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Ca\Plugin\Model\ResourceModel\Grid\CompanyColumn\EntityCollectionPlugin">
+        <arguments>
+            <argument name="collection" xsi:type="object">Aheadworks\Ca\Model\ResourceModel\Company\Grid\ThirdParty\EntityCollection</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Ca\Plugin\Model\ResourceModel\Grid\CompanyColumn\AwCreditLimitCollectionPlugin">
+        <arguments>
+            <argument name="collection" xsi:type="object">Aheadworks\Ca\Model\ResourceModel\Company\Grid\ThirdParty\AwCreditLimitCollection</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Customer\Model\ResourceModel\Grid\Collection">
+        <plugin name="awCa" type="Aheadworks\Ca\Plugin\Model\ResourceModel\Grid\CompanyColumn\BaseCollectionPlugin"/>
+    </type>
+    <type name="Aheadworks\Ctq\Model\ResourceModel\Quote\Grid\Collection">
+        <plugin name="awCa" type="Aheadworks\Ca\Plugin\Model\ResourceModel\Grid\CompanyColumn\CustomerCollectionPlugin"/>
+    </type>
+    <type name="Magento\Sales\Model\ResourceModel\Order\Grid\Collection">
+        <plugin name="awCa" type="Aheadworks\Ca\Plugin\Model\ResourceModel\Grid\CompanyColumn\CustomerCollectionPlugin"/>
+    </type>
+    <type name="Magento\Sales\Model\ResourceModel\Order\Customer\Collection">
+        <plugin name="awCa" type="Aheadworks\Ca\Plugin\Model\ResourceModel\Grid\CompanyColumn\EntityCollectionPlugin"/>
+    </type>
+    <type name="Aheadworks\Ctq\Block\Adminhtml\Quote\Edit\CustomerSelection\Grid">
+        <plugin name="awCa" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\Ctq\Plugin\CustomerSelectionGridPlugin"/>
+    </type>
+    <type name="Aheadworks\StoreCredit\Model\ResourceModel\Summary\Grid\Collection">
+        <plugin name="awCa" type="Aheadworks\Ca\Plugin\Model\ResourceModel\Grid\CompanyColumn\BaseCollectionPlugin"/>
+    </type>
+    <type name="Aheadworks\StoreCredit\Model\ResourceModel\Transaction\Grid\Collection">
+        <plugin name="awCa" type="Aheadworks\Ca\Plugin\Model\ResourceModel\Grid\CompanyColumn\CustomerCollectionPlugin"/>
+    </type>
+    <type name="Aheadworks\RewardPoints\Model\ResourceModel\PointsSummary\Grid\Collection">
+        <plugin name="awCa" type="Aheadworks\Ca\Plugin\Model\ResourceModel\Grid\CompanyColumn\BaseCollectionPlugin"/>
+    </type>
+    <type name="Aheadworks\RewardPoints\Model\ResourceModel\Transaction\Grid\Collection">
+        <plugin name="awCa" type="Aheadworks\Ca\Plugin\Model\ResourceModel\Grid\CompanyColumn\CustomerCollectionPlugin"/>
+    </type>
+
+    <type name="Aheadworks\CreditLimit\Model\ResourceModel\Customer\Grid\Collection">
+        <plugin name="awCa" type="Aheadworks\Ca\Plugin\Model\ResourceModel\Grid\CompanyColumn\AwCreditLimitCollectionPlugin"/>
+    </type>
+    <type name="Aheadworks\CreditLimit\Ui\Component\Form\Customer\CreditLimitFieldset">
+        <plugin name="awCa" type="Aheadworks\Ca\Model\ThirdPartyModule\Aheadworks\CreditLimit\Plugin\Ui\CreditLimitFieldsetPlugin"/>
+    </type>
+</config>

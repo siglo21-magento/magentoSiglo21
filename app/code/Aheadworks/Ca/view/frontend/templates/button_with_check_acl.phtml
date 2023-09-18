@@ -1,0 +1,23 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+/** @var Aheadworks\Ca\Block\ButtonWithCheckAcl $block */
+
+//@codingStandardsIgnoreFile
+$escapeUrl = $block->escapeUrl($block->getLink());
+$url = $escapeUrl;
+$len = strlen($escapeUrl); 
+if($len < strlen($block->getBaseUrl())){
+    
+    //if(substr($string, 0, $len) === $startString){
+        $url = $block->getBaseUrl() . $escapeUrl;
+    //}
+
+}
+?>
+<a href="<?= $url ?>" class="action <?= /* @noEscape */ $block->getAdditionalClasses() ?>">
+    <span><?= __($block->escapeHtml($block->getLabel())) ?></span>
+</a>

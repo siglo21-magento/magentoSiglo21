@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <aw_ca>
+            <email>
+                <sender>general</sender>
+                <new_company_approved_template>aw_ca_email_new_company_approved_template</new_company_approved_template>
+                <new_company_submitted_template>aw_ca_email_new_company_submitted_template</new_company_submitted_template>
+                <new_company_declined_template>aw_ca_email_new_company_declined_template</new_company_declined_template>
+                <company_status_changed_template>aw_ca_email_company_status_changed_template</company_status_changed_template>
+                <new_company_user_created_template>aw_ca_email_new_company_user_created_template</new_company_user_created_template>
+            </email>
+        </aw_ca>
+    </default>
+</config>

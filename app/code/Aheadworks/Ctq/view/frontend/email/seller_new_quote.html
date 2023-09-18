@@ -1,0 +1,18 @@
+<!--@subject {{trans 'New Quote %quote_name' quote_name=$quote.getName()}}@-->
+{{template config_path="design/email/header_template"}}
+
+<p>
+    {{trans 'Dear %user_name,' user_name=$user_name}}<br />
+    {{trans
+        'A new Quote <a href="%quote_url">%quote_name</a> has been submitted by the buyer %buyer_name.'
+        quote_url=$quote_url quote_name=$quote.getName() buyer_name=$buyer_name
+    |raw}}
+</p>
+<p>
+    {{trans 'Quote total is %total.' total=$total}}
+</p>
+{{layout handle="aw_ctq_email_quote_changes" history=$history is_email_for_seller=$is_seller store_id=$quote.getStoreId() area="frontend"}}
+
+{{layout handle="aw_ctq_email_quote_details" quote=$quote store=$store area="frontend"}}
+
+{{template config_path="design/email/footer_template"}}

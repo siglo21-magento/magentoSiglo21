@@ -1,0 +1,22 @@
+{
+    "name": "aventi/module-quickorder",
+    "description": "Quick order by parte equipos",
+    "type": "magento2-module",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Carlos Hernan Aguilar",
+            "email": "caguilar@aventi.co"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Aventi\\QuickOrder\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}

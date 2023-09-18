@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright  Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<csp_whitelist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Csp/etc/csp_whitelist.xsd">
+    <policies>
+        <policy id="script-src">
+            <values>
+                <value id="ccs-inline-content" type="host">http://cdn.cnetcontent.com</value>
+                <value id="ccs-explore-produc" type="host">http://cdn.cnetcontent.com</value>
+                <value id="ccs-explore-produc" type="host">http://ws.cnetcontent.com/log</value>
+                <value id="flix-minisite" type="host">http://media.flixcar.com</value>
+                <value id="flix-minisite-js" type="host">http://media.flixfacts.com/js/loader.js</value>
+                <value id="flix-flix360" type="host">http://rt.flix360.com</value>
+                <value id="flix-minisite-img" type="host">http://media.flixcar.com/minisite/log.gif</value>
+                <value id="magesolution-img" type="host">https://themes.magesolution.com</value>
+            </values>
+        </policy>
+
+         <policy id="img-src">
+            <values>
+              <value id="flix-minisite-img" type="host">http://media.flixcar.com/minisite/log.gif</value>
+            </values>
+        </policy>
+
+      <policy id="style-src">
+            <values>
+                <value id="fontawesome" type="host">*.fontawesome.com</value>
+                <value id="pro-fontawesome" type="host">*.pro.fontawesome.com</value>
+            </values>
+        </policy>
+
+         <policy id="font-src">
+            <values>
+                <value id="fontawesome" type="host">*.fontawesome.com</value>
+                <value id="pro-fontawesome" type="host">*.pro.fontawesome.com</value>
+            </values>
+        </policy>
+
+
+    </policies>
+</csp_whitelist>

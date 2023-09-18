@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Catalog\Model\Config\Source\ListMode" type="Aventi\ExcelModeView\Model\Config\Source\ListMode" />    
+    <preference for="Magento\Catalog\Helper\Product\ProductList" type="Aventi\ExcelModeView\Helper\Product\ProductList" />    
+</config>

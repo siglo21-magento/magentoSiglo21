@@ -1,0 +1,110 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Aheadworks\Ctq\Block\Adminhtml\Quote\Edit\Shipping\Method\Form */
+?>
+<?php  ?>
+<?php $shippingRateGroups = $block->getShippingRates(); ?>
+<?php if ($shippingRateGroups): ?>
+    <div id="quote-shipping-method-choose" class="control" style="display:none">
+        <dl class="admin__quote-shipment-methods">
+        <?php foreach ($shippingRateGroups as $code => $rates): ?>
+            <dt class="admin__quote-shipment-methods-title"><?= $block->escapeHtml($block->getCarrierName($code)) ?></dt>
+            <dd class="admin__quote-shipment-methods-options">
+                <ul class="admin__quote-shipment-methods-options-list">
+                <?php foreach ($rates as $rate): ?>
+                    <?php $rateCode = $rate->getCode() ?>
+                    <li class="admin__field-option">
+                       <?php if ($rate->getErrorMessage()): ?>
+                           <div class="messages">
+                               <div class="message message-error error">
+                                   <div><?= $block->escapeHtml($rate->getErrorMessage()) ?></div>
+                               </div>
+                           </div>
+                       <?php else: ?>
+                            <?php $isChecked = $block->isMethodActive($rateCode) ? 'checked="checked"' : '' ?>
+                            <input name="shipping[shipping_method]"
+                                   type="radio"
+                                   onclick="quote.setShippingMethod(this.value)"
+                                   value="<?= /* @escapeNotVerified */ $rateCode ?>"
+                                   id="s_method_<?= /* @escapeNotVerified */ $rateCode ?>"
+                                   <?= /* @escapeNotVerified */ $isChecked ?>
+                                   class="admin__control-radio required-entry"
+                            />
+                            <label class="admin__field-label" for="s_method_<?= /* @escapeNotVerified */ $rateCode ?>">
+                                <?= $block->escapeHtml($rate->getMethodTitle() ? $rate->getMethodTitle() : $rate->getMethodDescription()) ?> -
+                                <strong>
+                                    <?= /* @escapeNotVerified */ $block->getShippingPriceExclTax($rate); ?>
+                                    <?php if ($block->isNeedToDisplayBothPrices($rate)): ?>
+                                        (<?= /* @escapeNotVerified */ __('Incl. Tax') ?> <?= /* @escapeNotVerified */ $block->getShippingPriceExclTax($rate) ?>)
+                                    <?php endif; ?>
+                                </strong>
+                            </label>
+                       <?php endif ?>
+                    </li>
+                <?php endforeach; ?>
+                </ul>
+            </dd>
+        <?php endforeach; ?>
+        </dl>
+    </div>
+    <?php if ($rate = $block->getActiveMethodRate()): ?>
+        <div id="quote-shipping-method-info" class="quote-shipping-method-info">
+            <dl class="admin__quote-shipment-methods">
+                <dt class="admin__quote-shipment-methods-title">
+                    <?= $block->escapeHtml($block->getCarrierName($rate->getCarrier())) ?>
+                </dt>
+                <dd class="admin__quote-shipment-methods-options">
+                    <?= $block->escapeHtml($rate->getMethodTitle() ? $rate->getMethodTitle() : $rate->getMethodDescription()) ?> -
+                    <strong>
+                        <?= /* @escapeNotVerified */ $block->getShippingPriceExclTax($rate); ?>
+                        <?php if ($block->isNeedToDisplayBothPrices($rate)): ?>
+                            (<?= /* @escapeNotVerified */ __('Incl. Tax') ?> <?= /* @escapeNotVerified */ $block->getShippingPriceExclTax($rate) ?>)
+                        <?php endif; ?>
+                    </strong>
+                </dd>
+            </dl>
+            <?php if ($block->getQuoteViewModel()->isEditQuote($block->getQuoteId())):?>
+                <a href="#"
+                   onclick="$('quote-shipping-method-info').hide();$('quote-shipping-method-choose').show();return false"
+                   class="action-default">
+                    <span><?= /* @escapeNotVerified */ __('Click to change shipping method') ?></span>
+                </a>
+            <?php endif; ?>
+        </div>
+    <?php else: ?>
+        <script>
+            require(['prototype'], function() {
+                $('quote-shipping-method-choose').show();
+            });
+        </script>
+    <?php endif; ?>
+<?php elseif ($block->getIsRateRequest()): ?>
+    <div class="quote-shipping-method-summary">
+        <strong class="quote-shipping-method-not-available"><?= /* @escapeNotVerified */ __('Sorry, no quotes are available at the moment.') ?></strong>
+    </div>
+<?php else: ?>
+    <?php if ($block->getQuoteViewModel()->isEditQuote($block->getQuoteId())):?>
+        <div id="quote-shipping-method-summary" class="quote-shipping-method-summary">
+            <a href="#" onclick="quote.loadShippingRates();return false" class="action-default">
+                <span><?= /* @escapeNotVerified */ __('Get shipping methods and rates') ?></span>
+            </a>
+            <input type="text" name="shipping[has_shipping]" value="" class="has-shipping required-entry" />
+        </div>
+    <?php endif; ?>
+<?php endif; ?>
+<div style="display: none;" id="shipping-method-overlay" class="quote-methods-overlay">
+    <span><?= /* @escapeNotVerified */ __('You don\'t need to select a shipping method.') ?></span>
+</div>
+<script>
+    require(["Aheadworks_Ctq/js/quote/edit/form"], function() {
+        quote.overlay('shipping-method-overlay', <?php if ($block->isQuoteVirtual()): ?>false<?php else: ?>true<?php endif; ?>);
+        quote.overlay('address-shipping-overlay', <?php if ($block->isQuoteVirtual()): ?>false<?php else: ?>true<?php endif; ?>);
+        quote.isOnlyVirtualProduct = <?= $block->escapeJs($block->getQuote()->isVirtual() ? 'true' : 'false') ?>;
+    });
+</script>

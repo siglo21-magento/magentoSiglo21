@@ -1,0 +1,19 @@
+<!--@subject {{trans 'A new company request'}}@-->
+{{template config_path="design/email/header_template"}}
+
+<h2>Compañía Registrada</h2>
+<p>
+    {{trans 'Dear %sales_representative_name,' sales_representative_name=$sales_representative_name}}<br />
+    {{trans
+        'A new company %company_name was created by customer %user_name.'
+         company_name=$company.getName() user_name=$user_name
+    |raw}}
+</p>
+<p>
+    {{trans
+        'Click here <a href="%company_url">link</a> to approve or decline this company.'
+        company_url=$company_url
+    |raw}}
+</p>
+
+{{template config_path="design/email/footer_template"}}

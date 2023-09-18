@@ -1,0 +1,191 @@
+<?php
+/** @var $block Aventi\QuickOrder\Block\Index\Index */
+?>
+<h1 class="quick-title">Orden rápida</h1>
+<div id="quick-order" data-bind="scope:'quick-order'">
+    <div class="body-quick">
+        <div class="quick-top-bar">
+
+            <div class="buttons-top-right">
+                <form data-action="<?php echo $this->getUrl('*/*/search') ?>" data-bind="submit: findProduct" id="find-product">
+                    <input type="hidden" name="form_key" value="<?php echo $block->getFormKey() ?>" />
+                    <div class="search-button">
+                        <input type="hidden" name="sku" value="" id="sku">
+                        <input
+                            id="searchItem"
+                            type="text"
+                            name="search"
+                            data-url="<?php echo $this->getUrl('*/*/SearchOption') ?>"
+                            data-bind="event:{keyup:listOptions}"
+                            placeholder="<?php echo __('Insert sku or name') ?>"
+                            required
+                            list="products" />
+                        <datalist id="products">
+
+                        </datalist>
+                        <button id="btnSubmit" type="submit" class="btn btn-main-blue-s21 btn-s21" ><?php echo __('Add Row'); ?></button>
+                        <button type="reset"  class="btn btn-link-s21 btn-s21" ><?php echo __('Clear')?></button>
+                    </div>
+                </form>
+                <div class="inner-buttons">
+                    <a href="<?php echo $this->getUrl('*/*/download') ?>" class="link btn-link-s21 btn-s21"><?php echo __('Downloap file example'); ?></a>
+                    <button class="btn -js-show-form btn-s21 btn-main-blue-s21"  data-bind="click:showFormUpload"><?php echo __('Upload'); ?></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="quick-table-container">
+            <table class="aventi_quick_order table  table-striped">
+                <thead>
+                <tr>
+                    <!--<th scope="col"><?php /*echo __('Image');*/ ?></th>-->
+                    <th scope="col"><?php echo __('SKU S21') ?></th>
+                    <th scope="col"><?php echo __('SKU'); ?></th>
+                    <th scope="col"><?php echo __('Attributes'); ?></th>
+                    <th scope="col"><?php echo __('Description'); ?></th>
+                    <th scope="col"><?php echo __('Quantity'); ?></th>
+                    <th scope="col"><?php echo __('Price'); ?></th>
+                    <th scope="col"><?php echo __('Total') ?></th>
+                    <th scope="col" style="width: 50px"></th>
+
+                </tr>
+                </thead>
+                <tbody data-bind="template: { name: 'listProducts', foreach: getProducts(), as: 'row' }">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="buttons-bottom-right">
+            <!--<button class="btn btn-s21 btn-scnd-s21 " data-bind="click:openModal"><?php echo __('Quote'); ?></button>-->
+            <a data-bind="click:sendToCart"
+               class="btn btn-danger btn-main-red-s21 btn-s21 js-go-pay "
+               data-cart="<?php echo $this->getUrl('checkout/cart/') ?>"><?php echo __('Go to pay'); ?>
+            </a>
+
+        </div>
+        <div class="message-error">
+            <h2>Resumen del proceso</h2>
+            <ul>
+
+            </ul>
+        </div>
+
+    </div>
+    <div class="form-quick">
+
+        <form data-action="<?php echo $this->getUrl('*/*/upload') ?>" data-bind="submit: sendDateFile" id="upload-quick">
+            <h4><?php echo __('Upload'); ?></h4>
+            <div class="input-container">
+                <input type="hidden" name="form_key" value="<?php echo $block->getFormKey() ?>" />
+                <input type="file" name="document" id="document" class="inputfile"  accept=".csv" required>
+                <input type="hidden" name="MAX_FILE_SIZE" value="2194304" />
+                <label for="document">
+                    <figure>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17">
+                            <path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path>
+                        </svg>
+                    </figure>
+                </label>
+            </div>
+            <div class="buttons">
+                <button type="button"  data-bind="click:showFormUpload"  class="btn btn-s21 btn-scnd-s21" >Volver</button>
+                <button type="submit" class="btn btn-main-red-s21 btn-s21" >Cargar</button>
+            </div>
+        </form>
+    </div>
+
+
+    <script type="text/html" id="listProducts">
+        <tr>
+            <!--<td><img data-bind="attr:{src: image}"/></td>-->
+            <td>
+                <div class="table-container"><p data-bind="text: sku"></p></div>
+            </td>
+            <td>
+                <div class="table-container"><p data-bind="text: ref"></p></div>
+            </td>
+            <td>
+                <!-- ko if: type() === 'configurable' -->
+                <div data-bind="html: attrFormated">
+
+                </div>
+                <!-- /ko -->
+            </td>
+            <td>
+                <div class="table-container"><p data-bind="text: name"></p></div>
+            </td>
+
+            <td>
+                <div style="display:flex; align-items: center">
+                    <div class="table-container">
+                        <div class="q-action" data-bind="if: status">
+                            <span class="pointer  circle  fa fa-minus js-down"  data-bind="click: $parent.updateQuantity"></span>
+                            <span>
+                                <input type="text" data-price="${price}" data-bind="value: qty, valueUpdate:'afterkeydown', event: {'keyup': $parent.updateQuantityInput}" />
+                            </span>
+                            <span class="pointer circle fa fa-plus js-up" data-bind="click: $parent.updateQuantity" ></span>
+                        </div>
+                    </div>
+                    <div data-bind="html: formatInventory" style="margin-left: 10px" title="Ver inventario">
+
+                    </div>
+                </div>
+
+            </td>
+
+            <td><div class="table-container"><p data-bind="text: priceFormat"></p></div></td>
+            <td><div class="table-container"><p data-bind="text: totalFormat"></p></div></td>
+            <td>
+                <div class="table-container">
+                    <!-- ko if: type() === 'configurable' -->
+                    <a type="button"
+                       data-bind="attr: { href: url, 'id': 'quickview-'+id(), 'data-productid': id, 'data-id': id, 'data-index': index  }"
+                       class="action quickview quickview-quickorder">
+                        <i class="la la-gears"></i>
+                        <!--<i class="pointer q-remove fa fa-pencil" data-bind="click: $parent.editAttributes.bind(id), clickBubble: false" data-sku="${sku}"></i>-->
+                    </a>
+                    <!-- /ko -->
+                    <i class="pointer q-remove fa fa-close" data-bind="click: $parent.deleteProduct" data-sku="${sku}"></i>
+                </div>
+
+            </td>
+
+        </tr>
+
+
+    </script>
+    <div id="dialog-form" >
+
+    </div>
+
+
+    <script>
+        window.orderPriceFormat = <?php /* @escapeNotVerified */ echo $this->helper('Magento\Tax\Helper\Data')->getPriceFormat($block->getStore()); ?>
+    </script>
+
+
+    <script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+               "components": {
+                    "quick-order": {
+                        "component": "Aventi_QuickOrder/js/quickOrder",
+                        "template" : "Aventi_QuickOrder/quickOrder"
+                        }
+                    }
+                }
+            }
+    }
+    </script>
+</div>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,21 @@
+<?php
+/** @var \Aventi\Cartera\Block\Account\Cartera $block */
+?>
+<div class="block block-dashboard-cartera">
+  <div class="block-title"><strong><?= __('Portfolio Information') ?></strong></div>
+  <div class="block-content">
+    <div class="box box-information">
+      <div class="box-content" data-role="aw-cl__top-total-list"  data-bind="scope: 'aw_credit_limit_top_totals'">
+         <!-- ko template: getTemplate() --><!-- /ko -->
+      </div>
+      <span><?= __('For more details, go to Credit Limit') ?></span>
+    </div>
+  </div>
+</div>
+<script type="text/x-magento-init">
+    {
+        "[data-role=aw-cl__top-total-list]": {
+            "Magento_Ui/js/core/app": <?= /* @noEscape */ $block->getJsLayout() ?>
+        }
+    }
+</script>

@@ -1,0 +1,22 @@
+{
+  "name": "aventi/module-managerprice",
+  "description": "Module for management prices",
+  "type": "magento2-module",
+  "minimum-stability": "dev",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Juan Jose Ñustes",
+      "email": "jnustes@aventi.com.co"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Aventi\\ManagerPrice\\": ""
+    }
+  }
+}

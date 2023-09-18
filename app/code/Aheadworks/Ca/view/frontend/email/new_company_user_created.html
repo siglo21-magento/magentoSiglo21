@@ -1,0 +1,23 @@
+<!--@subject {{trans 'You\'ve been added to %company_name' company_name=$company.getName()}}@-->
+{{template config_path="design/email/header_template"}}
+
+<h2>Nuevo usuario asociado a la Compañía</h2>
+<p>
+    {{trans 'Dear %user_name,' user_name=$user_name}}<br />
+    {{trans
+        'The company %company_name assigned you as the company member.'
+        company_name=$company.getName()
+    |raw}}
+</p>
+<p>
+    {{trans 'Click on the link below to set your password and login:'}}
+</p>
+
+<p class="interactable">
+    {{trans
+        '<a href="%reset_password_url"><span>Establecer la contraseña</span></a>'
+        reset_password_url=$reset_password_url
+    |raw}}
+</p>
+
+{{template config_path="design/email/footer_template"}}

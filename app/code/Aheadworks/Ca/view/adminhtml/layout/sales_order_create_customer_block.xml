@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="adminhtml.customer.grid.columnSet">
+            <block class="Magento\Backend\Block\Widget\Grid\Column"
+                   name="adminhtml.customer.grid.columnSet.aw_ca_company"
+                   as="aw_ca_company">
+                <arguments>
+                    <argument name="header" xsi:type="string" translate="true">Company</argument>
+                    <argument name="index" xsi:type="string">aw_ca_company</argument>
+                    <argument name="filter" xsi:type="boolean">false</argument>
+                    <argument name="sortable" xsi:type="boolean">false</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Backend\Block\Widget\Grid\Column"
+                   name="adminhtml.customer.grid.columnSet.aw_ca_is_activated"
+                   as="aw_ca_is_activated">
+                <arguments>
+                    <argument name="header" xsi:type="string" translate="true">Status in Company</argument>
+                    <argument name="index" xsi:type="string">aw_ca_is_activated</argument>
+                    <argument name="type" xsi:type="string">options</argument>
+                    <argument name="filter" xsi:type="boolean">false</argument>
+                    <argument name="sortable" xsi:type="boolean">false</argument>
+                    <argument name="options" xsi:type="array">
+                        <item name="0" xsi:type="array">
+                            <item name="value" xsi:type="string">1</item>
+                            <item name="label" xsi:type="string" translate="true">Active</item>
+                        </item>
+                        <item name="1" xsi:type="array">
+                            <item name="value" xsi:type="string">0</item>
+                            <item name="label" xsi:type="string" translate="true">Inactive</item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

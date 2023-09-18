@@ -1,0 +1,49 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Aheadworks\Ctq\Block\Adminhtml\Quote\Edit\Form $block */
+?>
+<form id="edit_form" data-quote-config='<?= $block->escapeHtml($block->getQuoteDataJson()) ?>' data-load-base-url="<?= /* @escapeNotVerified */ $block->getLoadBlockUrl() ?>" action="<?= /* @escapeNotVerified */ $block->getSaveUrl() ?>" method="post" enctype="multipart/form-data">
+    <?= $block->getBlockHtml('formkey') ?>
+    <div id="quote-message">
+        <?= $block->getChildHtml('message') ?>
+    </div>
+    <div id="quote-customer-selector" class="fieldset-wrapper quote-customer-selector" style="display:<?= /* @escapeNotVerified */ $block->getCustomerSelectorDisplay() ?>">
+        <?= $block->getChildHtml('customer.grid.container') ?>
+    </div>
+    <div id="quote-data" style="display:<?= /* @escapeNotVerified */ $block->getDataSelectorDisplay() ?>">
+        <?= $block->getChildHtml('data') ?>
+    </div>
+</form>
+<script>
+    require([
+        'jquery',
+        'mage/backend/form',
+        'mage/backend/validation'
+    ], function($){
+
+        $('#edit_form').form()
+            .validation({
+                validationUrl: '<?= /* @escapeNotVerified */ $block->getValidationUrl() ?>',
+                highlight: function(element) {
+                    var detailsElement = $(element).closest('details');
+                    if (detailsElement.length && detailsElement.is('.details')) {
+                        var summaryElement = detailsElement.find('summary');
+                        if (summaryElement.length && summaryElement.attr('aria-expanded') === "false") {
+                            summaryElement.trigger('click');
+                        }
+                    }
+                    $(element).trigger('highlight.validate');
+                },
+                ignore: ':hidden, :disabled, .ignore-validate, .no-display.template, ' +
+                    ':disabled input, .ignore-validate input, .no-display.template input, ' +
+                    ':disabled select, .ignore-validate select, .no-display.template select, ' +
+                    ':disabled textarea, .ignore-validate textarea, .no-display.template textarea',
+            });
+    });
+</script>

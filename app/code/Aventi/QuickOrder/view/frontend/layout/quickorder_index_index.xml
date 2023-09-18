@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+		<css src="Aventi_QuickOrder::css/quick_order.css"/>
+	</head>
+	<body>
+		<referenceContainer name="content">
+			<block class="Aventi\QuickOrder\Block\Index\Index" name="index.index" template="Aventi_QuickOrder::index/index.phtml"/>
+			<block class="Magento\Cms\Block\Block" name="quick-block">
+				<arguments>
+					<argument name="block_id" xsi:type="string">aventi_quick_order</argument>
+				</arguments>
+			</block>
+		</referenceContainer>
+	</body>
+</page>

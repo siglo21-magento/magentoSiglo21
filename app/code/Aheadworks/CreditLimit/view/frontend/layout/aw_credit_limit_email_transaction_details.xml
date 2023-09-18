@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <block name="aw_cl.email.balance.history"
+               template="Aheadworks_CreditLimit::email/balance_history.phtml"
+               cacheable="false">
+            <arguments>
+                <argument name="formatter_view_model" xsi:type="object">Aheadworks\CreditLimit\ViewModel\Transaction\Formatter</argument>
+            </arguments>
+        </block>
+    </body>
+</page>

@@ -1,0 +1,70 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+/* @var $block \Aheadworks\Ctq\Block\Customer\Quote\Comment */
+
+// @codingStandardsIgnoreFile
+$quote = $block->getDataProviderViewModel()->getQuote();
+$quoteId = $quote->getId();
+?>
+<div class="order-details-items aw-ctq__comment-block">
+    <ul class="comments">
+        <?php /** @var  \Aheadworks\Ctq\Api\Data\CommentInterface $comment */ ?>
+        <?php foreach ($block->getCommentListViewModel()->getCommentList($quoteId) as $comment): ?>
+            <li class="<?= /* @noEscape */ $block->getCommentViewModel()->getCommentClasses($comment) ?>">
+                <div class="aw-ctq__owner-name">
+                    <span class="aw-ctq__owner-name-value"><?= $block->escapeHtml($block->getCommentViewModel()->getOwnerName($comment)) ?></span>
+                    <span class="aw-ctq__date-created-value"><?= /* @noEscape */ $block->getCommentViewModel()->getCreatedAtFormatted($comment->getCreatedAt()) ?></span>
+                </div>
+                <div class="comment-text"><?= $block->escapeHtml($comment->getComment()) ?></div>
+                <?php if ($comment->getAttachments()): ?>
+                    <?php foreach ($comment->getAttachments() as $attachment): ?>
+                        <div class="attachments">
+                            <a target="_blank"
+                               href="<?= $block->escapeUrl(
+                                       $block->getCommentViewModel()->getDownloadUrl($attachment->getFileName(), $quoteId, $comment->getId())
+                               ) ?>">
+                                <?= $block->escapeHtml($attachment->getName()) ?>
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+
+    <div class="aw-ctq__comment-form">
+        <form data-role="aw-ctq-submit-comment-form"
+              action="<?= $block->escapeUrl($block->getCommentViewModel()->getAddCommentUrl()) ?>"
+              method="post"
+              data-mage-init='{"validation":{}}'>
+            <?php /* @noEscape */ echo $block->getBlockHtml('formkey') ?>
+            <input type="hidden" name="quote_id" value="<?= /* @noEscape */ $quoteId ?>">
+            <fieldset class="fieldset">
+                <div class="field control">
+                    <label class="label" for="message">
+                        <span><?= $block->escapeHtml(__('Comment')) ?></span>
+                    </label>
+                    <div class="control">
+                    <textarea
+                            name="comment"
+                            placeholder="<?= $block->escapeHtml(__('Type here to add your comment to this Quote')) ?>"
+                            rows="5"></textarea>
+                    </div>
+                </div>
+                <?= $block->getChildHtml('file_uploader') ?>
+            </fieldset>
+            <div class="aw-ctq__button-comment">
+                <button data-role="aw-ctq-submit-comment-button"
+                        type="submit"
+                        class="aw-ctq__submit-comment action primary"
+                        title="<?= $block->escapeHtml(__('Send')) ?>">
+                    <span><?= $block->escapeHtml(__('Send')) ?></span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

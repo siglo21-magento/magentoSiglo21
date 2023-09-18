@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Html\Links" as="links" name="aw.ctq.quote.info.links" before="-">
+                <arguments>
+                    <argument name="css_class" xsi:type="string">items order-links aw_ctq__quote-links</argument>
+                </arguments>
+                <block class="Aheadworks\Ctq\Block\Customer\Quote\Link" name="aw.ctq.quote.info.links.information">
+                    <arguments>
+                        <argument name="path" xsi:type="string">aw_ctq/quote/edit</argument>
+                        <argument name="label" xsi:type="string" translate="true">Products</argument>
+                        <argument name="data_provider_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Customer\Quote\DataProvider</argument>
+                    </arguments>
+                </block>
+                <block class="Aheadworks\Ctq\Block\Customer\Quote\Link" name="aw.ctq.quote.info.links.comments">
+                    <arguments>
+                        <argument name="path" xsi:type="string">aw_ctq/quote/comment</argument>
+                        <argument name="label" xsi:type="string" translate="true">Comments</argument>
+                        <argument name="data_provider_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Customer\Quote\DataProvider</argument>
+                    </arguments>
+                </block>
+                <block class="Aheadworks\Ctq\Block\Customer\Quote\Link" name="aw.ctq.quote.info.links.history.log">
+                    <arguments>
+                        <argument name="path" xsi:type="string">aw_ctq/quote/history</argument>
+                        <argument name="label" xsi:type="string" translate="true">History Log</argument>
+                        <argument name="data_provider_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Customer\Quote\DataProvider</argument>
+                    </arguments>
+                </block>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

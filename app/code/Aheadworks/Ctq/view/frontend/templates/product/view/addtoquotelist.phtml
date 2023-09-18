@@ -1,0 +1,26 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Catalog\Block\Product\AbstractProduct $block */
+/** @var \Aheadworks\Ctq\ViewModel\QuoteList\AddButton $viewModel */
+$viewModel = $block->getQuoteListViewModel();
+$product = $block->getProduct();
+$buttonTitle = __('Add to Quote');
+
+?>
+<?php if ($product && $product->isSaleable() && $viewModel && $viewModel->isAllowedToAdd()): ?>
+    <!-- BOTON ADD TO QUOTE -->
+    <!--<button type="button"
+            title="<?= $block->escapeHtmlAttr($buttonTitle) ?>"
+            class="action primary toquotelist"
+            id="product_addtoquotelist_button"
+            data-mage-init='{"awCtqAddToQuoteListButton": {"isProductPage": true}}'
+            disabled>
+        <span><?= $block->escapeHtml($buttonTitle) ?></span>
+    </button>-->
+<?php endif; ?>

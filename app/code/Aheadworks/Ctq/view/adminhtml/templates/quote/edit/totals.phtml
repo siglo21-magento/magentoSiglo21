@@ -1,0 +1,24 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Aheadworks\Ctq\Block\Adminhtml\Quote\Edit\Totals */
+?>
+<table class="admin__table-secondary data-table">
+    <tbody>
+        <?= /* @escapeNotVerified */ $block->renderTotals() ?>
+        <tr id="quote-negotiation" class="row-totals">
+            <td colspan="1">
+                <?= $block->escapeHtmlAttr(__('Negotiated Subtotal')) ?>
+            </td>
+            <td>
+                <?= $block->getChildHtml('negotiation_form', true) ?>
+            </td>
+        </tr>
+        <?= /* @escapeNotVerified */ $block->renderTotals('footer') ?>
+    </tbody>
+</table>

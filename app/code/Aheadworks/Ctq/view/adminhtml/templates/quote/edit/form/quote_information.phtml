@@ -1,0 +1,171 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+/** @var $block \Magento\Backend\Block\Template */
+
+// @codingStandardsIgnoreFile
+?>
+<?php
+    /** @var \Aheadworks\Ctq\ViewModel\Quote\Edit\Form\QuoteInformation $formViewModel */
+    $formViewModel = $block->getFormViewModel();
+    $quoteId = $block->getParentBlock()->getQuoteId();
+    $quote = $formViewModel->getQuote($quoteId);
+?>
+<div class="admin__page-section-content">
+    <div class="admin__page-section-item">
+        <div class="admin__page-section-item-title">
+            <?php if ($quote->getId()): ?>
+                <span class="title">
+                    <?= __('Quote # %1', $block->escapeHtml($quote->getId())) ?>
+                </span>
+            <?php endif; ?>
+        </div>
+        <?php if ($quote->getId()): ?>
+            <input name="quote[quote_id]" type="hidden" value="<?= $block->escapeHtmlAttr($quote->getId()) ?>">
+        <?php endif; ?>
+        <div class="admin__page-section-item-content">
+            <table class="admin__table-secondary quote-details">
+                <tbody>
+                    <tr class="quote_name">
+                        <th class="_required">
+                            <?= $block->escapeHtml(__('Name')) ?>
+                        </th>
+                        <td>
+                            <?php if ($quote->getName()): ?>
+                                <?= $block->escapeHtml(__($quote->getName())) ?></td>
+                            <?php else: ?>
+                                <input type="text" id="name" name="quote[name]"
+                                       class="admin__control-text input-text required-entry"/>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                    <?php if ($quote->getStatus()): ?>
+                        <tr class="quote_status">
+                            <th><?= $block->escapeHtml(__('Status')) ?></th>
+                            <td>
+                                <?= $block->escapeHtml($formViewModel->prepareQuoteStatus($quote->getStatus())) ?>
+                            </td>
+                        </tr>
+                    <?php endif; ?>
+                    <?php if ($quote->getCreatedAt()): ?>
+                        <tr class="quote_created_at">
+                            <th><?= $block->escapeHtml(__('Created')) ?></th>
+                            <td>
+                                <?= $block->escapeHtml($block->formatDate($quote->getCreatedAt(), \IntlDateFormatter::MEDIUM)) ?>
+                            </td>
+                        </tr>
+                    <?php endif; ?>
+                    <?php if ($quote->getOrderId()): ?>
+                        <tr class="quote_order_id">
+                            <th><?= $block->escapeHtml(__('Order')) ?></th>
+                            <td>
+                                <a target="_blank" href="<?= $block->escapeUrl($formViewModel->getOrderUrl($quote->getOrderId())) ?>">
+                                    <?= /* @noEscape */ $formViewModel->getOrderIdFormatted($quote->getOrderId()); ?>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endif; ?>
+                    <?php if ($formViewModel->getCustomerName()): ?>
+                        <tr class="quote_customer_name">
+                            <th><?= $block->escapeHtml(__('Customer Name')) ?></th>
+                            <td>
+                                <a target="_blank" href="<?= $block->escapeUrl($formViewModel->getLinkToCustomerEditForm()) ?>">
+                                    <?= /* @noEscape */ $formViewModel->getCustomerName(); ?>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endif; ?>
+                    <?php if ($formViewModel->getCustomerGroup()): ?>
+                        <tr class="quote_customer_group">
+                            <th><?= $block->escapeHtml(__('Customer Group')) ?></th>
+                            <td>
+                                <?= /* @noEscape */ $formViewModel->getCustomerGroup(); ?>
+                            </td>
+                        </tr>
+                    <?php endif; ?>
+                    <?php if ($formViewModel->getCustomerEmail()): ?>
+                        <tr class="quote_customer_email">
+                            <th><?= $block->escapeHtml(__('Customer Email')) ?></th>
+                            <td>
+                                <a href="<?= 'mailto:' . $block->escapeHtmlAttr($formViewModel->getCustomerEmail()) ?>">
+                                    <?= /* @noEscape */ $formViewModel->getCustomerEmail(); ?>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endif; ?>
+                    <tr class="quote_assigned_admin_user">
+                        <th><?= $block->escapeHtml(__('Admin User Quote Is Assigned To')) ?></th>
+                        <td>
+                            <select id="admin_user_select"
+                                    class="required-entry select admin__control-select"
+                                    name="quote[seller_id]">
+                                <?php foreach ($formViewModel->getListOfAdminUsers() as $adminUser): ?>
+                                    <option value="<?= $block->escapeHtml($adminUser['value']) ?>"
+                                            <?php if ($adminUser['value'] == $quote->getSellerId()): ?>selected="selected"<?php endif ?>
+                                            <?php if ($formViewModel->isAdminUserOptionSelected($adminUser, $quote)): ?>selected="selected"<?php endif ?>>
+                                        <?= $block->escapeHtml($adminUser['label']) ?>
+                                    </option>
+                                <?php endforeach ?>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="quote_send_cc_to">
+                        <th><?= $block->escapeHtml(__('Send CC To')) ?></th>
+                        <td>
+                            <input type="text"
+                                   value="<?= /* @noEscape */ $quote->getCcEmailReceiver() ? $block->escapeHtmlAttr($quote->getCcEmailReceiver()) : '' ?>"
+                                   id="send_cc_to"
+                                   name="quote[cc_email_receiver]"
+                                   class="admin__control-text input-text"
+                                   data-validate="{'validate-email':true}"
+                            />
+                        </td>
+                    </tr>
+                    <tr class="quote_reminder_date">
+                        <th><?= $block->escapeHtml(__('Reminder Date')) ?></th>
+                        <td>
+                            <div class="admin__field-control control">
+                            <input type="text"
+                                   value="<?= /* @noEscape */ $quote->getReminderDate() ? $block->formatDate($quote->getReminderDate()) : '' ?>"
+                                   id="reminder_date"
+                                   data-role="reminder-date"
+                                   name="quote[reminder_date]"
+                                   class="admin__control-text input-text"
+                                   data-mage-init='{
+                                       "awCtqCalendar": {
+                                           "dateFormat": "<?= $block->escapeJs($formViewModel->getDateFormat()); ?>",
+                                           "minDate": 0
+                                       }}'
+                            />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="quote_expiration_date">
+                        <th><?= $block->escapeHtml(__('Expiration Date')) ?></th>
+                        <td>
+                            <div class="admin__field-control control">
+                                <input type="text"
+                                       value="<?= /* @noEscape */ $formViewModel->prepareExpirationDate($quote)
+                                           ? $block->formatDate($formViewModel->prepareExpirationDate($quote))
+                                           : '' ?>"
+                                       id="expiration-date"
+                                       data-role="expiration-date"
+                                       name="quote[expiration_date]"
+                                       class="admin__control-text input-text"
+                                       data-mage-init='{
+                                       "awCtqCalendar": {
+                                           "dateFormat": "<?= $block->escapeJs($formViewModel->getDateFormat()); ?>",
+                                           "minDate": 0
+                                       }}'
+                                />
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

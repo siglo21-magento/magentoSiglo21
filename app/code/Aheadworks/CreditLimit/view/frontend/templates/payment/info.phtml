@@ -1,0 +1,19 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+/**
+ * @var $block \Aheadworks\CreditLimit\Block\Payment\Info
+ */
+?>
+<dl class="payment-method aw-credit-limit order">
+    <dt class="title"><?= $block->escapeHtml($block->getMethod()->getTitle()) ?></dt>
+    <?php if ($block->getPoNumber()) : ?>
+        <dd class="content">
+            <strong><?= $block->escapeHtml(__('Purchase Order Number')) ?></strong>
+            <span class="number"><?= $block->escapeHtml($block->getPoNumber()) ?></span>
+        </dd>
+    <?php endif; ?>
+</dl>

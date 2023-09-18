@@ -1,0 +1,44 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+/**
+ * @var $block \Aheadworks\CreditLimit\Block\Payment\Form
+ */
+$isEnoughToPay = $block->isBalanceEnoughToPay();
+?>
+<fieldset class="admin__fieldset payment-method" id="payment_form_<?= $block->escapeHtml($block->getMethodCode()) ?>" style="display: none">
+    <div class="admin__field">
+        <div class="available-balance">
+            <label class="admin__field-label">
+                <span><?= $block->escapeHtml(__('Available balance: ')) ?></span>
+            </label>
+            <span><?= $block->escapeHtml($block->getCustomerAvailableBalance()) ?></span>
+        </div>
+        <?php if (!$isEnoughToPay) : ?>
+            <div class="not-enough-balance message-error message">
+                <?= $block->escapeHtml(__('Insufficient credit funds')) ?>
+            </div>
+        <?php endif; ?>
+    </div>
+    <div class="admin__field">
+        <label for="po_number" class="admin__field-label"><span><?= $block->escapeHtml(__('Purchase Order Number')) ?></span></label>
+        <div class="admin__field-control">
+            <input type="text" id="po_number" name="payment[po_number]"
+                   title="<?= $block->escapeHtml(__("Purchase Order Number")) ?>" class="admin__control-text"
+                   data-validate="{maxlength:32}"
+                   value="<?= /* @noEscape */ $block->getInfoData('po_number') ?>"/>
+            <input id="aw-cl-pay-button" type="submit" name="Submit" style="display: none;">
+        </div>
+    </div>
+</fieldset>
+<script>
+    <?php if ($isEnoughToPay) : ?>
+        window.awClIsBalanceEnoughToPay = true;
+    <?php else : ?>
+        window.awClIsBalanceEnoughToPay = false;
+    <?php endif; ?>
+</script>

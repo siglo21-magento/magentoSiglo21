@@ -1,0 +1,63 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var \Aheadworks\Ctq\Block\Adminhtml\Quote\Edit\Shipping\Address $block
+ */
+?>
+<?php
+
+$fieldSetContainerId = 'quote-shipping_address_fields';
+$addressSelectorContainerId = 'quote-shipping_address_selector';
+?>
+<script>
+    require(["Aheadworks_Ctq/js/quote/edit/form"], function() {
+        quote.shippingAddressContainer = '<?= $block->escapeJs($fieldSetContainerId) ?>';
+        quote.setAddresses(<?= /* @noEscape */ $block->getAddressesListAsJson() ?>);
+    });
+</script>
+
+<fieldset class="admin__fieldset">
+    <legend class="admin__legend head-shipping-address">
+        <span><?= $block->escapeHtml($block->getHeaderText()) ?></span>
+    </legend><br>
+
+    <fieldset id="<?= $block->escapeHtmlAttr($addressSelectorContainerId) ?>" class="admin__fieldset quote-choose-address">
+        <div class="admin__field admin__field-select-from-existing-address">
+            <label class="admin__field-label"><?= $block->escapeHtml(__('Select from existing customer addresses:')) ?></label>
+            <div class="admin__field-control">
+                <select id="quote-shipping_address_customer_address_id"
+                        name="<?= $block->getForm()->getHtmlNamePrefix() ?>[customer_address_id]"
+                        onchange="quote.selectAddress(this, '<?= $block->escapeJs($fieldSetContainerId) ?>')"
+                        class="admin__control-select">
+                    <option value=""><?= $block->escapeHtml(__('Add New Address')) ?></option>
+                    <?php foreach ($block->getAddressList() as $addressId => $address): ?>
+                        <option
+                            value="<?= $block->escapeHtmlAttr($addressId) ?>"<?php if ($addressId == $block->getAddressId()): ?> selected="selected"<?php endif; ?>>
+                            <?= $block->escapeHtml($block->formatAddressAsString($address)) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+    </fieldset>
+
+    <div class="quote-address admin__fieldset" id="<?= $block->escapeHtmlAttr($fieldSetContainerId) ?>">
+        <?= $block->getForm()->toHtml() ?>
+    </div>
+    <div style="display: none;" id="address-shipping-overlay" class="quote-methods-overlay">
+        <span><?= $block->escapeHtml(__('You don\'t need to select a shipping address.')) ?></span>
+    </div>
+
+    <script>
+        require(["Aheadworks_Ctq/js/quote/edit/form"], function() {
+            quote.bindAddressFields('<?= $block->escapeJs($fieldSetContainerId) ?>');
+            quote.bindAddressFields('<?= $block->escapeJs($addressSelectorContainerId) ?>');
+        });
+    </script>
+</fieldset>

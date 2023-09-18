@@ -1,0 +1,25 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Aheadworks\Ctq\Block\Adminhtml\Quote\Edit\OrderTotals */
+?>
+<div class="admin__page-section-content">
+    <div class="admin__page-section-item">
+        <div class="admin__page-section-item-title">
+            <span class="title"><?= $block->escapeHtml($block->getHeaderText()) ?></span>
+        </div>
+        <div class="admin__page-section-item-content">
+            <table class="admin__table-secondary data-table">
+                <tbody>
+                <?= /* @escapeNotVerified */ $block->renderTotals() ?>
+                <?= /* @escapeNotVerified */ $block->renderTotals('footer') ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

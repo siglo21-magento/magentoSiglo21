@@ -1,0 +1,27 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Aheadworks\Ctq\Block\Checkout\RequestQuoteLink */
+?>
+<?php if ($block->getViewModel()->isRequestQuoteButtonAvailable()): ?>
+    <div data-role="aw-ctq-request-quote-wrapper" data-bind="scope: 'awCtqRequestQuoteParent'" class="aw-atq__request-quote-action">
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    </div>
+    <script type="text/x-magento-init">
+        {
+            "[data-role=aw-ctq-request-quote-wrapper]": {
+                "Magento_Ui/js/core/app": <?= /* @noEscape */ $block->getJsLayout() ?>
+            }
+        }
+    </script>
+<?php elseif (!$block->getViewModel()->isAuthenticatedCustomer()): ?>
+    <div class="aw-atq__sign-in-to-request">
+        <a href="<?= $block->escapeUrl($block->getViewModel()->getSignInUrl()) ?>"><?= __('Sign In ') ?></a>
+        <?= __('to request a quote') ?>
+    </div>
+<?php endif; ?>

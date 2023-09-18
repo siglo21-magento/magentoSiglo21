@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="aw_ctq_quote_header"/>
+    <update handle="aw_ctq_history_renderers"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Aheadworks\Ctq\Block\Customer\Quote\History"
+                   name="aw_ctq.customer.quote.history"
+                   template="Aheadworks_Ctq::customer/quote/history.phtml"
+                   cacheable="false">
+                <arguments>
+                    <argument name="data_provider_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Customer\Quote\DataProvider</argument>
+                    <argument name="history_list_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\History\HistoryList</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Customer\Block\Account\Dashboard"
+                   name="customer.account.link.back"
+                   template="Magento_Customer::account/link/back.phtml" />
+        </referenceContainer>
+    </body>
+</page>

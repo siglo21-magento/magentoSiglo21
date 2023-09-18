@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Aventi_CronViewer::cron" title="Aventi Cron" module="Aventi_CronViewer" sortOrder="1000" resource="Aventi_CronViewer::content" />
+        <add id="Aventi_CronViewer::view" title="Cron Report" module="Aventi_CronViewer" sortOrder="1000" parent="Aventi_CronViewer::cron" resource="Aventi_CronViewer::content" action="aventi_cronviewer/index/index" />
+    </menu>
+</config>

@@ -1,0 +1,96 @@
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true){
+  .aw-ctq__quote-status {
+    border: 2px solid @aw-ctq__header-quote-status__border-color;
+    border-radius: 3px;
+    padding: 5px 10px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 16px;
+  }
+
+  .aw-ctq__quote-header {
+    .lib-vendor-prefix-display();
+    .lib-vendor-box-align(center);
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    .lib-vendor-prefix-flex-wrap();
+
+    .actions-toolbar {
+      .lib-vendor-prefix-display();
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: reverse;
+      -ms-flex-flow: row-reverse;
+      flex-flow: row-reverse;
+      .lib-vendor-box-align(center);
+      margin-bottom: 20px;
+
+      .action {
+        margin-left: 15px;
+        margin-bottom: 0;
+
+        &.aw-ctq-button-2,
+        &.aw-ctq-button-3,
+        &.aw-ctq-button-4 {
+          color: #1C78C2;
+          background: transparent;
+          border-color: transparent;
+          box-shadow: none;
+          padding: 0;
+
+          &:hover {
+            background: transparent;
+          }
+        }
+      }
+    }
+
+
+  }
+
+  .aw-ctq__quote-data {
+    margin-bottom: 20px;
+  }
+
+  .aw-ctq__quote-created-date,
+  .aw-ctq__quote-order-id,
+  .aw-ctq__quote-id {
+    margin-right: 25px;
+  }
+
+  .aw-ctq__quote-id,
+  .aw-ctq__quote-created-date,
+  .aw-ctq__quote-order-id,
+  .aw-ctq__quote-expired-date {
+    margin-left: 0;
+
+    label {
+      font-weight: bold;
+    }
+
+    span {
+
+    }
+  }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+}

@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <!-- Managing Credit Limit Jobs -->
+    <route url="/V1/awClJobManagement/runAllJobs" method="GET">
+        <service class="Aheadworks\CreditLimit\Api\CreditLimitJobManagementInterface" method="runAllJobs"/>
+        <resources>
+            <resource ref="Aheadworks_CreditLimit::home"/>
+        </resources>
+    </route>
+    <!-- Managing Credit Limit Balance -->
+    <route url="/V1/awClBalanceManagement/updateCreditLimit" method="PUT">
+        <service class="Aheadworks\CreditLimit\Api\CreditLimitManagementInterface" method="updateCreditLimit"/>
+        <resources>
+            <resource ref="Aheadworks_CreditLimit::customers"/>
+        </resources>
+    </route>
+    <route url="/V1/awClBalanceManagement/updateDefaultCreditLimit" method="PUT">
+        <service class="Aheadworks\CreditLimit\Api\CreditLimitManagementInterface" method="updateDefaultCreditLimit"/>
+        <resources>
+            <resource ref="Aheadworks_CreditLimit::customers"/>
+        </resources>
+    </route>
+    <route url="/V1/awClBalanceManagement/updateCreditBalance" method="PUT">
+        <service class="Aheadworks\CreditLimit\Api\CreditLimitManagementInterface" method="updateCreditBalance"/>
+        <resources>
+            <resource ref="Aheadworks_CreditLimit::customers"/>
+        </resources>
+    </route>
+    <route url="/V1/awClBalanceManagement/spendCreditBalanceOnOrder" method="POST">
+        <service class="Aheadworks\CreditLimit\Api\CreditLimitManagementInterface" method="spendCreditBalanceOnOrder"/>
+        <resources>
+            <resource ref="Aheadworks_CreditLimit::customers"/>
+        </resources>
+    </route>
+    <route url="/V1/awClBalanceManagement/reimburseCreditBalanceOnCanceledOrder" method="POST">
+        <service class="Aheadworks\CreditLimit\Api\CreditLimitManagementInterface" method="reimburseCreditBalanceOnCanceledOrder"/>
+        <resources>
+            <resource ref="Aheadworks_CreditLimit::customers"/>
+        </resources>
+    </route>
+    <route url="/V1/awClBalanceManagement/refundCreditBalanceOnCreditmemo" method="POST">
+        <service class="Aheadworks\CreditLimit\Api\CreditLimitManagementInterface" method="refundCreditBalanceOnCreditmemo"/>
+        <resources>
+            <resource ref="Aheadworks_CreditLimit::customers"/>
+        </resources>
+    </route>
+    <!-- Managing Credit Limit Customer -->
+    <route url="/V1/awClCustomerManagement/isCreditLimitAvailable/:customerId" method="GET">
+        <service class="Aheadworks\CreditLimit\Api\CustomerManagementInterface" method="isCreditLimitAvailable"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/awClCustomerManagement/isCreditLimitCustom/:customerId" method="GET">
+        <service class="Aheadworks\CreditLimit\Api\CustomerManagementInterface" method="isCreditLimitCustom"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awClCustomerManagement/getCreditLimitAmount/:customerId" method="GET">
+        <service class="Aheadworks\CreditLimit\Api\CustomerManagementInterface" method="getCreditLimitAmount"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awClCustomerManagement/getCreditBalanceAmount/:customerId" method="GET">
+        <service class="Aheadworks\CreditLimit\Api\CustomerManagementInterface" method="getCreditBalanceAmount"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awClCustomerManagement/getCreditAvailableAmount/:customerId" method="GET">
+        <service class="Aheadworks\CreditLimit\Api\CustomerManagementInterface" method="getCreditAvailableAmount"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <!-- Managing Customer Credit Limit Summary -->
+    <route url="/V1/awClSummaryRepository/getByCustomerId/:customerId" method="GET">
+        <service class="Aheadworks\CreditLimit\Api\SummaryRepositoryInterface" method="getByCustomerId"/>
+        <resources>
+            <resource ref="Aheadworks_CreditLimit::customers"/>
+        </resources>
+    </route>
+    <route url="/V1/awClSummaryRepository/save" method="PUT">
+        <service class="Aheadworks\CreditLimit\Api\SummaryRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Aheadworks_CreditLimit::customers"/>
+        </resources>
+    </route>
+    <route url="/V1/awClSummaryRepository/search" method="GET">
+        <service class="Aheadworks\CreditLimit\Api\SummaryRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Aheadworks_CreditLimit::customers"/>
+        </resources>
+    </route>
+    <!-- Managing Credit Limit Transaction -->
+    <route url="/V1/awClTransaction/create/" method="POST">
+        <service class="Aheadworks\CreditLimit\Api\TransactionManagementInterface" method="createTransaction"/>
+        <resources>
+            <resource ref="Aheadworks_CreditLimit::customers"/>
+        </resources>
+    </route>
+    <route url="/V1/awClTransaction/get/:transactionId" method="GET">
+        <service class="Aheadworks\CreditLimit\Api\TransactionRepositoryInterface" method="get"/>
+        <resources>
+            <resource ref="Aheadworks_CreditLimit::customers"/>
+        </resources>
+    </route>
+    <route url="/V1/awClTransaction/save" method="PUT">
+        <service class="Aheadworks\CreditLimit\Api\TransactionRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Aheadworks_CreditLimit::customers"/>
+        </resources>
+    </route>
+    <route url="/V1/awClTransaction/search" method="GET">
+        <service class="Aheadworks\CreditLimit\Api\TransactionRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Aheadworks_CreditLimit::customers"/>
+        </resources>
+    </route>
+</routes>

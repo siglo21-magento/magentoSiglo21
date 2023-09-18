@@ -1,0 +1,74 @@
+//
+//  UI -> Data Grid -> Header -> Pager
+//  _____________________________________________
+
+//
+//  Variables
+//  ---------------------------------------------
+
+@data-grid-pager-action__width: 4.4rem;
+@icon-caret-left__content: '\e617';
+@icon-caret-right__content: '\e608';
+
+//
+
+.admin__data-grid-pager-wrap {
+    float: right;
+    text-align: right;
+}
+
+.admin__data-grid-pager {
+    display: inline-block;
+    margin-left: 3rem;
+    margin-top: 5px;
+
+    .admin__control-text::-webkit-outer-spin-button,
+    .admin__control-text::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .admin__control-text {
+        -moz-appearance: textfield;
+        text-align: center;
+        width: @data-grid-pager-action__width;
+    }
+}
+
+.action-previous,
+.action-next {
+    width: @data-grid-pager-action__width;
+
+    &:before {
+        &:extend(.abs-icon all);
+        font-weight: 700;
+    }
+
+    > span {
+        clip: rect(0, 0, 0, 0);
+        overflow: hidden;
+        position: absolute;
+        display: none;
+        visibility: hidden;
+    }
+}
+
+.action-previous {
+    margin-right: 2.5rem;
+    text-indent: -.25em;
+
+    &:before {
+        content: @icon-caret-left__content;
+        font-family: 'luma-icons';
+    }
+}
+
+.action-next {
+    margin-left: 1.5rem;
+    text-indent: .1em;
+
+    &:before {
+        content: @icon-caret-right__content;
+        font-family: 'luma-icons';
+    }
+}

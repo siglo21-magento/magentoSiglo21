@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="aheadworks" translate="label" sortOrder="300">
+            <label>Aheadworks Extensions</label>
+        </tab>
+        <section id="aw_ctq" translate="label" type="text" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Cart to Quote</label>
+            <tab>aheadworks</tab>
+            <resource>Aheadworks_Ctq::config_aw_ctq</resource>
+            <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="is_quote_list_enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enable "Add to Quote" button and Quote List</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="is_auto_accept_enabled" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Auto Acceptance of Quote</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>All Quotes will have the status "Accepted". Discount negotiation will be disabled. Customers can only buy or decline their Quotes.</comment>
+                </field>
+                <field id="auto_accept_comment" translate="label" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Acceptance Comment for Customer</label>
+                    <frontend_class>required-entry</frontend_class>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="is_auto_accept_enabled">1</field>
+                    </depends>
+                </field>
+                <field id="export_extra_block" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Extra Block in .doc of Exported Quote</label>
+                    <source_model>Aheadworks\Ctq\Model\Source\CmsBlock</source_model>
+                    <comment>This block will be displayed below products in .doc file of exported quote.</comment>
+                </field>
+                <field id="customer_groups_to_request_a_quote" translate="label" type="multiselect" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Customer Groups Allowed to Request a Quote</label>
+                    <source_model>Aheadworks\Ctq\Model\Source\Customer\Group</source_model>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+                <field id="quote_expiration_period_in_days" translate="label comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Default Quote Expiration Period, days</label>
+                    <comment>Setting to 0 will disable the option</comment>
+                    <validate>validate-digits validate-zero-or-greater</validate>
+                </field>
+                <field id="quote_assigned_admin_user" translate="label" type="select" sortOrder="70" showInDefault="1">
+                    <label>Admin User Quote Is Assigned To</label>
+                    <source_model>Aheadworks\Ctq\Model\Source\Admin\User</source_model>
+                </field>
+            </group>
+            <group id="file_attachments" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>File Attachments</label>
+                <field id="max_upload_file_size" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Max Upload File Size (Mb)</label>
+                    <validate>validate-digits validate-not-negative-number</validate>
+                </field>
+                <field id="allow_file_extensions" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Allow File Extensions</label>
+                </field>
+            </group>
+            <group id="email" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Email Notifications</label>
+                <field id="sender" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Notification Email Sender</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                </field>
+                <field id="recipients" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>CC Email Recipients</label>
+                    <comment>Comma-separated</comment>
+                    <validate>validate-emails</validate>
+                </field>
+                <field id="seller_template_quote_changes" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Seller Quote Changes Template</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+                <field id="buyer_template_quote_changes" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Buyer Quote Changes Template</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+                <field id="seller_template_new_quote" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Seller New Quote Template</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+                <field id="buyer_template_new_quote" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Buyer New Quote Template</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+                <field id="send_email_reminder_in_days" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Reminder in X Days Before Quote Expiration, days</label>
+                    <validate>validate-digits validate-zero-or-greater</validate>
+                </field>
+                <field id="expiration_reminder_template" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Template for Quote Reminder</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+                <field id="quote_admin_change_template" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Quote Admin Change Template</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

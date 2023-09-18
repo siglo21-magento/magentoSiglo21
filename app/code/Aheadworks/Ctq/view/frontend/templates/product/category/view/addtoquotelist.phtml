@@ -1,0 +1,27 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Aheadworks\Ctq\Block\QuoteList\ProductList\Item\AddButton $block */
+/** @var \Aheadworks\Ctq\ViewModel\QuoteList\AddButton $viewModel */
+$viewModel = $block->getQuoteListViewModel();
+$product = $block->getProduct();
+$buttonTitle = __('Add to Quote');
+?>
+<?php if ($product && $product->isSaleable() && $viewModel && $viewModel->isAllowedToAdd()): ?>
+    <div class="aw-ctq-button-container">
+        <button type="button"
+                title="<?= $block->escapeHtmlAttr($buttonTitle) ?>"
+                class="secondary toquotelist"
+                id="addtoquotelist_button"
+                data-post='<?= /* @noEscape */ $block->getAddToQuoteListParams() ?>'
+                data-mage-init='{"awCtqAddToQuoteListButton": {"sku": "<?= $block->escapeJs($block->getProduct()->getSku()) ?>"}}'
+                disabled>
+            <span><?= $block->escapeHtml($buttonTitle) ?></span>
+        </button>
+    </div>
+<?php endif; ?>

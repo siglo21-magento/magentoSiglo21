@@ -1,0 +1,13 @@
+<!--@subject {{trans 'Tu compañía ha sido aprobada'}}@-->
+{{template config_path="design/email/header_template"}}
+
+<h2>Compañía Aprobada</h2>
+<p>
+    {{trans 'Dear %user_name,' user_name=$user_name}}<br />
+    Su compañía <b>{{trans'%company_name' company_name=$company.getName() |raw}}</b> ha sido creada en el e-commerce <b>Siglo21</b>, y usted ha sido asignado como el <b>administrador de la cuenta</b>
+</p>
+
+<p class="interactable">
+    {{trans'<a href="%reset_password_url"><span>Establecer contraseña</span></a>.' reset_password_url=$reset_password_url|raw}}
+</p>
+{{template config_path="design/email/footer_template"}}

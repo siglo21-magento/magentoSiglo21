@@ -1,0 +1,23 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+/* @var $block \Aheadworks\Ctq\Block\History\Render */
+
+// @codingStandardsIgnoreFile
+$history = $block->getHistory();
+?>
+<div class="aw-ctq__history-title">
+    <span class="aw-ctq-owner-name"><?= $block->escapeHtml($block->getHistoryViewModel()->getOwnerName($history)) ?></span>
+    <span class="aw-ctq-status"><?= /* @noEscape */ $block->getHistoryViewModel()->getStatusFormatted($history->getStatus()) ?></span>
+    <span class="aw-ctq-created-date"><?= /* @noEscape */ $block->getHistoryViewModel()->getCreatedAtFormatted($history->getCreatedAt()) ?></span>
+</div>
+<?php if ($history->getActions()): ?>
+    <div class="aw-ctq__history-info">
+        <?php foreach ($history->getActions() as $action): ?>
+            <?= /* @noEscape */ $block->getActionHtml($action) ?>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>

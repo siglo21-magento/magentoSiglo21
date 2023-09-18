@@ -1,0 +1,56 @@
+<div class="block-title">
+    <strong>
+        <span
+            class="qty empty"
+            text="getQuoteListParam('summary_count')"
+            data-bind="css: { empty: !!getQuoteListParam('summary_count') == false },
+                       attr: { title: $t('Items') }">
+        </span>
+    </strong>
+</div>
+
+<div class="block-content">
+    <button
+        type="button"
+        id="btn-mini-quote-list-close"
+        class="action close"
+        data-action="close"
+        data-bind="attr: { title: $t('Close') }, click: closeMiniQuoteList()">
+        <span translate="'Close'"/>
+    </button>
+
+
+
+    <!-- ko if: getQuoteListParam('summary_count') -->
+        <div data-action="scroll" class="mini-quote-list-items-wrapper minicart-items-wrapper">
+            <ol id="mini-quote-list" class="mini-quote-list-items minicart-items" data-bind="foreach: { data: getQuoteListItems(), as: 'item' }">
+                <each args="$parent.getRegion($parent.getItemRenderer(item.product_type))"
+                      render="{name: getTemplate(), data: item, afterRender: function() {$parents[1].initSidebar()}}"
+                />
+            </ol>
+        </div>
+    <!--/ko-->
+
+    <!-- ko ifnot: getQuoteListParam('summary_count') -->
+        <strong class="subtitle empty" translate="'You have no items in your quote list.'" />
+    <!--/ko-->
+
+    <!-- ko if: getQuoteListParam('summary_count') -->
+        <div class="items-total">
+            <span class="count" if="maxItemsToDisplay < getQuoteListParam('summary_count')" text="maxItemsToDisplay"/>
+            <translate args="'of'" if="maxItemsToDisplay < getQuoteListParam('summary_count')"/>
+            <span class="count" text="getQuoteListParam('summary_qty')"/>
+            <span translate="'Item(s) in Quote'"/>
+        </div>
+
+        <each args="getRegion('subtotalContainer')" render=""/>
+    <!--/ko-->
+
+    <div class="actions main-action" if="getQuoteListParam('summary_count')">
+        <div class="secondary">
+            <a class="action viewquotelist" data-bind="attr: {href: quoteListUrl}">
+                <span translate="'View and Edit Quote List'"/>
+            </a>
+        </div>
+    </div>
+</div>

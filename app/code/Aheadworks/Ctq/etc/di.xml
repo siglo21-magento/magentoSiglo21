@@ -1,0 +1,513 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Aheadworks\Ctq\Api\Data\QuoteInterface" type="Aheadworks\Ctq\Model\Quote" />
+    <preference for="Aheadworks\Ctq\Api\Data\ExternalQuoteInterface" type="Aheadworks\Ctq\Model\Quote" />
+    <preference for="Aheadworks\Ctq\Api\Data\QuoteItemInterface" type="Aheadworks\Ctq\Model\Quote\Item" />
+    <preference for="Aheadworks\Ctq\Api\Data\QuoteCartInterface" type="Aheadworks\Ctq\Model\Quote\Cart" />
+    <preference for="Aheadworks\Ctq\Api\Data\ExternalQuoteCartInterface" type="Aheadworks\Ctq\Model\Quote\ExternalCart" />
+    <preference for="Aheadworks\Ctq\Api\Data\QuoteActionInterface" type="Aheadworks\Ctq\Model\Quote\Action" />
+    <preference for="Aheadworks\Ctq\Api\Data\CommentInterface" type="Aheadworks\Ctq\Model\Comment" />
+    <preference for="Aheadworks\Ctq\Api\Data\CommentAttachmentInterface" type="Aheadworks\Ctq\Model\Comment\Attachment" />
+    <preference for="Aheadworks\Ctq\Api\Data\HistoryInterface" type="Aheadworks\Ctq\Model\History" />
+    <preference for="Aheadworks\Ctq\Api\Data\HistoryActionInterface" type="Aheadworks\Ctq\Model\History\Action" />
+    <preference for="Aheadworks\Ctq\Api\CommentRepositoryInterface" type="Aheadworks\Ctq\Model\CommentRepository" />
+    <preference for="Aheadworks\Ctq\Api\HistoryRepositoryInterface" type="Aheadworks\Ctq\Model\HistoryRepository" />
+    <preference for="Aheadworks\Ctq\Api\QuoteRepositoryInterface" type="Aheadworks\Ctq\Model\QuoteRepository" />
+    <preference for="Aheadworks\Ctq\Api\ExternalQuoteManagementInterface" type="Aheadworks\Ctq\Model\Service\ExternalQuoteService" />
+    <preference for="Aheadworks\Ctq\Api\Data\QuoteSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Aheadworks\Ctq\Api\Data\CommentSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Aheadworks\Ctq\Api\Data\HistorySearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Aheadworks\Ctq\Api\BuyerQuoteManagementInterface" type="Aheadworks\Ctq\Model\Service\BuyerQuoteService" />
+    <preference for="Aheadworks\Ctq\Api\BuyerPermissionManagementInterface" type="Aheadworks\Ctq\Model\Service\BuyerPermissionService" />
+    <preference for="Aheadworks\Ctq\Api\BuyerActionManagementInterface" type="Aheadworks\Ctq\Model\Service\BuyerActionService" />
+    <preference for="Aheadworks\Ctq\Api\SellerQuoteManagementInterface" type="Aheadworks\Ctq\Model\Service\SellerQuoteService" />
+    <preference for="Aheadworks\Ctq\Api\SellerPermissionManagementInterface" type="Aheadworks\Ctq\Model\Service\SellerPermissionService" />
+    <preference for="Aheadworks\Ctq\Api\SellerActionManagementInterface" type="Aheadworks\Ctq\Model\Service\SellerActionService" />
+    <preference for="Aheadworks\Ctq\Api\CommentManagementInterface" type="Aheadworks\Ctq\Model\Service\CommentService" />
+    <preference for="Aheadworks\Ctq\Api\QuoteListManagementInterface" type="Aheadworks\Ctq\Model\Service\QuoteListService" />
+    <preference for="Aheadworks\Ctq\Api\QuoteExpirationManagementInterface" type="Aheadworks\Ctq\Model\Service\QuoteExpirationService" />
+    <preference for="Aheadworks\Ctq\Model\Metadata\Negotiation\NegotiatedDiscountInterface" type="Aheadworks\Ctq\Model\Metadata\Negotiation\Discount" />
+    <preference for="Aheadworks\Ctq\Model\Email\EmailMetadataInterface" type="Aheadworks\Ctq\Model\Email\EmailMetadata" />
+
+    <type name="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="Aheadworks\Ctq\Api\Data\QuoteInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="const">Aheadworks\Ctq\Model\ResourceModel\Quote::MAIN_TABLE_NAME</item>
+                    <item name="identifierField" xsi:type="const">Aheadworks\Ctq\Api\Data\QuoteInterface::ID</item>
+                </item>
+                <item name="Aheadworks\Ctq\Api\Data\CommentInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="const">Aheadworks\Ctq\Model\ResourceModel\Comment::MAIN_TABLE_NAME</item>
+                    <item name="identifierField" xsi:type="const">Aheadworks\Ctq\Api\Data\CommentInterface::ID</item>
+                </item>
+                <item name="Aheadworks\Ctq\Api\Data\HistoryInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="const">Aheadworks\Ctq\Model\ResourceModel\History::MAIN_TABLE_NAME</item>
+                    <item name="identifierField" xsi:type="const">Aheadworks\Ctq\Api\Data\HistoryInterface::ID</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\EntityManager\Operation\ExtensionPool">
+        <arguments>
+            <argument name="extensionActions" xsi:type="array">
+                <item name="Aheadworks\Ctq\Api\Data\CommentInterface" xsi:type="array">
+                    <item name="create" xsi:type="array">
+                        <item name="attachmentCreator" xsi:type="string">Aheadworks\Ctq\Model\ResourceModel\Comment\Relation\Attachment\SaveHandler</item>
+                    </item>
+                    <item name="read" xsi:type="array">
+                        <item name="attachmentReader" xsi:type="string">Aheadworks\Ctq\Model\ResourceModel\Comment\Relation\Attachment\ReadHandler</item>
+                        <item name="ownerNameReader" xsi:type="string">Aheadworks\Ctq\Model\ResourceModel\Comment\Relation\OwnerName\ReadHandler</item>
+                    </item>
+                    <item name="update" xsi:type="array">
+                        <item name="attachmentUpdater" xsi:type="string">Aheadworks\Ctq\Model\ResourceModel\Comment\Relation\Attachment\SaveHandler</item>
+                    </item>
+                </item>
+                <item name="Aheadworks\Ctq\Api\Data\HistoryInterface" xsi:type="array">
+                    <item name="read" xsi:type="array">
+                        <item name="ownerNameReader" xsi:type="string">Aheadworks\Ctq\Model\ResourceModel\History\Relation\OwnerName\ReadHandler</item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Ctq\Model\Quote\EntityProcessor">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="cartSnapshot" xsi:type="object">Aheadworks\Ctq\Model\Quote\EntityProcessor\CartSnapshot</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Ctq\Model\History\EntityProcessor">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="actions" xsi:type="object">Aheadworks\Ctq\Model\History\EntityProcessor\Actions</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Ctq\Model\Quote\Expiration\Notifier\VariableProcessor\Composite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="expirationReminder" xsi:type="object">Aheadworks\Ctq\Model\Quote\Expiration\Notifier\VariableProcessor\ExpirationReminder</item>
+                <item name="quoteUrl" xsi:type="object">Aheadworks\Ctq\Model\Quote\Expiration\Notifier\VariableProcessor\QuoteUrl</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Ctq\Model\History\Notifier\VariableProcessor\Composite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="quoteUrl" xsi:type="object">Aheadworks\Ctq\Model\History\Notifier\VariableProcessor\QuoteUrl</item>
+                <item name="total" xsi:type="object">Aheadworks\Ctq\Model\History\Notifier\VariableProcessor\Total</item>
+                <item name="expirationDate" xsi:type="object">Aheadworks\Ctq\Model\History\Notifier\VariableProcessor\ExpirationDate</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Aheadworks\Ctq\Model\Quote\Validator">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="sellerChangeStatus" xsi:type="array">
+                    <item name="sellerChangeStatus" xsi:type="object">Aheadworks\Ctq\Model\Quote\Validator\SellerChangeStatus</item>
+                </item>
+                <item name="buyerChangeStatus" xsi:type="array">
+                    <item name="buyerChangeStatus" xsi:type="object">Aheadworks\Ctq\Model\Quote\Validator\SellerChangeStatus</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Ctq\Model\Cart\Purchase\Validator">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="items" xsi:type="object">Aheadworks\Ctq\Model\Cart\Purchase\Validator\ItemsValidator</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Ctq\Model\Quote\Discount\Calculator\Pool">
+        <arguments>
+            <argument name="calculators" xsi:type="array">
+                <item name="amount" xsi:type="object">Aheadworks\Ctq\Model\Quote\Discount\Calculator\Type\Amount</item>
+                <item name="percent" xsi:type="object">Aheadworks\Ctq\Model\Quote\Discount\Calculator\Type\Percent</item>
+                <item name="proposed_price" xsi:type="object">Aheadworks\Ctq\Model\Quote\Discount\Calculator\Type\ProposedPrice</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\Ctq\Model\Quote\Discount\Calculator\Type\Percent" type="Aheadworks\Ctq\Model\Quote\Discount\Calculator\Type\AbstractDiscountCalculator">
+        <arguments>
+            <argument name="itemsCalculator" xsi:type="object">Aheadworks\Ctq\Model\Quote\Discount\Calculator\Type\Percent\ItemsCalculator</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Ctq\Model\Quote\Discount\Calculator\Type\Amount" type="Aheadworks\Ctq\Model\Quote\Discount\Calculator\Type\AbstractDiscountCalculator">
+         <arguments>
+             <argument name="itemsCalculator" xsi:type="object">Aheadworks\Ctq\Model\Quote\Discount\Calculator\Type\Amount\ItemsCalculator</argument>
+         </arguments>
+     </virtualType>
+    <virtualType name="Aheadworks\Ctq\Model\Quote\Discount\Calculator\Type\Amount\ItemsCalculator" type="Aheadworks\Ctq\Model\Quote\Discount\Calculator\Type\AbstractDiscount\AbstractItemsCalculator">
+        <arguments>
+            <argument name="itemCalculator" xsi:type="object">Aheadworks\Ctq\Model\Quote\Discount\Calculator\Type\Amount\Items\ItemCalculator</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Ctq\Model\Quote\Discount\Calculator\Type\ProposedPrice" type="Aheadworks\Ctq\Model\Quote\Discount\Calculator\Type\AbstractDiscountCalculator">
+        <arguments>
+            <argument name="itemsCalculator" xsi:type="object">Aheadworks\Ctq\Model\Quote\Discount\Calculator\Type\ProposedPrice\ItemsCalculator</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Ctq\Model\Quote\Discount\Calculator\Type\ProposedPrice\ItemsCalculator" type="Aheadworks\Ctq\Model\Quote\Discount\Calculator\Type\AbstractDiscount\AbstractItemsCalculator">
+        <arguments>
+            <argument name="itemCalculator" xsi:type="object">Aheadworks\Ctq\Model\Quote\Discount\Calculator\Type\ProposedPrice\Items\ItemCalculator</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="aw_ctq_quote_listing_data_source" xsi:type="string">Aheadworks\Ctq\Model\ResourceModel\Quote\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Ctq\Model\ResourceModel\Quote\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">aw_ctq_quote</argument>
+            <argument name="eventPrefix" xsi:type="string">aw_ctq_quote_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">quote_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Aheadworks\Ctq\Model\ResourceModel\Quote</argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\Ctq\Model\Api\SearchCriteria\CollectionProcessor\CommentFilterProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor">
+        <arguments>
+            <argument name="customFilters" xsi:type="array">
+                <item name="file_name" xsi:type="object">Aheadworks\Ctq\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor\Comment\AttachmentFileNameFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Ctq\Model\Api\SearchCriteria\CommentCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="filters" xsi:type="object">Aheadworks\Ctq\Model\Api\SearchCriteria\CollectionProcessor\CommentFilterProcessor</item>
+                <item name="sorting" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor</item>
+                <item name="pagination" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Ctq\Model\CommentRepository">
+        <arguments>
+            <argument name="collectionProcessor" xsi:type="object">Aheadworks\Ctq\Model\Api\SearchCriteria\CommentCollectionProcessor</argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\Ctq\Model\Api\SearchCriteria\CollectionProcessor\QuoteFilterProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor">
+        <arguments>
+            <argument name="customFilters" xsi:type="array">
+                <item name="with_given_date_reminder" xsi:type="object">Aheadworks\Ctq\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor\Quote\WithGivenReminderDateFilter</item>
+                <item name="with_not_given_date_reminder" xsi:type="object">Aheadworks\Ctq\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor\Quote\WithNotGivenReminderDateFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Ctq\Model\Api\SearchCriteria\QuoteCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="filters" xsi:type="object">Aheadworks\Ctq\Model\Api\SearchCriteria\CollectionProcessor\QuoteFilterProcessor</item>
+                <item name="sorting" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor</item>
+                <item name="pagination" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Ctq\Model\QuoteRepository">
+        <arguments>
+            <argument name="collectionProcessor" xsi:type="object">Aheadworks\Ctq\Model\Api\SearchCriteria\QuoteCollectionProcessor</argument>
+        </arguments>
+    </type>
+
+    <preference for="Aheadworks\Ctq\Model\Quote\Status\RestrictionsInterface" type="Aheadworks\Ctq\Model\Quote\Status\Restrictions" />
+    <type name="Aheadworks\Ctq\Model\Quote\Status\RestrictionsPool">
+        <arguments>
+            <argument name="restrictions" xsi:type="array">
+                <item name="pending_seller_review" xsi:type="array">
+                    <item name="next_available_statuses" xsi:type="array">
+                        <item name="0" xsi:type="const">Aheadworks\Ctq\Model\Source\Quote\Status::PENDING_BUYER_REVIEW</item>
+                        <item name="1" xsi:type="const">Aheadworks\Ctq\Model\Source\Quote\Status::DECLINED_BY_SELLER</item>
+                        <item name="2" xsi:type="const">Aheadworks\Ctq\Model\Source\Quote\Status::EXPIRED</item>
+                        <item name="3" xsi:type="const">Aheadworks\Ctq\Model\Source\Quote\Status::ORDERED</item>
+                        <item name="4" xsi:type="const">Aheadworks\Ctq\Model\Source\Quote\Status::ACCEPTED</item>
+                    </item>
+                    <item name="seller_available_actions" xsi:type="array">
+                        <item name="0" xsi:type="string">approve</item>
+                        <item name="1" xsi:type="string">decline</item>
+                        <item name="2" xsi:type="string">save</item>
+                        <item name="3" xsi:type="string">sell</item>
+                    </item>
+                    <item name="buyer_available_actions" xsi:type="array">
+                        <item name="0" xsi:type="string">export</item>
+                    </item>
+                </item>
+                <item name="declined_by_seller" xsi:type="array">
+                    <item name="next_available_statuses" xsi:type="array">
+                        <item name="0" xsi:type="const">Aheadworks\Ctq\Model\Source\Quote\Status::PENDING_SELLER_REVIEW</item>
+                    </item>
+                    <item name="seller_available_actions" xsi:type="array">
+                        <item name="0" xsi:type="string">requote</item>
+                    </item>
+                    <item name="buyer_available_actions" xsi:type="array">
+                        <item name="0" xsi:type="string">export</item>
+                    </item>
+                </item>
+                <item name="pending_buyer_review" xsi:type="array">
+                    <item name="next_available_statuses" xsi:type="array">
+                        <item name="0" xsi:type="const">Aheadworks\Ctq\Model\Source\Quote\Status::PENDING_SELLER_REVIEW</item>
+                        <item name="1" xsi:type="const">Aheadworks\Ctq\Model\Source\Quote\Status::DECLINED_BY_BUYER</item>
+                        <item name="2" xsi:type="const">Aheadworks\Ctq\Model\Source\Quote\Status::EXPIRED</item>
+                        <item name="3" xsi:type="const">Aheadworks\Ctq\Model\Source\Quote\Status::ORDERED</item>
+                    </item>
+                    <item name="seller_available_actions" xsi:type="array" />
+                    <item name="buyer_available_actions" xsi:type="array">
+                        <item name="0" xsi:type="string">buy</item>
+                        <item name="1" xsi:type="string">decline</item>
+                        <item name="2" xsi:type="string">submit_for_approval</item>
+                        <item name="3" xsi:type="string">sort</item>
+                        <item name="4" xsi:type="string">export</item>
+                    </item>
+                </item>
+                <item name="declined_by_buyer" xsi:type="array">
+                    <item name="next_available_statuses" xsi:type="array" />
+                    <item name="seller_available_actions" xsi:type="array">
+                        <item name="0" xsi:type="string">requote</item>
+                    </item>
+                    <item name="buyer_available_actions" xsi:type="array">
+                        <item name="0" xsi:type="string">requote</item>
+                        <item name="1" xsi:type="string">export</item>
+                    </item>
+                </item>
+                <item name="ordered" xsi:type="array">
+                    <item name="next_available_statuses" xsi:type="array" />
+                    <item name="seller_available_actions" xsi:type="array">
+                        <item name="0" xsi:type="string">requote</item>
+                    </item>
+                    <item name="buyer_available_actions" xsi:type="array">
+                        <item name="0" xsi:type="string">requote</item>
+                        <item name="1" xsi:type="string">export</item>
+                    </item>
+                </item>
+                <item name="expired" xsi:type="array">
+                    <item name="next_available_statuses" xsi:type="array" />
+                    <item name="seller_available_actions" xsi:type="array">
+                        <item name="0" xsi:type="string">requote</item>
+                    </item>
+                    <item name="buyer_available_actions" xsi:type="array">
+                        <item name="0" xsi:type="string">requote</item>
+                        <item name="1" xsi:type="string">export</item>
+                    </item>
+                </item>
+                <item name="accepted" xsi:type="array">
+                    <item name="next_available_statuses" xsi:type="array">
+                        <item name="0" xsi:type="const">Aheadworks\Ctq\Model\Source\Quote\Status::DECLINED_BY_BUYER</item>
+                        <item name="1" xsi:type="const">Aheadworks\Ctq\Model\Source\Quote\Status::EXPIRED</item>
+                        <item name="2" xsi:type="const">Aheadworks\Ctq\Model\Source\Quote\Status::ORDERED</item>
+                    </item>
+                    <item name="seller_available_actions" xsi:type="array" />
+                    <item name="buyer_available_actions" xsi:type="array">
+                        <item name="0" xsi:type="string">buy</item>
+                        <item name="1" xsi:type="string">decline</item>
+                        <item name="2" xsi:type="string">sort</item>
+                        <item name="3" xsi:type="string">export</item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Ctq\Model\Quote\Action\Pool">
+        <arguments>
+            <argument name="actions" xsi:type="array">
+                <!-- Seller actions -->
+                <item name="approve" xsi:type="array">
+                    <item name="name" xsi:type="string">Approve</item>
+                    <item name="url_path" xsi:type="string">aw_ctq/quote/approve</item>
+                    <item name="sort_order" xsi:type="number">10</item>
+                </item>
+                <item name="save" xsi:type="array">
+                    <item name="type" xsi:type="const">Aheadworks\Ctq\Model\Source\Quote\Action\Type::EDIT</item>
+                    <item name="name" xsi:type="string">Save</item>
+                    <item name="url_path" xsi:type="string">aw_ctq/quote/save</item>
+                    <item name="sort_order" xsi:type="number">40</item>
+                </item>
+                <item name="sell" xsi:type="array">
+                    <item name="name" xsi:type="string">Sell</item>
+                    <item name="url_path" xsi:type="string">aw_ctq/quote/sell</item>
+                    <item name="sort_order" xsi:type="number">30</item>
+                </item>
+
+                <!-- Buyer actions -->
+                <item name="submit_for_approval" xsi:type="array">
+                    <item name="type" xsi:type="const">Aheadworks\Ctq\Model\Source\Quote\Action\Type::EDIT</item>
+                    <item name="name" xsi:type="string">Submit for Approval</item>
+                    <item name="url_path" xsi:type="string">aw_ctq/quote/save</item>
+                    <item name="sort_order" xsi:type="number">10</item>
+                </item>
+                <item name="buy" xsi:type="array">
+                    <item name="name" xsi:type="string">Buy</item>
+                    <item name="url_path" xsi:type="string">aw_ctq/quote/buy</item>
+                    <item name="sort_order" xsi:type="number">20</item>
+                </item>
+                <item name="sort" xsi:type="array">
+                    <item name="type" xsi:type="const">Aheadworks\Ctq\Model\Source\Quote\Action\Type::EDIT_ITEMS_ORDER</item>
+                    <item name="name" xsi:type="string">Save Items Order</item>
+                    <item name="url_path" xsi:type="string">aw_ctq/quote/sort</item>
+                    <item name="sort_order" xsi:type="number">30</item>
+                </item>
+                <item name="export" xsi:type="array">
+                    <item name="type" xsi:type="const">Aheadworks\Ctq\Model\Source\Quote\Action\Type::EXPORT</item>
+                    <item name="name" xsi:type="string">Export to .doc</item>
+                    <item name="url_path" xsi:type="string">aw_ctq/quote/export</item>
+                    <item name="sort_order" xsi:type="number">60</item>
+                </item>
+
+                <!-- Common actions -->
+                <item name="decline" xsi:type="array">
+                    <item name="name" xsi:type="string">Decline</item>
+                    <item name="url_path" xsi:type="string">aw_ctq/quote/decline</item>
+                    <item name="sort_order" xsi:type="number">20</item>
+                </item>
+                <item name="requote" xsi:type="array">
+                    <item name="name" xsi:type="string">ReQuote</item>
+                    <item name="url_path" xsi:type="string">aw_ctq/quote/requote</item>
+                    <item name="sort_order" xsi:type="number">50</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Aheadworks\Ctq\Model\Quote\Export\Composite">
+        <arguments>
+            <argument name="exporters" xsi:type="array">
+                <item name="doc" xsi:type="object">Aheadworks\Ctq\Model\Quote\Export\Exporter\Doc</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Aheadworks\Ctq\Model\Comment\History\LogAction\Builder">
+        <arguments>
+            <argument name="builders" xsi:type="array">
+                <item name="comment" xsi:type="object">Aheadworks\Ctq\Model\Comment\History\LogAction\CommentBuilder</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\Ctq\Model\Quote\History\LogAction\StatusBuilder" type="Aheadworks\Ctq\Model\Quote\History\LogAction\DefaultBuilder">
+        <arguments>
+            <argument name="attribute" xsi:type="const">Aheadworks\Ctq\Api\Data\QuoteInterface::STATUS</argument>
+            <argument name="actionType" xsi:type="const">Aheadworks\Ctq\Model\Source\History\Action\Type::QUOTE_ATTRIBUTE_STATUS</argument>
+            <argument name="isNewAddToLog" xsi:type="boolean">true</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Ctq\Model\Quote\History\LogAction\ExpirationDateBuilder" type="Aheadworks\Ctq\Model\Quote\History\LogAction\DefaultBuilder">
+        <arguments>
+            <argument name="attribute" xsi:type="const">Aheadworks\Ctq\Api\Data\QuoteInterface::EXPIRATION_DATE</argument>
+            <argument name="actionType" xsi:type="const">Aheadworks\Ctq\Model\Source\History\Action\Type::QUOTE_ATTRIBUTE_EXPIRATION_DATE</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Ctq\Model\Quote\History\LogAction\ReminderDateBuilder" type="Aheadworks\Ctq\Model\Quote\History\LogAction\DefaultBuilder">
+        <arguments>
+            <argument name="attribute" xsi:type="const">Aheadworks\Ctq\Api\Data\QuoteInterface::REMINDER_DATE</argument>
+            <argument name="actionType" xsi:type="const">Aheadworks\Ctq\Model\Source\History\Action\Type::QUOTE_ATTRIBUTE_REMINDER_DATE</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Ctq\Model\Quote\History\LogAction\TotalNegotiatedBuilder" type="Aheadworks\Ctq\Model\Quote\History\LogAction\DefaultBuilder">
+        <arguments>
+            <argument name="attribute" xsi:type="const">Aheadworks\Ctq\Api\Data\QuoteInterface::BASE_QUOTE_TOTAL_NEGOTIATED</argument>
+            <argument name="actionType" xsi:type="const">Aheadworks\Ctq\Model\Source\History\Action\Type::QUOTE_ATTRIBUTE_BASE_TOTAL_NEGOTIATED</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Ctq\Model\Quote\History\LogAction\TotalBuilder" type="Aheadworks\Ctq\Model\Quote\History\LogAction\DefaultBuilder">
+        <arguments>
+            <argument name="attribute" xsi:type="const">Aheadworks\Ctq\Api\Data\QuoteInterface::BASE_QUOTE_TOTAL</argument>
+            <argument name="actionType" xsi:type="const">Aheadworks\Ctq\Model\Source\History\Action\Type::QUOTE_ATTRIBUTE_BASE_TOTAL</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Ctq\Model\Quote\History\LogAction\AdminBuilder" type="Aheadworks\Ctq\Model\Quote\History\LogAction\DefaultBuilder">
+        <arguments>
+            <argument name="attribute" xsi:type="const">Aheadworks\Ctq\Api\Data\QuoteInterface::SELLER_ID</argument>
+            <argument name="actionType" xsi:type="const">Aheadworks\Ctq\Model\Source\History\Action\Type::CHANGE_ADMIN</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Ctq\Block\QuoteList\Shipping" type="Magento\Checkout\Block\Cart\Shipping">
+        <arguments>
+            <argument name="configProvider" xsi:type="object">Aheadworks\Ctq\Model\QuoteList\Cart\ConfigProvider</argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Ctq\Model\Quote\History\LogAction\Builder">
+        <arguments>
+            <argument name="builders" xsi:type="array">
+                <item name="status" xsi:type="object">Aheadworks\Ctq\Model\Quote\History\LogAction\StatusBuilder</item>
+                <item name="expirationDate" xsi:type="object">Aheadworks\Ctq\Model\Quote\History\LogAction\ExpirationDateBuilder</item>
+                <item name="reminderDate" xsi:type="object">Aheadworks\Ctq\Model\Quote\History\LogAction\ReminderDateBuilder</item>
+                <item name="items" xsi:type="object">Aheadworks\Ctq\Model\Quote\History\LogAction\ItemsBuilder</item>
+                <item name="shippingAddress" xsi:type="object">Aheadworks\Ctq\Model\Quote\History\LogAction\ShippingAddressBuilder</item>
+                <item name="totalNegotiated" xsi:type="object">Aheadworks\Ctq\Model\Quote\History\LogAction\TotalNegotiatedBuilder</item>
+                <item name="total" xsi:type="object">Aheadworks\Ctq\Model\Quote\History\LogAction\TotalBuilder</item>
+                <item name="comment" xsi:type="object">Aheadworks\Ctq\Model\Quote\History\LogAction\CommentBuilder</item>
+                <item name="admin" xsi:type="object">Aheadworks\Ctq\Model\Quote\History\LogAction\AdminBuilder</item>
+                <item name="order" xsi:type="object">Aheadworks\Ctq\Model\Quote\History\LogAction\OrderBuilder</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Quote\Model\QuoteRepository\LoadHandler">
+        <plugin name="awCtq" type="Aheadworks\Ctq\Plugin\Model\Quote\QuoteRepository\LoadHandlerPlugin" />
+    </type>
+    <type name="Magento\Quote\Model\QuoteRepository\SaveHandler">
+        <plugin name="awCtq" type="Aheadworks\Ctq\Plugin\Model\Quote\QuoteRepository\SaveHandlerPlugin" />
+    </type>
+    <type name="Magento\Tax\Model\Sales\Total\Quote\CommonTaxCollector">
+        <plugin name="awCtq" type="Aheadworks\Ctq\Plugin\Model\Tax\Total\Quote\CommonTaxCollectorPlugin" />
+    </type>
+    <type name="Magento\Quote\Model\Quote\Item\ToOrderItem">
+        <plugin name="awCtq" type="Aheadworks\Ctq\Plugin\Model\Quote\Item\ConvertQuoteItemToOrderItemPlugin" />
+    </type>
+
+    <type name="Magento\SalesRule\Model\Quote\Discount">
+        <plugin name="awCtq" type="Aheadworks\Ctq\Plugin\Model\Quote\Total\DiscountPlugin"/>
+    </type>
+    <type name="Aheadworks\RewardPoints\Model\Total\Quote\RewardPoints">
+        <plugin name="awCtq" type="Aheadworks\Ctq\Plugin\Model\Quote\Total\AwRewardPointsPlugin"/>
+    </type>
+    <type name="Aheadworks\Raf\Model\Total\Quote\Advocate">
+        <plugin name="awCtq" type="Aheadworks\Ctq\Plugin\Model\Quote\Total\AwRafPlugin"/>
+    </type>
+    <type name="Aheadworks\Raf\Model\Total\Quote\Friend">
+        <plugin name="awCtq" type="Aheadworks\Ctq\Plugin\Model\Quote\Total\AwRafPlugin"/>
+    </type>
+    <type name="Magento\Reward\Model\Total\Quote\Reward">
+        <plugin name="awCtq" type="Aheadworks\Ctq\Plugin\Model\Quote\Total\EnterpriseRewardPointsPlugin"/>
+    </type>
+
+    <type name="Magento\Checkout\Controller\Cart\UpdateItemQty">
+        <plugin name="awCtqQuoteItemUpdate" type="Aheadworks\Ctq\Plugin\Controller\QuoteListActionPlugin" />
+    </type>
+    <type name="Magento\Checkout\Controller\Cart\UpdatePost">
+        <plugin name="awCtqQuoteItemUpdate" type="Aheadworks\Ctq\Plugin\Controller\QuoteListActionPlugin" />
+    </type>
+    <type name="Magento\Checkout\Controller\Cart\Configure">
+        <plugin name="awCtqQuoteItemUpdate" type="Aheadworks\Ctq\Plugin\Controller\QuoteListActionPlugin" />
+    </type>
+    <type name="Magento\Checkout\Controller\Cart\Delete">
+        <plugin name="awCtqQuoteItemUpdate" type="Aheadworks\Ctq\Plugin\Controller\QuoteListActionPlugin" />
+    </type>
+    <type name="Magento\Checkout\Controller\Sidebar\RemoveItem">
+        <plugin name="awCtqQuoteItemUpdate" type="Aheadworks\Ctq\Plugin\Controller\QuoteListActionPlugin" />
+    </type>
+    <type name="Magento\Checkout\Controller\Sidebar\UpdateItemQty">
+        <plugin name="awCtqQuoteItemUpdate" type="Aheadworks\Ctq\Plugin\Controller\QuoteListActionPlugin" />
+    </type>
+    <type name="Magento\Catalog\Block\Product\AbstractProduct">
+        <plugin name="awCtqQuoteItemUpdate" type="Aheadworks\Ctq\Plugin\Block\Product\AbstractProductPlugin" />
+    </type>
+    <type name="Aheadworks\Ctq\CustomerData\QuoteList">
+        <plugin name="tax_data" type="Aheadworks\Ctq\Plugin\Tax\CustomerData\QuoteListPlugin"/>
+    </type>
+
+    <type name="Aheadworks\Giftcard\Model\Sales\Totals\Quote">
+        <plugin name="awCtq" type="Aheadworks\Ctq\Plugin\Model\Quote\Total\AwGiftCardPlugin"/>
+    </type>
+</config>

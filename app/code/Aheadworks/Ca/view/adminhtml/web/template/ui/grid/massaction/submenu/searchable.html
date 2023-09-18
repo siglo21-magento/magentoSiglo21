@@ -1,0 +1,18 @@
+<div class="action-submenu aw-ca__searchable" css="_active: action.visible">
+    <div class="searchable-submenu_header" if="action.headerHint">
+        <h1 text="action.headerHint"/>
+    </div>
+    <div class="searchable-submenu_search">
+        <input class="admin__control-text search"
+               type="text"
+               name="search"
+               data-role="action-label-search"
+               data-bind="event: {keyup: $parent.filterOptions.bind($parent, action)}"/>
+    </div>
+    <ul class="searchable-submenu_list" each="data: action.observableActions, as: 'action'" >
+        <li css="_visible: $data.visible">
+            <span class="action-menu-item" translate="label" click="$parent.applyAction.bind($parent, type)"/>
+            <render args="name: $parent.submenuTemplate, data: $parent" if="$data.actions"/>
+        </li>
+    </ul>
+</div>

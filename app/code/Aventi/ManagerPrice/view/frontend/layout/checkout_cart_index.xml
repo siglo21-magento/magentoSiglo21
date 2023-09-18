@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+  <update handle="checkout_cart_item_renderers"/>
+  <body>
+    <referenceContainer name="checkout.cart.totals.container" as="totals" label="Shopping Cart Totals">
+      <referenceBlock class="Magento\Checkout\Block\Cart\Totals" name="checkout.cart.totals" template="Aventi_ManagerPrice::cart/totals.phtml" />
+    </referenceContainer>
+  </body>
+</page>

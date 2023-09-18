@@ -1,0 +1,346 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Email extend styles
+//  _____________________________________________
+
+//  This file should be used for theme-specific styles for emails that extend or modify the styles in _email.less
+//  This will allow you to edit email styles without copying and editing the _email.less file
+
+//  Custom fonts are declared here, rather than in _email-base.less, as it allows for custom fonts to be changed/removed
+//  in custom themes.
+
+//  Importing fonts from an external CSS file, rather than embedding @font-face declarations inside the <style> tag,
+//  as the latter will cause font rendering issues if the web fonts are inaccessible.
+
+@import url("@{baseUrl}css/email-fonts.css"); 
+
+body {
+    padding: 0;
+}
+* {
+    font-family: 'Poppins', sans-serif !important;
+}
+.header-background {
+    height: 275px;
+    width: 100%;
+    > div {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}
+.forgot-pass {
+font-size: 14px;
+text-align: center;
+letter-spacing: 0.04em;
+text-decoration-line: underline;
+color: #6C6C6C;
+}
+
+.logo img {
+    color: #000000;
+    text-transform: uppercase;
+    letter-spacing: .23em;
+    font-size: 60px;
+    text-align: center;
+    margin-top: -70px;
+}
+
+.main {
+    background: white;
+}
+
+.main-content {
+    padding: 50px;
+    padding-top: 0%;
+}
+.wrapper-inner {
+    background: #F2F2F2;
+}
+
+.socials {
+    a img {
+        font-size: 15px;
+        text-align: center;
+        letter-spacing: 0.27em;
+        text-decoration-line: underline;
+        text-transform: lowercase;
+
+        color: #000000;
+        margin: 0 20px;
+    }
+}
+
+
+.little {
+    text-align: center;
+    td {
+        font-family: Roboto;
+        font-style: normal;
+        font-size: 16px;
+        line-height: 176.2%;
+        text-align: center;
+        color: #1E1E1E;
+    }
+}
+.footer {
+    table {
+        width: 100%
+    }
+    > table {
+        border-top: #E41F13 solid 10px;
+        margin: 40px 50px;
+        background: transparent;
+        width: 85%;
+        td {
+            color: #1E1E1E;
+        }
+    }
+    .title {
+        font-family: Roboto;
+        font-style: normal;
+        font-size: 16px;
+        line-height: 176.2%;
+        text-align: center;
+        color: #1E1E1E;
+        margin-bottom: 0;
+        font-weight: bold;
+        padding-top: 20px;
+    }
+}
+
+p {
+    font-size: 1.2em;
+    line-height: 2em;
+    margin-bottom: 20px;
+    color: black;
+}
+
+a {
+    color: black;
+}
+
+b {
+    color: black;
+}
+
+h2 {
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: black;
+    margin-top: 50px;
+    font-size: 40px;
+    font-weight: 1000 !important;
+}
+
+h3 {
+    
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: black;
+    font-size: 1.5em;
+}
+
+h4 {
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+}
+.post-header {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    font-weight: bold;
+
+}
+
+hr {
+    margin-right: 70%;
+    border-top: 3px solid black !important;
+}
+
+.container {
+    margin-bottom: 50px;
+    p {
+        color: gray;
+    }
+}
+
+.interactable { 
+    text-align: center;
+    margin-top: 30px;
+    cursor: pointer;
+    a{
+        color: white;
+    }
+    span {
+        padding: 10px 20px;
+        background: #E41F13;
+        color: white;
+        text-transform: uppercase;
+        font-weight: 1000;
+        font-size: 1.5em;
+    }
+}
+
+.product img{
+    width: 150px;
+}
+
+.product-name {
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+dt.title {
+    color: black;
+    font-size: 1.2em !important;
+    text-transform: none !important;
+    letter-spacing: initial !important;
+    text-align: left !important;
+    font-weight: normal !important;
+}
+.email-summary {
+    p {
+        margin: 0 !important;
+    }
+    dt, dl  {
+        margin: 0 !important;
+        display: inline;
+    }
+}
+.new-order .email-items {
+    width: calc(100% - 100px) !important;
+    margin-left: -90px;
+    max-width: unset !important;
+    border: none !important;
+    tr {
+        border: none !important;
+    }
+    th {
+        background-color: transparent !important;
+        color: #000 !important;
+        text-transform: uppercase !important;
+    }
+    td {
+        border: none !important;
+    }
+    tbody {
+
+        .item-photo {
+            img {
+                width: 70px;
+                height: 70px;
+                background: white;
+                border: 1px solid #B3B3B3;
+            }
+        }
+        .item-single-price,
+        .item-qty,
+        .item-price {
+            color: #8F8F8F !important;
+            font-size: 25px !important;
+        }
+        .item-qty {
+            font-weight: 400 !important;
+        }
+        tr td {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 0;
+            p {
+                color: #b7b7b7;
+                font-size: 14px;
+                font-weight: bold;
+                margin-bottom: 0;
+            }
+            .sku {
+                font-weight: normal;
+                font-style: italic;
+            }
+            .product-name {
+                color: black;
+            }
+        }
+    }
+    tfoot {
+        tr {
+            th, td {
+                color: #b7b7b7;
+                font-size: 14px;
+                font-weight: normal;
+                background: transparent !important;
+            }
+        }
+        .grand_total {
+            th, td {
+                color: black !important;
+                font-weight: bold;
+            }
+            td {
+                font-style: 25px !important;
+            }
+        }
+    }
+}
+
+.table-side {
+    padding: 10px 20px;
+}
+
+.table-left-side {
+    text-align: right;
+    font-weight: bold;
+    color: black;
+}
+
+.register-table-heading {
+    margin-top: 20px;
+}
+
+.register-table-heading4 {
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+table.register-table tr:nth-child(odd) td {
+    background: #F2F2F2;
+}
+
+td.register-table-product p {
+    background: white;
+    padding: 10px 20px;
+    border: 2px solid #EAEAEA;
+    color: #404040;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+td.register-table-product {
+    padding: 10px 20px;
+}
+
+p.register-note {
+    margin-bottom: 0;
+    margin-top: 0;
+    background: #2F3E47;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    padding: 20px 10px;
+}
+
+tr.email-intro a {
+    font-weight: bold;
+    color: black !important;
+    text-decoration: underline !important;
+}

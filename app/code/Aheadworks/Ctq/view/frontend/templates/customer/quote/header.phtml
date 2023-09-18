@@ -1,0 +1,68 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+/* @var $block \Aheadworks\Ctq\Block\Customer\Quote\Header */
+
+// @codingStandardsIgnoreFile
+$quote = $block->getDataProviderViewModel()->getQuote();
+?>
+
+<div class="quote-status-container" style="display:flex">
+    <h5><?php echo __('Quote:') ?></h5>
+    <span class="aw-ctq__quote-status">
+        <?= $block->escapeHtml($block->getQuoteViewModel()->getStatusLabel($quote->getStatus())) ?>
+    </span>
+</div>
+<h3><?= $block->escapeHtml($quote->getName()) ?></h3>
+
+<div class="aw-ctq__quote-header">
+    <div class="aw-ctq__quote-data">
+        <div class="aw-ctq__quote-id">
+            <label><?= $block->escapeHtml(__('Quote #:')) ?></label>
+            <span><?= $block->escapeHtml($quote->getId()) ?></span>
+        </div>
+        <?php if ($quote->getOrderId()): ?>
+            <div class="aw-ctq__quote-order-id">
+                <label><?= $block->escapeHtml(__('Order:')) ?></label>
+                <a href="<?= $block->escapeUrl($block->getQuoteViewModel()->getOrderUrl($quote->getOrderId())) ?>" class="order-link">
+                    <span><?= $block->escapeHtml($block->getQuoteViewModel()->getOrderIdFormatted($quote->getOrderId())) ?></span>
+                </a>
+            </div>
+        <?php endif; ?>
+        <div class="aw-ctq__quote-created-date">
+            <label><?= $block->escapeHtml(__('Created:')) ?></label>
+            <span><?= $block->escapeHtml($block->getQuoteViewModel()->getCreatedAtFormatted($quote->getCreatedAt())) ?></span>
+        </div>
+        <?php if ($quote->getExpirationDate()): ?>
+            <div class="aw-ctq__quote-expired-date">
+                <label><?= $block->escapeHtml(__('Expired:')) ?></label>
+                <span><?= $block->escapeHtml($block->getQuoteViewModel()->getExpiredDateFormatted($quote->getExpirationDate())) ?></span>
+            </div>
+        <?php endif; ?>
+    </div>
+    <div class="actions-toolbar">
+        <?php foreach ($block->getQuoteViewModel()->getAvailableQuoteActions($quote) as $key => $quoteAction): ?>
+            <?php $actionName = 'aw-ctq-button-' . $key; ?>
+            <button data-role="<?= /* @noEscape */ $actionName ?>"
+                    class="action <?= /* @noEscape */ $key == 0 ? 'primary' : '' ?> <?= /* @noEscape */ $actionName ?>">
+                <span><?= $block->escapeHtml(__($quoteAction->getName())) ?></span>
+            </button>
+            <script type="text/x-magento-init">
+                {
+                    "[data-role=<?= /* @noEscape */ $actionName ?>": {
+                        "awCtqButtonControl": {
+                            "submitForm": {
+                                "formSelector": "<?= /* @noEscape */ $block->getQuoteViewModel()->getFormSelector() ?>",
+                                "actionType": "<?= /* @noEscape */ $quoteAction->getType() ?>",
+                                "action": "<?= $block->escapeUrl($block->getQuoteViewModel()->getQuoteUrlByPath($quoteAction->getUrlPath(), $quote->getId())) ?>"
+                            }
+                        }
+                    }
+                }
+            </script>
+        <?php endforeach; ?>
+    </div>
+</div>

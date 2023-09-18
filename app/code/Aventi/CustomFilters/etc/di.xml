@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+  <type name="Magento\InventoryApi\Api\SourceItemsSaveInterface">
+    <plugin name="Aventi_CustomFilters_Plugin_Magento_InventoryApi_Api_SourceItemsSaveInterface" type="Aventi\CustomFilters\Plugin\Magento\InventoryApi\Api\SourceItemsSaveInterface" sortOrder="10" disabled="false"/>
+  </type>
+  <type name="Magento\Catalog\Model\Layer">
+    <plugin name="product_sort_by_stock" type="Aventi\CustomFilters\Plugin\Magento\Catalog\Model\Layer"/>
+  </type>
+  <preference for="MGS\Ajaxlayernavigation\Model\ResourceModel\Layer\Filter\Attribute" type="Aventi\CustomFilters\Rewrite\MGS\Ajaxlayernavigation\Model\ResourceModel\Layer\Filter\Attribute"/>
+</config>

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="aw_ctq_email_seller_template_quote_changes"
+              label="AW CTQ - Seller Quote Changes"
+              file="quote_changes.html"
+              type="html"
+              module="Aheadworks_Ctq"
+              area="frontend"/>
+    <template id="aw_ctq_email_buyer_template_quote_changes"
+              label="AW CTQ - Buyer Quote Changes"
+              file="quote_changes.html"
+              type="html"
+              module="Aheadworks_Ctq"
+              area="frontend"/>
+    <template id="aw_ctq_email_seller_template_new_quote"
+              label="AW CTQ - Seller New Quote"
+              file="seller_new_quote.html"
+              type="html"
+              module="Aheadworks_Ctq"
+              area="frontend"/>
+    <template id="aw_ctq_email_buyer_template_new_quote"
+              label="AW CTQ - Buyer New Quote"
+              file="buyer_new_quote.html"
+              type="html"
+              module="Aheadworks_Ctq"
+              area="frontend"/>
+    <template id="aw_ctq_email_expiration_reminder_template"
+              label="AW CTQ - Expiration Reminder Template"
+              file="expiration_reminder.html"
+              type="html"
+              module="Aheadworks_Ctq"
+              area="frontend"/>
+    <template id="aw_ctq_email_quote_admin_change_template"
+              label="AW CTQ - Quote Admin Change Template"
+              file="quote_admin_change.html"
+              type="html"
+              module="Aheadworks_Ctq"
+              area="frontend"/>
+</config>

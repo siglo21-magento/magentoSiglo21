@@ -1,0 +1,428 @@
+<?php
+$helperConfig = $this->helper('MGS\MollaTheme\Helper\Config');
+?>
+
+<style>
+@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);
+.snip1464 {
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  text-align: left;
+  font-size: 16px;
+  width: 100%;
+  margin: 10px 0px;
+}
+.snip1464 img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: -1;
+}
+.snip1464 .plan {
+  margin-top: 10px;
+  width: 33.33%;
+  position: relative;
+  float: left;
+  overflow: hidden;
+  border-top: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+.snip1464 .plan:hover i,
+.snip1464 .plan.hover i {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+.snip1464 .plan:first-of-type {
+  border-radius: 8px 0 0 8px;
+  border-left: 1px solid #333333;
+}
+.snip1464 .plan:last-of-type {
+  border-radius: 0 8px 8px 0;
+  border-right: 1px solid #333333;
+}
+.snip1464 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
+}
+.snip1464 header {
+  line-height: 70px;
+  color: #ffffff;
+}
+.snip1464 .plan-title {
+  background-color: #2F3E47;
+  position: relative;
+  padding: 20px;
+  letter-spacing: 2px;
+  color: white;
+  font-weight: bold;
+}
+
+.snip1464 .plan-cost {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  padding: 0 20px;
+  text-align: right;
+}
+.snip1464 .plan-price {
+  font-weight: 600;
+  font-size: 2em;
+}
+.snip1464 .plan-type {
+  opacity: 0.8;
+  font-size: 0.7em;
+  text-transform: uppercase;
+}
+.snip1464 .plan-features {
+  padding: 0 0 20px;
+  margin: 0;
+  list-style: outside none none;
+  font-size: 0.9em;
+}
+.snip1464 .plan-features li {
+  padding: 8px 20px;
+}
+.snip1464 .plan-features i {
+  margin-right: 8px;
+}
+.snip1464 .plan-select {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+}
+.snip1464 .plan-select a {
+  background-color: #156dab;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 12px 20px;
+  font-size: 0.75em;
+  font-weight: 600;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  display: inline-block;
+}
+.snip1464 .plan-select a:hover {
+  background-color: #1b8ad8;
+}
+.snip1464 .featured {
+  margin-top: -10px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+  border-radius: 8px;
+  border: 1px solid #333333;
+}
+.snip1464 .featured header {
+  line-height: 90px;
+}
+.snip1464 .featured .plan-select {
+  padding: 30px 20px;
+}
+@media only screen and (max-width: 767px) {
+  .snip1464 .plan {
+    width: 50%;
+  }
+  .snip1464 .plan-title,
+  .snip1464 .plan-select a {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  .snip1464 .plan-select,
+  .snip1464 .featured .plan-select {
+    padding: 20px;
+  }
+  .snip1464 .featured {
+    margin-top: 0;
+  }
+  .snip1464 .featured header {
+    line-height: 70px;
+  }
+}
+@media only screen and (max-width: 440px) {
+  .snip1464 .plan {
+    width: 100%;
+  }
+}
+.formulario_form_1 p{
+    font-size:18px;
+}
+.segmentos {
+  display:inline-grid
+}
+.segmentos span{
+  border-radius:100px; box-shadow: 0 4px 24px 0 rgb(103 151 255 / 10%), 0 12px 64px 0 rgb(103 151 255 / 10%); padding:35px 10px;
+}
+
+.segmentos span img{
+  margin-left: auto;margin-right: auto;display: block; width:120px; height:100px;
+}
+
+
+
+</style>
+
+
+<div class="section-builder formulario_form_1">
+<div class="frame no-padding">
+            <div class="line">
+                <div class="col-des-12 col-tb-12 col-mb-12 ">      
+                    <p class="mb-2"> S21AAS es la nueva unidad de negocio de Electrónica Siglo 21 para sus distribuidores cuyo objetivo es aportar la posibilidad de ofrecer hardware de equipos tecnológicos en modalidad de servicios a sus clientes; esto les permitirá trabajar proyectos de este tipo y diversificar su portafolio.</p>
+                    
+
+                      <div class="col-des-6 col-tb-12 col-mb-12" style="float:left;text-align:center;margin-bottom:25px">
+                        <h5>VENTAJAS</h5>
+                        <img src="<?php echo $block->getViewFileUrl('Magento_Formulario::images/dinero.svg') ?>" alt="dinero" width="100px" height="100px" style="display:inline-block"> <p>Disminución de Costos</p>                       
+                        <img src="<?php echo $block->getViewFileUrl('Magento_Formulario::images/enfoque.svg') ?>" alt="dinero" width="100px" height="100px" style="display:inline-block"><p>Enfoque en su negocio</p>
+                        <img src="<?php echo $block->getViewFileUrl('Magento_Formulario::images/respuesta.svg') ?>" alt="respuesta" width="100px" height="100px" style="display:inline-block"><p>Rápida respuesta al cambio</p>
+                        <img src="<?php echo $block->getViewFileUrl('Magento_Formulario::images/recurso.svg') ?>" alt="recurso" width="100px" height="100px" style="display:inline-block"><p>Recurso humano experto</p>
+                        <img src="<?php echo $block->getViewFileUrl('Magento_Formulario::images/beneficio.svg') ?>" alt="beneficio" width="100px" height="100px" style="display:inline-block"><p>Beneficio Financiero</p>
+                      </div>
+                      <div class="col-des-6 col-tb-12 col-mb-12" style="float:right;text-align:center;margin-bottom:25px" >
+                        <h5>DESAFÍOS</h5>
+                        <img src="<?php echo $block->getViewFileUrl('Magento_Formulario::images/dimension.svg') ?>" alt="dimension" width="100px" height="100px" style="display:inline-block"> <p>Dimensionamiento apropiado</p>                       
+                        <img src="<?php echo $block->getViewFileUrl('Magento_Formulario::images/comunicacion.svg') ?>" alt="comunicacion" width="100px" height="100px" style="display:inline-block"><p>Comunicación efectiva</p>
+                        <img src="<?php echo $block->getViewFileUrl('Magento_Formulario::images/innovacion.svg') ?>" alt="innovacion" width="100px" height="100px" style="display:inline-block"><p>Innovación de procesos</p>
+                        <img src="<?php echo $block->getViewFileUrl('Magento_Formulario::images/seguridad.svg') ?>" alt="seguridad" width="100px" height="100px" style="display:inline-block"><p>Seguridad de la información</p>
+                        <img src="<?php echo $block->getViewFileUrl('Magento_Formulario::images/clarida.svg') ?>" alt="clarida" width="100px" height="100px" style="display:inline-block"><p>Claridad de los datos</p>
+                      </div>                      
+                    
+                      
+                </div>     
+                <div class="col-des-12 col-tb-12 col-mb-12 ">    
+                    <h2 class="title mb-1" style="margin-top:20px">ETAPAS DEL NEGOCIO</h2>
+                    <p class="mb-2">Las compañías que recurren a trabajar con un Outsourcing IT lo hacen con varios propósitos y beneficios, pero también presenta desafíos por ello la importancia de escoger al aliado de negocio estratégico que trabaje todas las etapas del negocio. </p>
+                            
+                    <img src="<?php echo $block->getViewFileUrl('Magento_Formulario::images/etapas.svg') ?>" alt="estilo" style="margin-left: auto;margin-right: auto;display: block; width:100%">
+                    
+                    <h2 class="title mb-1" style="margin-top:20px">RESUMEN DE SEGMENTOS - S21AAS</h2>
+                    <p class="mb-2">Tenemos equipos para todo tipo de industria focalizados en los siguientes segmentos. </p>
+                    <div class="snip1464">
+                        <div class="plan">
+                            <header>
+                                <h4 class="plan-title">
+                                    DAAS (Device as a service)
+                                </h4>
+                            </header>
+                            <ul class="plan-features">
+                                <li><i class="ion-checkmark"> </i>HP</li>
+                                <li><i class="ion-checkmark"> </i>DELL</li>
+                                <li><i class="ion-checkmark"> </i>DELL Technologies</li>
+                                <li><i class="ion-checkmark"> </i>ASUS</li>
+                                <li><i class="ion-checkmark"> </i>SPEEDMIND</li>
+                                <li>&nbsp</li>
+                                <li>&nbsp</li>
+                                <li>&nbsp</li>
+                            </ul>
+                        </div>
+                        <div class="plan">
+                            <header>
+                                <h4 class="plan-title">
+                                    Impresión / Digitalización
+                                </h4>
+                            </header>
+                            <ul class="plan-features">
+                                <li><i class="ion-checkmark"> </i>Epson</li>
+                                <li><i class="ion-checkmark"> </i>LEXMARK</li>
+                                <li><i class="ion-checkmark"> </i>CANON</li>
+                                <li><i class="ion-checkmark"> </i>HP</li>
+                                <li><i class="ion-checkmark"> </i>KOFAX</li>
+                                <li><i class="ion-checkmark"> </i>THEREFORE</li>
+                                <li><i class="ion-checkmark"> </i>PAPER CUT</li>
+                                <li>&nbsp</li>
+                            </ul>
+                        </div>
+                        <div class="plan">
+                            <header>
+                                <h4 class="plan-title">
+                                    Video/ Posline/ Energía
+                                </h4>
+                            </header>
+                            <ul class="plan-features">
+                                <li><i class="ion-checkmark"> </i>SAMSUMG</li>
+                                <li><i class="ion-checkmark"> </i>ZEBRA</li>
+                                <li><i class="ion-checkmark"> </i>3NSTAR</li>
+                                <li><i class="ion-checkmark"> </i>HONNEYWELL</li>
+                                <li><i class="ion-checkmark"> </i>CDP</li>
+                                <li><i class="ion-checkmark"> </i>TRIPPLITE</li>
+                                <li><i class="ion-checkmark"> </i>DELL</li>
+                                <li><i class="ion-checkmark"> </i>EPSON (proyectores)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                </div>    
+            </div>
+        </div>
+        <div class="frame" style="margin-top: 15px;">               
+                  <div class="line">
+                
+                    <div class="col-mb-12 col-des-2 col-sm-4 col-tb-4 segmentos">
+                        <span>
+                            <img src="<?php echo $block->getViewFileUrl('Magento_Formulario::images/retail.svg') ?>" alt="retail" >
+                        </span>
+                            <p style="text-align:center;margin:15px;font-size:15px;font-weight:bold">RETAIL</p>
+                    </div>
+                    <div class="col-mb-12 col-des-2 col-sm-4 col-tb-4 segmentos"> 
+                    <span>
+                        <img src="<?php echo $block->getViewFileUrl('Magento_Formulario::images/entidades.svg') ?>" alt="entidad">
+                    </span>
+                            <p style="text-align:center;margin:15px;font-size:15px;font-weight:bold">ENTIDADES</p>
+                    </div>
+                    <div class="col-mb-12 col-des-2 col-sm-4 col-tb-4 segmentos">
+                        <span>
+                            <img src="<?php echo $block->getViewFileUrl('Magento_Formulario::images/industria.svg') ?>" alt="industria">
+                        </span>
+                            <p style="text-align:center;margin:15px;font-size:15px;font-weight:bold">INDUSTRIA</p>
+                    </div>
+                    <div class="col-mb-12 col-des-2 col-sm-4 col-tb-4 segmentos">
+                        <span>
+                            <img src="<?php echo $block->getViewFileUrl('Magento_Formulario::images/gobierno.svg') ?>" alt="gobierno">
+                        </span>
+                        <p style="text-align:center;margin:15px;font-size:15px;font-weight:bold">GOBIERNO</p>
+                    </div>
+                    <div class="col-mb-12 col-des-2 col-sm-4 col-tb-4 segmentos">
+                        <span>
+                            <img src="<?php echo $block->getViewFileUrl('Magento_Formulario::images/educativo.svg') ?>" alt="educativo">
+                        </span>
+                        <p style="text-align:center;margin:15px;font-size:15px;font-weight:bold">EDUCATIVO</p>
+                    </div>
+                    <div class="col-mb-12 col-des-2 col-sm-4 col-tb-4 segmentos">
+                        <span>
+                            <img src="<?php echo $block->getViewFileUrl('Magento_Formulario::images/hoteleria.svg') ?>" alt="hoteleria">
+                        </span>
+                        <p style="text-align:center;margin:15px;font-size:15px;font-weight:bold">HOTELERÍA</p>
+                    </div>
+                </div>
+        </div>
+            <div class="frame no-padding" style="margin-top: 15px;">
+            <div class="line">  
+                <div class="col-des-12 col-tb-12 col-mb-12 ">      
+                    <h2 class="title mb-1"><?php /* @escapeNotVerified */ echo __('Got Any Questions?') ?></h2>
+                        <p class="mb-2"> Para más información contáctenos. </p>
+                        <div class="formulario-form">
+                            <form class="form formulario mb-3" id="formulario" method="post" data-mage-init='{"validation":{}}'>
+                                <div class="fieldset">
+                                <div class="fieldset-content">
+                                        <div class="fieldset-group">
+                                        
+                                                <div class="field name required">
+                                                    <div class="control">
+                                                        <input placeholder="Nombre" name="name" id="name" title="Nombre" value="<?= $block->escapeHtml($this->helper('Magento\Formulario\Helper\Data')->getPostValue('name') ?: $this->helper('Magento\Formulario\Helper\Data')->getUserName()) ?>" class="input-text" type="text" data-validate="{required:true}"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="field name required">
+                                                    <div class="control">
+                                                        <input placeholder="Apellido" name="apellido" id="apellido" title="Apellido" value="<?= $block->escapeHtml($this->helper('Magento\Formulario\Helper\Data')->getPostValue('apellido') ?: $this->helper('Magento\Formulario\Helper\Data')->getUserName()) ?>" class="input-text" type="text" data-validate="{required:true}"/>
+                                                    </div>
+                                                </div>
+                                                <div class="field email required">
+                                                    <div class="control">
+                                                        <input placeholder="Email" name="email" id="email" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" value="<?= $block->escapeHtml($this->helper('Magento\Formulario\Helper\Data')->getPostValue('email') ?: $this->helper('Magento\Formulario\Helper\Data')->getUserEmail()) ?>" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"/>
+                                                    </div>
+                                                </div>
+                                                <div class="field telefono required">
+                                                    <div class="control">
+                                                        <input placeholder="Teléfono" name="telefono" id="telefono" title="Teléfono" value="" class="input-text" type="text" data-validate="{required:true}" maxlength="13"/>
+                                                    </div>
+                                                </div>    
+                                                <div class="field empresa required">
+                                                    <div class="control">
+                                                        <input placeholder="Empresa" name="empresa" id="empresa" title="Empresa" value="" class="input-text" type="text" data-validate="{required:true}"/>
+                                                    </div>
+                                                </div> 
+                                                <div class="field comment required">
+                                                    <div class="control">
+                                                    <textarea placeholder="Comentario" name="comment" id="comment" title="Comentario" class="input-text" cols="5" rows="3" data-validate="{required:true}"><?= $block->escapeHtml($this->helper('Magento\Formulario\Helper\Data')->getPostValue('comment')) ?></textarea>
+                                                    </div>
+                                                </div> 
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="actions-toolbar">
+                                
+                                        
+                                        <button class="btn btn-default" type="submit" title="Enviar" id="enviar">
+                                            Enviar
+                                        </button>
+                                
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+<div id="myDiv"></div>
+
+<script>
+   require(["jquery"], function ($) {
+
+    $('#formulario').on('submit', function (e) {
+    e.preventDefault();
+   
+   
+    var customurl = BASE_URL+'outsourcing/SendData/index';
+    var formData = new FormData();
+    var normal_data = $('#formulario').serializeArray();
+    var inputs = $('input[type=file]');
+
+    
+
+    $.each(normal_data, function (k, input){
+        formData.append(input.name, input.value);
+    });
+    $.each(inputs, function(i, file){
+        formData.append('file-'+i, file.files[0]);
+    });
+
+    if ($('#formulario').valid()) {
+        console.log("entre");
+
+        $("#enviar").css({"pointer-events":"none"});
+        $("#enviar").html("<span>Enviando ...</span>")
+
+            $.ajax({
+            url: customurl,
+            type: 'POST',
+            //dataType: 'html',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(response) {        
+                $('#popup-modal').modal('openModal');
+                $("#enviar").html("<span>Registrado</span>");
+                setTimeout(function(){ 
+                    $('#popup-modal').modal('closeModal');
+                     window.location = BASE_URL; }, 3000);
+                },
+
+            error: function (xhr, status, errorThrown) {
+                console.log(xhr+' --- '+status+' ------ '+errorThrown);
+                $("#enviar").html("<span>Enviar</span>")
+                $("#enviar").css({"pointer-events":"auto","opacity":1});
+                //return false;
+            }
+        });
+    }
+});
+});
+
+</script>
+
+

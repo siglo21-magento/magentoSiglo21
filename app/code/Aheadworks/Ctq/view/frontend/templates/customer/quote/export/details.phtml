@@ -1,0 +1,39 @@
+<?php
+/**
+ * Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+/* @var $block \Aheadworks\Ctq\Block\Customer\Export\Quote */
+
+// @codingStandardsIgnoreFile
+
+$cart = $block->getDataProviderViewModel()->getCart();
+$items = $cart->getAllVisibleItems();
+?>
+
+<div class="order-details-items">
+    <div class="table-wrapper">
+        <table class="data table abs-table-striped">
+            <thead>
+                <tr>
+                    <th class="col name"><?= $block->escapeHtml(__('Product Name')) ?></th>
+                    <th class="col sku"><?= $block->escapeHtml(__('SKU')) ?></th>
+                    <th class="col price"><?= $block->escapeHtml(__('Price')) ?></th>
+                    <th class="col qty"><?= $block->escapeHtml(__('Qty')) ?></th>
+                    <th class="col subtotal"><?= $block->escapeHtml(__('Subtotal')) ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($items as $item): ?>
+                    <?= /* @noEscape */ $block->getItemHtml($item) ?>
+                <?php endforeach; ?>
+            </tbody>
+            <tfoot class="quote-totals">
+                <?= /* @noEscape */ $block->getTotalsHtml($cart) ?>
+            </tfoot>
+        </table>
+    </div>
+</div>
+<br />
+<?= $block->getExportExtraBlockHtml() ?>

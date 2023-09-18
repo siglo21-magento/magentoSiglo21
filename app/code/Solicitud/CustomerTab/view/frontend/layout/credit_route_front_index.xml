@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <body>
+        <referenceBlock name="page.main.title">
+            <block class="Aheadworks\Ca\Block\ButtonWithCheckAcl"
+                   name="aw.ca.company.edit_link" before="-">
+                <arguments>
+                    <argument name="label" xsi:type="string">Edit</argument>
+                    <argument name="link" xsi:type="string">/aw_ca/company/edit</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+
+        <referenceContainer name="content">
+            <block class = "Magento\Framework\View\Element\Template" name="custom_tab_siglo" cacheable="false" template="Solicitud_CustomerTab::tab_content.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

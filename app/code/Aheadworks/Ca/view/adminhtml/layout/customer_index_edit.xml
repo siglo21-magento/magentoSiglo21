@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <referenceBlock name="personal_info">
+        <block class="Magento\Framework\View\Element\Template"
+               name="aw_ca.customer.edit.information"
+               template="Aheadworks_Ca::customer/edit/company_information.phtml">
+            <arguments>
+                <argument name="view_model" xsi:type="object">Aheadworks\Ca\ViewModel\Adminhtml\Customer\CompanyInformation</argument>
+            </arguments>
+        </block>
+    </referenceBlock>
+</page>

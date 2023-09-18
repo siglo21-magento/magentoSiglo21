@@ -1,0 +1,105 @@
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true){
+  .aw-ctq__comment-block {
+    .comments {
+      margin: 0 0 25px 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .comment {
+      margin-bottom: 20px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &.seller {
+        .comment-text {
+          background: @aw-ctq__seller-comment-text__background-color;
+        }
+      }
+
+      &.buyer {
+        .comment-text {
+          border: 2px solid @aw-ctq__buyer-comment-text__border-color;
+        }
+      }
+
+      .comment-text {
+        padding: 2rem;
+        margin-bottom: 5px;
+        font-size: 15px;
+      }
+    }
+
+    .aw-ctq__owner-name {
+      .lib-vendor-prefix-display();
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .aw-ctq__comment-form {
+      .control {
+        &.field {
+          margin-bottom: 10px;
+        }
+
+        .label {
+          font-weight: bold;
+          font-size: 18px;
+          display: block;
+          margin-bottom: 10px;
+        }
+
+        textarea {
+          min-height: 100px;
+          background: @aw-ctq__comment-form-field__background-color;
+          padding: 1.5rem;
+          width: 100%;
+          border: none;
+        }
+      }
+
+      .fieldset {
+        margin: 0;
+        padding: 0;
+        border: none;
+      }
+
+      .aw-ctq__button-comment {
+        text-align: right;
+      }
+    }
+  }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  .aw-ctq__comment-block {
+    .comment {
+      &.buyer {
+        .comment-text {
+          margin-right: 20%;
+        }
+      }
+    }
+  }
+}

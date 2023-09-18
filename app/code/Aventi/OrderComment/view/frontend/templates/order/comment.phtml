@@ -1,0 +1,16 @@
+<?php
+/**
+ * @var $block \Aventi\OrderComment\Block\Order\Comment
+ */
+?>
+<div class="block block-order-comment">
+	<?php if($block->hasOrderComment()): ?>
+        <div class="block-title">
+            <br>
+            <strong><?php echo __('Comment'); ?></strong>
+        </div>
+        <div class="block-content">
+            <?php echo $block->getOrderComment() ; ?>
+        </div>
+	<?php endif; ?>
+</div>

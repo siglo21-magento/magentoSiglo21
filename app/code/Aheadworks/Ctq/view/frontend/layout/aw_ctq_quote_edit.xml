@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="checkout_item_price_renderers"/>
+    <update handle="aw_ctq_quote_header"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Aheadworks\Ctq\Block\Customer\Quote"
+                   name="aw_ctq.customer.quote.edit"
+                   template="Aheadworks_Ctq::customer/quote/edit.phtml"
+                   cacheable="false">
+                <arguments>
+                    <argument name="quote_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Customer\Quote</argument>
+                    <argument name="data_provider_view_model" xsi:type="object">Aheadworks\Ctq\ViewModel\Customer\Quote\DataProvider</argument>
+                </arguments>
+                <block class="Aheadworks\Ctq\Block\Customer\Quote\Edit\Totals"
+                       name="aw_ctq.customer.quote.edit.totals"
+                       template="Aheadworks_Ctq::customer/quote/edit/totals.phtml"
+                       as="totals">
+                    <arguments>
+                        <argument name="jsLayout" xsi:type="array">
+                            <item name="components" xsi:type="array">
+                                <item name="block-totals" xsi:type="array">
+                                    <item name="component" xsi:type="string">Aheadworks_Ctq/js/customer/quote/totals</item>
+                                    <item name="displayArea" xsi:type="string">totals</item>
+                                    <item name="config" xsi:type="array">
+                                        <item name="template" xsi:type="string">Aheadworks_Ctq/customer/quote/totals</item>
+                                    </item>
+                                    <item name="children" xsi:type="array">
+                                        <item name="subtotal" xsi:type="array">
+                                            <item name="config" xsi:type="array">
+                                                <item name="title" xsi:type="string" translate="true">Subtotal</item>
+                                            </item>
+                                        </item>
+                                        <item name="shipping" xsi:type="array">
+                                            <item name="component" xsi:type="string">Aheadworks_Ctq/js/customer/quote/totals/default</item>
+                                            <item name="config" xsi:type="array">
+                                                <item name="code" xsi:type="string">shipping</item>
+                                                <item name="template" xsi:type="string">Aheadworks_Ctq/customer/quote/totals/default</item>
+                                                <item name="title" xsi:type="string" translate="true">Shipping &amp; Handling</item>
+                                            </item>
+                                        </item>
+                                        <item name="discount" xsi:type="array"/>
+                                        <item name="customerbalance" xsi:type="array" />
+                                        <item name="before_grandtotal" xsi:type="array">
+                                            <item name="children" xsi:type="array">
+                                                <item name="reward" xsi:type="array">
+                                                    <item name="config" xsi:type="array">
+                                                        <item name="componentDisabled" xsi:type="boolean">true</item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                        <item name="giftCardAccount" xsi:type="array"/>
+                                        <item name="aw-giftcard" xsi:type="array">
+                                            <item name="component" xsi:type="string">Aheadworks_Ctq/js/customer/quote/totals/default</item>
+                                            <item name="config" xsi:type="array">
+                                                <item name="code" xsi:type="string">aw_giftcard</item>
+                                                <item name="template" xsi:type="string">Aheadworks_Ctq/customer/quote/totals/default</item>
+                                                <item name="title" xsi:type="string" translate="true">Gift Card</item>
+                                            </item>
+                                        </item>
+                                        <item name="tax" xsi:type="array" />
+                                        <item name="weee" xsi:type="array" />
+                                        <item name="grand-total" xsi:type="array"/>
+                                    </item>
+                                </item>
+                            </item>
+                        </argument>
+                    </arguments>
+                </block>
+            </block>
+            <block class="Magento\Customer\Block\Account\Dashboard"
+                   name="customer.account.link.back"
+                   template="Magento_Customer::account/link/back.phtml" />
+        </referenceContainer>
+    </body>
+</page>

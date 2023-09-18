@@ -1,0 +1,278 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2020 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Aheadworks\CreditLimit\Api\Data\SummaryInterface" type="Aheadworks\CreditLimit\Model\CreditSummary"/>
+    <preference for="Aheadworks\CreditLimit\Api\Data\SummarySearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <preference for="Aheadworks\CreditLimit\Api\SummaryRepositoryInterface" type="Aheadworks\CreditLimit\Model\CreditSummaryRepository"/>
+
+    <preference for="Aheadworks\CreditLimit\Api\Data\TransactionInterface" type="Aheadworks\CreditLimit\Model\Transaction"/>
+    <preference for="Aheadworks\CreditLimit\Api\Data\TransactionEntityInterface" type="Aheadworks\CreditLimit\Model\Transaction\TransactionEntity"/>
+    <preference for="Aheadworks\CreditLimit\Api\Data\TransactionParametersInterface" type="Aheadworks\CreditLimit\Model\Transaction\TransactionParameters"/>
+    <preference for="Aheadworks\CreditLimit\Api\Data\TransactionSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <preference for="Aheadworks\CreditLimit\Api\TransactionRepositoryInterface" type="Aheadworks\CreditLimit\Model\TransactionRepository"/>
+    <preference for="Aheadworks\CreditLimit\Api\TransactionManagementInterface" type="Aheadworks\CreditLimit\Model\Service\TransactionService"/>
+    <preference for="Aheadworks\CreditLimit\Model\Transaction\Comment\Metadata\CommentMetadataInterface" type="Aheadworks\CreditLimit\Model\Transaction\Comment\Metadata\CommentMetadata"/>
+
+    <preference for="Aheadworks\CreditLimit\Api\CreditLimitManagementInterface" type="Aheadworks\CreditLimit\Model\Service\CreditLimitService"/>
+    <preference for="Aheadworks\CreditLimit\Api\CustomerManagementInterface" type="Aheadworks\CreditLimit\Model\Service\CustomerService"/>
+
+    <preference for="Aheadworks\CreditLimit\Model\Email\EmailMetadataInterface" type="Aheadworks\CreditLimit\Model\Email\EmailMetadata"/>
+
+    <preference for="Aheadworks\CreditLimit\Api\Data\JobInterface" type="Aheadworks\CreditLimit\Model\AsyncUpdater\Job"/>
+    <preference for="Aheadworks\CreditLimit\Api\CreditLimitJobManagementInterface" type="Aheadworks\CreditLimit\Model\Service\CreditLimitJobService"/>
+
+    <virtualType name="AwCreditLimitFacade" type="Magento\Payment\Model\Method\Adapter">
+        <arguments>
+            <argument name="code" xsi:type="const">Aheadworks\CreditLimit\Model\Checkout\ConfigProvider::METHOD_CODE</argument>
+            <argument name="formBlockType" xsi:type="string">Aheadworks\CreditLimit\Block\Payment\Form</argument>
+            <argument name="infoBlockType" xsi:type="string">Aheadworks\CreditLimit\Block\Payment\Info</argument>
+            <argument name="valueHandlerPool" xsi:type="object">AwCreditLimitValueHandlerPool</argument>
+            <argument name="validatorPool" xsi:type="object">AwCreditLimitValidatorPool</argument>
+            <argument name="commandPool" xsi:type="object">AwCreditLimitCommandPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AwCreditLimitValueHandlerPool" type="Magento\Payment\Gateway\Config\ValueHandlerPool">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="default" xsi:type="string">AwCreditLimitDefaultValueHandler</item>
+                <item name="payment_action" xsi:type="string">Aheadworks\CreditLimit\Gateway\Config\PaymentActionValueHandler</item>
+                <item name="can_capture" xsi:type="string">Aheadworks\CreditLimit\Gateway\Config\CanCaptureValueHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AwCreditLimitConfig" type="Magento\Payment\Gateway\Config\Config">
+        <arguments>
+            <argument name="methodCode" xsi:type="const">Aheadworks\CreditLimit\Model\Checkout\ConfigProvider::METHOD_CODE</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AwCreditLimitDefaultValueHandler" type="Magento\Payment\Gateway\Config\ConfigValueHandler">
+        <arguments>
+            <argument name="configInterface" xsi:type="object">AwCreditLimitConfig</argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\CreditLimit\Gateway\Config\ActiveHandler">
+        <arguments>
+            <argument name="configInterface" xsi:type="object">AwCreditLimitConfig</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\CreditLimit\Gateway\Config\PaymentActionValueHandler">
+        <arguments>
+            <argument name="configInterface" xsi:type="object">AwCreditLimitConfig</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\CreditLimit\Gateway\Config\CanCaptureValueHandler">
+        <arguments>
+            <argument name="configInterface" xsi:type="object">AwCreditLimitConfig</argument>
+        </arguments>
+    </type>
+    <virtualType name="AwCreditLimitValidatorPool" type="Magento\Payment\Gateway\Validator\ValidatorPool">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="country" xsi:type="string">AwCreditLimitCountryValidator</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AwCreditLimitCountryValidator" type="Magento\Payment\Gateway\Validator\CountryValidator">
+        <arguments>
+            <argument name="config" xsi:type="object">AwCreditLimitConfig</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AwCreditLimitCommandPool" type="Magento\Payment\Gateway\Command\CommandPool">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="order" xsi:type="string">Aheadworks\CreditLimit\Gateway\Command\SaleCommand</item>
+                <item name="capture" xsi:type="string">Aheadworks\CreditLimit\Gateway\Command\SaleCommand</item>
+                <item name="cancel" xsi:type="string">Aheadworks\CreditLimit\Gateway\Command\CancelCommand</item>
+                <item name="refund" xsi:type="string">Aheadworks\CreditLimit\Gateway\Command\RefundCommand</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\CreditLimit\Gateway\Command\SaleCommand">
+        <arguments>
+            <argument name="configInterface" xsi:type="object">AwCreditLimitConfig</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="aw_credit_limit_customer_listing_data_source" xsi:type="string">Aheadworks\CreditLimit\Model\ResourceModel\Customer\Grid\Collection</item>
+                <item name="aw_credit_limit_transaction_listing_data_source" xsi:type="string">Aheadworks\CreditLimit\Model\ResourceModel\Transaction\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Aheadworks\CreditLimit\Model\ResourceModel\Customer\Grid\Collection">
+        <arguments>
+            <argument name="resourceModel" xsi:type="string">Magento\Customer\Model\ResourceModel\Customer</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\CreditLimit\Model\CreditSummaryRepository">
+        <arguments>
+            <argument name="collectionProcessor" xsi:type="object">Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="Aheadworks\CreditLimit\Api\Data\SummaryInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="const">Aheadworks\CreditLimit\Model\ResourceModel\CreditSummary::MAIN_TABLE_NAME</item>
+                    <item name="identifierField" xsi:type="const">Aheadworks\CreditLimit\Api\Data\SummaryInterface::SUMMARY_ID</item>
+                </item>
+                <item name="Aheadworks\CreditLimit\Api\Data\TransactionInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="const">Aheadworks\CreditLimit\Model\ResourceModel\Transaction::MAIN_TABLE_NAME</item>
+                    <item name="identifierField" xsi:type="const">Aheadworks\CreditLimit\Api\Data\TransactionInterface::ID</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\EntityManager\Operation\ExtensionPool">
+        <arguments>
+            <argument name="extensionActions" xsi:type="array">
+                <item name="Aheadworks\CreditLimit\Api\Data\TransactionInterface" xsi:type="array">
+                    <item name="create" xsi:type="array">
+                        <item name="entityCreator" xsi:type="string">Aheadworks\CreditLimit\Model\ResourceModel\Transaction\Relation\Entity\SaveHandler</item>
+                    </item>
+                    <item name="read" xsi:type="array">
+                        <item name="entityReader" xsi:type="string">Aheadworks\CreditLimit\Model\ResourceModel\Transaction\Relation\Entity\ReadHandler</item>
+                    </item>
+                    <item name="update" xsi:type="array">
+                        <item name="entityUpdater" xsi:type="string">Aheadworks\CreditLimit\Model\ResourceModel\Transaction\Relation\Entity\SaveHandler</item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor">
+        <arguments>
+            <argument name="customFilters" xsi:type="array">
+                <item name="aw_cl_default_summary_by_group_id" xsi:type="object">Aheadworks\CreditLimit\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor\Customer\DefaultSummaryByGroupId</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Aheadworks\CreditLimit\Model\Transaction\CompositeBuilder">
+        <arguments>
+            <argument name="builders" xsi:type="array">
+                <item name="general" xsi:type="object">Aheadworks\CreditLimit\Model\Transaction\Builder\General</item>
+                <item name="creditBalance" xsi:type="object">Aheadworks\CreditLimit\Model\Transaction\Builder\CreditBalance</item>
+                <item name="creditLimit" xsi:type="object">Aheadworks\CreditLimit\Model\Transaction\Builder\CreditLimit</item>
+                <item name="commentToCustomer" xsi:type="object">Aheadworks\CreditLimit\Model\Transaction\Builder\CommentToCustomer</item>
+                <item name="commentToAdmin" xsi:type="object">Aheadworks\CreditLimit\Model\Transaction\Builder\CommentToAdmin</item>
+                <item name="purchaseOrder" xsi:type="object">Aheadworks\CreditLimit\Model\Transaction\Builder\PurchaseOrder</item>
+                <item name="updatedByBuilder" xsi:type="object">Aheadworks\CreditLimit\Model\Transaction\Builder\UpdatedBy</item>
+                <item name="companyBuilder" xsi:type="object">Aheadworks\CreditLimit\Model\Transaction\Builder\CompanyBuilder</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\CreditLimit\Model\Transaction\Comment\Processor">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="orderProcessor" xsi:type="object">Aheadworks\CreditLimit\Model\Transaction\Comment\Processor\OrderProcessor</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\CreditLimit\Model\Transaction\Comment\Metadata\CommentMetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="order_purchased" xsi:type="array">
+                    <item name="type" xsi:type="const">Aheadworks\CreditLimit\Model\Source\Transaction\Action::ORDER_PURCHASED</item>
+                    <item name="placeholder" xsi:type="string">Order %order_id</item>
+                </item>
+                <item name="order_canceled" xsi:type="array">
+                    <item name="type" xsi:type="const">Aheadworks\CreditLimit\Model\Source\Transaction\Action::ORDER_CANCELED</item>
+                    <item name="placeholder" xsi:type="string">Cancel created for order %order_id</item>
+                </item>
+                <item name="credit_memo_refunded" xsi:type="array">
+                    <item name="type" xsi:type="const">Aheadworks\CreditLimit\Model\Source\Transaction\Action::CREDIT_MEMO_REFUNDED</item>
+                    <item name="placeholder" xsi:type="string">Refund created for order %order_id</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Aheadworks\CreditLimit\Model\Source\Transaction\Action">
+        <arguments>
+            <argument name="actionsWithCommentPlaceholders" xsi:type="array">
+                <item name="0" xsi:type="const">Aheadworks\CreditLimit\Model\Source\Transaction\Action::ORDER_PURCHASED</item>
+                <item name="1" xsi:type="const">Aheadworks\CreditLimit\Model\Source\Transaction\Action::ORDER_CANCELED</item>
+                <item name="2" xsi:type="const">Aheadworks\CreditLimit\Model\Source\Transaction\Action::CREDIT_MEMO_REFUNDED</item>
+            </argument>
+            <argument name="actionsToUpdateCreditBalance" xsi:type="array">
+                <item name="0" xsi:type="const">Aheadworks\CreditLimit\Model\Source\Transaction\Action::CREDIT_BALANCE_UPDATED</item>
+                <item name="1" xsi:type="const">Aheadworks\CreditLimit\Model\Source\Transaction\Action::ORDER_PURCHASED</item>
+                <item name="2" xsi:type="const">Aheadworks\CreditLimit\Model\Source\Transaction\Action::ORDER_CANCELED</item>
+                <item name="3" xsi:type="const">Aheadworks\CreditLimit\Model\Source\Transaction\Action::CREDIT_MEMO_REFUNDED</item>
+            </argument>
+            <argument name="actionsToUpdateCreditLimit" xsi:type="array">
+                <item name="0" xsi:type="const">Aheadworks\CreditLimit\Model\Source\Transaction\Action::CREDIT_LIMIT_ASSIGNED</item>
+                <item name="1" xsi:type="const">Aheadworks\CreditLimit\Model\Source\Transaction\Action::CREDIT_LIMIT_CHANGED</item>
+            </argument>
+            <argument name="actionsToReimburseBalance" xsi:type="array">
+                <item name="0" xsi:type="const">Aheadworks\CreditLimit\Model\Source\Transaction\Action::ORDER_CANCELED</item>
+                <item name="1" xsi:type="const">Aheadworks\CreditLimit\Model\Source\Transaction\Action::CREDIT_MEMO_REFUNDED</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Aheadworks\CreditLimit\Model\Customer\CreditLimit\DataProvider">
+        <arguments>
+            <argument name="providers" xsi:type="array">
+                <item name="priceFormat" xsi:type="object">Aheadworks\CreditLimit\Model\Customer\CreditLimit\Provider\PriceFormat</item>
+                <item name="creditLimit" xsi:type="object">Aheadworks\CreditLimit\Model\Customer\CreditLimit\Provider\CreditLimit</item>
+                <item name="defaultCreditLimit" xsi:type="object">Aheadworks\CreditLimit\Model\Customer\CreditLimit\Provider\DefaultCreditLimit</item>
+                <item name="totalList" xsi:type="object">Aheadworks\CreditLimit\Model\Customer\CreditLimit\Provider\TotalList</item>
+                <item name="allowedWebsiteCurrencyList" xsi:type="object">Aheadworks\CreditLimit\Model\Customer\CreditLimit\Provider\AllowedWebsiteCurrencyList</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Aheadworks\CreditLimit\Model\Transaction\Comment\EntityConverter\Pool">
+        <arguments>
+            <argument name="converters" xsi:type="array">
+                <item name="order" xsi:type="object">Aheadworks\CreditLimit\Model\Transaction\Comment\EntityConverter\Converter\Order</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Aheadworks\CreditLimit\Model\Customer\Notifier\ProcessorPool">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="credit_balance_updated" xsi:type="object">Aheadworks\CreditLimit\Model\Customer\Notifier\EmailProcessor\CreditBalanceUpdated</item>
+                <item name="order_purchased" xsi:type="object">Aheadworks\CreditLimit\Model\Customer\Notifier\EmailProcessor\CreditBalanceUpdated</item>
+                <item name="order_canceled" xsi:type="object">Aheadworks\CreditLimit\Model\Customer\Notifier\EmailProcessor\CreditBalanceUpdated</item>
+                <item name="credit_memo_refunded" xsi:type="object">Aheadworks\CreditLimit\Model\Customer\Notifier\EmailProcessor\CreditBalanceUpdated</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\CreditLimit\Model\Customer\Notifier\VariableProcessor\Composite" type="Aheadworks\CreditLimit\Model\Email\VariableProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="customer_name" xsi:type="object">Aheadworks\CreditLimit\Model\Customer\Notifier\VariableProcessor\CustomerName</item>
+                <item name="balance_info_url" xsi:type="object">Aheadworks\CreditLimit\Model\Customer\Notifier\VariableProcessor\BalanceInfoUrl</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\CreditLimit\Model\Customer\Notifier\EmailProcessor\CreditBalanceUpdated">
+        <arguments>
+            <argument name="variableProcessorComposite" xsi:type="object">Aheadworks\CreditLimit\Model\Customer\Notifier\VariableProcessor\Composite</argument>
+        </arguments>
+    </type>
+
+    <type name="Aheadworks\CreditLimit\Model\AsyncUpdater\Job\ProcessorPool">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="update_credit_limit" xsi:type="object">Aheadworks\CreditLimit\Model\AsyncUpdater\Job\Processor\CreditLimitUpdater</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

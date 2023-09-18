@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">aventi_cronviewer_cron_listing.aventi_cronviewer_cron_listing_data_source</item>
+            <item name="deps" xsi:type="string">aventi_cronviewer_cron_listing.aventi_cronviewer_cron_listing_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">aventi_cronviewer_cron_columns</item>
+    </argument>
+    <dataSource name="aventi_cronviewer_cron_listing_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Aventi\CronViewer\Ui\DataProvider\Cron\ListingDataProvider</argument>
+            <argument name="name" xsi:type="string">aventi_cronviewer_cron_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">schedule_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">schedule_id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="aventi_cronviewer_cron_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>job_code</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="job_code">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">job_code</label>
+            </settings>
+        </column>
+        <column name="status">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">status</label>
+            </settings>
+        </column>
+        <column name="messages">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">messages</label>
+            </settings>
+        </column>
+        <column name="scheduled_at">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">scheduled_at</label>
+            </settings>
+        </column>
+        <column name="executed_at">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">executed_at</label>
+            </settings>
+        </column>
+        <column name="finished_at">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">finished_at</label>
+            </settings>
+        </column>
+    </columns>
+</listing>

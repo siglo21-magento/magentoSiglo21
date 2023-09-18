@@ -1,0 +1,315 @@
+<style>
+		.df-classic .df-card__image {
+    		display: none!important;
+		}
+
+		#search_unico{
+			position:relative;
+		}
+		#containersearch{
+			margin-bottom:0px;
+		}
+		@media (max-width: 700px) {
+			#search_unico{
+				position:absolute;
+				top:90px;
+				z-index: 1 !important;
+				right: 0;
+				left: 0;
+			}
+			#containersearch{
+				margin-bottom:60px;
+			}
+
+		}
+		.nav-searchbar-wrapper~#main-Menucontent.nav-gwbar-single-row.nav-genz {
+			height: 45px;
+		}
+
+		#main-Menucontent.nav-gwbar-scroll {
+			display: flex;
+			overflow-x: scroll;
+		}
+		#main-Menucontent {
+			width: 100%;
+			background: #232f3e;
+			overflow: hidden;
+		}
+		#navbar * {
+			-webkit-box-sizing: border-box;
+		}
+
+		#navbar {
+    position: relative;
+    z-index: 208;
+    font-family: inherit;
+    font-size: 12px;
+    line-height: 1em;
+    min-width: 200px;
+}
+
+#main-Menucontent.nav-gwbar-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+#main-Menucontent.nav-gwbar-white span {
+    color: #fff;
+}
+
+.nav-searchbar-wrapper~#main-Menucontent.nav-gwbar-single-row.nav-genz.nav-gwbar-scroll .has-submenu{
+    padding-right: 3px;
+}
+#main-Menucontent.nav-genz .has-submenu{
+    line-height: 15px;
+    font-size: 15px;
+    font-weight: 400;
+    font-family: inherit;
+}
+
+#main-Menucontent .has-submenu{
+    position: relative;
+	color: #fff;
+    float: left;
+    text-decoration: none;
+    white-space: nowrap;
+}
+		
+</style>
+
+	<?php
+		$themeSettingConfig = $this->helper('MGS\ThemeSettings\Helper\Config');
+		
+		$blockEnable = explode(",",$themeSettingConfig->getStoreConfig('themesettings/header/elements'));
+
+		$cartType = $themeSettingConfig->getStoreConfig('themesettings/header/mini_cart_type');
+		$accountType = $themeSettingConfig->getStoreConfig('themesettings/header/my_account_type');
+		$searchType = $themeSettingConfig->getStoreConfig('themesettings/header/search_type');
+		$loginForm = $themeSettingConfig->getStoreConfig('themesettings/header/my_account_form');
+		$stickyMenu = $themeSettingConfig->getStoreConfig('themesettings/header/sticky_menu');
+		$stickyMenuMobile = $themeSettingConfig->getStoreConfig('themesettings/header/sticky_menu_mobile');
+		$_headerVer = $themeSettingConfig->getStoreConfig('themesettings/header/header_version');
+		if($_headerVer == ''){ $_headerVer = 'header1'; }
+		
+		$addtionClass = "search-" . $searchType;
+		if($cartType == 'slide'){
+			$addtionClass .= " minicart-slide";
+		}
+		if($accountType == 'slide'){
+			$addtionClass .= " myaccount-slide";
+		}
+		if($stickyMenu){
+			$addtionClass .= " active-sticky";
+			if($stickyMenuMobile){
+				$addtionClass .= " active-sticky-mb";
+			}
+		}
+		$settingContentCondition =  false;
+		if((in_array('store', $blockEnable) && trim(preg_replace('/\s+/', ' ', $block->getChildHtml('store_language')))) || (in_array('curency', $blockEnable) && trim(preg_replace('/\s+/', ' ', $block->getChildHtml('currency')))) || (in_array('static1', $blockEnable) && trim(preg_replace('/\s+/', ' ', $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('supro_header_custom_static_block_1')->toHtml()))) || (in_array('static2', $blockEnable) && trim(preg_replace('/\s+/', ' ', $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('supro_header_custom_static_block_2')->toHtml())))){
+			$settingContentCondition = true;
+		}
+	?>
+	<div class="header-area <?= $_headerVer ?> <?= $addtionClass ?>">
+		<div class="middle-header elements-sticky-mb">
+			<div class='frame'>
+				<div class="conts-middle-header">
+					<div class='line align-items-center ' id="containersearch">
+						
+						<div class='col-des-2 col-tb-2 d-flex align-items-center  col-mb-4 center-content'>
+						<label class="hidden-xs hidden-sm" id="toggler" onclick="toggleMobileMenu()">
+							<span class="iconify" data-icon="ic:round-menu"></span>
+						</label>
+							<?= $block->getChildHtml('logo') ?>
+						</div>
+			
+						<div id="search_unico"  class='col-des-5 col-tb-5 text-center'  >
+							<label id="toggler" onclick="toggleMobileMenu()">
+							<span class="iconify" data-icon="ic:round-menu"></span>
+							</label>
+							<?php if(in_array('search', $blockEnable)): ?>
+								<?= $block->getChildHtml('topSearch') ?>
+							<?php endif ?>
+
+							<div class="header-mobile <?php if($themeSettingConfig->getStoreConfig('themesettings/header/dark_menu_mobile')): ?> dark-menu <?php endif ?>">
+
+								<div class='mobile-menu-wrapper megamenu-content '>
+									
+									<?php // Tab Menu - Responsive Header ?>
+									<?php if($_headerVer == 'header1' || $_headerVer == 'header2' || $_headerVer == 'header6'): ?>
+										<ul class="nav nav-tabs">
+											<li class="nav-item active"><a class='nav-link' data-toggle="tab" data-tab="#main-Menucontent"><?= __('Menu') ?></a></li>
+											<li class="nav-item"><a class='nav-link' data-toggle="tab" data-tab="#main-Category"><?= __('Category') ?></a></li>
+										</ul>
+									<?php endif ?>
+									
+									<div class="tab-content">
+										
+										<div id="main-Menucontent" class="nav-gwbar-single-row nav-genz nav-gwbar-white nav-gwbar-scroll">
+											
+											
+										</div>
+									</div>
+
+
+								</div>
+							</div>
+						</div>
+
+						<div class='col-des-5 col-tb-5 col-mb-8 d-flex align-items-center right-content'>
+							<?php if(in_array('account', $blockEnable)): ?>
+								<div class="header-top-links">
+									<div class="actions">
+										<a class="action top-links theme-header-icon" href="<?php echo $block->getBaseUrl();?>customer/account/login/" title='<?= __('Login') ?>' >
+											<span class='label'>
+												<b><?= __('Login') ?></b>
+											</span>
+										</a>
+										
+									</div>
+									<?= $block->getChildHtml('login.form.header'); ?>
+								</div>
+								<?php $isLogged = $this->helper('Aventi\ManagerPrice\Helper\Data')->_getIsLogged();
+								if(!$isLogged): ?>
+									<div class="header-top-signin">
+										<div class="actions">
+											<a class="action top-links theme-header-icon" href="<?php echo $block->getBaseUrl();?>customer/account/create/" title='<?= __('Become a customer') ?>' >
+												<span class='label'>
+													<?= __('Become a customer') ?>
+												</span>
+											</a>
+										</div>
+									</div>
+								<?php endif ?>
+							<?php endif ?>
+							<?php if(in_array('store', $blockEnable) || in_array('curency', $blockEnable)): ?>
+								<div class="customer-web-config">
+									<?php if(in_array('store', $blockEnable)): ?>
+										<?= $block->getChildHtml('store_language'); ?>
+									<?php endif ?>
+									<?php if(in_array('curency', $blockEnable)): ?>
+										<?= $block->getChildHtml('currency'); ?>
+									<?php endif ?>
+								</div>
+							<?php endif ?>
+							<div class='d-flex align-items-center  menu-header-icon'>
+								<?php if(in_array('minicart', $blockEnable)): ?>
+									<?= $block->getChildHtml('minicart') ?>
+								<?php endif ?>
+							</div>
+							
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+
+		<div class="bottom-header elements-sticky">
+			<div class='frame'>
+				<div class=' d-flex align-items-center conts-bottom-header'>
+					<div class="horizontal-menu<?php if(!$block->getChildHtml('megamenu')): ?> mgt-menu<?php endif ?>">
+						<?php if($block->getChildHtml('megamenu')): ?>
+							<?= $block->getChildHtml('megamenu') ?>
+						<?php else: ?>
+							<?= $block->getChildHtml('store.menu') ?>
+						<?php endif ?>
+					</div>
+					<?= $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('header_custom_static_block_2')->toHtml(); ?>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="header-mobile  megamenu-content<?php if($themeSettingConfig->getStoreConfig('themesettings/header/dark_menu_mobile')): ?> dark-menu <?php endif ?>">
+
+	<div class='mobile-menu-wrapper '>
+	
+	<?php // Tab Menu - Responsive Header ?>
+	<?php if($_headerVer == 'header1' || $_headerVer == 'header2' || $_headerVer == 'header6'): ?>
+		<ul class="nav nav-tabs">
+			<li class="nav-item active"><a class='nav-link' data-toggle="tab" data-tab="#main-Menucontent"><?= __('Menu') ?></a></li>
+			<li class="nav-item"><a class='nav-link' data-toggle="tab" data-tab="#main-Category"><?= __('Category') ?></a></li>
+		</ul>
+	<?php endif ?>
+	
+	<div class="tab-content">
+		
+		<div id="main-Menucontent" class="nav-gwbar-single-row nav-genz nav-gwbar-white nav-gwbar-scroll">
+
+		</div>
+<?php
+echo $this->getLayout()
+->createBlock('Magento\Cms\Block\Block')
+->setBlockId('add_link_header_mobile')
+->toHtml();
+?>
+	</div>
+
+
+</div>
+</div>
+<button onclick="toggleMobileMenu() " class="action close-nav-button"><span class="iconify" data-icon="mdi:close"></span></button>
+	<script>
+
+		function toggleMobileMenu() {
+			let menu = document.getElementsByClassName("header-mobile");
+			let html = document.getElementsByTagName("html");
+			if (html[0].classList.contains("nav-open")) {
+				html[0].classList.remove("nav-open")
+				setTimeout(function () {
+					html[0].classList.remove("nav-before-open")
+				}, 100)
+			} else {
+				html[0].classList.add("nav-before-open", "nav-open")
+			}
+		}
+
+		
+		
+	</script>
+
+<script type="text/javascript">
+        require([
+            'jquery'
+        ], function(jQuery) {
+            (function($) {
+                $(document).on("click", "#js_mobile_tabs .action-mb-tabs", function(e) {
+                    if ($('html').hasClass('nav-open')) {
+                        $('html').removeClass('nav-open');
+                        setTimeout(function() {
+                            $('html').removeClass('nav-before-open');
+                        }, 300);
+                    } else {
+                        $('html').addClass('nav-before-open');
+                        setTimeout(function() {
+                            $('html').addClass('nav-open');
+                        }, 42);
+                        var $el_action = $(this).attr('id');
+                        switch ($el_action) {
+                            case "my-account-action":
+                                $(".megamenu-content .nav-tabs li a").each(function() {
+                                    $(this).parent('li').removeClass("active");
+                                    $(".megamenu-content .tab-content .tab-pane").removeClass("active");
+                                    $('[href="#main-Accountcontent"]').parent().addClass('active');
+                                    $(".megamenu-content .tab-content #main-Accountcontent").addClass('active');
+                                });
+                                break;
+                            case "setting-web-action":
+                                $(".megamenu-content .nav-tabs li a ").each(function() {
+                                    $(this).parent('li').removeClass("active");
+                                    $(".megamenu-content .tab-content .tab-pane").removeClass("active");
+                                    $('[href="#main-Settingcontent"]').parent().addClass('active');
+                                    $(".megamenu-content .tab-content #main-Settingcontent").addClass('active');
+                                });
+                                break;
+                        }
+                    }
+                });
+            })(jQuery);
+        });
+    </script>
+
+
+
+	
